@@ -1,0 +1,74 @@
+{
+    "misc": [
+        {
+            "name": "Apricot Extract",
+            "version": "1",
+            "type": "Flavor",
+            "use": "Bottling",
+            "amount": "0.192229",
+            "time": "5.000",
+            "amountIsWeight": "FALSE",
+            "useFor": "Fruit Beer",
+            "notes": "Apricot flavor extract.  Mix into beer just before bottling.  Adds apricot flavor to light ales and wheat beers.  Use low hop rate to allow sweet flavor through.",
+            "displayAmount": "6.50 oz",
+            "inventory": "0.00 oz",
+            "displayTime": "5.0 min"
+        },
+        {
+            "name": "Calcium Chloride",
+            "version": "1",
+            "type": "Water Agent",
+            "use": "Mash",
+            "amount": "0.005000",
+            "time": "60.000",
+            "amountIsWeight": "TRUE",
+            "useFor": "Water Agent",
+            "notes": "Alters water profile and pH of mash.  Use the BeerSmith Water Profile tool to determine amount to add.",
+            "displayAmount": "5.00 gm",
+            "inventory": "0.00 gm",
+            "displayTime": "60.0 min"
+        },
+        {
+            "name": "Ginger Root",
+            "version": "1",
+            "type": "Herb",
+            "use": "Boil",
+            "amount": "0.029574",
+            "time": "12.000",
+            "amountIsWeight": "FALSE",
+            "useFor": "Holiday Beer",
+            "notes": "Adds distinctive ginger flavor for Ginger Ales, Holiday Beers.  Fresh grated ginger root from the grocer is best.  As little as 1/2 ounce per 5 gallons is noticable, but up to 4 oz can be used for ginger ales.",
+            "displayAmount": "1.00 oz",
+            "inventory": "0.00 oz",
+            "displayTime": "12.0 min"
+        },
+        {
+            "name": "Irish Moss",
+            "version": "1",
+            "type": "Fining",
+            "use": "Boil",
+            "amount": "0.001232",
+            "time": "10.000",
+            "amountIsWeight": "FALSE",
+            "useFor": "Clarity",
+            "notes": "Fining agent that aids in the post-boil protein break.  Reduces protein chill haze and improves beer clarity.",
+            "displayAmount": "0.25 tsp",
+            "inventory": "0.00 tsp",
+            "displayTime": "10.0 min"
+        },
+        {
+            "name": "Orange Peel, Bitter",
+            "version": "1",
+            "type": "Spice",
+            "use": "Boil",
+            "amount": "0.022180",
+            "time": "5.000",
+            "amountIsWeight": "FALSE",
+            "useFor": "Belgian Wit",
+            "notes": "Made from the Curaco Orange Peel, peels are green-gray in color.  Used to add a distinctive flavor to Belgian Wits and White beers.",
+            "displayAmount": "0.75 oz",
+            "inventory": "0.00 oz",
+            "displayTime": "5.0 min"
+        }
+    ]
+}
