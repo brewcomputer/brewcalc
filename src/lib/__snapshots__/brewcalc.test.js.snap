@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`srm2css 1`] = `"rgb(156, 21, 0)"`;
