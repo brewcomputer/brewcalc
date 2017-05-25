@@ -1,6 +1,6 @@
 export const spitfireRecipe = {
   batchSize: 10,
-  mashEfficiency: 0.75,
+  efficiency: 0.75,
   fermentables: [
     {
       name: 'Chateau Pale Ale',

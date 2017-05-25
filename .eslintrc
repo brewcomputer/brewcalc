@@ -5,7 +5,17 @@
             "error",
             "never"
         ],
-        "quotes": ["error", "single", { "allowTemplateLiterals": true }]
+        "quotes": [
+            "error",
+            "single",
+            {
+                "allowTemplateLiterals": true
+            }
+        ],
+        "trailingComma": [
+            "error",
+            "es5"
+        ]
     },
     "plugins": [
         "prettier"

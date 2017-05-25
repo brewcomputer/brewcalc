@@ -1,17 +1,17 @@
-import { srmToCss, calcWater, calcEstimatedOG, sum } from "../brewcalc"
-import { spitfireRecipe } from "./data/spitfireRecipe"
-import { brewhouse } from "./data/brewhouse"
+import { srmToCss, calcWater, calcEstimatedOG, sum } from '../brewcalc'
+import { spitfireRecipe } from './data/spitfireRecipe'
+import { brewhouse } from './data/brewhouse'
 
-test("srm2css", () => {
+test('srm2css', () => {
   const cssColor = srmToCss(19.5)
   expect(cssColor).toMatchSnapshot()
 })
 
-test("calcWater", () => {
+test('calcWater', () => {
   const calcResults = calcWater({
     batchSize: 10,
     ...brewhouse,
-    totalGrains: 18
+    totalGrains: 18,
   })
 
   expect(calcResults).toBeDefined()
@@ -21,7 +21,7 @@ test("calcWater", () => {
   expect(calcResults.hotPostBoilVol).toBeCloseTo(10.625, 3)
 })
 
-test("calcEstimatedOG", () => {
+test('calcEstimatedOG', () => {
   const totalGrains = sum(
     spitfireRecipe.fermentables.map(
       ({ amount, mashed }) => (mashed ? amount : 0)
@@ -31,13 +31,13 @@ test("calcEstimatedOG", () => {
   const waterPostBoilVol = calcWater({
     batchSize: spitfireRecipe.batchSize,
     ...brewhouse,
-    totalGrains: totalGrains
+    totalGrains: totalGrains,
   }).postBoilVol
 
   const eOG = calcEstimatedOG({
     fermentables: spitfireRecipe.fermentables,
     waterPostBoilVol: waterPostBoilVol,
-    mashEfficiency: spitfireRecipe.mashEfficiency
+    efficiency: spitfireRecipe.efficiency,
   })
   expect(eOG).toBeCloseTo(1.05485, 4)
 })

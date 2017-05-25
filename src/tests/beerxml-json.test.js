@@ -18,7 +18,7 @@ test('convertXMLJson', () => {
   )
   const jsonEtalon = require(__dirname + '/data/beerjson/equipment.json')
   const json = convertXmlJson({
-    xmlData: xmlData
+    xmlData: xmlData,
   })
 
   expect(json.equipment[0].batchSize).toBe(jsonEtalon.equipment[0].batchSize)

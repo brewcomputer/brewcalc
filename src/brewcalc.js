@@ -3,7 +3,7 @@ export const sum = array => array.reduce((pv, cv) => pv + cv, 0)
 export const srmToRgb = srm => ({
   r: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.975, srm)))),
   g: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.88, srm)))),
-  b: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.7, srm))))
+  b: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.7, srm)))),
 })
 
 export const srmToCss = srm => {
@@ -23,7 +23,7 @@ export const calcWater = ({
   kettleDeadSpace = 0,
   dissolvedVol = 0,
   hopWaterLoss = 0,
-  pumpWaterLoss = 0
+  pumpWaterLoss = 0,
 }) => {
   const grainAbsLoss = grainAbsPerLb * totalGrains
   const boilOffLoss = evapRateGPH * boilTime / 60
@@ -42,17 +42,17 @@ export const calcWater = ({
     preBoilVol,
     hotPostBoilVol,
     postBoilVol,
-    fromKettleVol
+    fromKettleVol,
   }
 }
 
 export const calcEstimatedOG = ({
   fermentables,
   waterPostBoilVol,
-  mashEfficiency
+  efficiency,
 }) => {
   const calcMashYield = ({ amount, potential, mashed }) =>
-    amount * (potential - 1) * (mashed ? mashEfficiency : 1)
+    amount * (potential - 1) * (mashed ? efficiency : 1)
 
   const totalGravityPts = sum(fermentables.map(calcMashYield))
   const originalGravity = totalGravityPts / waterPostBoilVol + 1
