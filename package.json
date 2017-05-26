@@ -10,6 +10,7 @@
     "react-scripts": "1.0.5"
   },
   "scripts": {
-    "test": "react-scripts test --env=jsdom"
+    "test": "react-scripts test --env=jsdom",
+    "coverage": "react-scripts test --env=jsdom --coverage"
   }
 }

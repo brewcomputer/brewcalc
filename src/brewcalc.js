@@ -1,60 +1,89 @@
-export const sum = array => array.reduce((pv, cv) => pv + cv, 0)
-
-export const srmToRgb = srm => ({
-  r: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.975, srm)))),
-  g: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.88, srm)))),
-  b: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.7, srm)))),
-})
-
-export const srmToCss = srm => {
-  const color = srmToRgb(srm)
-  return `rgb(${color.r}, ${color.g}, ${color.b})`
+//Recipe TYPE	May be one of “Extract”, “Partial Mash” or “All Grain”
+const recipeTypes = {
+  extract: 'Extract',
+  partialMash: 'Partial Mash',
+  allGrain: 'All Grain',
 }
 
-export const calcWater = ({
-  batchSize,
-  totalGrains,
-  boilTime,
-  evapRateGPH,
-  coolingLossGal,
-  grainAbsPerLb,
-  mashTunVol,
-  mashTunDeadSpace = 0,
-  kettleDeadSpace = 0,
-  dissolvedVol = 0,
-  hopWaterLoss = 0,
-  pumpWaterLoss = 0,
-}) => {
-  const grainAbsLoss = grainAbsPerLb * totalGrains
-  const boilOffLoss = evapRateGPH * boilTime / 60
+//Fermentable TYPE May be "Grain", "Sugar", "Extract", "Dry Extract" or "Adjunct".  Extract refers to liquid extract.
+const fermentableTypes = {
+  grain: 'Grain',
+  sugar: 'Sugar',
+  extract: 'Extract',
+  dryExtract: 'Dry Extract',
+  adjunct: 'Adjunct',
+}
 
-  const intoFermenterVol = batchSize
-  const fromKettleVol = intoFermenterVol + pumpWaterLoss
-  const postBoilVol = fromKettleVol + hopWaterLoss + kettleDeadSpace
-  const hotPostBoilVol = postBoilVol + coolingLossGal
-  const preBoilVol = hotPostBoilVol + boilOffLoss
-  const preBoilWaterVol = preBoilVol - dissolvedVol
-  const totalWater = preBoilWaterVol + grainAbsLoss + mashTunDeadSpace
+const kilosToOunces = k => {
+  return k * 35.2739619
+}
 
+const kilosToPoundes = k => {
+  return kilosToOunces(k) / 16
+}
+
+const litersToOunces = l => {
+  return l / 0.0295735
+}
+
+const litersToGallons = l => {
+  return litersToOunces(l) / 128
+}
+
+const options = () => {
+  const stepingEfficiency = 0.15
   return {
-    totalWater,
-    preBoilWaterVol,
-    preBoilVol,
-    hotPostBoilVol,
-    postBoilVol,
-    fromKettleVol,
+    stepingEfficiency,
   }
 }
 
-export const calcEstimatedOG = ({
-  fermentables,
-  waterPostBoilVol,
-  efficiency,
-}) => {
-  const calcMashYield = ({ amount, potential, mashed }) =>
-    amount * (potential - 1) * (mashed ? efficiency : 1)
+//Sugar provides 46 gravity points per pound, per gallon (PPPG).
+//1 pound = 16 oz (weight/mass)
+//1 gallon = 128 fl oz
+//yield and efficiency should be parsed from recipe as percent values
 
-  const totalGravityPts = sum(fermentables.map(calcMashYield))
-  const originalGravity = totalGravityPts / waterPostBoilVol + 1
+export const estimateOG = ({ recipe, batchSize, afterBoil, includeSugars }) => {
+  if (typeof recipe === 'undefined' || recipe === null) return 1.00
+
+  batchSize = litersToGallons(batchSize)
+  if (recipe.type == recipeTypes.extract) {
+    //TODO
+    //batchSize + TrubLoss size
+  }
+
+  let originalGravity = 0
+  recipe.fermentables.map(fermentable => {
+    if (fermentable.addAfterBoil && !afterBoil) return
+    if (!includeSugars && fermentable.type == fermentableTypes.sugar) return
+
+    if (
+      fermentable.type === fermentableTypes.extract ||
+      fermentable.type === fermentableTypes.sugar ||
+      fermentable.type === fermentableTypes.dryExtract
+    ) {
+      originalGravity +=
+        46.0 * fermentable.yield * kilosToPoundes(fermentable.amount)
+    } else {
+      if (recipe.type === recipeTypes.extract) {
+        originalGravity +=
+          46.0 *
+          fermentable.yield *
+          kilosToPoundes(fermentable.amount) *
+          options().stepingEfficiency
+      } else {
+        originalGravity +=
+          46.0 *
+          fermentable.yield *
+          kilosToPoundes(fermentable.amount) *
+          recipe.efficiency
+      }
+    }
+  })
+
+  if (batchSize > 0.0) {
+    originalGravity = 1.0 + originalGravity / batchSize / 1000.0
+  } else {
+    originalGravity = 1.0
+  }
   return originalGravity
 }

@@ -1,43 +1,43 @@
-import { srmToCss, calcWater, calcEstimatedOG, sum } from '../brewcalc'
+import { estimateOG } from '../brewcalc'
 import { spitfireRecipe } from './data/spitfireRecipe'
 import { brewhouse } from './data/brewhouse'
+import { recipe as AussieAle } from './data/recipe/AussieAle.js'
+import { recipe as MiddyPig } from './data/recipe/Middy Pig.js'
 
-test('srm2css', () => {
-  const cssColor = srmToCss(19.5)
-  expect(cssColor).toMatchSnapshot()
-})
+test('estimateOG', () => {
+  expect(
+    estimateOG({
+      recipe: AussieAle,
+      batchSize: AussieAle.batchSize,
+      afterBoil: true,
+      includeSugars: true,
+    })
+  ).toBeCloseTo(1.044, 3)
 
-test('calcWater', () => {
-  const calcResults = calcWater({
-    batchSize: 10,
-    ...brewhouse,
-    totalGrains: 18,
-  })
+  expect(
+    estimateOG({
+      recipe: MiddyPig,
+      batchSize: MiddyPig.batchSize,
+      afterBoil: true,
+      includeSugars: true,
+    })
+  ).toBeCloseTo(1.06, 2)
 
-  expect(calcResults).toBeDefined()
-  expect(calcResults.totalWater).toBeCloseTo(13.635, 3)
-  expect(calcResults.preBoilWaterVol).toBeCloseTo(11.375, 3)
-  expect(calcResults.postBoilVol).toBeCloseTo(10.2, 3)
-  expect(calcResults.hotPostBoilVol).toBeCloseTo(10.625, 3)
-})
+  expect(
+    estimateOG({
+      recipe: MiddyPig,
+      batchSize: 0,
+      afterBoil: true,
+      includeSugars: true,
+    })
+  ).toBe(1)
 
-test('calcEstimatedOG', () => {
-  const totalGrains = sum(
-    spitfireRecipe.fermentables.map(
-      ({ amount, mashed }) => (mashed ? amount : 0)
-    )
-  )
-
-  const waterPostBoilVol = calcWater({
-    batchSize: spitfireRecipe.batchSize,
-    ...brewhouse,
-    totalGrains: totalGrains,
-  }).postBoilVol
-
-  const eOG = calcEstimatedOG({
-    fermentables: spitfireRecipe.fermentables,
-    waterPostBoilVol: waterPostBoilVol,
-    efficiency: spitfireRecipe.efficiency,
-  })
-  expect(eOG).toBeCloseTo(1.05485, 4)
+  expect(
+    estimateOG({
+      recipe: null,
+      batchSize: MiddyPig.batchSize,
+      afterBoil: true,
+      includeSugars: true,
+    })
+  ).toBe(1)
 })
