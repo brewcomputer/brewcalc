@@ -1,6 +1,4 @@
-import { estimateOG } from '../brewcalc'
-import { spitfireRecipe } from './data/spitfireRecipe'
-import { brewhouse } from './data/brewhouse'
+import { estimateOG, estimateFG } from '../brewcalc'
 import { recipe as AussieAle } from './data/recipe/AussieAle.js'
 import { recipe as MiddyPig } from './data/recipe/Middy Pig.js'
 
@@ -12,7 +10,7 @@ test('estimateOG', () => {
       afterBoil: true,
       includeSugars: true,
     })
-  ).toBeCloseTo(1.044, 3)
+  ).toBeCloseTo(AussieAle.og, 3)
 
   expect(
     estimateOG({
@@ -21,7 +19,7 @@ test('estimateOG', () => {
       afterBoil: true,
       includeSugars: true,
     })
-  ).toBeCloseTo(1.06, 2)
+  ).toBeCloseTo(MiddyPig.og, 2)
 
   expect(
     estimateOG({
@@ -40,4 +38,26 @@ test('estimateOG', () => {
       includeSugars: true,
     })
   ).toBe(1)
+})
+
+test('estimateFG', () => {
+  expect(
+    estimateFG({
+      recipe: MiddyPig,
+      batchSize: MiddyPig.batchSize,
+    })
+  ).toBeCloseTo(MiddyPig.fg, 2)
+  expect(
+    estimateFG({
+      recipe: AussieAle,
+      batchSize: AussieAle.batchSize,
+    })
+  ).toBeCloseTo(AussieAle.fg, 2)
+
+  expect(
+    estimateFG({
+      recipe: AussieAle,
+      batchSize: 0.0,
+    })
+  ).toBeCloseTo(1, 2)
 })
