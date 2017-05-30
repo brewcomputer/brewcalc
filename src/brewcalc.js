@@ -3,20 +3,42 @@ import {
   kilosToPounds,
   celsiusToFahrenheit,
   sum,
-  getPpg,
-  isUnfermentable,
-  getEfficiency,
   options,
 } from './utils.js'
 
 import { recipeTypes, fermentableTypes, mashType } from './enums.js'
 
 export const estimateOriginalGravity = recipe => {
-  if (typeof recipe === 'undefined' || recipe === null) return 1
   const batchSize = recipeBatchSize(recipe)
   if (batchSize <= 0) return 1
+  return 1.0 + originalGravityPoints(recipe) / batchSize / 1000.0
+}
 
-  const originalGravity = sum(
+export const estimateFinalGravity = recipe => {
+  const batchSize = recipeBatchSize(recipe)
+  if (batchSize <= 0) return 1
+  return 1.0 + totalFinalGravityPoints(recipe) / batchSize / 1000.0
+}
+
+export const getBoilGravity = recipe => {
+  if (recipe.type == recipeTypes.extract) {
+    return extractBoilGravity(recipe)
+  } else {
+    return allGrainBoilGravity(recipe)
+  }
+}
+
+const recipeBatchSize = recipe => {
+  if (typeof recipe === 'undefined' || recipe === null) return 0
+  let batchSize = litersToGallons(recipe.equipment.batchSize)
+  if (recipe.type == recipeTypes.extract) {
+    batchSize += batchSize * options().trubLossPercent
+  }
+  return batchSize
+}
+
+const originalGravityPoints = recipe => {
+  return sum(
     recipe.fermentables.map(fermentable => {
       if (
         fermentable.type === fermentableTypes.extract ||
@@ -41,32 +63,6 @@ export const estimateOriginalGravity = recipe => {
       }
     })
   )
-  return 1.0 + originalGravity / batchSize / 1000.0
-}
-
-export const estimateFinalGravity = recipe => {
-  if (typeof recipe === 'undefined' || recipe === null) return 1
-  const batchSize = recipeBatchSize(recipe)
-  if (batchSize <= 0) return 1
-
-  return 1.0 + totalFGPoints(recipe) / batchSize / 1000.0
-}
-
-export const getBoilGravity = recipe => {
-  if (recipe.type == recipeTypes.extract) {
-    return extractBoilGravity(recipe)
-  } else {
-    return allGrainBoilGravity(recipe)
-  }
-}
-
-const recipeBatchSize = recipe => {
-  let batchSize = litersToGallons(recipe.equipment.batchSize)
-  if (recipe.type == recipeTypes.extract) {
-    //TODO
-    //batchSize + TrubLoss size
-  }
-  return batchSize
 }
 
 const extractBoilGravity = recipe => {
@@ -109,7 +105,7 @@ const apparentAttenutation = recipe => {
   return apparentAttenutation
 }
 
-const totalFGPoints = recipe => {
+const totalFinalGravityPoints = recipe => {
   // Correct attenuation
   var attenutation = 1.0 - apparentAttenutation(recipe)
   var sugAttenutation = -0.231 // Sugar attenuation factor
