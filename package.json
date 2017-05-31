@@ -6,10 +6,12 @@
   "devDependencies": {
     "camelcase": "^4.1.0",
     "decamelize": "^1.2.0",
+    "flow-bin": "^0.47.0",
     "pixl-xml": "^1.0.10",
     "react-scripts": "1.0.5"
   },
   "scripts": {
+    "flow": "flow",
     "test": "react-scripts test --env=jsdom",
     "coverage": "react-scripts test --env=jsdom --coverage"
   }
