@@ -1,3 +1,6 @@
+// @flow
+import { Recipe } from './types/recipe'
+import { Fermentable } from './types/fermentable'
 import {
   litersToGallons,
   kilosToPounds,
@@ -6,32 +9,32 @@ import {
   options,
 } from './utils.js'
 
-import { recipeTypes, fermentableTypes, mashType } from './enums.js'
+import { fermentableTypes, mashType } from './enums.js'
 
-export const estimateOriginalGravity = recipe => {
+export const estimateOriginalGravity = (recipe: Recipe) => {
   const batchSize = recipeBatchSize(recipe)
   if (batchSize <= 0) return 1
   return 1.0 + originalGravityPoints(recipe) / batchSize / 1000.0
 }
 
-export const estimateFinalGravity = recipe => {
+export const estimateFinalGravity = (recipe: Recipe) => {
   const batchSize = recipeBatchSize(recipe)
   if (batchSize <= 0) return 1
   return 1.0 + totalFinalGravityPoints(recipe) / batchSize / 1000.0
 }
 
-export const getBoilGravity = recipe => {
-  if (recipe.type == recipeTypes.extract) {
-    return extractBoilGravity(recipe)
-  } else {
-    return allGrainBoilGravity(recipe)
-  }
+export const getBoilGravity = (recipe: Recipe) => {
+  const mGPs = estimateOriginalGravity(recipe) - 1 //milliGPs
+  return (
+    1 +
+    mGPs * litersToGallons(recipe.batchSize) / litersToGallons(recipe.boilSize)
+  )
 }
 
 const recipeBatchSize = recipe => {
   if (typeof recipe === 'undefined' || recipe === null) return 0
   let batchSize = litersToGallons(recipe.equipment.batchSize)
-  if (recipe.type == recipeTypes.extract) {
+  if (Recipe.type == Recipe.Types.extract) {
     batchSize += batchSize * options().trubLossPercent
   }
   return batchSize
@@ -41,13 +44,13 @@ const originalGravityPoints = recipe => {
   return sum(
     recipe.fermentables.map(fermentable => {
       if (
-        fermentable.type === fermentableTypes.extract ||
-        fermentable.type === fermentableTypes.sugar ||
-        fermentable.type === fermentableTypes.dryExtract
+        fermentable.type === Fermentable.Types.extract ||
+        fermentable.type === Fermentable.Types.sugar ||
+        fermentable.type === Fermentable.Types.dryExtract
       ) {
         return gravityPoints(fermentable.yield, fermentable.amount)
       } else {
-        if (recipe.type === recipeTypes.extract) {
+        if (recipe.type === Recipe.Types.extract) {
           return gravityPoints(
             fermentable.yield,
             fermentable.amount,
@@ -62,25 +65,6 @@ const originalGravityPoints = recipe => {
         }
       }
     })
-  )
-}
-
-const extractBoilGravity = recipe => {
-  const mGPs = estimateOriginalGravity(recipe) - 1 //milliGPs
-  return (
-    1 +
-    mGPs *
-      litersToGallons(recipe.batchSize) /
-      litersToGallons(recipe.boilSize) *
-      (avgBoilTime(recipe) / recipe.boilTime)
-  )
-}
-
-const allGrainBoilGravity = recipe => {
-  let mGPs = estimateOriginalGravity(recipe) - 1
-  return (
-    1 +
-    mGPs * litersToGallons(recipe.batchSize) / litersToGallons(recipe.boilSize)
   )
 }
 
@@ -113,11 +97,11 @@ const totalFinalGravityPoints = recipe => {
   return sum(
     recipe.fermentables.map(fermentable => {
       if (
-        fermentable.type === fermentableTypes.extract ||
-        fermentable.type === fermentableTypes.sugar ||
-        fermentable.type === fermentableTypes.dryExtract
+        fermentable.type === Fermentable.Types.extract ||
+        fermentable.type === Fermentable.Types.sugar ||
+        fermentable.type === Fermentable.Types.dryExtract
       ) {
-        if (fermentable.type === fermentableTypes.sugar)
+        if (fermentable.type === Fermentable.Types.sugar)
           return gravityPoints(
             fermentable.yield,
             fermentable.amount,
@@ -130,7 +114,7 @@ const totalFinalGravityPoints = recipe => {
             attenutation
           )
       } else {
-        if (recipe.type === recipeTypes.extract)
+        if (recipe.type === Recipe.Types.extract)
           return gravityPoints(
             fermentable.yield,
             fermentable.amount,
@@ -145,23 +129,4 @@ const totalFinalGravityPoints = recipe => {
       }
     })
   )
-}
-
-const avgBoilTime = recipe => {
-  let avgBoilTime = 0
-  let t = 0
-
-  recipe.fermentables.map(fermentable => {
-    if (!fermentable.type == fermentableTypes.grain) {
-      t++
-      avgBoilTime += fermentable.time
-    }
-  })
-  if (t != 0) {
-    avgBoilTime = avgBoilTime / t
-  } else {
-    avgBoilTime = recipe.boilTime
-  }
-
-  return avgBoilTime
 }
