@@ -13,15 +13,16 @@ const litersToOunces = l => {
   return l / 0.0295735
 }
 
-export const litersToGallons = l => {
+export const litersToGallons = (l: number) => {
   return litersToOunces(l) / 128
 }
 
-export const celsiusToFahrenheit = c => {
+export const celsiusToFahrenheit = (c: number) => {
   return c * 1.8 + 32
 }
 
-export const sum = array => array.reduce((pv, cv) => pv + cv, 0)
+export const sum = (array: Array<number>) =>
+  array.reduce((pv, cv) => pv + cv, 0)
 
 export const options = () => {
   const stepingEfficiency = 0.15
