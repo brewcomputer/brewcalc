@@ -1,4 +1,4 @@
 // @flow
-export class Equipment {
-  batchSize: number
+export type Equipment = {
+  batchSize: number,
 }

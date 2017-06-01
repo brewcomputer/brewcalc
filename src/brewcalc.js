@@ -1,6 +1,8 @@
 // @flow
-import { Recipe } from './types/recipe'
-import { Fermentable } from './types/fermentable'
+import type { Recipe } from './types/recipe'
+import { RecipeTypes } from './types/recipe'
+import { FermentableTypes } from './types/fermentable'
+import type { Fermentable } from './types/fermentable'
 import {
   litersToGallons,
   kilosToPounds,
@@ -34,7 +36,7 @@ export const getBoilGravity = (recipe: Recipe) => {
 const recipeBatchSize = recipe => {
   if (typeof recipe === 'undefined' || recipe === null) return 0
   let batchSize = litersToGallons(recipe.equipment.batchSize)
-  if (Recipe.type == Recipe.Types.extract) {
+  if (recipe.type == RecipeTypes.extract) {
     batchSize += batchSize * options().trubLossPercent
   }
   return batchSize
@@ -44,13 +46,13 @@ const originalGravityPoints = recipe => {
   return sum(
     recipe.fermentables.map(fermentable => {
       if (
-        fermentable.type === Fermentable.Types.extract ||
-        fermentable.type === Fermentable.Types.sugar ||
-        fermentable.type === Fermentable.Types.dryExtract
+        fermentable.type === FermentableTypes.extract ||
+        fermentable.type === FermentableTypes.sugar ||
+        fermentable.type === FermentableTypes.dryExtract
       ) {
         return gravityPoints(fermentable.yield, fermentable.amount)
       } else {
-        if (recipe.type === Recipe.Types.extract) {
+        if (recipe.type === RecipeTypes.extract) {
           return gravityPoints(
             fermentable.yield,
             fermentable.amount,
@@ -97,11 +99,11 @@ const totalFinalGravityPoints = recipe => {
   return sum(
     recipe.fermentables.map(fermentable => {
       if (
-        fermentable.type === Fermentable.Types.extract ||
-        fermentable.type === Fermentable.Types.sugar ||
-        fermentable.type === Fermentable.Types.dryExtract
+        fermentable.type === FermentableTypes.extract ||
+        fermentable.type === FermentableTypes.sugar ||
+        fermentable.type === FermentableTypes.dryExtract
       ) {
-        if (fermentable.type === Fermentable.Types.sugar)
+        if (fermentable.type === FermentableTypes.sugar)
           return gravityPoints(
             fermentable.yield,
             fermentable.amount,
@@ -114,7 +116,7 @@ const totalFinalGravityPoints = recipe => {
             attenutation
           )
       } else {
-        if (recipe.type === Recipe.Types.extract)
+        if (recipe.type === RecipeTypes.extract)
           return gravityPoints(
             fermentable.yield,
             fermentable.amount,

@@ -1,6 +1,7 @@
 import { sum, options } from './utils.js'
 import { mashType } from './enums.js'
-import { Fermentable } from './types/fermentable'
+import { FermentableTypes } from './types/fermentable'
+import type { Fermentable } from './types/fermentable'
 
 export const totalGrains = recipe => {
   return sum(
@@ -13,7 +14,7 @@ export const totalGrains = recipe => {
 export const totalMashGrains = recipe => {
   return sum(
     recipe.fermentables.map(({ amount, type }) => {
-      if (type == Fermentable.Types.grain) return amount
+      if (type == FermentableTypes.grain) return amount
       else return 0
     })
   )

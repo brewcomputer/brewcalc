@@ -1,4 +1,4 @@
 // @flow
-export class Yeast {
-  attenuation: number
+export type Yeast = {
+  attenuation: number,
 }
