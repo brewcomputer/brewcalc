@@ -14,15 +14,17 @@ import {
 import { fermentableTypes, mashType } from './enums.js'
 
 export const estimateOriginalGravity = (recipe: Recipe) => {
-  const batchSize = recipeBatchSize(recipe)
-  if (batchSize <= 0) return 1
-  return 1.0 + originalGravityPoints(recipe) / batchSize / 1000.0
+  return (
+    1.0 +
+    originalGravityPoints(recipe) / litersToGallons(recipe.batchSize) / 1000.0
+  )
 }
 
 export const estimateFinalGravity = (recipe: Recipe) => {
-  const batchSize = recipeBatchSize(recipe)
-  if (batchSize <= 0) return 1
-  return 1.0 + totalFinalGravityPoints(recipe) / batchSize / 1000.0
+  return (
+    1.0 +
+    totalFinalGravityPoints(recipe) / litersToGallons(recipe.batchSize) / 1000.0
+  )
 }
 
 export const getBoilGravity = (recipe: Recipe) => {
@@ -31,15 +33,6 @@ export const getBoilGravity = (recipe: Recipe) => {
     1 +
     mGPs * litersToGallons(recipe.batchSize) / litersToGallons(recipe.boilSize)
   )
-}
-
-const recipeBatchSize = recipe => {
-  if (typeof recipe === 'undefined' || recipe === null) return 0
-  let batchSize = litersToGallons(recipe.equipment.batchSize)
-  if (recipe.type == RecipeTypes.extract) {
-    batchSize += batchSize * options().trubLossPercent
-  }
-  return batchSize
 }
 
 const originalGravityPoints = recipe => {
