@@ -1,6 +1,4 @@
 // @flow
-import { recipeTypes } from './enums.js'
-
 const kilosToOunces = k => {
   return k * 35.2739619
 }

@@ -5,8 +5,6 @@ import { FermentableTypes } from './types/fermentable'
 import type { Fermentable } from './types/fermentable'
 import { litersToGallons, kilosToPounds, sum, options } from './utils.js'
 
-import { fermentableTypes, mashType } from './enums.js'
-
 export const originalGravity = (batchSize: number, ogPts: number) => {
   return 1.0 + ogPts / litersToGallons(batchSize)
 }

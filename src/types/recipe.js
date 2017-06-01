@@ -2,6 +2,8 @@
 import type { Equipment } from './equipment'
 import type { Fermentable } from './fermentable'
 import type { Yeast } from './yeast'
+import type { Hop } from './hop'
+import type { Mash } from './mash'
 
 export type Recipe = {
   // Beer XML 1.0 Required Fields
@@ -15,12 +17,12 @@ export type Recipe = {
   //boilTime: number,
   efficiency: number,
   equipment: Equipment,
-  //hops: Array<Hop>,
+  hops: Array<Hop>,
   fermentables: Array<Fermentable>,
   yeasts: Array<Yeast>,
   //miscs: Array<Misc>,
   //waters: Array<Water>,
-  //mashProfile: MashProfile,
+  mash: Mash,
 }
 
 export const RecipeTypes = {
