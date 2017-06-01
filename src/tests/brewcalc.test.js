@@ -1,7 +1,9 @@
 import {
-  estimateOriginalGravity,
-  estimateFinalGravity,
-  getBoilGravity,
+  originalGravity,
+  originalGravityPoints,
+  finalGravity,
+  finalGravityPoints,
+  boilGravity,
   bitterness,
   calcIBU,
 } from '../brewcalc'
@@ -20,20 +22,46 @@ import { recipe as AussieAle } from './data/recipe/AussieAle.js'
 import { recipe as MiddyPig } from './data/recipe/Middy Pig.js'
 
 test('originalGravity', () => {
-  expect(estimateOriginalGravity(AussieAle)).toBeCloseTo(AussieAle.og, 3)
-  expect(estimateOriginalGravity(MiddyPig)).toBeCloseTo(MiddyPig.og, 3)
-  //expect(estimateOriginalGravity(null)).toBe(1)
+  const ogPtsAA = originalGravityPoints(AussieAle)
+  const ogPtsMP = originalGravityPoints(MiddyPig)
+
+  expect(originalGravity(AussieAle.batchSize, ogPtsAA)).toBeCloseTo(
+    AussieAle.og,
+    3
+  )
+  expect(originalGravity(MiddyPig.batchSize, ogPtsMP)).toBeCloseTo(
+    MiddyPig.og,
+    3
+  )
 })
 
 test('finalGravity', () => {
-  expect(estimateFinalGravity(MiddyPig)).toBeCloseTo(MiddyPig.fg, 2)
-  expect(estimateFinalGravity(AussieAle)).toBeCloseTo(AussieAle.fg, 2)
-  //expect(estimateOriginalGravity(null)).toBe(1)
+  const fgPtsAA = finalGravityPoints(AussieAle)
+  expect(finalGravity(AussieAle.batchSize, fgPtsAA)).toBeCloseTo(
+    AussieAle.fg,
+    2
+  )
+
+  const fgPtsMP = finalGravityPoints(MiddyPig)
+  expect(finalGravity(MiddyPig.batchSize, fgPtsMP)).toBeCloseTo(MiddyPig.fg, 2)
 })
 
 test('boilGravity', () => {
-  expect(getBoilGravity(AussieAle)).toBeCloseTo(1.031, 2)
-  expect(getBoilGravity(MiddyPig)).toBeCloseTo(1.084, 2)
+  const ogAussieAle = originalGravity(
+    AussieAle.batchSize,
+    originalGravityPoints(AussieAle)
+  )
+  expect(
+    boilGravity(AussieAle.batchSize, AussieAle.boilSize, ogAussieAle)
+  ).toBeCloseTo(1.031, 2)
+
+  const ogMiddyPig = originalGravity(
+    MiddyPig.batchSize,
+    originalGravityPoints(MiddyPig)
+  )
+  expect(
+    boilGravity(MiddyPig.batchSize, MiddyPig.boilSize, ogMiddyPig)
+  ).toBeCloseTo(1.084, 2)
 })
 
 test('totalGrains', () => {

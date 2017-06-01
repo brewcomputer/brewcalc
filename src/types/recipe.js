@@ -5,14 +5,14 @@ import type { Yeast } from './yeast'
 
 export type Recipe = {
   // Beer XML 1.0 Required Fields
-  name: string,
-  version: number,
+  //name: string,
+  //version: number,
   type: 'Extract' | 'All Grain' | 'Partial Mash',
   //style
-  brewer: string,
+  //brewer: string,
   batchSize: number,
   boilSize: number,
-  boilTime: number,
+  //boilTime: number,
   efficiency: number,
   equipment: Equipment,
   //hops: Array<Hop>,

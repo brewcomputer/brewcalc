@@ -17,10 +17,6 @@ export const litersToGallons = (l: number) => {
   return litersToOunces(l) / 128
 }
 
-export const celsiusToFahrenheit = (c: number) => {
-  return c * 1.8 + 32
-}
-
 export const sum = (array: Array<number>) =>
   array.reduce((pv, cv) => pv + cv, 0)
 

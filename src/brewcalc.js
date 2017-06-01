@@ -3,61 +3,87 @@ import type { Recipe } from './types/recipe'
 import { RecipeTypes } from './types/recipe'
 import { FermentableTypes } from './types/fermentable'
 import type { Fermentable } from './types/fermentable'
-import {
-  litersToGallons,
-  kilosToPounds,
-  celsiusToFahrenheit,
-  sum,
-  options,
-} from './utils.js'
+import { litersToGallons, kilosToPounds, sum, options } from './utils.js'
 
 import { fermentableTypes, mashType } from './enums.js'
 
-export const estimateOriginalGravity = (recipe: Recipe) => {
-  return (
-    1.0 +
-    originalGravityPoints(recipe) / litersToGallons(recipe.batchSize) / 1000.0
-  )
+export const originalGravity = (batchSize: number, ogPts: number) => {
+  return 1.0 + ogPts / litersToGallons(batchSize)
 }
 
-export const estimateFinalGravity = (recipe: Recipe) => {
-  return (
-    1.0 +
-    totalFinalGravityPoints(recipe) / litersToGallons(recipe.batchSize) / 1000.0
-  )
+export const finalGravity = (batchSize: number, fgPts: number) => {
+  return 1.0 + fgPts / litersToGallons(batchSize)
 }
 
-export const getBoilGravity = (recipe: Recipe) => {
-  const mGPs = estimateOriginalGravity(recipe) - 1 //milliGPs
-  return (
-    1 +
-    mGPs * litersToGallons(recipe.batchSize) / litersToGallons(recipe.boilSize)
-  )
+export const boilGravity = (
+  batchSize: number,
+  boilSize: number,
+  og: number
+) => {
+  return 1 + (og - 1) * litersToGallons(batchSize) / litersToGallons(boilSize)
 }
 
-const originalGravityPoints = recipe => {
+export const originalGravityPoints = ({
+  fermentables,
+  type,
+  efficiency,
+}: Recipe) => {
+  const recipeType = type
+  const recipeEfficiency = efficiency
   return sum(
-    recipe.fermentables.map(fermentable => {
+    fermentables.map(({ type, potential, amount }) => {
       if (
-        fermentable.type === FermentableTypes.extract ||
-        fermentable.type === FermentableTypes.sugar ||
-        fermentable.type === FermentableTypes.dryExtract
+        type === FermentableTypes.extract ||
+        type === FermentableTypes.sugar ||
+        type === FermentableTypes.dryExtract
       ) {
-        return gravityPoints(fermentable.yield, fermentable.amount)
+        return gravityPoints(potential, amount)
       } else {
-        if (recipe.type === RecipeTypes.extract) {
-          return gravityPoints(
-            fermentable.yield,
-            fermentable.amount,
-            options().stepingEfficiency
-          )
+        if (recipeType === RecipeTypes.extract) {
+          return gravityPoints(potential, amount, options().stepingEfficiency)
         } else {
-          return gravityPoints(
-            fermentable.yield,
-            fermentable.amount,
-            recipe.efficiency
-          )
+          return gravityPoints(potential, amount, recipeEfficiency)
         }
+      }
+    })
+  )
+}
+
+export const finalGravityPoints = ({
+  fermentables,
+  yeasts,
+  type,
+  efficiency,
+}: Recipe) => {
+  // Correct attenuation
+  const attenutation = 1.0 - apparentAttenutation({ yeasts })
+  const sugAttenutation = -0.231 // Sugar attenuation factor
+  const recipeType = type
+  const recipeEfficiency = efficiency
+
+  return sum(
+    fermentables.map(({ type, potential, amount }) => {
+      if (
+        type === FermentableTypes.extract ||
+        type === FermentableTypes.sugar ||
+        type === FermentableTypes.dryExtract
+      ) {
+        if (type === FermentableTypes.sugar)
+          return gravityPoints(potential, amount, sugAttenutation)
+        else return gravityPoints(potential, amount, attenutation)
+      } else {
+        if (recipeType === RecipeTypes.extract)
+          return gravityPoints(
+            potential,
+            amount,
+            attenutation * options().stepingEfficiency
+          )
+        else
+          return gravityPoints(
+            potential,
+            amount,
+            attenutation * recipeEfficiency
+          )
       }
     })
   )
@@ -68,60 +94,15 @@ const originalGravityPoints = recipe => {
 //1 gallon = 128 fl oz
 //yield and efficiency should be parsed from recipe as percent values
 
-const gravityPoints = (y, amount, efficiency = 1) => {
-  return 46.0 * y * kilosToPounds(amount) * efficiency
+const gravityPoints = (potential, amount, efficiency = 1) => {
+  return (potential - 1) * kilosToPounds(amount) * efficiency
 }
 
-const apparentAttenutation = recipe => {
+const apparentAttenutation = ({ yeasts }) => {
   let apparentAttenutation = 0.73
-
-  recipe.yeasts.map(yeast => {
-    if (!yeast.addAfterBoil) {
-      apparentAttenutation = yeast.attenuation
-    }
+  yeasts.map(yeast => {
+    apparentAttenutation = yeast.attenuation
   })
 
   return apparentAttenutation
-}
-
-const totalFinalGravityPoints = recipe => {
-  // Correct attenuation
-  var attenutation = 1.0 - apparentAttenutation(recipe)
-  var sugAttenutation = -0.231 // Sugar attenuation factor
-
-  return sum(
-    recipe.fermentables.map(fermentable => {
-      if (
-        fermentable.type === FermentableTypes.extract ||
-        fermentable.type === FermentableTypes.sugar ||
-        fermentable.type === FermentableTypes.dryExtract
-      ) {
-        if (fermentable.type === FermentableTypes.sugar)
-          return gravityPoints(
-            fermentable.yield,
-            fermentable.amount,
-            sugAttenutation
-          )
-        else
-          return gravityPoints(
-            fermentable.yield,
-            fermentable.amount,
-            attenutation
-          )
-      } else {
-        if (recipe.type === RecipeTypes.extract)
-          return gravityPoints(
-            fermentable.yield,
-            fermentable.amount,
-            attenutation * options().stepingEfficiency
-          )
-        else
-          return gravityPoints(
-            fermentable.yield,
-            fermentable.amount,
-            attenutation * recipe.efficiency
-          )
-      }
-    })
-  )
 }
