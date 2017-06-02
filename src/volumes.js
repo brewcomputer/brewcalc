@@ -1,12 +1,64 @@
+// @flow
 import { sum, options } from './utils.js'
 import { FermentableTypes } from './types/fermentable'
 import type { Fermentable } from './types/fermentable'
 import { MashType } from './types/mashStep'
+import type { Recipe } from './types/recipe'
+import type { Equipment } from './types/equipment'
 
+export const calculateVolumes = (
+  { fermentables }: Recipe,
+  equipment: Equipment
+) => {
+  const mashGrainWeight = sum(
+    fermentables.map(
+      ({ amount, type }) => type == FermentableTypes.grain ? amount : 0
+    )
+  )
+  return {
+    //===
+    //Mashing
+    //===
+    //TotalWater
+    mashGrainWeight
+    //GrainAbsorption
+    //MashTunAddition
+    //TotalMashWaterAdds
+    //TunDeadspace
+    //MashTunVolume
+    //MashTunVolumeNeeded
+    //WaterAvailFromMash
+    //SpargeVol
+    //===
+    //Boiling
+    //===
+    //KettleTopUp
+    //EstPreBoilVolume
+    //MeasPreBoilVolume
+    //EvapRate
+    //BoilOffVolume
+    //PostBoilVolume
+    //CoolingShrinkage
+    //CoolLossPrc
+    //TrubLoss
+    //===
+    //Fermenting
+    //===
+    //FermentationTopUp
+    //BatchSize
+    //MeasBatchSize
+    //StarterSize
+    //FermentationLoss
+    //EstBottlingVol
+    //MeasBottlingVol
+    //*/
+  }
+}
+/*
 export const totalGrains = recipe => {
   return sum(
     recipe.fermentables.map(
-      ({ amount, addAfterBoil }) => (!addAfterBoil ? amount : 0)
+      ({ amount, addAfterBoil }) => !addAfterBoil ? amount : 0
     )
   )
 }
@@ -36,16 +88,14 @@ export const totalMashWater = recipe => {
 }
 
 export const vaterAvailableFromMash = recipe => {
-  return (
-    totalMashWater(recipe) - totalMashGrains(recipe) * options().grainAbsorb
-  )
+  return totalMashWater(recipe) -
+    totalMashGrains(recipe) * options().grainAbsorb
 }
 
 export const spargeVol = recipe => {
   const grainAbsLoss = options().grainAbsorb * totalMashGrains(recipe)
 
-  const vol =
-    recipe.equipment.boilSize +
+  const vol = recipe.equipment.boilSize +
     grainAbsLoss -
     recipe.equipment.topUpKettle +
     options().mashTunDeadSpace -
@@ -53,18 +103,20 @@ export const spargeVol = recipe => {
   return vol
 }
 
-export const calcWater = ({
-  batchSize,
-  totalGrains,
-  boilTime,
-  evapRate,
-  coolingLossPct,
-  mashTunDeadSpace = 0,
-  kettleDeadSpace = 0,
-  dissolvedVol = 0,
-  hopWaterLoss = 0,
-  pumpWaterLoss = 0,
-}) => {
+export const calcWater = (
+  {
+    batchSize,
+    totalGrains,
+    boilTime,
+    evapRate,
+    coolingLossPct,
+    mashTunDeadSpace = 0,
+    kettleDeadSpace = 0,
+    dissolvedVol = 0,
+    hopWaterLoss = 0,
+    pumpWaterLoss = 0
+  }
+) => {
   const coolingLoss = batchSize * coolingLossPct
 
   const grainAbsLoss = options().grainAbsorb * totalGrains
@@ -86,6 +138,7 @@ export const calcWater = ({
     preBoilVol,
     hotPostBoilVol,
     postBoilVol,
-    fromKettleVol,
+    fromKettleVol
   }
 }
+*/

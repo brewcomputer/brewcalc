@@ -4,6 +4,7 @@ import { RecipeTypes } from './types/recipe'
 import { FermentableTypes } from './types/fermentable'
 import type { Fermentable } from './types/fermentable'
 import { litersToGallons, kilosToPounds, sum, options } from './utils.js'
+import type { Equipment } from './types/equipment'
 
 export const originalGravity = (batchSize: number, ogPts: number) => {
   return 1.0 + ogPts / litersToGallons(batchSize)
@@ -26,7 +27,9 @@ export const originalGravityPoints = (
     fermentables,
     type
   }: Recipe,
-  equipmentEfficiency: number
+  {
+    efficiency
+  }: Equipment
 ) => {
   const recipeType = type
   return sum(
@@ -34,7 +37,7 @@ export const originalGravityPoints = (
       return gravityPoints(
         potential,
         amount,
-        fermentableEfficiency(type, recipeType, equipmentEfficiency)
+        fermentableEfficiency(type, recipeType, efficiency)
       )
     })
   )
@@ -46,7 +49,9 @@ export const finalGravityPoints = (
     yeasts,
     type
   }: Recipe,
-  equipmentEfficiency: number
+  {
+    efficiency
+  }: Equipment
 ) => {
   const attenutation = 1.0 - yeasts.shift().attenuation
   const recipeType = type
@@ -56,8 +61,7 @@ export const finalGravityPoints = (
       return gravityPoints(
         potential,
         amount,
-        attenutation *
-          fermentableEfficiency(type, recipeType, equipmentEfficiency)
+        attenutation * fermentableEfficiency(type, recipeType, efficiency)
       )
     })
   )

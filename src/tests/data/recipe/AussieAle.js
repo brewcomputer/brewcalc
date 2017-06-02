@@ -7,7 +7,6 @@ export const recipe = {
   batchSize: 23.0200000,
   boilSize: 37.1203164,
   boilTime: 90.0000000,
-  efficiency: 0.68,
   hops: [
     {
       name: 'Pride of Ringwood',
@@ -24,7 +23,7 @@ export const recipe = {
       hsi: '45.0000000',
       displayAmount: '5.21 g',
       inventory: '5.00 g',
-      displayTime: '60.0 min',
+      displayTime: '60.0 min'
     },
     {
       name: 'Pride of Ringwood',
@@ -41,7 +40,7 @@ export const recipe = {
       hsi: '45.0000000',
       displayAmount: '5.21 g',
       inventory: '5.00 g',
-      displayTime: '45.0 min',
+      displayTime: '45.0 min'
     },
     {
       name: 'Pride of Ringwood',
@@ -58,7 +57,7 @@ export const recipe = {
       hsi: '45.0000000',
       displayAmount: '31.23 g',
       inventory: '30.00 g',
-      displayTime: '15.0 min',
+      displayTime: '15.0 min'
     },
     {
       name: 'Pride of Ringwood',
@@ -75,8 +74,8 @@ export const recipe = {
       hsi: '45.0000000',
       displayAmount: '15.68 g',
       inventory: '15.00 g',
-      displayTime: '0.0 min',
-    },
+      displayTime: '0.0 min'
+    }
   ],
   fermentables: [
     {
@@ -101,7 +100,7 @@ export const recipe = {
       inventory: '3.90 kg',
       potential: 1.0299920,
       displayColor: '4.9 EBC',
-      extractSubstitute: '',
+      extractSubstitute: ''
     },
     {
       name: 'Munich Malt - 20L',
@@ -125,7 +124,7 @@ export const recipe = {
       inventory: '0.45 kg',
       potential: 1.0345000,
       displayColor: '39.4 EBC',
-      extractSubstitute: 'Amber Liquid Extract',
+      extractSubstitute: 'Amber Liquid Extract'
     },
     {
       name: 'Caramel/Crystal Malt - 20L',
@@ -149,7 +148,7 @@ export const recipe = {
       inventory: '0.17 kg',
       potential: 1.0345000,
       displayColor: '39.4 EBC',
-      extractSubstitute: '',
+      extractSubstitute: ''
     },
     {
       name: 'Roasted Barley',
@@ -173,7 +172,7 @@ export const recipe = {
       inventory: '0.04 kg',
       potential: 1.0253000,
       displayColor: '591.0 EBC',
-      extractSubstitute: '',
+      extractSubstitute: ''
     },
     {
       name: 'Cane (Beet) Sugar',
@@ -197,8 +196,8 @@ export const recipe = {
       inventory: '0.25 kg',
       potential: 1.0460000,
       displayColor: '0.0 EBC',
-      extractSubstitute: '',
-    },
+      extractSubstitute: ''
+    }
   ],
   yeasts: [
     {
@@ -223,8 +222,8 @@ export const recipe = {
       dispMinTemp: '15.6 C',
       dispMaxTemp: '22.2 C',
       inventory: '0.0 pkg',
-      cultureDate: '18 Jun 2003',
-    },
+      cultureDate: '18 Jun 2003'
+    }
   ],
   style: {
     name: 'Australian Ale',
@@ -261,9 +260,10 @@ export const recipe = {
     ibuRange: '10.0-30.0 IBUs',
     carbRange: '2.20-2.80 Vols',
     colorRange: '3.9-19.7 EBC',
-    abvRange: '2.00-5.00 %',
+    abvRange: '2.00-5.00 %'
   },
   equipment: {
+    efficiency: 0.68,
     name: 'Pot (18.5 Gal/70 L) and Cooler (9.5 Gal/40 L)  - All Grain',
     version: '1',
     boilSize: 37.1203164,
@@ -288,7 +288,7 @@ export const recipe = {
     displayTopUpWater: '0.00 l',
     displayTrubChillerLoss: '2.84 l',
     displayLauterDeadspace: '3.03 l',
-    displayTopUpKettle: '0.00 l',
+    displayTopUpKettle: '0.00 l'
   },
   mash: {
     name: 'Single Infusion, Medium Body',
@@ -320,7 +320,7 @@ export const recipe = {
         decoctionAmt: '0.00 l',
         infuseTemp: '74.1 C',
         displayStepTemp: '66.7 C',
-        displayInfuseAmt: '16.76 l',
+        displayInfuseAmt: '16.76 l'
       },
       {
         name: 'Mash Out',
@@ -336,9 +336,9 @@ export const recipe = {
         decoctionAmt: '0.00 l',
         infuseTemp: '98.5 C',
         displayStepTemp: '75.6 C',
-        displayInfuseAmt: '7.69 l',
-      },
-    ],
+        displayInfuseAmt: '7.69 l'
+      }
+    ]
   },
   notes: 'FWH the first  hop addition.\r\nAllow last addition to sit for 5 minutes to release aroma.',
   tasteNotes: 'Very similar to Australian beers in the 60&#39;s.  Pride of Ringwood is the traditional hop used for a very large number of Australian beers. Although not considered a typical flavour hop it works very well as a single hopped beer.  Aim for 50 - 100 ppm of C',
@@ -378,5 +378,5 @@ export const recipe = {
   displayPrimaryTemp: '19.4 C',
   displaySecondaryTemp: '19.4 C',
   displayTertiaryTemp: '18.3 C',
-  displayAgeTemp: '18.3 C',
+  displayAgeTemp: '18.3 C'
 }
