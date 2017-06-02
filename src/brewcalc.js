@@ -26,23 +26,16 @@ export const originalGravityPoints = (
     fermentables,
     type
   }: Recipe,
-  equipmentEfficiency: number,
-  steepingEfficiency: number = 0.15
+  equipmentEfficiency: number
 ) => {
   const recipeType = type
-  const sugarEfficiency = 1
-  const fermentableEfficiency = fermentableType => {
-    return fermentableType === FermentableTypes.extract ||
-      fermentableType === FermentableTypes.sugar ||
-      fermentableType === FermentableTypes.dryExtract
-      ? sugarEfficiency
-      : recipeType === RecipeTypes.extract
-          ? steepingEfficiency
-          : equipmentEfficiency
-  }
   return sum(
     fermentables.map(({ type, potential, amount }) => {
-      return gravityPoints(potential, amount, fermentableEfficiency(type))
+      return gravityPoints(
+        potential,
+        amount,
+        fermentableEfficiency(type, recipeType, equipmentEfficiency)
+      )
     })
   )
 }
@@ -53,46 +46,45 @@ export const finalGravityPoints = (
     yeasts,
     type
   }: Recipe,
-  equipmentEfficiency: number,
-  steepingEfficiency: number = 0.15
+  equipmentEfficiency: number
 ) => {
-  // Correct attenuation
-  const attenutation = 1.0 - apparentAttenutation({ yeasts })
-  const sugAttenutation = -0.231 // Sugar attenuation factor
+  const attenutation = 1.0 - yeasts.shift().attenuation
   const recipeType = type
 
-  const fermentableFinalEfficiency = fermentableType => {
-    return fermentableType === FermentableTypes.extract ||
-      fermentableType === FermentableTypes.sugar ||
-      fermentableType === FermentableTypes.dryExtract
-      ? fermentableType === FermentableTypes.sugar
-          ? sugAttenutation
-          : attenutation
-      : recipeType === RecipeTypes.extract
-          ? attenutation * steepingEfficiency
-          : attenutation * equipmentEfficiency
-  }
   return sum(
     fermentables.map(({ type, potential, amount }) => {
-      return gravityPoints(potential, amount, fermentableFinalEfficiency(type))
+      return gravityPoints(
+        potential,
+        amount,
+        attenutation *
+          fermentableEfficiency(type, recipeType, equipmentEfficiency)
+      )
     })
   )
+}
+
+const fermentableEfficiency = (
+  fermentableType,
+  recipeType,
+  equipmentEfficiency
+) => {
+  const sugarEfficiency = 1
+  const steepingEfficiency = 0.15
+  return fermentableType === FermentableTypes.extract ||
+    fermentableType === FermentableTypes.sugar ||
+    fermentableType === FermentableTypes.dryExtract
+    ? sugarEfficiency
+    : recipeType === RecipeTypes.extract
+        ? steepingEfficiency
+        : equipmentEfficiency
 }
 
 //Sugar provides 46 gravity points per pound, per gallon (PPPG).
 //1 pound = 16 oz (weight/mass)
 //1 gallon = 128 fl oz
 //yield and efficiency should be parsed from recipe as percent values
+//The maximum potential is approximately 1.046 which would be a pound of pure sugar in a gallon of water.
 
 const gravityPoints = (potential, amount, efficiency = 1) => {
   return (potential - 1) * kilosToPounds(amount) * efficiency
-}
-
-const apparentAttenutation = ({ yeasts }) => {
-  let apparentAttenutation = 0.73
-  yeasts.map(yeast => {
-    apparentAttenutation = yeast.attenuation
-  })
-
-  return apparentAttenutation
 }
