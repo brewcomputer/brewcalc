@@ -9,7 +9,7 @@ export type Recipe = {
   // Beer XML 1.0 Required Fields
   //name: string,
   //version: number,
-  type: 'Extract' | 'All Grain' | 'Partial Mash',
+  type: "Extract" | "All Grain" | "Partial Mash",
   //style
   //brewer: string,
   batchSize: number,
@@ -22,11 +22,11 @@ export type Recipe = {
   yeasts: Array<Yeast>,
   //miscs: Array<Misc>,
   //waters: Array<Water>,
-  mash: Mash,
-}
+  mash: Mash
+};
 
 export const RecipeTypes = {
   extract: 'Extract',
   partialMash: 'Partial Mash',
-  allGrain: 'All Grain',
+  allGrain: 'All Grain'
 }

@@ -4,13 +4,13 @@ export type Fermentable = {
   amount: number,
   time: number,
   potential: number,
-  type: 'Grain' | 'Sugar' | 'Extract' | 'Dry Extract' | 'Adjunct',
-}
+  type: "Grain" | "Sugar" | "Extract" | "Dry Extract" | "Adjunct"
+};
 
 export const FermentableTypes = {
   grain: 'Grain',
   sugar: 'Sugar',
   extract: 'Extract',
   dryExtract: 'Dry Extract',
-  adjunct: 'Adjunct',
+  adjunct: 'Adjunct'
 }

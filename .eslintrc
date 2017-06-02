@@ -11,10 +11,6 @@
             {
                 "allowTemplateLiterals": true
             }
-        ],
-        "trailingComma": [
-            "error",
-            "es5"
         ]
     },
     "plugins": [

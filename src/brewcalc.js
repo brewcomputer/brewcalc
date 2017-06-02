@@ -21,11 +21,13 @@ export const boilGravity = (
   return 1 + (og - 1) * litersToGallons(batchSize) / litersToGallons(boilSize)
 }
 
-export const originalGravityPoints = ({
-  fermentables,
-  type,
-  efficiency,
-}: Recipe) => {
+export const originalGravityPoints = (
+  {
+    fermentables,
+    type,
+    efficiency
+  }: Recipe
+) => {
   const recipeType = type
   const recipeEfficiency = efficiency
   return sum(
@@ -47,12 +49,14 @@ export const originalGravityPoints = ({
   )
 }
 
-export const finalGravityPoints = ({
-  fermentables,
-  yeasts,
-  type,
-  efficiency,
-}: Recipe) => {
+export const finalGravityPoints = (
+  {
+    fermentables,
+    yeasts,
+    type,
+    efficiency
+  }: Recipe
+) => {
   // Correct attenuation
   const attenutation = 1.0 - apparentAttenutation({ yeasts })
   const sugAttenutation = -0.231 // Sugar attenuation factor
@@ -68,7 +72,8 @@ export const finalGravityPoints = ({
       ) {
         if (type === FermentableTypes.sugar)
           return gravityPoints(potential, amount, sugAttenutation)
-        else return gravityPoints(potential, amount, attenutation)
+        else
+          return gravityPoints(potential, amount, attenutation)
       } else {
         if (recipeType === RecipeTypes.extract)
           return gravityPoints(

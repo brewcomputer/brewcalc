@@ -8,7 +8,10 @@
     "decamelize": "^1.2.0",
     "flow-bin": "^0.47.0",
     "pixl-xml": "^1.0.10",
-    "react-scripts": "1.0.5"
+    "react-scripts": "1.0.5",
+    "eslint-plugin-prettier": "^2.0.1",
+    "prettier": "^0.22.0",
+    "prettier-eslint": "^4.3.2"
   },
   "scripts": {
     "flow": "flow",

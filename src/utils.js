@@ -27,6 +27,6 @@ export const options = () => {
     stepingEfficiency,
     grainAbsorb,
     mashTunDeadSpace,
-    trubLossPercent,
+    trubLossPercent
   }
 }
