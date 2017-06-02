@@ -24,27 +24,25 @@ export const boilGravity = (
 export const originalGravityPoints = (
   {
     fermentables,
-    type,
-    efficiency
-  }: Recipe
+    type
+  }: Recipe,
+  equipmentEfficiency: number,
+  steepingEfficiency: number = 0.15
 ) => {
   const recipeType = type
-  const recipeEfficiency = efficiency
+  const sugarEfficiency = 1
+  const fermentableEfficiency = fermentableType => {
+    return fermentableType === FermentableTypes.extract ||
+      fermentableType === FermentableTypes.sugar ||
+      fermentableType === FermentableTypes.dryExtract
+      ? sugarEfficiency
+      : recipeType === RecipeTypes.extract
+          ? steepingEfficiency
+          : equipmentEfficiency
+  }
   return sum(
     fermentables.map(({ type, potential, amount }) => {
-      if (
-        type === FermentableTypes.extract ||
-        type === FermentableTypes.sugar ||
-        type === FermentableTypes.dryExtract
-      ) {
-        return gravityPoints(potential, amount)
-      } else {
-        if (recipeType === RecipeTypes.extract) {
-          return gravityPoints(potential, amount, options().stepingEfficiency)
-        } else {
-          return gravityPoints(potential, amount, recipeEfficiency)
-        }
-      }
+      return gravityPoints(potential, amount, fermentableEfficiency(type))
     })
   )
 }
@@ -53,41 +51,30 @@ export const finalGravityPoints = (
   {
     fermentables,
     yeasts,
-    type,
-    efficiency
-  }: Recipe
+    type
+  }: Recipe,
+  equipmentEfficiency: number,
+  steepingEfficiency: number = 0.15
 ) => {
   // Correct attenuation
   const attenutation = 1.0 - apparentAttenutation({ yeasts })
   const sugAttenutation = -0.231 // Sugar attenuation factor
   const recipeType = type
-  const recipeEfficiency = efficiency
 
+  const fermentableFinalEfficiency = fermentableType => {
+    return fermentableType === FermentableTypes.extract ||
+      fermentableType === FermentableTypes.sugar ||
+      fermentableType === FermentableTypes.dryExtract
+      ? fermentableType === FermentableTypes.sugar
+          ? sugAttenutation
+          : attenutation
+      : recipeType === RecipeTypes.extract
+          ? attenutation * steepingEfficiency
+          : attenutation * equipmentEfficiency
+  }
   return sum(
     fermentables.map(({ type, potential, amount }) => {
-      if (
-        type === FermentableTypes.extract ||
-        type === FermentableTypes.sugar ||
-        type === FermentableTypes.dryExtract
-      ) {
-        if (type === FermentableTypes.sugar)
-          return gravityPoints(potential, amount, sugAttenutation)
-        else
-          return gravityPoints(potential, amount, attenutation)
-      } else {
-        if (recipeType === RecipeTypes.extract)
-          return gravityPoints(
-            potential,
-            amount,
-            attenutation * options().stepingEfficiency
-          )
-        else
-          return gravityPoints(
-            potential,
-            amount,
-            attenutation * recipeEfficiency
-          )
-      }
+      return gravityPoints(potential, amount, fermentableFinalEfficiency(type))
     })
   )
 }

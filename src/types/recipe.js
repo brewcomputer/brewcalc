@@ -15,8 +15,6 @@ export type Recipe = {
   batchSize: number,
   boilSize: number,
   //boilTime: number,
-  efficiency: number,
-  equipment: Equipment,
   hops: Array<Hop>,
   fermentables: Array<Fermentable>,
   yeasts: Array<Yeast>,

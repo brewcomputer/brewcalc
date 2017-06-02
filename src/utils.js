@@ -19,12 +19,10 @@ export const sum = (array: Array<number>) =>
   array.reduce((pv, cv) => pv + cv, 0)
 
 export const options = () => {
-  const stepingEfficiency = 0.15
   const grainAbsorb = 0.13
   const mashTunDeadSpace = 3.03
   const trubLossPercent = 0
   return {
-    stepingEfficiency,
     grainAbsorb,
     mashTunDeadSpace,
     trubLossPercent

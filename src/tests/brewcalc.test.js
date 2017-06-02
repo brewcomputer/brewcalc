@@ -5,7 +5,7 @@ import {
   finalGravityPoints,
   boilGravity,
   bitterness,
-  calcIBU,
+  calcIBU
 } from '../brewcalc'
 
 import {
@@ -15,14 +15,14 @@ import {
   totalMashWater,
   vaterAvailableFromMash,
   mashVolumeNeeded,
-  spargeVol,
+  spargeVol
 } from '../volumes'
 
 import { recipe as AussieAle } from './data/recipe/AussieAle.js'
 import { recipe as MiddyPig } from './data/recipe/Middy Pig.js'
 
 test('originalGravity', () => {
-  const ogPtsAA = originalGravityPoints(AussieAle)
+  const ogPtsAA = originalGravityPoints(AussieAle, 0.68)
   const ogPtsMP = originalGravityPoints(MiddyPig)
 
   expect(originalGravity(AussieAle.batchSize, ogPtsAA)).toBeCloseTo(
@@ -36,7 +36,7 @@ test('originalGravity', () => {
 })
 
 test('finalGravity', () => {
-  const fgPtsAA = finalGravityPoints(AussieAle)
+  const fgPtsAA = finalGravityPoints(AussieAle, 0.68)
   expect(finalGravity(AussieAle.batchSize, fgPtsAA)).toBeCloseTo(
     AussieAle.fg,
     2
@@ -49,7 +49,7 @@ test('finalGravity', () => {
 test('boilGravity', () => {
   const ogAussieAle = originalGravity(
     AussieAle.batchSize,
-    originalGravityPoints(AussieAle)
+    originalGravityPoints(AussieAle, 0.68)
   )
   expect(
     boilGravity(AussieAle.batchSize, AussieAle.boilSize, ogAussieAle)
@@ -95,18 +95,14 @@ test('calcWaterMiddyPig', () => {
     totalGrains: totalMashGrains(MiddyPig),
     boilTime: MiddyPig.equipment.batchSize,
     evapRate: MiddyPig.equipment.evapRate,
-    coolingLossPct: MiddyPig.equipment.coolingLossPct,
+    coolingLossPct: MiddyPig.equipment.coolingLossPct
   })
 
   expect(calcResults).toBeDefined()
   expect(calcResults.grainAbsLoss.toFixed(2)).toBe('0.09')
-
   //expect(calcResults.totalWater).toBeCloseTo(13.635, 3)
-
   //expect(calcResults.preBoilWaterVol).toBeCloseTo(11.375, 3)
-
   //expect(calcResults.postBoilVol).toBeCloseTo(10.2, 3)
-
   //expect(calcResults.hotPostBoilVol).toBeCloseTo(10.625, 3)
 })
 
@@ -116,18 +112,14 @@ test('calcWaterAussieAle', () => {
     totalGrains: totalMashGrains(AussieAle),
     boilTime: AussieAle.equipment.batchSize,
     evapRate: AussieAle.equipment.evapRate,
-    coolingLossPct: AussieAle.equipment.coolingLossPct,
+    coolingLossPct: AussieAle.equipment.coolingLossPct
   })
 
   expect(calcResults).toBeDefined()
 
   expect(calcResults.grainAbsLoss.toFixed(2)).toBe('0.68')
-
   //expect(calcResults.totalWater).toBeCloseTo(13.635, 3)
-
   //expect(calcResults.preBoilWaterVol).toBeCloseTo(11.375, 3)
-
   //expect(calcResults.postBoilVol).toBeCloseTo(10.2, 3)
-
   //expect(calcResults.hotPostBoilVol).toBeCloseTo(10.625, 3)
 })

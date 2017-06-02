@@ -1,4 +1,5 @@
 // @flow
 export type Equipment = {
-  batchSize: number
+  batchSize: number,
+  efficiency: number
 };
