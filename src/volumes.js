@@ -1,5 +1,5 @@
 // @flow
-import { sum, options } from './utils.js'
+import { sum, kilosToOunces, ouncesToLiters } from './utils.js'
 import { FermentableTypes } from './types/fermentable'
 import type { Fermentable } from './types/fermentable'
 import { MashType } from './types/mashStep'
@@ -7,32 +7,57 @@ import type { Recipe } from './types/recipe'
 import type { Equipment } from './types/equipment'
 
 export const calculateVolumes = (
-  { fermentables }: Recipe,
+  { fermentables, mash }: Recipe,
   equipment: Equipment
 ) => {
+  const mashTunAddition = 0
+  const kettleTopUp = 0
+
+  const tunDeadspace = 3.03
+  const mashTunVolume = 37.85
+
   const mashGrainWeight = sum(
     fermentables.map(
       ({ amount, type }) => type == FermentableTypes.grain ? amount : 0
     )
   )
+  const grainAbsorptionRatio = 0.12 //number of ounces of water absorbed per ounce of the grain
+  const grainAbsorption = ouncesToLiters(
+    kilosToOunces(mashGrainWeight) * grainAbsorptionRatio
+  )
+
+  const totalMashWaterAdds = tunDeadspace +
+    sum(
+      mash.mashSteps.map(
+        ({ type, infuseAmount }) =>
+          type != MashType.decoction ? infuseAmount : 0
+      )
+    )
+
+  const mashVolumeNeeded = tunDeadspace + totalMashWaterAdds
+
+  const waterAvailFromMash = totalMashWaterAdds - grainAbsorption
+
+  const spargeVol = equipment.boilSize +
+    grainAbsorption -
+    kettleTopUp +
+    tunDeadspace -
+    totalMashWaterAdds
+
   return {
+    //TotalWater
     //===
     //Mashing
     //===
-    //TotalWater
-    mashGrainWeight
-    //GrainAbsorption
-    //MashTunAddition
-    //TotalMashWaterAdds
-    //TunDeadspace
-    //MashTunVolume
-    //MashTunVolumeNeeded
-    //WaterAvailFromMash
-    //SpargeVol
+    mashGrainWeight,
+    grainAbsorption,
+    totalMashWaterAdds,
+    mashVolumeNeeded,
+    waterAvailFromMash,
+    spargeVol
     //===
     //Boiling
     //===
-    //KettleTopUp
     //EstPreBoilVolume
     //MeasPreBoilVolume
     //EvapRate

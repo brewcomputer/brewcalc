@@ -63,3 +63,32 @@ test('mashGrainWeight', () => {
     calculateVolumes(AussieAle, AussieAle.equipment).mashGrainWeight
   ).toBeCloseTo(5.26, 2)
 })
+test('grainAbsorption', () => {
+  expect(
+    calculateVolumes(AussieAle, AussieAle.equipment).grainAbsorption
+  ).toBeCloseTo(0.66, 2)
+})
+
+test('totalMashWaterAdds', () => {
+  expect(
+    calculateVolumes(AussieAle, AussieAle.equipment).totalMashWaterAdds
+  ).toBeCloseTo(24.45, 2)
+})
+
+test('mashVolumeNeeded', () => {
+  expect(
+    calculateVolumes(AussieAle, AussieAle.equipment).mashVolumeNeeded
+  ).toBeCloseTo(27.88, 2)
+})
+
+test('waterAvailFromMash', () => {
+  expect(
+    calculateVolumes(AussieAle, AussieAle.equipment).waterAvailFromMash
+  ).toBeCloseTo(23.79, 2)
+})
+
+test('spargeVol', () => {
+  expect(
+    calculateVolumes(AussieAle, AussieAle.equipment).spargeVol
+  ).toBeCloseTo(16.36, 2)
+})
