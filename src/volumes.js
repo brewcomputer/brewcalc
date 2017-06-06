@@ -10,9 +10,12 @@ export const calculateVolumes = (
   { fermentables, mash, boilTime }: Recipe,
   equipment: Equipment
 ) => {
+  //TODO check that topUps corrections are correct
   const kettleTopUp = 0
-  const tunDeadspace = 3.03
-  const mashTunVolume = 37.85
+  const fermentationTopUp = 0
+
+  const starterSize = 0
+  const fermentationLoss = 1.70
 
   const mashGrainWeight = sum(
     fermentables.map(
@@ -24,7 +27,7 @@ export const calculateVolumes = (
     kilosToOunces(mashGrainWeight) * grainAbsorptionRatio
   )
 
-  const totalMashWaterAdds = tunDeadspace +
+  const totalMashWaterAdds = equipment.lauterDeadspace +
     sum(
       mash.mashSteps.map(
         ({ type, infuseAmount }) =>
@@ -43,41 +46,36 @@ export const calculateVolumes = (
   const spargeVol = equipment.boilSize +
     grainAbsorption -
     kettleTopUp +
-    tunDeadspace -
+    equipment.lauterDeadspace -
     totalMashWaterAdds
 
-  const estPreBoilVolume = waterAvailFromMash + (spargeVol - tunDeadspace)
+  const estPreBoilVolume = waterAvailFromMash +
+    (spargeVol - equipment.lauterDeadspace)
   const boilOffVolume = estPreBoilVolume * equipment.evapRate * (boilTime / 60)
   const postBoilVolume = estPreBoilVolume - boilOffVolume
   const coolingShrinkage = postBoilVolume * equipment.coolingLossPct
+
+  const estBottlingVol = postBoilVolume -
+    coolingShrinkage -
+    equipment.trubChillerLoss -
+    starterSize -
+    fermentationLoss
+
   return {
     //TotalWater
-    //===
     //Mashing
-    //===
     mashGrainWeight,
     grainAbsorption,
     totalMashWaterAdds,
     mashVolumeNeeded,
     waterAvailFromMash,
     spargeVol,
-    //===
     //Boiling
-    //===
     estPreBoilVolume,
     boilOffVolume,
     postBoilVolume,
-    coolingShrinkage
-    //===
+    coolingShrinkage,
     //Fermenting
-    //===
-    //FermentationTopUp
-    //BatchSize
-    //MeasBatchSize
-    //StarterSize
-    //FermentationLoss
-    //EstBottlingVol
-    //MeasBottlingVol
-    //*/
+    estBottlingVol
   }
 }

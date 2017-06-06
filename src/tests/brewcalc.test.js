@@ -116,3 +116,9 @@ test('coolingShrinkage', () => {
     calculateVolumes(AussieAle, AussieAle.equipment).coolingShrinkage
   ).toBeCloseTo(1.08, 2)
 })
+
+test('estBottlingVol', () => {
+  expect(
+    calculateVolumes(AussieAle, AussieAle.equipment).estBottlingVol
+  ).toBeCloseTo(21.32, 2)
+})

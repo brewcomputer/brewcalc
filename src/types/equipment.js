@@ -5,5 +5,6 @@ export type Equipment = {
   efficiency: number,
   evapRate: number,
   coolingLossPct: number,
-  trubChillerLoss: number
+  trubChillerLoss: number,
+  lauterDeadspace: number
 };
