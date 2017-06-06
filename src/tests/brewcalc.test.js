@@ -78,7 +78,7 @@ test('totalMashWaterAdds', () => {
 test('mashVolumeNeeded', () => {
   expect(
     calculateVolumes(AussieAle, AussieAle.equipment).mashVolumeNeeded
-  ).toBeCloseTo(27.88, 2)
+  ).toBeCloseTo(27.97, 2)
 })
 
 test('waterAvailFromMash', () => {

@@ -34,7 +34,11 @@ export const calculateVolumes = (
       )
     )
 
-  const mashVolumeNeeded = tunDeadspace + totalMashWaterAdds
+  //https://byo.com/bock/item/410-calculating-water-usage-advanced-brewing
+  //Total mash volume = volume of water + volume of grain
+  //Of course first it is necessary to know the volume that the grain displaces when mashed (which is different from its dry volume).
+  //Once again this depends on the specifics of the grain bill, but a value of 0.32 quarts per pound (0.67 L/kg) is a reasonable average.
+  const mashVolumeNeeded = totalMashWaterAdds + mashGrainWeight * 0.67
 
   const waterAvailFromMash = totalMashWaterAdds - grainAbsorption
 
