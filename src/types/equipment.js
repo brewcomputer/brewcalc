@@ -2,5 +2,8 @@
 export type Equipment = {
   batchSize: number,
   boilSize: number,
-  efficiency: number
+  efficiency: number,
+  evapRate: number,
+  coolingLossPct: number,
+  trubChillerLoss: number
 };

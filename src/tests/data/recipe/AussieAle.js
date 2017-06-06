@@ -272,7 +272,7 @@ export const recipe = {
     tunWeight: '4.0823280',
     tunSpecificHeat: '0.3000000',
     topUpWater: '0.0000000',
-    trubChillerLoss: '2.8400000',
+    trubChillerLoss: 2.8400000,
     evapRate: 0.182879483,
     boilTime: 90.0000000,
     calcBoilVolume: true,

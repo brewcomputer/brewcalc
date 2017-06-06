@@ -92,3 +92,27 @@ test('spargeVol', () => {
     calculateVolumes(AussieAle, AussieAle.equipment).spargeVol
   ).toBeCloseTo(16.36, 2)
 })
+
+test('estPreBoilVolume', () => {
+  expect(
+    calculateVolumes(AussieAle, AussieAle.equipment).estPreBoilVolume
+  ).toBeCloseTo(37.12, 2)
+})
+
+test('boilOffVolume', () => {
+  expect(
+    calculateVolumes(AussieAle, AussieAle.equipment).boilOffVolume
+  ).toBeCloseTo(10.18, 2)
+})
+
+test('postBoilVolume', () => {
+  expect(
+    calculateVolumes(AussieAle, AussieAle.equipment).postBoilVolume
+  ).toBeCloseTo(26.94, 2)
+})
+
+test('coolingShrinkage', () => {
+  expect(
+    calculateVolumes(AussieAle, AussieAle.equipment).coolingShrinkage
+  ).toBeCloseTo(1.08, 2)
+})
