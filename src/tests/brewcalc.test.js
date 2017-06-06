@@ -122,3 +122,9 @@ test('estBottlingVol', () => {
     calculateVolumes(AussieAle, AussieAle.equipment).estBottlingVol
   ).toBeCloseTo(21.32, 2)
 })
+
+test('totalWater', () => {
+  expect(
+    calculateVolumes(AussieAle, AussieAle.equipment).totalWater
+  ).toBeCloseTo(40.81, 2)
+})

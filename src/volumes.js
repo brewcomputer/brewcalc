@@ -61,8 +61,10 @@ export const calculateVolumes = (
     starterSize -
     fermentationLoss
 
+  const totalWater = totalMashWaterAdds + spargeVol
+
   return {
-    //TotalWater
+    totalWater,
     //Mashing
     mashGrainWeight,
     grainAbsorption,
