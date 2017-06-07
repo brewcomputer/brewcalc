@@ -24,7 +24,7 @@ export const recipe = {
       hsi: '10.0000000',
       displayAmount: '1.00 oz',
       inventory: '1.00 oz',
-      displayTime: '45.0 min',
+      displayTime: '45.0 min'
     },
     {
       name: 'Williamette',
@@ -41,7 +41,7 @@ export const recipe = {
       hsi: '40.0000000',
       displayAmount: '1.00 oz',
       inventory: '1.00 oz',
-      displayTime: '45.0 min',
+      displayTime: '45.0 min'
     },
     {
       name: 'Williamette',
@@ -58,8 +58,8 @@ export const recipe = {
       hsi: '40.0000000',
       displayAmount: '1.00 oz',
       inventory: '1.00 oz',
-      displayTime: '6.0 min',
-    },
+      displayTime: '6.0 min'
+    }
   ],
   fermentables: [
     {
@@ -84,7 +84,7 @@ export const recipe = {
       inventory: '1 lbs',
       potential: 1.0340400,
       displayColor: '60.0 SRM',
-      extractSubstitute: '',
+      extractSubstitute: ''
     },
     {
       name: 'Roasted Barley',
@@ -108,7 +108,7 @@ export const recipe = {
       inventory: '8.0 oz',
       potential: 1.0253000,
       displayColor: '300.0 SRM',
-      extractSubstitute: '',
+      extractSubstitute: ''
     },
     {
       name: 'Amber Dry Extract',
@@ -132,7 +132,7 @@ export const recipe = {
       inventory: '2 lbs',
       potential: 1.0437000,
       displayColor: '12.5 SRM',
-      extractSubstitute: '',
+      extractSubstitute: ''
     },
     {
       name: 'Dark Liquid Extract',
@@ -156,8 +156,8 @@ export const recipe = {
       inventory: '6 lbs 9.6 oz',
       potential: 1.0358800,
       displayColor: '17.5 SRM',
-      extractSubstitute: '',
-    },
+      extractSubstitute: ''
+    }
   ],
   miscs: [
     {
@@ -173,8 +173,8 @@ export const recipe = {
       displayAmount: '1.00 lb',
       inventory: '0.00 lb',
       displayTime: '0.0 mins',
-      batchSize: '5.00 gal',
-    },
+      batchSize: '5.00 gal'
+    }
   ],
   yeasts: [
     {
@@ -199,8 +199,8 @@ export const recipe = {
       dispMinTemp: '62.0 F',
       dispMaxTemp: '72.0 F',
       inventory: '0.0 pkg',
-      cultureDate: '14 Jun 2003',
-    },
+      cultureDate: '14 Jun 2003'
+    }
   ],
   style: {
     name: 'Oatmeal Stout',
@@ -237,11 +237,12 @@ export const recipe = {
     ibuRange: '25.0-40.0 IBUs',
     carbRange: '1.90-2.50 Vols',
     colorRange: '22.0-40.0 SRM',
-    abvRange: '4.20-5.90 %',
+    abvRange: '4.20-5.90 %'
   },
   equipment: {
     name: 'Brew Pot  (5 Gallon)',
     version: '1',
+    efficiency: 0.15,
     boilSize: 14.8100000,
     batchSize: 18.9300000,
     tunVolume: '18.9300000',
@@ -264,7 +265,7 @@ export const recipe = {
     displayTopUpWater: '1.75 gal',
     displayTrubChillerLoss: '0.25 gal',
     displayLauterDeadspace: '0.25 gal',
-    displayTopUpKettle: '0.00 gal',
+    displayTopUpKettle: '0.00 gal'
   },
   mash: {
     name: 'My Mash',
@@ -280,7 +281,7 @@ export const recipe = {
     displayGrainTemp: '72.0 F',
     displayTunTemp: '72.0 F',
     displaySpargeTemp: '168.0 F',
-    displayTunWeight: '5 lbs',
+    displayTunWeight: '5 lbs'
   },
   notes: 'Entered in Montgomery County Fair...finished middle of the pack.',
   tasteNotes: 'This was perhaps the best stout I&#39;ve ever made.  Unfortunately, it can&#39;t be made exactly again because Edme changed the yeast strain after I made this one.  Good memories tho&#39;.',
@@ -320,5 +321,5 @@ export const recipe = {
   displayPrimaryTemp: '67.0 F',
   displaySecondaryTemp: '67.0 F',
   displayTertiaryTemp: '65.0 F',
-  displayAgeTemp: '65.0 F',
+  displayAgeTemp: '65.0 F'
 }

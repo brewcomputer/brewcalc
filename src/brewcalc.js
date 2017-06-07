@@ -25,29 +25,21 @@ export const boilGravity = (batchSize: number, boilSize: number, og: number) =>
 
 export const gravityPoints = (
   {
-    fermentables,
-    type
+    fermentables
   }: Recipe,
   {
     efficiency
   }: Equipment,
-  attenutation: number = 0,
-  steepingEfficiency: number = 0.15
-) => {
-  const recipeType = type
-  return sum(
+  attenutation: number = 0
+) =>
+  sum(
     fermentables.map(({ type, potential, amount }) =>
       fermentableGravityPoints(
         potential,
         amount,
-        (1 - attenutation) *
-          fermentableEfficiency(
-            type,
-            recipeType === RecipeTypes.extract ? steepingEfficiency : efficiency
-          )
+        (1 - attenutation) * fermentableEfficiency(type, efficiency)
       ))
   )
-}
 
 const fermentableEfficiency = (
   type,
