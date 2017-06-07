@@ -31,7 +31,8 @@ export const gravityPoints = (
   {
     efficiency
   }: Equipment,
-  attenutation: number = 0
+  attenutation: number = 0,
+  steepingEfficiency: number = 0.15
 ) => {
   const recipeType = type
   return sum(
@@ -39,25 +40,25 @@ export const gravityPoints = (
       fermentableGravityPoints(
         potential,
         amount,
-        (1 - attenutation) * fermentableEfficiency(type, recipeType, efficiency)
+        (1 - attenutation) *
+          fermentableEfficiency(
+            type,
+            recipeType === RecipeTypes.extract ? steepingEfficiency : efficiency
+          )
       ))
   )
 }
 
 const fermentableEfficiency = (
-  fermentableType,
-  recipeType,
+  type,
   equipmentEfficiency,
-  sugarEfficiency = 1,
-  steepingEfficiency = 0.15
+  sugarEfficiency = 1
 ) =>
-  fermentableType === FermentableTypes.extract ||
-    fermentableType === FermentableTypes.sugar ||
-    fermentableType === FermentableTypes.dryExtract
+  type === FermentableTypes.extract ||
+    type === FermentableTypes.sugar ||
+    type === FermentableTypes.dryExtract
     ? sugarEfficiency
-    : recipeType === RecipeTypes.extract
-        ? steepingEfficiency
-        : equipmentEfficiency
+    : equipmentEfficiency
 
 //Sugar provides 46 gravity points per pound, per gallon (PPPG).
 //1 pound = 16 oz (weight/mass)
