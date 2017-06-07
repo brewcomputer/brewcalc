@@ -4,9 +4,8 @@ declare var expect: any;
 
 import {
   originalGravity,
-  originalGravityPoints,
   finalGravity,
-  finalGravityPoints,
+  gravityPoints,
   boilGravity,
   bitternessIBU,
   bitternessRatio,
@@ -20,8 +19,8 @@ import { recipe as AussieAle } from './data/recipe/AussieAle.js'
 import { recipe as MiddyPig } from './data/recipe/Middy Pig.js'
 
 test('originalGravity', () => {
-  const ogPtsAA = originalGravityPoints(AussieAle, AussieAle.equipment)
-  const ogPtsMP = originalGravityPoints(MiddyPig, MiddyPig.equipment)
+  const ogPtsAA = gravityPoints(AussieAle, AussieAle.equipment)
+  const ogPtsMP = gravityPoints(MiddyPig, MiddyPig.equipment)
 
   expect(originalGravity(AussieAle.batchSize, ogPtsAA)).toBeCloseTo(
     AussieAle.og,
@@ -34,20 +33,28 @@ test('originalGravity', () => {
 })
 
 test('finalGravity', () => {
-  const fgPtsAA = finalGravityPoints(AussieAle, AussieAle.equipment)
+  const fgPtsAA = gravityPoints(
+    AussieAle,
+    AussieAle.equipment,
+    AussieAle.yeasts[0].attenuation
+  )
   expect(finalGravity(AussieAle.batchSize, fgPtsAA)).toBeCloseTo(
     AussieAle.fg,
     2
   )
 
-  const fgPtsMP = finalGravityPoints(MiddyPig, MiddyPig.equipment)
+  const fgPtsMP = gravityPoints(
+    MiddyPig,
+    MiddyPig.equipment,
+    MiddyPig.yeasts[0].attenuation
+  )
   expect(finalGravity(MiddyPig.batchSize, fgPtsMP)).toBeCloseTo(MiddyPig.fg, 2)
 })
 
 test('boilGravity', () => {
   const ogAussieAle = originalGravity(
     AussieAle.batchSize,
-    originalGravityPoints(AussieAle, AussieAle.equipment)
+    gravityPoints(AussieAle, AussieAle.equipment)
   )
   expect(
     boilGravity(AussieAle.batchSize, AussieAle.boilSize, ogAussieAle)
@@ -55,7 +62,7 @@ test('boilGravity', () => {
 
   const ogMiddyPig = originalGravity(
     MiddyPig.batchSize,
-    originalGravityPoints(MiddyPig, MiddyPig.equipment)
+    gravityPoints(MiddyPig, MiddyPig.equipment)
   )
   expect(
     boilGravity(MiddyPig.batchSize, MiddyPig.boilSize, ogMiddyPig)
@@ -136,12 +143,16 @@ test('totalWater', () => {
 test('bitternessIBU', () => {
   const ogPts = originalGravity(
     AussieAle.batchSize,
-    originalGravityPoints(AussieAle, AussieAle.equipment)
+    gravityPoints(AussieAle, AussieAle.equipment)
   ) - 1
 
   const fgPts = finalGravity(
     AussieAle.batchSize,
-    finalGravityPoints(AussieAle, AussieAle.equipment)
+    gravityPoints(
+      AussieAle,
+      AussieAle.equipment,
+      AussieAle.yeasts[0].attenuation
+    )
   ) - 1
 
   const avgBoilGravityPts = (ogPts + fgPts) / 2
@@ -160,12 +171,16 @@ test('bitternessIBU', () => {
 test('bitternessRatio', () => {
   const ogPts = originalGravity(
     AussieAle.batchSize,
-    originalGravityPoints(AussieAle, AussieAle.equipment)
+    gravityPoints(AussieAle, AussieAle.equipment)
   ) - 1
 
   const fgPts = finalGravity(
     AussieAle.batchSize,
-    finalGravityPoints(AussieAle, AussieAle.equipment)
+    gravityPoints(
+      AussieAle,
+      AussieAle.equipment,
+      AussieAle.yeasts[0].attenuation
+    )
   ) - 1
 
   const avgBoilGravityPts = (ogPts + fgPts) / 2
@@ -185,12 +200,16 @@ test('bitternessRatio', () => {
 test('estABW, estABV', () => {
   const ogPts = originalGravity(
     AussieAle.batchSize,
-    originalGravityPoints(AussieAle, AussieAle.equipment)
+    gravityPoints(AussieAle, AussieAle.equipment)
   ) - 1
 
   const fgPts = finalGravity(
     AussieAle.batchSize,
-    finalGravityPoints(AussieAle, AussieAle.equipment)
+    gravityPoints(
+      AussieAle,
+      AussieAle.equipment,
+      AussieAle.yeasts[0].attenuation
+    )
   ) - 1
 
   //?

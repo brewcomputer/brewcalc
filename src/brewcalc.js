@@ -23,45 +23,23 @@ export const finalGravity = (batchSize: number, fgPts: number) =>
 export const boilGravity = (batchSize: number, boilSize: number, og: number) =>
   1 + (og - 1) * litersToGallons(batchSize) / litersToGallons(boilSize)
 
-export const originalGravityPoints = (
+export const gravityPoints = (
   {
     fermentables,
     type
   }: Recipe,
   {
     efficiency
-  }: Equipment
+  }: Equipment,
+  attenutation: number = 0
 ) => {
   const recipeType = type
   return sum(
     fermentables.map(({ type, potential, amount }) =>
-      gravityPoints(
+      fermentableGravityPoints(
         potential,
         amount,
-        fermentableEfficiency(type, recipeType, efficiency)
-      ))
-  )
-}
-
-export const finalGravityPoints = (
-  {
-    fermentables,
-    yeasts,
-    type
-  }: Recipe,
-  {
-    efficiency
-  }: Equipment
-) => {
-  const attenutation = 1.0 - yeasts[0].attenuation
-  const recipeType = type
-
-  return sum(
-    fermentables.map(({ type, potential, amount }) =>
-      gravityPoints(
-        potential,
-        amount,
-        attenutation * fermentableEfficiency(type, recipeType, efficiency)
+        (1 - attenutation) * fermentableEfficiency(type, recipeType, efficiency)
       ))
   )
 }
@@ -87,7 +65,7 @@ const fermentableEfficiency = (
 //yield and efficiency should be parsed from recipe as percent values
 //The maximum potential is approximately 1.046 which would be a pound of pure sugar in a gallon of water.
 
-const gravityPoints = (potential, amount, efficiency = 1) =>
+const fermentableGravityPoints = (potential, amount, efficiency = 1) =>
   (potential - 1) * kilosToPounds(amount) * efficiency
 
 const ibuUtilization = (
