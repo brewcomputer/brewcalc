@@ -8,7 +8,13 @@ import type { Equipment } from './types/equipment'
 
 export const calculateVolumes = (
   { fermentables, mash, boilTime }: Recipe,
-  equipment: Equipment
+  {
+    lauterDeadspace,
+    boilSize,
+    evapRate,
+    coolingLossPct,
+    trubChillerLoss
+  }: Equipment
 ) => {
   //TODO check that topUps corrections are correct
   const kettleTopUp = 0
@@ -27,7 +33,7 @@ export const calculateVolumes = (
     kilosToOunces(mashGrainWeight) * grainAbsorptionRatio
   )
 
-  const totalMashWaterAdds = equipment.lauterDeadspace +
+  const totalMashWaterAdds = lauterDeadspace +
     sum(
       mash.mashSteps.map(
         ({ type, infuseAmount }) =>
@@ -43,21 +49,20 @@ export const calculateVolumes = (
 
   const waterAvailFromMash = totalMashWaterAdds - grainAbsorption
 
-  const spargeVol = equipment.boilSize +
+  const spargeVol = boilSize +
     grainAbsorption -
     kettleTopUp +
-    equipment.lauterDeadspace -
+    lauterDeadspace -
     totalMashWaterAdds
 
-  const estPreBoilVolume = waterAvailFromMash +
-    (spargeVol - equipment.lauterDeadspace)
-  const boilOffVolume = estPreBoilVolume * equipment.evapRate * (boilTime / 60)
+  const estPreBoilVolume = waterAvailFromMash + (spargeVol - lauterDeadspace)
+  const boilOffVolume = estPreBoilVolume * evapRate * (boilTime / 60)
   const postBoilVolume = estPreBoilVolume - boilOffVolume
-  const coolingShrinkage = postBoilVolume * equipment.coolingLossPct
+  const coolingShrinkage = postBoilVolume * coolingLossPct
 
   const estBottlingVol = postBoilVolume -
     coolingShrinkage -
-    equipment.trubChillerLoss -
+    trubChillerLoss -
     starterSize -
     fermentationLoss
 
