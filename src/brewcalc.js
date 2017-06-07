@@ -34,13 +34,12 @@ export const originalGravityPoints = (
 ) => {
   const recipeType = type
   return sum(
-    fermentables.map(({ type, potential, amount }) => {
-      return gravityPoints(
+    fermentables.map(({ type, potential, amount }) =>
+      gravityPoints(
         potential,
         amount,
         fermentableEfficiency(type, recipeType, efficiency)
-      )
-    })
+      ))
   )
 }
 
@@ -58,13 +57,12 @@ export const finalGravityPoints = (
   const recipeType = type
 
   return sum(
-    fermentables.map(({ type, potential, amount }) => {
-      return gravityPoints(
+    fermentables.map(({ type, potential, amount }) =>
+      gravityPoints(
         potential,
         amount,
         attenutation * fermentableEfficiency(type, recipeType, efficiency)
-      )
-    })
+      ))
   )
 }
 
