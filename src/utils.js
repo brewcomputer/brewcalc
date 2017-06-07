@@ -7,7 +7,7 @@ export const kilosToPounds = (k: number) => {
   return kilosToOunces(k) / 16
 }
 
-const litersToOunces = l => {
+export const litersToOunces = (l: number) => {
   return l / 0.0295735
 }
 

@@ -7,7 +7,11 @@ import {
   originalGravityPoints,
   finalGravity,
   finalGravityPoints,
-  boilGravity
+  boilGravity,
+  bitternessIBU,
+  bitternessRatio,
+  estABW,
+  estABV
 } from '../brewcalc'
 
 import { calculateVolumes } from '../volumes'
@@ -127,4 +131,70 @@ test('totalWater', () => {
   expect(
     calculateVolumes(AussieAle, AussieAle.equipment).totalWater
   ).toBeCloseTo(40.81, 2)
+})
+
+test('bitternessIBU', () => {
+  const ogPts = originalGravity(
+    AussieAle.batchSize,
+    originalGravityPoints(AussieAle, AussieAle.equipment)
+  ) - 1
+
+  const fgPts = finalGravity(
+    AussieAle.batchSize,
+    finalGravityPoints(AussieAle, AussieAle.equipment)
+  ) - 1
+
+  const avgBoilGravityPts = (ogPts + fgPts) / 2
+
+  const postBoilVolume = calculateVolumes(
+    AussieAle,
+    AussieAle.equipment
+  ).postBoilVolume
+
+  expect(
+    bitternessIBU(AussieAle, avgBoilGravityPts, postBoilVolume)
+    //28.0  according BeerSmith
+  ).toBeCloseTo(27.21, 2)
+})
+
+test('bitternessRatio', () => {
+  const ogPts = originalGravity(
+    AussieAle.batchSize,
+    originalGravityPoints(AussieAle, AussieAle.equipment)
+  ) - 1
+
+  const fgPts = finalGravity(
+    AussieAle.batchSize,
+    finalGravityPoints(AussieAle, AussieAle.equipment)
+  ) - 1
+
+  const avgBoilGravityPts = (ogPts + fgPts) / 2
+
+  const postBoilVolume = calculateVolumes(
+    AussieAle,
+    AussieAle.equipment
+  ).postBoilVolume
+
+  const ibu = bitternessIBU(AussieAle, avgBoilGravityPts, postBoilVolume)
+
+  const gu = ogPts * 1000
+  //0.636  according BeerSmith
+  expect(bitternessRatio(ibu, gu)).toBeCloseTo(0.618, 3)
+})
+
+test('estABW, estABV', () => {
+  const ogPts = originalGravity(
+    AussieAle.batchSize,
+    originalGravityPoints(AussieAle, AussieAle.equipment)
+  ) - 1
+
+  const fgPts = finalGravity(
+    AussieAle.batchSize,
+    finalGravityPoints(AussieAle, AussieAle.equipment)
+  ) - 1
+
+  //?
+  expect(estABW(ogPts * 1000, fgPts * 1000)).toBeCloseTo(3.47, 2)
+  //4.7 according BeerSmith
+  expect(estABV(ogPts * 1000, fgPts * 1000)).toBeCloseTo(4.36, 2)
 })
