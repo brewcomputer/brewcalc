@@ -17,19 +17,19 @@ import {
 
 import { calculateVolumes } from '../volumes'
 
-import { recipe as AussieAle } from './data/recipe/AussieAle.js'
-import { recipe as MiddyPig } from './data/recipe/Middy Pig.js'
+import { recipe as AussieAle } from './data/AussieAle.js'
+import { recipe as MuddyPig } from './data/Muddy Pig.js'
 
 test('originalGravity', () => {
   const ogPtsAA = gravityPoints(AussieAle, AussieAle.equipment)
-  const ogPtsMP = gravityPoints(MiddyPig, MiddyPig.equipment)
+  const ogPtsMP = gravityPoints(MuddyPig, MuddyPig.equipment)
 
   expect(originalGravity(AussieAle.batchSize, ogPtsAA)).toBeCloseTo(
     AussieAle.og,
     3
   )
-  expect(originalGravity(MiddyPig.batchSize, ogPtsMP)).toBeCloseTo(
-    MiddyPig.og,
+  expect(originalGravity(MuddyPig.batchSize, ogPtsMP)).toBeCloseTo(
+    MuddyPig.og,
     3
   )
 })
@@ -46,11 +46,11 @@ test('finalGravity', () => {
   )
 
   const fgPtsMP = gravityPoints(
-    MiddyPig,
-    MiddyPig.equipment,
-    MiddyPig.yeasts[0].attenuation
+    MuddyPig,
+    MuddyPig.equipment,
+    MuddyPig.yeasts[0].attenuation
   )
-  expect(finalGravity(MiddyPig.batchSize, fgPtsMP)).toBeCloseTo(MiddyPig.fg, 2)
+  expect(finalGravity(MuddyPig.batchSize, fgPtsMP)).toBeCloseTo(MuddyPig.fg, 2)
 })
 
 test('boilGravity', () => {
@@ -63,11 +63,11 @@ test('boilGravity', () => {
   ).toBeCloseTo(1.031, 2)
 
   const ogMiddyPig = originalGravity(
-    MiddyPig.batchSize,
-    gravityPoints(MiddyPig, MiddyPig.equipment)
+    MuddyPig.batchSize,
+    gravityPoints(MuddyPig, MuddyPig.equipment)
   )
   expect(
-    boilGravity(MiddyPig.batchSize, MiddyPig.boilSize, ogMiddyPig)
+    boilGravity(MuddyPig.batchSize, MuddyPig.boilSize, ogMiddyPig)
   ).toBeCloseTo(1.084, 2)
 })
 
