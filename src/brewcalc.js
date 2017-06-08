@@ -105,3 +105,17 @@ export const bitternessRatio = (ibu: number, gu: number) => ibu / gu
 //ABV = (OG points - FG points) * 0.132
 export const estABW = (ogPts: number, fgPts: number) => (ogPts - fgPts) * 0.105
 export const estABV = (ogPts: number, fgPts: number) => (ogPts - fgPts) * 0.132
+
+//MCU = (weight of grain in lbs)*(color of grain in lovibond) / (volume in gal) SRM = 1.4922 * MCU ^ 0.6859
+const mcu2srm = mcu => 1.4922 * Math.pow(mcu, 0.6859)
+
+const calcMCU = ({ amount, color }: Fermentable) =>
+  kilosToPounds(amount) * color
+
+export const srmToRgb = (srm: number) => ({
+  r: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.975, srm)))),
+  g: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.88, srm)))),
+  b: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.7, srm))))
+})
+export const colorSRM = ({ fermentables }: Recipe, postBoilVolime: number) =>
+  mcu2srm(sum(fermentables.map(calcMCU)) / litersToGallons(postBoilVolime))

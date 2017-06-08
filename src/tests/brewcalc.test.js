@@ -10,7 +10,9 @@ import {
   bitternessIBU,
   bitternessRatio,
   estABW,
-  estABV
+  estABV,
+  colorSRM,
+  srmToRgb
 } from '../brewcalc'
 
 import { calculateVolumes } from '../volumes'
@@ -216,4 +218,18 @@ test('estABW, estABV', () => {
   expect(estABW(ogPts * 1000, fgPts * 1000)).toBeCloseTo(3.47, 2)
   //4.7 according BeerSmith
   expect(estABV(ogPts * 1000, fgPts * 1000)).toBeCloseTo(4.36, 2)
+})
+
+test('colorSRMvalue, srmToRgb', () => {
+  const volume = AussieAle.equipment.batchSize
+
+  //http://beersmith.com/blog/2008/04/29/beer-color-understanding-srm-lovibond-and-ebc/
+  const colorSRMvalue = colorSRM(AussieAle, volume)
+  const colorEBCvalue = 1.97 * colorSRMvalue
+
+  //8.6
+  expect(colorSRMvalue).toBeCloseTo(14.7, 1)
+  //16.8
+  expect(colorEBCvalue).toBeCloseTo(29.04, 1)
+  //expect(srmToRgb(colorSRMvalue)).toBeCloseTo(16.8, 1)
 })
