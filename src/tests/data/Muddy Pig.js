@@ -1,4 +1,8 @@
-export const recipe = {
+// @flow
+import type { Equipment } from '../../types/equipment'
+import type { Recipe } from '../../types/recipe'
+
+export const recipe: Recipe = {
   name: 'Muddy Pig Oatmeal Stout',
   version: '1',
   type: 'Extract',
@@ -68,7 +72,7 @@ export const recipe = {
       type: 'Grain',
       amount: 0.4535920,
       yield: 0.74,
-      color: '60.0000000',
+      color: 60.0000000,
       addAfterBoil: false,
       origin: 'US',
       supplier: '',
@@ -92,7 +96,7 @@ export const recipe = {
       type: 'Grain',
       amount: 0.2267960,
       yield: 0.55,
-      color: '300.0000000',
+      color: 300.0000000,
       addAfterBoil: false,
       origin: 'US',
       supplier: '',
@@ -116,7 +120,7 @@ export const recipe = {
       type: 'Dry Extract',
       amount: 0.9071840,
       yield: 0.95,
-      color: '12.5000000',
+      color: 12.5000000,
       addAfterBoil: false,
       origin: 'US',
       supplier: '',
@@ -140,7 +144,7 @@ export const recipe = {
       type: 'Extract',
       amount: 2.7669112,
       yield: 0.78,
-      color: '17.5000000',
+      color: 17.5000000,
       addAfterBoil: false,
       origin: 'US',
       supplier: '',
@@ -239,38 +243,10 @@ export const recipe = {
     colorRange: '22.0-40.0 SRM',
     abvRange: '4.20-5.90 %'
   },
-  equipment: {
-    name: 'Brew Pot  (5 Gallon)',
-    version: '1',
-    efficiency: 0.15,
-    boilSize: 14.8100000,
-    batchSize: 18.9300000,
-    tunVolume: '18.9300000',
-    tunWeight: '2.2679600',
-    tunSpecificHeat: '0.1200000',
-    topUpWater: '6.6200000',
-    trubChillerLoss: '0.9500000',
-    evapRate: 0.091481443,
-    boilTime: '45.0000000',
-    calcBoilVolume: true,
-    lauterDeadspace: '0.9500000',
-    topUpKettle: 0.0000000,
-    hopUtilization: '100.0000000',
-    coolingLossPct: '4.0000000',
-    notes: 'Simple Brew Pot with a 5 Gallon Capacity - leaving a workable boil volume of around 4.25 gal.  Used for extract or partial mash brewing.',
-    displayBoilSize: '3.91 gal',
-    displayBatchSize: '5.00 gal',
-    displayTunVolume: '5.00 gal',
-    displayTunWeight: '5 lbs',
-    displayTopUpWater: '1.75 gal',
-    displayTrubChillerLoss: '0.25 gal',
-    displayLauterDeadspace: '0.25 gal',
-    displayTopUpKettle: '0.00 gal'
-  },
   mash: {
     name: 'My Mash',
     version: '1',
-    grainTemp: '22.2222222',
+    grainTemp: 22.2222222,
     tunTemp: '22.2222222',
     spargeTemp: '75.5555556',
     ph: '5.4000000',
@@ -281,7 +257,8 @@ export const recipe = {
     displayGrainTemp: '72.0 F',
     displayTunTemp: '72.0 F',
     displaySpargeTemp: '168.0 F',
-    displayTunWeight: '5 lbs'
+    displayTunWeight: '5 lbs',
+    mashSteps: []
   },
   notes: 'Entered in Montgomery County Fair...finished middle of the pack.',
   tasteNotes: 'This was perhaps the best stout I&#39;ve ever made.  Unfortunately, it can&#39;t be made exactly again because Edme changed the yeast strain after I made this one.  Good memories tho&#39;.',
@@ -322,4 +299,33 @@ export const recipe = {
   displaySecondaryTemp: '67.0 F',
   displayTertiaryTemp: '65.0 F',
   displayAgeTemp: '65.0 F'
+}
+
+export const equipment: Equipment = {
+  name: 'Brew Pot  (5 Gallon)',
+  version: '1',
+  efficiency: 0.15,
+  boilSize: 14.8100000,
+  batchSize: 18.9300000,
+  tunVolume: '18.9300000',
+  tunWeight: '2.2679600',
+  tunSpecificHeat: '0.1200000',
+  topUpWater: '6.6200000',
+  trubChillerLoss: 0.9500000,
+  evapRate: 0.091481443,
+  boilTime: '45.0000000',
+  calcBoilVolume: true,
+  lauterDeadspace: 0.9500000,
+  topUpKettle: 0.0000000,
+  hopUtilization: '100.0000000',
+  coolingLossPct: 0.04,
+  notes: 'Simple Brew Pot with a 5 Gallon Capacity - leaving a workable boil volume of around 4.25 gal.  Used for extract or partial mash brewing.',
+  displayBoilSize: '3.91 gal',
+  displayBatchSize: '5.00 gal',
+  displayTunVolume: '5.00 gal',
+  displayTunWeight: '5 lbs',
+  displayTopUpWater: '1.75 gal',
+  displayTrubChillerLoss: '0.25 gal',
+  displayLauterDeadspace: '0.25 gal',
+  displayTopUpKettle: '0.00 gal'
 }

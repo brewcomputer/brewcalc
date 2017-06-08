@@ -13,11 +13,11 @@ export const calculateVolumes = (
     boilSize,
     evapRate,
     coolingLossPct,
-    trubChillerLoss
+    trubChillerLoss,
+    topUpKettle
   }: Equipment
 ) => {
   //TODO check that topUps corrections are correct
-  const kettleTopUp = 0
   const fermentationTopUp = 0
 
   const starterSize = 0
@@ -51,7 +51,7 @@ export const calculateVolumes = (
 
   const spargeVol = boilSize +
     grainAbsorption -
-    kettleTopUp +
+    topUpKettle +
     lauterDeadspace -
     totalMashWaterAdds
 

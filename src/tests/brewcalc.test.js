@@ -18,45 +18,38 @@ import {
 import { calculateVolumes } from '../volumes'
 
 import { recipe as AussieAle } from './data/AussieAle.js'
+import { equipment as AussieAleEquipment } from './data/AussieAle.js'
 import { recipe as MuddyPig } from './data/Muddy Pig.js'
+import { equipment as MuddyPigEquipment } from './data/Muddy Pig.js'
 
 test('originalGravity', () => {
-  const ogPtsAA = gravityPoints(AussieAle, AussieAle.equipment)
-  const ogPtsMP = gravityPoints(MuddyPig, MuddyPig.equipment)
+  const ogPtsAA = gravityPoints(AussieAle, AussieAleEquipment)
+  const ogPtsMP = gravityPoints(MuddyPig, MuddyPigEquipment)
 
-  expect(originalGravity(AussieAle.batchSize, ogPtsAA)).toBeCloseTo(
-    AussieAle.og,
-    3
-  )
-  expect(originalGravity(MuddyPig.batchSize, ogPtsMP)).toBeCloseTo(
-    MuddyPig.og,
-    3
-  )
+  expect(originalGravity(AussieAle.batchSize, ogPtsAA)).toBeCloseTo(1.044, 3)
+  expect(originalGravity(MuddyPig.batchSize, ogPtsMP)).toBeCloseTo(1.063, 3)
 })
 
 test('finalGravity', () => {
   const fgPtsAA = gravityPoints(
     AussieAle,
-    AussieAle.equipment,
+    AussieAleEquipment,
     AussieAle.yeasts[0].attenuation
   )
-  expect(finalGravity(AussieAle.batchSize, fgPtsAA)).toBeCloseTo(
-    AussieAle.fg,
-    2
-  )
+  expect(finalGravity(AussieAle.batchSize, fgPtsAA)).toBeCloseTo(1.008, 2)
 
   const fgPtsMP = gravityPoints(
     MuddyPig,
-    MuddyPig.equipment,
+    MuddyPigEquipment,
     MuddyPig.yeasts[0].attenuation
   )
-  expect(finalGravity(MuddyPig.batchSize, fgPtsMP)).toBeCloseTo(MuddyPig.fg, 2)
+  expect(finalGravity(MuddyPig.batchSize, fgPtsMP)).toBeCloseTo(1.015, 2)
 })
 
 test('boilGravity', () => {
   const ogAussieAle = originalGravity(
     AussieAle.batchSize,
-    gravityPoints(AussieAle, AussieAle.equipment)
+    gravityPoints(AussieAle, AussieAleEquipment)
   )
   expect(
     boilGravity(AussieAle.batchSize, AussieAle.boilSize, ogAussieAle)
@@ -64,7 +57,7 @@ test('boilGravity', () => {
 
   const ogMiddyPig = originalGravity(
     MuddyPig.batchSize,
-    gravityPoints(MuddyPig, MuddyPig.equipment)
+    gravityPoints(MuddyPig, MuddyPigEquipment)
   )
   expect(
     boilGravity(MuddyPig.batchSize, MuddyPig.boilSize, ogMiddyPig)
@@ -73,86 +66,87 @@ test('boilGravity', () => {
 
 test('mashGrainWeight', () => {
   expect(
-    calculateVolumes(AussieAle, AussieAle.equipment).mashGrainWeight
+    calculateVolumes(AussieAle, AussieAleEquipment).mashGrainWeight
   ).toBeCloseTo(5.26, 2)
 })
 test('grainAbsorption', () => {
   expect(
-    calculateVolumes(AussieAle, AussieAle.equipment).grainAbsorption
+    calculateVolumes(AussieAle, AussieAleEquipment).grainAbsorption
   ).toBeCloseTo(0.66, 2)
 })
 
 test('totalMashWaterAdds', () => {
   expect(
-    calculateVolumes(AussieAle, AussieAle.equipment).totalMashWaterAdds
+    calculateVolumes(AussieAle, AussieAleEquipment).totalMashWaterAdds
   ).toBeCloseTo(24.45, 2)
 })
 
 test('mashVolumeNeeded', () => {
   expect(
-    calculateVolumes(AussieAle, AussieAle.equipment).mashVolumeNeeded
+    calculateVolumes(AussieAle, AussieAleEquipment).mashVolumeNeeded
   ).toBeCloseTo(27.97, 2)
 })
 
 test('waterAvailFromMash', () => {
   expect(
-    calculateVolumes(AussieAle, AussieAle.equipment).waterAvailFromMash
+    calculateVolumes(AussieAle, AussieAleEquipment).waterAvailFromMash
   ).toBeCloseTo(23.79, 2)
 })
 
 test('spargeVol', () => {
-  expect(
-    calculateVolumes(AussieAle, AussieAle.equipment).spargeVol
-  ).toBeCloseTo(16.36, 2)
+  expect(calculateVolumes(AussieAle, AussieAleEquipment).spargeVol).toBeCloseTo(
+    16.36,
+    2
+  )
 })
 
 test('estPreBoilVolume', () => {
   expect(
-    calculateVolumes(AussieAle, AussieAle.equipment).estPreBoilVolume
+    calculateVolumes(AussieAle, AussieAleEquipment).estPreBoilVolume
   ).toBeCloseTo(37.12, 2)
 })
 
 test('boilOffVolume', () => {
   expect(
-    calculateVolumes(AussieAle, AussieAle.equipment).boilOffVolume
+    calculateVolumes(AussieAle, AussieAleEquipment).boilOffVolume
   ).toBeCloseTo(10.18, 2)
 })
 
 test('postBoilVolume', () => {
   expect(
-    calculateVolumes(AussieAle, AussieAle.equipment).postBoilVolume
+    calculateVolumes(AussieAle, AussieAleEquipment).postBoilVolume
   ).toBeCloseTo(26.94, 2)
 })
 
 test('coolingShrinkage', () => {
   expect(
-    calculateVolumes(AussieAle, AussieAle.equipment).coolingShrinkage
+    calculateVolumes(AussieAle, AussieAleEquipment).coolingShrinkage
   ).toBeCloseTo(1.08, 2)
 })
 
 test('estBottlingVol', () => {
   expect(
-    calculateVolumes(AussieAle, AussieAle.equipment).estBottlingVol
+    calculateVolumes(AussieAle, AussieAleEquipment).estBottlingVol
   ).toBeCloseTo(21.32, 2)
 })
 
 test('totalWater', () => {
   expect(
-    calculateVolumes(AussieAle, AussieAle.equipment).totalWater
+    calculateVolumes(AussieAle, AussieAleEquipment).totalWater
   ).toBeCloseTo(40.81, 2)
 })
 
 test('bitternessIBU', () => {
   const ogPts = originalGravity(
     AussieAle.batchSize,
-    gravityPoints(AussieAle, AussieAle.equipment)
+    gravityPoints(AussieAle, AussieAleEquipment)
   ) - 1
 
   const fgPts = finalGravity(
     AussieAle.batchSize,
     gravityPoints(
       AussieAle,
-      AussieAle.equipment,
+      AussieAleEquipment,
       AussieAle.yeasts[0].attenuation
     )
   ) - 1
@@ -161,7 +155,7 @@ test('bitternessIBU', () => {
 
   const postBoilVolume = calculateVolumes(
     AussieAle,
-    AussieAle.equipment
+    AussieAleEquipment
   ).postBoilVolume
 
   expect(
@@ -173,14 +167,14 @@ test('bitternessIBU', () => {
 test('bitternessRatio', () => {
   const ogPts = originalGravity(
     AussieAle.batchSize,
-    gravityPoints(AussieAle, AussieAle.equipment)
+    gravityPoints(AussieAle, AussieAleEquipment)
   ) - 1
 
   const fgPts = finalGravity(
     AussieAle.batchSize,
     gravityPoints(
       AussieAle,
-      AussieAle.equipment,
+      AussieAleEquipment,
       AussieAle.yeasts[0].attenuation
     )
   ) - 1
@@ -189,7 +183,7 @@ test('bitternessRatio', () => {
 
   const postBoilVolume = calculateVolumes(
     AussieAle,
-    AussieAle.equipment
+    AussieAleEquipment
   ).postBoilVolume
 
   const ibu = bitternessIBU(AussieAle, avgBoilGravityPts, postBoilVolume)
@@ -202,14 +196,14 @@ test('bitternessRatio', () => {
 test('estABW, estABV', () => {
   const ogPts = originalGravity(
     AussieAle.batchSize,
-    gravityPoints(AussieAle, AussieAle.equipment)
+    gravityPoints(AussieAle, AussieAleEquipment)
   ) - 1
 
   const fgPts = finalGravity(
     AussieAle.batchSize,
     gravityPoints(
       AussieAle,
-      AussieAle.equipment,
+      AussieAleEquipment,
       AussieAle.yeasts[0].attenuation
     )
   ) - 1
@@ -221,7 +215,7 @@ test('estABW, estABV', () => {
 })
 
 test('colorSRMvalue, srmToRgb', () => {
-  const volume = AussieAle.equipment.batchSize
+  const volume = AussieAleEquipment.batchSize
 
   //http://beersmith.com/blog/2008/04/29/beer-color-understanding-srm-lovibond-and-ebc/
   const colorSRMvalue = colorSRM(AussieAle, volume)

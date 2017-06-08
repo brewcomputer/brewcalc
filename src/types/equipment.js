@@ -6,5 +6,6 @@ export type Equipment = {
   evapRate: number,
   coolingLossPct: number,
   trubChillerLoss: number,
-  lauterDeadspace: number
+  lauterDeadspace: number,
+  topUpKettle: number
 };

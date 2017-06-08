@@ -3,7 +3,6 @@ export type Fermentable = {
   color: number,
   yield: number,
   amount: number,
-  time: number,
   potential: number,
   addAfterBoil: boolean,
   type: "Grain" | "Sugar" | "Extract" | "Dry Extract" | "Adjunct"
