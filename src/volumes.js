@@ -1,5 +1,5 @@
 // @flow
-import { sum, kilosToOunces, ouncesToLiters } from './utils.js'
+import { sum, kgToOunces, ouncesToLiters } from './utils.js'
 import { FermentableTypes } from './types/fermentable'
 import type { Fermentable } from './types/fermentable'
 import { MashType } from './types/mashStep'
@@ -28,9 +28,9 @@ export const calculateVolumes = (
       ({ amount, type }) => type == FermentableTypes.grain ? amount : 0
     )
   )
-  const grainAbsorptionRatio = 0.12 //number of ounces of water absorbed per ounce of the grain
-  const grainAbsorption = ouncesToLiters(
-    kilosToOunces(mashGrainWeight) * grainAbsorptionRatio
+  const grainAbsorbtionRatio = 0.12 //number of ounces of water absorbed per ounce of the grain
+  const grainAbsorbtion = ouncesToLiters(
+    kgToOunces(mashGrainWeight) * grainAbsorbtionRatio
   )
 
   const totalMashWaterAdds = lauterDeadspace +
@@ -47,10 +47,10 @@ export const calculateVolumes = (
   //Once again this depends on the specifics of the grain bill, but a value of 0.32 quarts per pound (0.67 L/kg) is a reasonable average.
   const mashVolumeNeeded = totalMashWaterAdds + mashGrainWeight * 0.67
 
-  const waterAvailFromMash = totalMashWaterAdds - grainAbsorption
+  const waterAvailFromMash = totalMashWaterAdds - grainAbsorbtion
 
   const spargeVol = boilSize +
-    grainAbsorption -
+    grainAbsorbtion -
     topUpKettle +
     lauterDeadspace -
     totalMashWaterAdds
@@ -72,7 +72,7 @@ export const calculateVolumes = (
     totalWater,
     //Mashing
     mashGrainWeight,
-    grainAbsorption,
+    grainAbsorbtion,
     totalMashWaterAdds,
     mashVolumeNeeded,
     waterAvailFromMash,

@@ -5,8 +5,8 @@ import { FermentableTypes } from './types/fermentable'
 import type { Fermentable } from './types/fermentable'
 import {
   litersToGallons,
-  kilosToPounds,
-  kilosToOunces,
+  kgToPounds,
+  kgToOunces,
   litersToOunces,
   sum
 } from './utils.js'
@@ -59,7 +59,7 @@ const fermentableEfficiency = (
 //The maximum potential is approximately 1.046 which would be a pound of pure sugar in a gallon of water.
 
 const fermentableGravityPoints = (potential, amount, efficiency = 1) =>
-  (potential - 1) * kilosToPounds(amount) * efficiency
+  (potential - 1) * kgToPounds(amount) * efficiency
 
 const ibuUtilization = (
   avgBoilGravityPts: number,
@@ -89,7 +89,7 @@ export const bitternessIBU = (
           time,
           form === HopForms.pellet ? 1.1 : 1
         ) *
-        kilosToOunces(amount) *
+        kgToOunces(amount) *
         alpha *
         7490 /
         litersToGallons(postBoilVolume)
@@ -110,7 +110,7 @@ export const estABV = (ogPts: number, fgPts: number) => (ogPts - fgPts) * 0.132
 const mcu2srm = mcu => 1.4922 * Math.pow(mcu, 0.6859)
 
 const calcMCU = ({ amount, color }: Fermentable) =>
-  kilosToPounds(amount) * color
+  kgToPounds(amount) * color
 
 export const srmToRgb = (srm: number) => ({
   r: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.975, srm)))),

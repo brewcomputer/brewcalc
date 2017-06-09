@@ -69,9 +69,9 @@ test('mashGrainWeight', () => {
     calculateVolumes(AussieAle, AussieAleEquipment).mashGrainWeight
   ).toBeCloseTo(5.26, 2)
 })
-test('grainAbsorption', () => {
+test('grainAbsorbtion', () => {
   expect(
-    calculateVolumes(AussieAle, AussieAleEquipment).grainAbsorption
+    calculateVolumes(AussieAle, AussieAleEquipment).grainAbsorbtion
   ).toBeCloseTo(0.66, 2)
 })
 

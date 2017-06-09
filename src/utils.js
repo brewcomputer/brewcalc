@@ -1,7 +1,7 @@
 // @flow
-export const kilosToOunces = (k: number) => k * 35.2739619
+export const kgToOunces = (k: number) => k * 35.2739619
 
-export const kilosToPounds = (k: number) => kilosToOunces(k) / 16
+export const kgToPounds = (k: number) => kgToOunces(k) / 16
 
 export const litersToOunces = (l: number) => l / 0.0295735
 
