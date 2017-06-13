@@ -6,20 +6,14 @@ import type { Hop } from './hop'
 import type { Mash } from './mash'
 
 export type Recipe = {
-  // Beer XML 1.0 Required Fields
-  //name: string,
-  //version: number,
+  name: string,
   type: "Extract" | "All Grain" | "Partial Mash",
-  //style
-  //brewer: string,
   batchSize: number,
   boilSize: number,
   boilTime: number,
   hops: Array<Hop>,
   fermentables: Array<Fermentable>,
   yeasts: Array<Yeast>,
-  //miscs: Array<Misc>,
-  //waters: Array<Water>,
   mash: Mash
 };
 
