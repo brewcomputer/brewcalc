@@ -2,6 +2,9 @@
 import type { Equipment } from '../../types/equipment'
 import type { Recipe } from '../../types/recipe'
 
+import { RecipeTypes } from '../../types/recipe'
+import { FermentableTypes } from '../../types/fermentable'
+
 export const recipe: Recipe = {
   name: 'Aussie Ale',
   version: '1',
@@ -289,8 +292,8 @@ export const recipe: Recipe = {
         infuseAmount: 13.7276426,
         stepTime: 60.0000000,
         stepTemp: 66.6666667,
-        rampTime: '2.0000000',
-        endTemp: '66.6666667',
+        rampTime: 2.0000000,
+        endTemp: 66.6666667,
         description: 'Add 16.76 l of water at 74.1 C',
         waterGrainRatio: '2.608 qt/lb',
         decoctionAmt: '0.00 l',
@@ -305,8 +308,8 @@ export const recipe: Recipe = {
         infuseAmount: 7.6874799,
         stepTime: 10.0000000,
         stepTemp: 75.5555556,
-        rampTime: '2.0000000',
-        endTemp: '75.5555556',
+        rampTime: 2.0000000,
+        endTemp: 75.5555556,
         description: 'Add 7.69 l of water at 98.5 C',
         waterGrainRatio: '4.644 qt/lb',
         decoctionAmt: '0.00 l',
