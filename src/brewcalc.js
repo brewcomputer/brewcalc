@@ -14,6 +14,9 @@ import type { Equipment } from './types/equipment'
 import type { Hop } from './types/hop'
 import { HopForms } from './types/hop'
 
+import type { Yeast } from './types/yeast'
+import { YeastTypes, YeastForms } from './types/yeast'
+
 export const originalGravity = (batchSize: number, ogPts: number) =>
   1.0 + ogPts / litersToGallons(batchSize)
 
@@ -109,8 +112,7 @@ export const estABV = (ogPts: number, fgPts: number) => (ogPts - fgPts) * 0.132
 //MCU = (weight of grain in lbs)*(color of grain in lovibond) / (volume in gal) SRM = 1.4922 * MCU ^ 0.6859
 const mcu2srm = mcu => 1.4922 * Math.pow(mcu, 0.6859)
 
-const calcMCU = ({ amount, color }: Fermentable) =>
-  kgToPounds(amount) * color
+const calcMCU = ({ amount, color }: Fermentable) => kgToPounds(amount) * color
 
 export const srmToRgb = (srm: number) => ({
   r: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.975, srm)))),
@@ -119,3 +121,56 @@ export const srmToRgb = (srm: number) => ({
 })
 export const colorSRM = ({ fermentables }: Recipe, postBoilVolime: number) =>
   mcu2srm(sum(fermentables.map(calcMCU)) / litersToGallons(postBoilVolime))
+
+//https://www.brewersfriend.com/yeast-pitch-rate-and-starter-calculator/
+
+//million cells / ml / degree Plato
+
+//Minimum manufacturer's recommendation: 0.35 (ale only, fresh yeast only)
+//Middle of the road Pro Brewer 0.75 (ale)
+//Pro Brewer 1.00 (high gravity ale)
+//Pro Brewer 1.50 (minimum for lager)
+//Pro Brewer 2.0 (high gravity lager)
+
+//cellDensity = billion cells / gram
+//Safale K-97	14
+//Safale S-04	8
+//Safbrew T-58	18
+//Safbrew S-33	16
+//Saflager S-23	10
+//Saflager S-189	9
+
+//A pack/vial contains 100 billion cells at the date of manufacture.
+//Liquid yeast viability drops 21% each month, or 0.7% each day, from the date of manufacture.
+//The assumption is the yeast viability drops in a linear fashion. In 4.75 months or 143 days, this calculator assumes the yeast is 100% dead (100 / 0.7 = ~143).
+
+//million 10 ^ 6
+//billion 10 ^ 9
+
+export const yeastNeeded = (pitchRate: number, batchSize: number, e: number) =>
+  pitchRate * (batchSize * 1000) * e / 1000
+
+const viability = (cultureDate: string) =>
+  100 - Math.floor((new Date() - Date.parse(cultureDate)) / 86400000) * 0.7
+
+export const yeastCount = (
+  { amount, form, cultureDate }: Yeast,
+  cellDensity: number = 8,
+  //billion cells / ml
+  slurryDensity: number = 1
+) => {
+  switch (form) {
+    case YeastForms.dry:
+      return cellDensity * amount * 1000
+    case YeastForms.liquid:
+      //TODO find information about amount of the liquid packs in breewxml
+      return 100 * (viability(cultureDate) / 100) * amount
+    case YeastForms.slant:
+      return slurryDensity * amount * 1000
+    default:
+      throw {
+        name: 'NotImplementedError',
+        message: 'I dont know how to calculate Culture yeasts yet'
+      }
+  }
+}

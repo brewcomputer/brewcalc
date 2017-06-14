@@ -14,6 +14,11 @@ export const ouncesToLiters = (o: number) => o * 0.0295735
 
 export const litersToGallons = (l: number) => litersToOunces(l) / 128
 
+export const sgToPlato = (sg: number) =>
+  -668.962 + 1262.45 * sg - 776.43 * Math.pow(sg, 2) + 182.94 * Math.pow(sg, 3)
+
+export const platoTosg = (e: number) => 1 + e / (258.6 - e / 258.2 * 227.1)
+
 export const sum = (array: Array<number>) =>
   array.reduce((pv, cv) => pv + cv, 0)
 

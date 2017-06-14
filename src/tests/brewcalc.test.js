@@ -12,8 +12,12 @@ import {
   estABW,
   estABV,
   colorSRM,
-  srmToRgb
+  srmToRgb,
+  yeastNeeded,
+  yeastCount
 } from '../brewcalc'
+
+import { sgToPlato } from '../utils.js'
 
 import { calculateVolumes } from '../volumes'
 
@@ -21,6 +25,9 @@ import { recipe as AussieAle } from './data/AussieAle.js'
 import { equipment as AussieAleEquipment } from './data/AussieAle.js'
 import { recipe as MuddyPig } from './data/Muddy Pig.js'
 import { equipment as MuddyPigEquipment } from './data/Muddy Pig.js'
+import type { Yeast } from '../types/yeast'
+import { YeastTypes, YeastForms } from '../types/yeast'
+import type { Equipment } from '../types/equipment'
 
 test('originalGravity', () => {
   const ogPtsAA = gravityPoints(AussieAle, AussieAleEquipment)
@@ -226,4 +233,29 @@ test('colorSRMvalue, srmToRgb', () => {
   //16.8
   expect(colorEBCvalue).toBeCloseTo(29.04, 1)
   //expect(srmToRgb(colorSRMvalue)).toBeCloseTo(16.8, 1)
+})
+
+test('yeastNeeded, yeastCount', () => {
+  const yeast: Yeast = {
+    amount: 0.011,
+    attenuation: 0,
+    type: YeastTypes.ale,
+    form: YeastForms.dry,
+    cultureDate: '06 Mar 2017'
+  }
+
+  const batchSize = 20.82
+  const pitchRate = yeast.type === YeastTypes.ale ? 0.75 : 1.5
+
+  expect(yeastNeeded(pitchRate, batchSize, sgToPlato(1.04))).toBeCloseTo(
+    155.87,
+    1
+  )
+  expect(yeastCount({ ...yeast })).toBeCloseTo(88, 1)
+  expect(
+    yeastCount({ ...yeast, form: YeastForms.liquid, amount: 1 })
+  ).toBeCloseTo(30, 1)
+  expect(
+    yeastCount({ ...yeast, form: YeastForms.slant, amount: 1 })
+  ).toBeCloseTo(1000, 1)
 })
