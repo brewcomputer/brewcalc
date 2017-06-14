@@ -8,6 +8,8 @@ import {
   kgToPounds,
   kgToOunces,
   litersToOunces,
+  poundsTokg,
+  sgToPlato,
   sum
 } from './utils.js'
 import type { Equipment } from './types/equipment'
@@ -172,5 +174,45 @@ export const yeastCount = (
         name: 'NotImplementedError',
         message: 'I dont know how to calculate Culture yeasts yet'
       }
+  }
+}
+
+const growthRateCurveBraukaiserStir = (cellsToGramsRatio: number) => {
+  //TODO refactor, looks ugly at the moment
+  if (cellsToGramsRatio < 1.4) {
+    return 1.4
+  } else if (cellsToGramsRatio >= 1.4 && cellsToGramsRatio <= 3.5) {
+    const newGrowth = 2.33 - 0.67 * cellsToGramsRatio
+    if (newGrowth < 0) {
+      return 0
+    }
+    return newGrowth
+  }
+  return 0
+}
+
+export const yeastStarterGrow = (
+  startingYeastCount: number,
+  starterSize: number,
+  gravity: number,
+  batchSize: number
+) => {
+  const volumeLevel = litersToGallons(starterSize)
+  const pointsNeeded = volumeLevel * (gravity - 1) * 1000
+  const poundsDME = pointsNeeded / 42
+  const gramsDME = poundsTokg(poundsDME) * 1000
+  const cellsToGramsRatio = startingYeastCount / gramsDME
+
+  const growthRate = growthRateCurveBraukaiserStir(cellsToGramsRatio)
+  const endingCount = gramsDME * growthRate + startingYeastCount
+  const pitchRate = endingCount *
+    1000 /
+    sgToPlato(gravity) /
+    (batchSize / 1000)
+
+  return {
+    growthRate: growthRate,
+    endingCount: endingCount,
+    pitchRate: pitchRate
   }
 }

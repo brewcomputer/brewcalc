@@ -14,7 +14,8 @@ import {
   colorSRM,
   srmToRgb,
   yeastNeeded,
-  yeastCount
+  yeastCount,
+  yeastStarterGrow
 } from '../brewcalc'
 
 import { sgToPlato } from '../utils.js'
@@ -235,7 +236,7 @@ test('colorSRMvalue, srmToRgb', () => {
   //expect(srmToRgb(colorSRMvalue)).toBeCloseTo(16.8, 1)
 })
 
-test('yeastNeeded, yeastCount', () => {
+test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
   const yeast: Yeast = {
     amount: 0.011,
     attenuation: 0,
@@ -246,8 +247,9 @@ test('yeastNeeded, yeastCount', () => {
 
   const batchSize = 20.82
   const pitchRate = yeast.type === YeastTypes.ale ? 0.75 : 1.5
-
-  expect(yeastNeeded(pitchRate, batchSize, sgToPlato(1.04))).toBeCloseTo(
+  const gravity = 1.04
+  const starterSize = 1
+  expect(yeastNeeded(pitchRate, batchSize, sgToPlato(gravity))).toBeCloseTo(
     155.87,
     1
   )
@@ -258,4 +260,16 @@ test('yeastNeeded, yeastCount', () => {
   expect(
     yeastCount({ ...yeast, form: YeastForms.slant, amount: 1 })
   ).toBeCloseTo(1000, 1)
+
+  expect(
+    yeastStarterGrow(88, starterSize, gravity, batchSize).growthRate
+  ).toBeCloseTo(1.4, 1)
+
+  expect(
+    yeastStarterGrow(88, starterSize, gravity, batchSize).endingCount
+  ).toBeCloseTo(248, 0)
+
+  expect(
+    yeastStarterGrow(88, starterSize, gravity, batchSize).pitchRate
+  ).toBeCloseTo(1192423, 0)
 })
