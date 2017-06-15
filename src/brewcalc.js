@@ -235,7 +235,7 @@ const primingSugar = (carbVolume, t, batchSize) =>
 
 const normalizeTemp = (t: number) => Math.max(32.0, celsiusToFahrenheit(t))
 
-export const carbonization = (
+export const carbonation = (
   carbVolume: number,
   t: number,
   batchSize: number
