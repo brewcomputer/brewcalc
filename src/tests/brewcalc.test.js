@@ -264,6 +264,10 @@ test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
     yeastCount({ ...yeast, form: YeastForms.slant, amount: 1 })
   ).toBeCloseTo(1000, 1)
 
+  expect(() => {
+    yeastCount({ ...yeast, form: YeastForms.culture, amount: 1 })
+  }).toThrow()
+
   expect(
     yeastStarterGrow(88, starterSize, gravity, batchSize).growthRate
   ).toBeCloseTo(1.4, 1)
@@ -275,4 +279,28 @@ test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
   expect(
     yeastStarterGrow(88, starterSize, gravity, batchSize).pitchRate
   ).toBeCloseTo(1192423, 0)
+
+  expect(
+    yeastStarterGrow(188, starterSize, gravity, batchSize).growthRate
+  ).toBeCloseTo(1.2, 1)
+
+  expect(
+    yeastStarterGrow(188, starterSize, gravity, batchSize).endingCount
+  ).toBeCloseTo(328, 0)
+
+  expect(
+    yeastStarterGrow(188, starterSize, gravity, batchSize).pitchRate
+  ).toBeCloseTo(1578336, 0)
+
+  expect(
+    yeastStarterGrow(488, starterSize, gravity, batchSize).growthRate
+  ).toBeCloseTo(0, 1)
+
+  expect(
+    yeastStarterGrow(488, starterSize, gravity, batchSize).endingCount
+  ).toBeCloseTo(488, 0)
+
+  expect(
+    yeastStarterGrow(488, starterSize, gravity, batchSize).pitchRate
+  ).toBeCloseTo(2348143, 0)
 })

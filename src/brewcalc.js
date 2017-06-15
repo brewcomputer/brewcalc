@@ -179,19 +179,14 @@ export const yeastCount = (
   }
 }
 
-const growthRateCurveBraukaiserStir = (cellsToGramsRatio: number) => {
-  //TODO refactor, looks ugly at the moment
-  if (cellsToGramsRatio < 1.4) {
-    return 1.4
-  } else if (cellsToGramsRatio >= 1.4 && cellsToGramsRatio <= 3.5) {
-    const newGrowth = 2.33 - 0.67 * cellsToGramsRatio
-    if (newGrowth < 0) {
-      return 0
-    }
-    return newGrowth
-  }
-  return 0
-}
+const yeastGrowth = ratio => 2.33 - 0.67 * ratio
+
+const growthRateCurveBraukaiserStir = (ratio: number) =>
+  ratio < 1.4
+    ? 1.4
+    : ratio >= 1.4 && ratio <= 3.5 && yeastGrowth(ratio) > 0
+        ? yeastGrowth(ratio)
+        : 0
 
 export const yeastStarterGrow = (
   startingYeastCount: number,
