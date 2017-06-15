@@ -152,11 +152,14 @@ export const colorSRM = ({ fermentables }: Recipe, postBoilVolime: number) =>
 export const yeastNeeded = (pitchRate: number, batchSize: number, e: number) =>
   pitchRate * (batchSize * 1000) * e / 1000
 
-const viability = (cultureDate: string) =>
-  100 - Math.floor((new Date() - Date.parse(cultureDate)) / 86400000) * 0.7
+const viability = (currentDate: string, cultureDate: string) =>
+  100 -
+  Math.floor((Date.parse(currentDate) - Date.parse(cultureDate)) / 86400000) *
+    0.7
 
 export const yeastCount = (
   { amount, form, cultureDate }: Yeast,
+  currentDate: string = new Date().toString(),
   cellDensity: number = 8,
   //billion cells / ml
   slurryDensity: number = 1
@@ -165,8 +168,7 @@ export const yeastCount = (
     case YeastForms.dry:
       return cellDensity * amount * 1000
     case YeastForms.liquid:
-      //TODO find information about amount of the liquid packs in breewxml
-      return 100 * (viability(cultureDate) / 100) * amount
+      return 100 * (viability(currentDate, cultureDate) / 100) * amount
     case YeastForms.slant:
       return slurryDensity * amount * 1000
     default:

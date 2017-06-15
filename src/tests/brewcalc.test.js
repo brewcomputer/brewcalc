@@ -255,8 +255,11 @@ test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
   )
   expect(yeastCount({ ...yeast })).toBeCloseTo(88, 1)
   expect(
-    yeastCount({ ...yeast, form: YeastForms.liquid, amount: 1 })
+    yeastCount({ ...yeast, form: YeastForms.liquid, amount: 1 }, '14 June 2017')
   ).toBeCloseTo(30, 1)
+  expect(
+    yeastCount({ ...yeast, form: YeastForms.liquid, amount: 1 }, '06 Mar 2017')
+  ).toBeCloseTo(100, 1)
   expect(
     yeastCount({ ...yeast, form: YeastForms.slant, amount: 1 })
   ).toBeCloseTo(1000, 1)
