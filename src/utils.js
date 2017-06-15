@@ -16,6 +16,14 @@ export const ouncesToLiters = (o: number) => o * 0.0295735
 
 export const litersToGallons = (l: number) => litersToOunces(l) / 128
 
+export const fahrenheitToCelsius = (f: number) => (f - 32) / 1.8
+
+export const celsiusToFahrenheit = (c: number) => c * 1.8 + 32
+
+export const kpaToPsi = (kpa: number) => kpa * 0.14503773773020923
+
+export const psiTokpa = (psi: number) => psi * 6.894757293168361
+
 export const sgToPlato = (sg: number) =>
   -668.962 + 1262.45 * sg - 776.43 * Math.pow(sg, 2) + 182.94 * Math.pow(sg, 3)
 

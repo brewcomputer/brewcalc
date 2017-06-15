@@ -15,10 +15,11 @@ import {
   srmToRgb,
   yeastNeeded,
   yeastCount,
-  yeastStarterGrow
+  yeastStarterGrow,
+  carbonization
 } from '../brewcalc'
 
-import { sgToPlato } from '../utils.js'
+import { sgToPlato, kpaToPsi } from '../utils.js'
 
 import { calculateVolumes } from '../volumes'
 
@@ -303,4 +304,25 @@ test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
   expect(
     yeastStarterGrow(488, starterSize, gravity, batchSize).pitchRate
   ).toBeCloseTo(2348143, 0)
+})
+
+test('carbonization', () => {
+  const carbVolume = 2.4
+  const t = 4.4
+  const batchSize = 18.93
+  expect(carbonization(carbVolume, t, batchSize).kegPressure).toBeCloseTo(
+    kpaToPsi(77.15),
+    1
+  )
+
+  expect(carbonization(carbVolume, t, batchSize).kegSugar).toBeCloseTo(
+    35.70,
+    0
+  )
+
+  expect(carbonization(carbVolume, t, batchSize).cornSugar).toBeCloseTo(
+    71.40,
+    0
+  )
+  expect(carbonization(carbVolume, t, batchSize).dme).toBeCloseTo(109.82, 0)
 })

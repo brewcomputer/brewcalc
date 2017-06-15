@@ -10,7 +10,8 @@ import {
   litersToOunces,
   poundsTokg,
   sgToPlato,
-  sum
+  sum,
+  celsiusToFahrenheit
 } from './utils.js'
 import type { Equipment } from './types/equipment'
 import type { Hop } from './types/hop'
@@ -211,5 +212,43 @@ export const yeastStarterGrow = (
     growthRate: growthRate,
     endingCount: endingCount,
     pitchRate: pitchRate
+  }
+}
+
+//https://byo.com/yeast/item/164-balancing-your-draft-system-advanced-brewing
+const kegPressure = (carbVolume: number, t: number) =>
+  Math.max(
+    0,
+    -16.6999 -
+      0.0101059 * t +
+      0.00116512 * t * t +
+      0.173354 * t * carbVolume +
+      4.24267 * carbVolume -
+      0.0684226 * carbVolume * carbVolume
+  )
+
+//http://www.homebrewtalk.com/showthread.php?t=441383
+const primingSugar = (carbVolume, t, batchSize) =>
+  15.195 *
+  batchSize *
+  (carbVolume - 3.0378 + 5.0062e-2 * t - 2.6555e-4 * t * t)
+
+const normalizeTemp = (t: number) => Math.max(32.0, celsiusToFahrenheit(t))
+
+export const carbonization = (
+  carbVolume: number,
+  t: number,
+  batchSize: number
+) => {
+  const sugar = primingSugar(
+    carbVolume,
+    normalizeTemp(t),
+    litersToGallons(batchSize)
+  )
+  return {
+    kegPressure: kegPressure(carbVolume, normalizeTemp(t)),
+    kegSugar: sugar * 0.5,
+    cornSugar: sugar,
+    dme: sugar * 1.538
   }
 }
