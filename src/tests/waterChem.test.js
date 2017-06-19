@@ -69,7 +69,7 @@ test('calcWaterChemistry', () => {
     alkalinity: 308
   }
   const difference: Water = {
-    name: 'difference source water from targer',
+    name: 'difference source water from target',
     Ca: 30,
     Mg: 3,
     SO4: 25,

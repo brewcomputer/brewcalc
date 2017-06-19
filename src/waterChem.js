@@ -101,7 +101,7 @@ export const calcWaterChemistry = (
   }
 
   const difference: Water = {
-    name: 'difference source water from targer',
+    name: 'difference source water from target',
     Ca: adjustedWater.Ca - target.Ca,
     Mg: adjustedWater.Mg - target.Mg,
     SO4: adjustedWater.SO4 - target.SO4,
