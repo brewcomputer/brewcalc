@@ -5,7 +5,6 @@ declare var expect: any;
 import { calcWaterChemistry } from '../waterChem'
 import type { Water } from '../types/water'
 import type { SaltAdditions } from '../types/saltAdditions'
-import { waterList } from './data/waterList'
 
 test('calcWaterChemistry', () => {
   const batchSize = 20
