@@ -45,35 +45,7 @@ export const bitternessRatio = (ibu: number, gu: number) => ibu / gu
 
 //rager
 const ragerHopGravityAdjustment = sgb => sgb <= 1.050 ? 0 : (sgb - 1.050) / 0.2
-const ragerHopUtil = time => {
-  if (time == 0) {
-    return 0.0
-  } else if (time <= 5) {
-    return 0.05
-  } else if (time <= 10) {
-    return 0.06
-  } else if (time <= 15) {
-    return 0.08
-  } else if (time <= 20) {
-    return 0.101
-  } else if (time <= 25) {
-    return 0.121
-  } else if (time <= 30) {
-    return 0.153
-  } else if (time <= 35) {
-    return 0.188
-  } else if (time <= 40) {
-    return 0.228
-  } else if (time <= 45) {
-    return 0.269
-  } else if (time <= 50) {
-    return 0.281
-  } else if (time <= 55) {
-    return 0.291
-  } else {
-    return 0.30
-  }
-}
+const ragerUtil = time => 18.11 + 13.86 * Math.tanh((time - 31.32) / 18.27)
 
 const ragerHopIbuFromWeight = (util, alpha, wt, vol, ga, wtFactor) =>
   util * alpha * wt * wtFactor / (vol * (1.0 + ga))
@@ -88,7 +60,7 @@ export const ragerHopIbu = (
   time <= 0.0 || amount <= 0.0 || alpha < 0.0
     ? 0
     : ragerHopIbuFromWeight(
-        ragerHopUtil(Math.floor(time + 0.5)),
+        ragerUtil(Math.floor(time + 0.5)) * 0.01,
         alpha,
         amount,
         vol,
