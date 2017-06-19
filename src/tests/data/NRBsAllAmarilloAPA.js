@@ -3,6 +3,9 @@ import type { Equipment } from '../../types/equipment'
 import type { Recipe } from '../../types/recipe'
 import { RecipeTypes } from '../../types/recipe'
 import { FermentableTypes } from '../../types/fermentable'
+import { HopForms, HopUse } from '../../types/hop'
+import { YeastForms, YeastTypes } from '../../types/yeast'
+import { MashType } from '../../types/mashStep'
 
 export const recipe: Recipe = {
   name: 'NRB\'s All Amarillo APA',
@@ -15,7 +18,7 @@ export const recipe: Recipe = {
       type: FermentableTypes.grain,
       addAfterBoil: false,
       amount: 4.9720548,
-      color: 2,
+      color: 3.94,
       potential: 1.0363400,
       yield: 0.79
     },
@@ -23,7 +26,7 @@ export const recipe: Recipe = {
       type: FermentableTypes.grain,
       addAfterBoil: false,
       amount: 0.9944110,
-      color: 9,
+      color: 17.73,
       potential: 1.0368000,
       yield: 0.80
     },
@@ -31,17 +34,66 @@ export const recipe: Recipe = {
       type: FermentableTypes.grain,
       addAfterBoil: false,
       amount: 0.4972055,
-      color: 30,
+      color: 59.1,
       potential: 1.0345000,
       yield: 0.75
     }
   ],
-  hops: [],
+  hops: [
+    {
+      alpha: 0.085,
+      amount: 0.0217042,
+      form: HopForms.pellet,
+      time: 60,
+      use: HopUse.boil
+    },
+    {
+      alpha: 0.085,
+      amount: 0.0277331,
+      form: HopForms.pellet,
+      time: 20,
+      use: HopUse.boil
+    },
+    {
+      alpha: 0.085,
+      amount: 0.0313505,
+      form: HopForms.pellet,
+      time: 5,
+      use: HopUse.boil
+    }
+  ],
   mash: {
     grainTemp: 22.2222222,
-    mashSteps: []
+    mashSteps: [
+      {
+        name: 'Mash In',
+        endTemp: 66.6666667,
+        infuseAmount: 16.8569152,
+        rampTime: 2,
+        stepTemp: 66.6666667,
+        stepTime: 60,
+        type: MashType.infusion
+      },
+      {
+        name: 'Mash Out',
+        endTemp: 75.5555556,
+        infuseAmount: 9.4398725,
+        rampTime: 2,
+        stepTemp: 75.5555556,
+        stepTime: 10,
+        type: MashType.infusion
+      }
+    ]
   },
-  yeasts: []
+  yeasts: [
+    {
+      amount: 0.0502753,
+      attenuation: 0.765,
+      cultureDate: '06 Mar 2011',
+      form: YeastForms.dry,
+      type: YeastTypes.ale
+    }
+  ]
 }
 
 export const equipment: Equipment = {

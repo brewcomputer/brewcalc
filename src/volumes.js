@@ -28,7 +28,7 @@ export const calculateVolumes = (
       ({ amount, type }) => type == FermentableTypes.grain ? amount : 0
     )
   )
-  const grainAbsorbtionRatio = 0.12 //number of ounces of water absorbed per ounce of the grain
+  const grainAbsorbtionRatio = 0.96 //number of ounces of water absorbed per ounce of the grain
   const grainAbsorbtion = ouncesToLiters(
     kgToOunces(mashGrainWeight) * grainAbsorbtionRatio
   )

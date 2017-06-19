@@ -79,7 +79,7 @@ test('mashGrainWeight', () => {
 test('grainAbsorbtion', () => {
   expect(
     calculateVolumes(AussieAle, AussieAleEquipment).grainAbsorbtion
-  ).toBeCloseTo(0.66, 2)
+  ).toBeCloseTo(5.27, 2)
 })
 
 test('totalMashWaterAdds', () => {
@@ -97,13 +97,13 @@ test('mashVolumeNeeded', () => {
 test('waterAvailFromMash', () => {
   expect(
     calculateVolumes(AussieAle, AussieAleEquipment).waterAvailFromMash
-  ).toBeCloseTo(23.79, 2)
+  ).toBeCloseTo(19.17, 2)
 })
 
 test('spargeVol', () => {
   expect(calculateVolumes(AussieAle, AussieAleEquipment).spargeVol).toBeCloseTo(
-    16.36,
-    2
+    20.97,
+    1
   )
 })
 
@@ -140,7 +140,7 @@ test('estBottlingVol', () => {
 test('totalWater', () => {
   expect(
     calculateVolumes(AussieAle, AussieAleEquipment).totalWater
-  ).toBeCloseTo(40.81, 2)
+  ).toBeCloseTo(45.42, 2)
 })
 
 test('estABW, estABV', () => {
