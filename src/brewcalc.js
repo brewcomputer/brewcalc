@@ -74,7 +74,7 @@ export const estABW = (ogPts: number, fgPts: number) => (ogPts - fgPts) * 0.105
 export const estABV = (ogPts: number, fgPts: number) => (ogPts - fgPts) * 0.132
 
 //http://beersmith.com/blog/2010/09/07/apparent-and-real-attenuation-for-beer-brewers-part-1/
-export const estABVrealExtract = (og, fg) => {
+export const estABVrealExtract = (og: number, fg: number) => {
   const oe = sgToPlato(og)
   const ae = sgToPlato(fg)
   const re = 0.1808 * oe + 0.8192 * ae
