@@ -1,248 +1,44 @@
 // @flow
 declare var test: any;
 declare var expect: any;
-import { recipe, equipment } from './data/NRBsAllAmarilloAPA.js'
+import { recipe, equipment } from './data/NRBsAllAmarilloAPA'
+import { recipeTest } from './recipeTest'
 
-import {
-  gravityPoints,
-  originalGravity,
-  boilGravity,
-  finalGravity,
-  estABW,
-  estABV,
-  estABVrealExtract,
-  yeastNeeded,
-  colorSRM,
-  carbonation,
-  yeastCount,
-  yeastStarterGrow
-} from '../brewcalc'
-import { calculateVolumes } from '../volumes'
-import { scaleRecipe, kpaToPsi, sgToPlato } from '../utils.js'
+const expectedNRBsAllAmarilloAPA = {
+  OG: 1.04,
+  //40.6
+  IbuTinseth: 42.4,
+  //39.2
+  IbuRager: 37.3,
+  MashGrainWeight: 6.46,
+  MashGrainAbsorbtion: 6.47,
+  TotalMashWaterAdds: 29.33,
+  //33.54
+  MashVolumeNeeded: 33.66,
+  WaterAvailFromMash: 22.85,
+  SpargeVol: 17.296,
+  EstPreBoilVolume: 37.12,
+  BoilOffVolume: 10.18,
+  PostBoilVolume: 26.937,
+  CoolingShrinkage: 1.08,
+  EstBottlingVol: 21.319,
+  TotalWater: 46.62,
+  EstABW: 0,
+  //6
+  EstABV: 7.1,
+  EstABVRE: 7.15,
+  //7.7
+  ColorSRMvalue: 13.25,
+  ColorEBCvalue: 26.1,
 
-import type { Yeast } from '../types/yeast'
-import { YeastTypes, YeastForms } from '../types/yeast'
+  YeastNeeded: 172.3,
+  GrowthRate: 1.4,
+  YeastCount: 402.2,
 
-import {
-  bitternessIbuTinseth,
-  bitternessRatio,
-  bitternessIbuRager
-} from '../hops'
+  KegPressure: 69.7,
+  KegSugar: 38.6,
+  CornSugar: 77,
+  Dme: 119
+}
 
-const expectedOG = 1.04
-//40.6
-const expectedIbuTinseth = 42.4
-//39.2
-const expectedIbuRager = 37.3
-const expectedMashGrainWeight = 6.46
-const expectedMashGrainAbsorbtion = 6.47
-const expectedTotalMashWaterAdds = 29.33
-//33.54
-const expectedMashVolumeNeeded = 33.66
-const expectedWaterAvailFromMash = 22.85
-const expectedSpargeVol = 17.296
-const expectedEstPreBoilVolume = 37.12
-const expectedBoilOffVolume = 10.18
-const expectedPostBoilVolume = 26.937
-const expectedCoolingShrinkage = 1.08
-const expectedEstBottlingVol = 21.319
-const expectedTotalWater = 46.62
-const expectedEstABW = 0
-//6
-const expectedEstABV = 7.1
-const expectedEstABVRE = 7.15
-//7.7
-const expectedColorSRMvalue = 13.25
-const expectedColorEBCvalue = 26.1
-
-const expectedYeastNeeded = 172.3
-const expectedGrowthRate = 1.4
-const expectedYeastCount = 402.2
-
-const expectedKegPressure = 69.7
-const expectedKegSugar = 38.6
-const expectedCornSugar = 77
-const expectedDme = 119
-
-test('calc NRBsAllAmarilloAPA original', () => {
-  const volumes = calculateVolumes(recipe, equipment)
-  const og = originalGravity(
-    volumes.estPreBoilVolume,
-    gravityPoints(recipe, equipment)
-  )
-  const bg = boilGravity(recipe.batchSize, equipment.boilSize, og)
-  const ogPts = originalGravity(
-    equipment.batchSize,
-    gravityPoints(recipe, equipment)
-  ) - 1
-  const fgPts = finalGravity(
-    equipment.batchSize,
-    gravityPoints(recipe, equipment, recipe.yeasts[0].attenuation)
-  ) - 1
-  const avgBoilGravityPts = (ogPts + fgPts) / 2
-  expect(og).toBeCloseTo(expectedOG, 2)
-  expect(
-    bitternessIbuTinseth(
-      recipe,
-      avgBoilGravityPts,
-      equipment.batchSize + equipment.trubChillerLoss
-    )
-  ).toBeCloseTo(expectedIbuTinseth, 0)
-  expect(
-    bitternessIbuRager(
-      recipe,
-      bg,
-      equipment.batchSize + equipment.trubChillerLoss
-    )
-  ).toBeCloseTo(expectedIbuRager, 0)
-})
-
-test('mashGrainWeight', () => {
-  expect(calculateVolumes(recipe, equipment).mashGrainWeight).toBeCloseTo(
-    expectedMashGrainWeight,
-    2
-  )
-})
-test('grainAbsorbtion', () => {
-  expect(calculateVolumes(recipe, equipment).grainAbsorbtion).toBeCloseTo(
-    expectedMashGrainAbsorbtion,
-    2
-  )
-})
-
-test('totalMashWaterAdds', () => {
-  expect(calculateVolumes(recipe, equipment).totalMashWaterAdds).toBeCloseTo(
-    expectedTotalMashWaterAdds,
-    2
-  )
-})
-
-test('mashVolumeNeeded', () => {
-  expect(calculateVolumes(recipe, equipment).mashVolumeNeeded).toBeCloseTo(
-    expectedMashVolumeNeeded,
-    2
-  )
-})
-
-test('waterAvailFromMash', () => {
-  expect(calculateVolumes(recipe, equipment).waterAvailFromMash).toBeCloseTo(
-    expectedWaterAvailFromMash,
-    2
-  )
-})
-
-test('spargeVol', () => {
-  expect(calculateVolumes(recipe, equipment).spargeVol).toBeCloseTo(
-    expectedSpargeVol,
-    2
-  )
-})
-
-test('estPreBoilVolume', () => {
-  expect(calculateVolumes(recipe, equipment).estPreBoilVolume).toBeCloseTo(
-    expectedEstPreBoilVolume,
-    2
-  )
-})
-
-test('boilOffVolume', () => {
-  expect(calculateVolumes(recipe, equipment).boilOffVolume).toBeCloseTo(
-    expectedBoilOffVolume,
-    2
-  )
-})
-
-test('postBoilVolume', () => {
-  expect(calculateVolumes(recipe, equipment).postBoilVolume).toBeCloseTo(
-    expectedPostBoilVolume,
-    2
-  )
-})
-
-test('coolingShrinkage', () => {
-  expect(calculateVolumes(recipe, equipment).coolingShrinkage).toBeCloseTo(
-    expectedCoolingShrinkage,
-    2
-  )
-})
-
-test('estBottlingVol', () => {
-  expect(calculateVolumes(recipe, equipment).estBottlingVol).toBeCloseTo(
-    expectedEstBottlingVol,
-    2
-  )
-})
-
-test('totalWater', () => {
-  expect(calculateVolumes(recipe, equipment).totalWater).toBeCloseTo(
-    expectedTotalWater,
-    2
-  )
-})
-
-test('estABW, estABV', () => {
-  const ogPts = originalGravity(
-    recipe.batchSize,
-    gravityPoints(recipe, equipment)
-  ) - 1
-
-  const fgPts = finalGravity(
-    recipe.batchSize,
-    gravityPoints(recipe, equipment, recipe.yeasts[0].attenuation)
-  ) - 1
-
-  expect(estABV(ogPts * 1000, fgPts * 1000)).toBeCloseTo(expectedEstABV, 2)
-  expect(estABVrealExtract(1 + ogPts, 1 + fgPts)).toBeCloseTo(
-    expectedEstABVRE,
-    2
-  )
-})
-
-test('colorSRMvalue, srmToRgb', () => {
-  const volume = equipment.batchSize
-
-  //http://beersmith.com/blog/2008/04/29/beer-color-understanding-srm-lovibond-and-ebc/
-  const colorSRMvalue = colorSRM(recipe, volume)
-  const colorEBCvalue = 1.97 * colorSRMvalue
-
-  expect(colorSRMvalue).toBeCloseTo(expectedColorSRMvalue, 1)
-  expect(colorEBCvalue).toBeCloseTo(expectedColorEBCvalue, 1)
-})
-
-test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
-  const yeast = recipe.yeasts[0]
-  const batchSize = equipment.batchSize
-  const pitchRate = yeast.type === YeastTypes.ale ? 0.75 : 1.5
-  const gravity = expectedOG
-  const starterSize = 1
-  expect(yeastNeeded(pitchRate, batchSize, sgToPlato(gravity))).toBeCloseTo(
-    expectedYeastNeeded,
-    1
-  )
-  expect(yeastCount({ ...yeast })).toBeCloseTo(expectedYeastCount, 1)
-
-  expect(
-    yeastStarterGrow(88, starterSize, gravity, batchSize).growthRate
-  ).toBeCloseTo(expectedGrowthRate, 1)
-})
-
-test('carbonation', () => {
-  const carbVolume = 2.3
-  const t = 4.4
-  const batchSize = equipment.batchSize
-
-  expect(carbonation(carbVolume, t, batchSize).kegPressure).toBeCloseTo(
-    kpaToPsi(expectedKegPressure),
-    1
-  )
-
-  expect(carbonation(carbVolume, t, batchSize).kegSugar).toBeCloseTo(
-    expectedKegSugar,
-    0
-  )
-  expect(carbonation(carbVolume, t, batchSize).cornSugar).toBeCloseTo(
-    expectedCornSugar,
-    0
-  )
-  expect(carbonation(carbVolume, t, batchSize).dme).toBeCloseTo(expectedDme, 0)
-})
+recipeTest(expectedNRBsAllAmarilloAPA, recipe, equipment)
