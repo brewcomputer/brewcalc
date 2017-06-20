@@ -4,7 +4,7 @@ declare var expect: any;
 import { recipe, equipment } from './data/NRBsAllAmarilloAPA'
 import { recipeTest } from './recipeTest'
 
-const expectedNRBsAllAmarilloAPA = {
+const expected = {
   OG: 1.04,
   //40.6
   IbuTinseth: 42.4,
@@ -41,4 +41,4 @@ const expectedNRBsAllAmarilloAPA = {
   Dme: 119
 }
 
-recipeTest(expectedNRBsAllAmarilloAPA, recipe, equipment)
+recipeTest(expected, recipe, equipment)
