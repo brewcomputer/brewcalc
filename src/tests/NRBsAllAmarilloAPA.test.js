@@ -77,7 +77,6 @@ test('calc NRBsAllAmarilloAPA original', () => {
     gravityPoints(recipe, equipment, recipe.yeasts[0].attenuation)
   ) - 1
   const avgBoilGravityPts = (ogPts + fgPts) / 2
-  console.log(fgPts)
   expect(og).toBeCloseTo(expectedOG, 2)
   expect(
     bitternessIbuTinseth(
