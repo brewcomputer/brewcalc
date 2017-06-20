@@ -5,9 +5,11 @@ import { recipe, equipment } from './data/Kolsch'
 import { recipeTest } from './recipeTest'
 
 const expected = {
-  OG: 1.036,
-  IbuTinseth: 1,
-  IbuRager: 1,
+  OG: 1.0305,
+  //31.9
+  IbuTinseth: 28.36,
+  //32.3
+  IbuRager: 25.87,
 
   MashGrainWeight: 4.32,
   MashGrainAbsorbtion: 2.64,
@@ -19,7 +21,8 @@ const expected = {
   BoilOffVolume: 7.28,
   PostBoilVolume: 23.1,
   CoolingShrinkage: 0.92,
-  EstBottlingVol: 0,
+  //17.59
+  EstBottlingVol: 17.30,
   TotalWater: 33.02,
 
   EstABW: 0,
@@ -31,9 +34,8 @@ const expected = {
   ColorSRMvalue: 4.1,
   ColorEBCvalue: 8.1,
 
-  YeastNeeded: 128.47,
+  YeastNeeded: 109.35,
   GrowthRate: 1.4,
-  //960
   YeastCount: 993.7,
 
   KegPressure: 69.67,
