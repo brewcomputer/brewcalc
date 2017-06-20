@@ -53,13 +53,16 @@ const expectedEstABV = 7.1
 const expectedEstABVRE = 7.15
 //7.7
 const expectedColorSRMvalue = 13.25
-const expectedColorEBCvalue = 0
-const expectedYeastNeeded = 0
-const expectedYeastCount = 0
-const expectedKegPressure = 0
-const expectedKegSugar = 0
-const expectedCornSugar = 0
-const expectedDme = 0
+const expectedColorEBCvalue = 26.1
+
+const expectedYeastNeeded = 172.3
+const expectedGrowthRate = 1.4
+const expectedYeastCount = 402.2
+
+const expectedKegPressure = 69.7
+const expectedKegSugar = 38.6
+const expectedCornSugar = 77
+const expectedDme = 119
 
 test('calc NRBsAllAmarilloAPA original', () => {
   const volumes = calculateVolumes(recipe, equipment)
@@ -188,16 +191,13 @@ test('estABW, estABV', () => {
     gravityPoints(recipe, equipment, recipe.yeasts[0].attenuation)
   ) - 1
 
-  //?
-  //expect(estABW(ogPts * 1000, fgPts * 1000)).toBeCloseTo(expectedEstABW, 2)
-
   expect(estABV(ogPts * 1000, fgPts * 1000)).toBeCloseTo(expectedEstABV, 2)
   expect(estABVrealExtract(1 + ogPts, 1 + fgPts)).toBeCloseTo(
     expectedEstABVRE,
     2
   )
 })
-/*
+
 test('colorSRMvalue, srmToRgb', () => {
   const volume = equipment.batchSize
 
@@ -207,7 +207,6 @@ test('colorSRMvalue, srmToRgb', () => {
 
   expect(colorSRMvalue).toBeCloseTo(expectedColorSRMvalue, 1)
   expect(colorEBCvalue).toBeCloseTo(expectedColorEBCvalue, 1)
-  //expect(srmToRgb(colorSRMvalue)).toBeCloseTo(16.8, 1)
 })
 
 test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
@@ -224,13 +223,14 @@ test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
 
   expect(
     yeastStarterGrow(88, starterSize, gravity, batchSize).growthRate
-  ).toBeCloseTo(1.4, 1)
+  ).toBeCloseTo(expectedGrowthRate, 1)
 })
 
 test('carbonation', () => {
   const carbVolume = 2.3
   const t = 4.4
   const batchSize = equipment.batchSize
+
   expect(carbonation(carbVolume, t, batchSize).kegPressure).toBeCloseTo(
     kpaToPsi(expectedKegPressure),
     1
@@ -246,4 +246,3 @@ test('carbonation', () => {
   )
   expect(carbonation(carbVolume, t, batchSize).dme).toBeCloseTo(expectedDme, 0)
 })
-*/
