@@ -12,7 +12,7 @@ export const recipe: Recipe = {
   type: RecipeTypes.allGrain,
   batchSize: 18.9271680,
   boilSize: 6.4447007,
-  boilTime: 60.0000000,
+  boilTime: 90.0000000,
   fermentables: [
     {
       type: FermentableTypes.grain,
