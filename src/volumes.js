@@ -14,7 +14,8 @@ export const calculateVolumes = (
     evapRate,
     coolingLossPct,
     trubChillerLoss,
-    topUpKettle
+    topUpKettle,
+    BIAB
   }: Equipment
 ) => {
   //TODO check that topUps corrections are correct
@@ -28,7 +29,8 @@ export const calculateVolumes = (
       ({ amount, type }) => type == FermentableTypes.grain ? amount : 0
     )
   )
-  const grainAbsorbtionRatio = 0.96 //number of ounces of water absorbed per ounce of the grain
+  const grainAbsorbtionRatio = BIAB ? 0.5860 : 0.96 //number of ounces of water absorbed per ounce of the grain
+
   const grainAbsorbtion = ouncesToLiters(
     kgToOunces(mashGrainWeight) * grainAbsorbtionRatio
   )

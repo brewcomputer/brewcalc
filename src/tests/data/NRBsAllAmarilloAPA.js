@@ -113,5 +113,6 @@ export const equipment: Equipment = {
   lauterDeadspace: 3.0300000,
   topUpKettle: 0.0000000,
   hopUtilization: '100.0000000',
-  coolingLossPct: 0.04
+  coolingLossPct: 0.04,
+  BIAB: false
 }

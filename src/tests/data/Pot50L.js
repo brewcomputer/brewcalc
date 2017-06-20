@@ -17,5 +17,6 @@ export const equipment: Equipment = {
   topUpKettle: 0,
   hopUtilization: '100.0000000',
   coolingLossPct: 0.04,
-  efficiency: 0.68
+  efficiency: 0.68,
+  BIAB: false
 }

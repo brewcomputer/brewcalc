@@ -96,5 +96,6 @@ export const equipment: Equipment = {
   evapRate: 0.159771335,
   lauterDeadspace: 0,
   topUpKettle: 0,
-  trubChillerLoss: 3.17
+  trubChillerLoss: 3.17,
+  BIAB: true
 }

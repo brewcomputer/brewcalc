@@ -7,5 +7,6 @@ export type Equipment = {
   coolingLossPct: number,
   trubChillerLoss: number,
   lauterDeadspace: number,
-  topUpKettle: number
+  topUpKettle: number,
+  BIAB: boolean
 };

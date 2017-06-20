@@ -327,5 +327,6 @@ export const equipment: Equipment = {
   displayTopUpWater: '1.75 gal',
   displayTrubChillerLoss: '0.25 gal',
   displayLauterDeadspace: '0.25 gal',
-  displayTopUpKettle: '0.00 gal'
+  displayTopUpKettle: '0.00 gal',
+  BIAB: false
 }
