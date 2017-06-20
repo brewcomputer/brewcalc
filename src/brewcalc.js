@@ -68,6 +68,7 @@ const fermentableGravityPoints = (potential, amount, efficiency = 1) =>
   (potential - 1) * kgToPounds(amount) * efficiency
 
 //http://byo.com/bock/item/408-calculating-alcohol-content-attenuation-extract-and-calories-advanced-homebrewing
+//https://www.brewersfriend.com/2011/06/16/alcohol-by-volume-calculator-updated/
 //ABW = (OG points - FG points) * 0.105
 //ABV = (OG points - FG points) * 0.132
 export const estABW = (ogPts: number, fgPts: number) => (ogPts - fgPts) * 0.105
