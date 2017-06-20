@@ -73,6 +73,16 @@ const fermentableGravityPoints = (potential, amount, efficiency = 1) =>
 export const estABW = (ogPts: number, fgPts: number) => (ogPts - fgPts) * 0.105
 export const estABV = (ogPts: number, fgPts: number) => (ogPts - fgPts) * 0.132
 
+//http://beersmith.com/blog/2010/09/07/apparent-and-real-attenuation-for-beer-brewers-part-1/
+export const estABVrealExtract = (og, fg) => {
+  const oe = sgToPlato(og)
+  const ae = sgToPlato(fg)
+  const re = 0.1808 * oe + 0.8192 * ae
+  const abw = (oe - re) / (2.0665 - 0.010665 * oe)
+  const abv = abw * (fg / 0.79661)
+  return abv
+}
+
 //MCU = (weight of grain in lbs)*(color of grain in lovibond) / (volume in gal) SRM = 1.4922 * MCU ^ 0.6859
 const mcu2srm = mcu => 1.4922 * Math.pow(mcu, 0.6859)
 

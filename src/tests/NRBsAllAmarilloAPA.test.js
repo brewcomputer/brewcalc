@@ -10,6 +10,7 @@ import {
   finalGravity,
   estABW,
   estABV,
+  estABVrealExtract,
   yeastNeeded,
   colorSRM,
   carbonation,
@@ -49,6 +50,7 @@ const expectedTotalWater = 46.62
 const expectedEstABW = 0
 //6
 const expectedEstABV = 7.1
+const expectedEstABVRE = 7.15
 //7.7
 const expectedColorSRMvalue = 13.25
 const expectedColorEBCvalue = 0
@@ -75,7 +77,7 @@ test('calc NRBsAllAmarilloAPA original', () => {
     gravityPoints(recipe, equipment, recipe.yeasts[0].attenuation)
   ) - 1
   const avgBoilGravityPts = (ogPts + fgPts) / 2
-
+  console.log(fgPts)
   expect(og).toBeCloseTo(expectedOG, 2)
   expect(
     bitternessIbuTinseth(
@@ -191,6 +193,10 @@ test('estABW, estABV', () => {
   //expect(estABW(ogPts * 1000, fgPts * 1000)).toBeCloseTo(expectedEstABW, 2)
 
   expect(estABV(ogPts * 1000, fgPts * 1000)).toBeCloseTo(expectedEstABV, 2)
+  expect(estABVrealExtract(1 + ogPts, 1 + fgPts)).toBeCloseTo(
+    expectedEstABVRE,
+    2
+  )
 })
 /*
 test('colorSRMvalue, srmToRgb', () => {
