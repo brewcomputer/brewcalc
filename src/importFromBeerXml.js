@@ -6,6 +6,8 @@ import type { Mash } from './types/mash'
 import type { MashStep } from './types/mashStep'
 import type { Yeast } from './types/yeast'
 
+import type { Equipment } from './types/equipment'
+
 // $FlowFixMe
 import * as XML from 'pixl-xml'
 // $FlowFixMe
@@ -15,6 +17,10 @@ const xmlToCamelCase = (xml: string) =>
   xml.replace(/<(?!!)(?!\?)[^>]*>/g, str => camelCase(str.toLowerCase()))
 
 const parseBool = (s: any) => s === 'TRUE' ? true : false
+const isBIAB = (mashName: any) => mashName.includes('BIAB')
+
+//TODO: May be it is not so good idea. But At the moment I can't figure out best practices for rounding operations.
+const dirtyRound = (n: number) => Math.round(n * 100000000000) / 100000000000
 
 export const importFromBeerXml = (xml: string) => {
   const doc = XML.parse(xmlToCamelCase(xml))
@@ -99,5 +105,25 @@ export const importFromBeerXml = (xml: string) => {
     mash: mash,
     yeasts: yeasts
   }
-  return recipe
+
+  const equipmentNode = doc.recipe.equipment
+  const equipment: Equipment = {
+    batchSize: parseFloat(equipmentNode.batchSize),
+    boilSize: parseFloat(equipmentNode.boilSize),
+    coolingLossPct: parseFloat(equipmentNode.coolingLossPct) * 0.01,
+
+    //TODO: is it part of eq or recipe.
+    efficiency: dirtyRound(parseFloat(recipeNode.efficiency) * 0.01),
+    evapRate: dirtyRound(parseFloat(equipmentNode.evapRate) * 0.01),
+    lauterDeadspace: parseFloat(equipmentNode.lauterDeadspace),
+    topUpKettle: parseFloat(equipmentNode.topUpKettle),
+    trubChillerLoss: parseFloat(equipmentNode.trubChillerLoss),
+
+    //TODO:: may be it is part of mashing steps, not eq
+    BIAB: isBIAB(doc.recipe.mash.name)
+  }
+  return {
+    recipe: recipe,
+    equipment: equipment
+  }
 }
