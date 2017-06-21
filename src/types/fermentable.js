@@ -1,7 +1,6 @@
 // @flow
 export type Fermentable = {
   color: number,
-  yield: number,
   amount: number,
   potential: number,
   addAfterBoil: boolean,

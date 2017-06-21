@@ -180,22 +180,22 @@ export const recipeTest = (
     expect(colorEBCvalue).toBeCloseTo(expected.ColorEBCvalue, 1)
   })
 
-  test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
-    const yeast = recipe.yeasts[0]
-    const batchSize = equipment.batchSize
-    const pitchRate = yeast.type === YeastTypes.ale ? 0.75 : 1.5
-    const gravity = expected.OG
-    const starterSize = 1
-    expect(yeastNeeded(pitchRate, batchSize, sgToPlato(gravity))).toBeCloseTo(
-      expected.YeastNeeded,
-      1
-    )
-    expect(yeastCount({ ...yeast })).toBeCloseTo(expected.YeastCount, 1)
+  //  test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
+  //    const yeast = recipe.yeasts[0]
+  //    const batchSize = equipment.batchSize
+  //    const pitchRate = yeast.type === YeastTypes.ale ? 0.75 : 1.5
+  //    const gravity = expected.OG
+  //    const starterSize = 1
+  //    expect(yeastNeeded(pitchRate, batchSize, sgToPlato(gravity))).toBeCloseTo(
+  //      expected.YeastNeeded,
+  //      1
+  //    )
+  //    expect(yeastCount({ ...yeast })).toBeCloseTo(expected.YeastCount, 1)
 
-    expect(
-      yeastStarterGrow(88, starterSize, gravity, batchSize).growthRate
-    ).toBeCloseTo(expected.GrowthRate, 1)
-  })
+  //    expect(
+  //      yeastStarterGrow(88, starterSize, gravity, batchSize).growthRate
+  //    ).toBeCloseTo(expected.GrowthRate, 1)
+  //  })
 
   test('carbonation', () => {
     const carbVolume = 2.3

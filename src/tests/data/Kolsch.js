@@ -8,7 +8,7 @@ import { YeastForms, YeastTypes } from '../../types/yeast'
 import { MashType } from '../../types/mashStep'
 
 export const recipe: Recipe = {
-  name: 'Krispy Kolsch',
+  name: 'Lloyd&#39;s Krispy Kolsch',
   batchSize: 19.0028767,
   boilSize: 30.3767465,
   boilTime: 90,
@@ -19,24 +19,21 @@ export const recipe: Recipe = {
       amount: 3.2412931,
       color: 2,
       potential: 1.0372600,
-      type: FermentableTypes.grain,
-      yield: 0.81
+      type: FermentableTypes.grain
     },
     {
       addAfterBoil: false,
       amount: 0.8640194,
       color: 3.4974619,
       potential: 1.0358800,
-      type: FermentableTypes.grain,
-      yield: 0.78
+      type: FermentableTypes.grain
     },
     {
       addAfterBoil: false,
       amount: 0.2164116,
       color: 2,
       potential: 1.0331200,
-      type: FermentableTypes.grain,
-      yield: 0.72
+      type: FermentableTypes.grain
     }
   ],
   hops: [
@@ -56,7 +53,7 @@ export const recipe: Recipe = {
     }
   ],
   mash: {
-    grainTemp: 22,
+    grainTemp: 22.2,
     mashSteps: [
       {
         name: 'Saccharification',
@@ -71,7 +68,7 @@ export const recipe: Recipe = {
         name: 'Mash Out',
         endTemp: 75.5555556,
         infuseAmount: 0,
-        rampTime: 10,
+        rampTime: 7,
         stepTemp: 75.5555556,
         stepTime: 10,
         type: MashType.temperature
@@ -83,7 +80,7 @@ export const recipe: Recipe = {
       amount: 0.1242095,
       attenuation: 0.75,
       cultureDate: '14 Jun 2003',
-      form: YeastForms.dry,
+      form: YeastForms.liquid,
       type: YeastTypes.ale
     }
   ]
