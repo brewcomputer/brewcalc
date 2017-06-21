@@ -18,7 +18,6 @@ export const calculateVolumes = (
     BIAB
   }: Equipment
 ) => {
-  //TODO check that topUps corrections are correct
   const fermentationTopUp = 0
 
   const starterSize = 0
