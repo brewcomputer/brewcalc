@@ -8,6 +8,8 @@ import type { Yeast } from './types/yeast'
 
 import type { Equipment } from './types/equipment'
 
+import type { Specifications } from './types/specifications'
+
 // $FlowFixMe
 import * as XML from 'pixl-xml'
 // $FlowFixMe
@@ -122,8 +124,19 @@ export const importFromBeerXml = (xml: string) => {
     //TODO:: may be it is part of mashing steps, not eq
     BIAB: isBIAB(doc.recipe.mash.name)
   }
+
+  const specifications: Specifications = {
+    og: parseFloat(recipeNode.og),
+    fg: parseFloat(recipeNode.fg),
+    abv: parseFloat(recipeNode.abv) * 0.01,
+    color: parseFloat(recipeNode.estColor),
+    ibuMethod: recipeNode.ibuMethod,
+    ibu: parseFloat(recipeNode.ibu),
+    calories: parseFloat(recipeNode.calories)
+  }
   return {
     recipe: recipe,
-    equipment: equipment
+    equipment: equipment,
+    specifications: specifications
   }
 }

@@ -1,6 +1,8 @@
 // @flow
 import type { Equipment } from '../../types/equipment'
 import type { Recipe } from '../../types/recipe'
+import type { Specifications } from '../../types/specifications'
+
 import { RecipeTypes } from '../../types/recipe'
 import { FermentableTypes } from '../../types/fermentable'
 import { HopForms, HopUse } from '../../types/hop'
@@ -95,4 +97,14 @@ export const equipment: Equipment = {
   topUpKettle: 0,
   trubChillerLoss: 3.17,
   BIAB: true
+}
+
+export const specifications: Specifications = {
+  og: 1.0490000,
+  fg: 1.0100000,
+  abv: 0.051,
+  color: 3.7,
+  ibu: 27.0,
+  ibuMethod: 'Tinseth',
+  calories: 455.8
 }
