@@ -224,3 +224,15 @@ export const carbonation = (
     dme: sugar * 1.538
   }
 }
+
+//http://beersmith.com/blog/2011/02/04/counting-calories-in-your-homebrewed-beer/
+//Calorie_from_alcohol = 1881.22 * FG * (OG-FG)/(1.775-OG)
+//Calories_from_carbs = 3550.0 * FG * ((0.1808 * OG) + (0.8192 * FG) – 1.0004)
+//Total calories – just add the Calories_from_alcohol to Calories_from_carbs
+
+const caloriesAlc = (og, fg) => 1881.22 * fg * ((og - fg) / (1.775 - og))
+const caloriesExt = (og, fg) =>
+  3550.0 * fg * (0.1808 * og + 0.8192 * fg - 1.0004)
+
+export const calcCalories = (og: number, fg: number) =>
+  caloriesAlc(og, fg) + caloriesExt(og, fg)
