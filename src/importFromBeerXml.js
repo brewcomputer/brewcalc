@@ -27,41 +27,65 @@ const dirtyRound = (n: number) => Math.round(n * 100000000000) / 100000000000
 export const importFromBeerXml = (xml: string) => {
   const doc = XML.parse(xmlToCamelCase(xml))
 
-  const fermentables = Array.from(doc.recipe.fermentables.fermentable).map(({
-    name,
-    addAfterBoil,
-    amount,
-    color,
-    potential,
-    type
-  }: Fermentable) => {
-    return {
-      name: name,
-      addAfterBoil: parseBool(addAfterBoil),
-      amount: parseFloat(amount),
-      color: parseFloat(color),
-      potential: parseFloat(potential),
-      type: type
-    }
-  })
+  const fermentableNode = doc.recipe.fermentables.fermentable
+  const fermentables = Array.isArray(fermentableNode)
+    ? Array.from(fermentableNode).map(({
+        name,
+        addAfterBoil,
+        amount,
+        color,
+        potential,
+        type
+      }: Fermentable) => {
+        return {
+          name: name,
+          addAfterBoil: parseBool(addAfterBoil),
+          amount: parseFloat(amount),
+          color: parseFloat(color),
+          potential: parseFloat(potential),
+          type: type
+        }
+      })
+    : [
+        {
+          name: fermentableNode.name,
+          addAfterBoil: parseBool(fermentableNode.addAfterBoil),
+          amount: parseFloat(fermentableNode.amount),
+          color: parseFloat(fermentableNode.color),
+          potential: parseFloat(fermentableNode.potential),
+          type: fermentableNode.type
+        }
+      ]
 
-  const hops = Array.from(doc.recipe.hops.hop).map(({
-    name,
-    alpha,
-    amount,
-    form,
-    use,
-    time
-  }: Hop) => {
-    return {
-      name: name,
-      alpha: parseFloat(alpha) * 0.01,
-      amount: parseFloat(amount),
-      form: form,
-      use: use,
-      time: parseFloat(time)
-    }
-  })
+  const hopNode = doc.recipe.hops.hop
+  const hops = Array.isArray(hopNode)
+    ? Array.from(hopNode).map(({
+        name,
+        alpha,
+        amount,
+        form,
+        use,
+        time
+      }: Hop) => {
+        return {
+          name: name,
+          alpha: parseFloat(alpha) * 0.01,
+          amount: parseFloat(amount),
+          form: form,
+          use: use,
+          time: parseFloat(time)
+        }
+      })
+    : [
+        {
+          name: hopNode.name,
+          alpha: parseFloat(hopNode.alpha) * 0.01,
+          amount: parseFloat(hopNode.amount),
+          form: hopNode.form,
+          use: hopNode.use,
+          time: parseFloat(hopNode.time)
+        }
+      ]
 
   const mashSteps = Array.from(doc.recipe.mash.mashSteps.mashStep).map(({
     name,
