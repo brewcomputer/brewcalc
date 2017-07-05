@@ -1,5 +1,6 @@
 // @flow
 export type Fermentable = {
+  name: string,
   color: number,
   amount: number,
   potential: number,

@@ -17,6 +17,7 @@ export const recipe: Recipe = {
   type: RecipeTypes.allGrain,
   fermentables: [
     {
+      name: 'Pilsner (2 Row) Ger',
       addAfterBoil: false,
       amount: 3.2412931,
       color: 2,
@@ -24,6 +25,7 @@ export const recipe: Recipe = {
       type: FermentableTypes.grain
     },
     {
+      name: 'Vienna Malt',
       addAfterBoil: false,
       amount: 0.8640194,
       color: 3.4974619,
@@ -31,6 +33,7 @@ export const recipe: Recipe = {
       type: FermentableTypes.grain
     },
     {
+      name: 'Cara-Pils/Dextrine',
       addAfterBoil: false,
       amount: 0.2164116,
       color: 2,
@@ -40,6 +43,7 @@ export const recipe: Recipe = {
   ],
   hops: [
     {
+      name: 'Hallertauer',
       alpha: 0.048,
       amount: 0.0332677,
       form: HopForms.pellet,
@@ -47,6 +51,7 @@ export const recipe: Recipe = {
       time: 60
     },
     {
+      name: 'Hallertauer',
       alpha: 0.048,
       amount: 0.0166339,
       form: HopForms.pellet,
@@ -88,6 +93,7 @@ export const recipe: Recipe = {
   ]
 }
 export const equipment: Equipment = {
+  name: 'Electric Urn (10 Gal/40 L) - BIAB',
   batchSize: 19.0028767,
   boilSize: 30.3767465,
   coolingLossPct: 0.04,

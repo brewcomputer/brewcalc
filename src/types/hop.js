@@ -1,5 +1,6 @@
 // @flow
 export type Hop = {
+  name: string,
   alpha: number,
   amount: number,
   use: string,

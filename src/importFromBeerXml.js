@@ -28,6 +28,7 @@ export const importFromBeerXml = (xml: string) => {
   const doc = XML.parse(xmlToCamelCase(xml))
 
   const fermentables = Array.from(doc.recipe.fermentables.fermentable).map(({
+    name,
     addAfterBoil,
     amount,
     color,
@@ -35,6 +36,7 @@ export const importFromBeerXml = (xml: string) => {
     type
   }: Fermentable) => {
     return {
+      name: name,
       addAfterBoil: parseBool(addAfterBoil),
       amount: parseFloat(amount),
       color: parseFloat(color),
@@ -44,6 +46,7 @@ export const importFromBeerXml = (xml: string) => {
   })
 
   const hops = Array.from(doc.recipe.hops.hop).map(({
+    name,
     alpha,
     amount,
     form,
@@ -51,6 +54,7 @@ export const importFromBeerXml = (xml: string) => {
     time
   }: Hop) => {
     return {
+      name: name,
       alpha: parseFloat(alpha) * 0.01,
       amount: parseFloat(amount),
       form: form,
@@ -110,6 +114,7 @@ export const importFromBeerXml = (xml: string) => {
 
   const equipmentNode = doc.recipe.equipment
   const equipment: Equipment = {
+    name: equipmentNode.name,
     batchSize: parseFloat(equipmentNode.batchSize),
     boilSize: parseFloat(equipmentNode.boilSize),
     coolingLossPct: parseFloat(equipmentNode.coolingLossPct) * 0.01,

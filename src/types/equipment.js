@@ -1,5 +1,6 @@
 // @flow
 export type Equipment = {
+  name: string,
   batchSize: number,
   boilSize: number,
   efficiency: number,

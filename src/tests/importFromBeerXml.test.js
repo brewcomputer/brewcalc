@@ -11,9 +11,7 @@ test('importFromBeerXml', () => {
     __dirname + '/data/Kolsh.xml',
     'utf8'
   )
-  expect(importFromBeerXml(xmlString).recipe).toMatchObject(recipe)
-  expect(importFromBeerXml(xmlString).equipment).toMatchObject(equipment)
-  expect(importFromBeerXml(xmlString).specifications).toMatchObject(
-    specifications
-  )
+  expect(importFromBeerXml(xmlString).recipe).toEqual(recipe)
+  expect(importFromBeerXml(xmlString).equipment).toEqual(equipment)
+  expect(importFromBeerXml(xmlString).specifications).toEqual(specifications)
 })
