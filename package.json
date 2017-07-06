@@ -7,10 +7,11 @@
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
+    "camelcase": "^4.1.0",
     "eslint-plugin-prettier": "^2.0.1",
     "flow-bin": "^0.47.0",
+    "gh-pages": "^1.0.0",
     "pixl-xml": "^1.0.10",
-    "camelcase": "^4.1.0",
     "prettier": "^0.22.0",
     "prettier-eslint": "^4.3.2",
     "react-scripts": "1.0.5"
@@ -20,6 +21,9 @@
     "test": "react-scripts test --env=jsdom",
     "coverage": "react-scripts test --env=jsdom --coverage",
     "start": "react-scripts start",
-    "build": "react-scripts build"
-  }
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "homepage": "http://superroma.github.io/brewcalc"
 }
