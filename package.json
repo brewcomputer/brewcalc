@@ -2,7 +2,10 @@
   "name": "brewcalc",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
   "devDependencies": {
     "eslint-plugin-prettier": "^2.0.1",
     "flow-bin": "^0.47.0",
@@ -15,6 +18,8 @@
   "scripts": {
     "flow": "flow",
     "test": "react-scripts test --env=jsdom",
-    "coverage": "react-scripts test --env=jsdom --coverage"
+    "coverage": "react-scripts test --env=jsdom --coverage",
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   }
 }
