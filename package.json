@@ -3,11 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "history": "^4.6.3",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.0.0",
+    "react-router-redux": "next",
+    "redux": "^3.7.1",
+    "seamless-immutable": "^7.1.2"
   },
   "devDependencies": {
     "camelcase": "^4.1.0",
+    "enzyme": "^2.9.1",
+    "react-test-renderer": "^15.6.1",
     "eslint-plugin-prettier": "^2.0.1",
     "flow-bin": "^0.47.0",
     "gh-pages": "^1.0.0",

@@ -1,0 +1,11 @@
+.app__layout {
+    margin: auto;
+    max-width: 900px;
+    margin-top: 5px;
+}
+
+@media (min-width: 48em) {
+    .app__layout {
+        margin-top: 20px;
+    }
+}
