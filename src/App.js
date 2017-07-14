@@ -2,14 +2,10 @@ import React from 'react';
 import Recipe from './components/Recipe'
 import { recipe } from './lib/tests/data/AussieAle.js'
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <Recipe recipe={recipe} />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="App">
+    <Recipe {...recipe} />
+  </div>
+)
 
 export default App;
