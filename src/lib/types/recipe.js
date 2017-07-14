@@ -1,5 +1,4 @@
 // @flow
-import type { Equipment } from './equipment'
 import type { Fermentable } from './fermentable'
 import type { Yeast } from './yeast'
 import type { Hop } from './hop'

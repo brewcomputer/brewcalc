@@ -1,8 +1,6 @@
 // @flow
 import type { Recipe } from './types/recipe'
 import type { Equipment } from './types/equipment'
-import type { Fermentable } from './types/fermentable'
-import type { Hop } from './types/hop'
 
 export const kgToOunces = (k: number) => k * 35.2739619
 

@@ -110,7 +110,7 @@ export const calcWaterChemistry = (
     HCO3: adjustedWater.HCO3 - target.HCO3,
     alkalinity: alkalinity(adjustedWater.HCO3 - target.HCO3)
   }
-  const sulphateChlorideRatio = 0
+
   return {
     adjustedWater: adjustedWater,
     dilutedWater: dilutedWater,

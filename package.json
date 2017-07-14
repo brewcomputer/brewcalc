@@ -20,6 +20,7 @@
   },
   "scripts": {
     "flow": "flow",
+    "lint": "eslint .",
     "test": "react-scripts test --env=jsdom",
     "coverage": "react-scripts test --env=jsdom --coverage",
     "start": "react-scripts start",

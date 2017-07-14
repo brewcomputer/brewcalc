@@ -1,7 +1,6 @@
 // @flow
 import { sum, kgToOunces, ouncesToLiters } from './utils.js'
 import { FermentableTypes } from './types/fermentable'
-import type { Fermentable } from './types/fermentable'
 import { MashType } from './types/mashStep'
 import type { Recipe } from './types/recipe'
 import type { Equipment } from './types/equipment'
@@ -18,14 +17,12 @@ export const calculateVolumes = (
     BIAB
   }: Equipment
 ) => {
-  const fermentationTopUp = 0
-
   const starterSize = 0
   const fermentationLoss = 1.70
 
   const mashGrainWeight = sum(
     fermentables.map(
-      ({ amount, type }) => type == FermentableTypes.grain ? amount : 0
+      ({ amount, type }) => type === FermentableTypes.grain ? amount : 0
     )
   )
   const grainAbsorbtionRatio = BIAB ? 0.5860 : 0.96 //number of ounces of water absorbed per ounce of the grain
@@ -38,7 +35,7 @@ export const calculateVolumes = (
     sum(
       mash.mashSteps.map(
         ({ type, infuseAmount }) =>
-          type != MashType.decoction ? infuseAmount : 0
+          type !== MashType.decoction ? infuseAmount : 0
       )
     )
 
