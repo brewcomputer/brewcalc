@@ -1,24 +1,18 @@
 // @flow
 import type { Recipe } from './types/recipe'
-import { RecipeTypes } from './types/recipe'
 import { FermentableTypes } from './types/fermentable'
 import type { Fermentable } from './types/fermentable'
 import {
   litersToGallons,
   kgToPounds,
-  kgToOunces,
-  litersToOunces,
   poundsTokg,
   sgToPlato,
   sum,
   celsiusToFahrenheit
 } from './utils.js'
 import type { Equipment } from './types/equipment'
-import type { Hop } from './types/hop'
-import { HopForms } from './types/hop'
-
 import type { Yeast } from './types/yeast'
-import { YeastTypes, YeastForms } from './types/yeast'
+import { YeastForms } from './types/yeast'
 
 export const originalGravity = (batchSize: number, ogPts: number) =>
   1.0 + ogPts / litersToGallons(batchSize)
@@ -128,7 +122,7 @@ export const yeastNeeded = (pitchRate: number, batchSize: number, e: number) =>
 const viability = (currentDate: string, cultureDate: string) =>
   100 -
   Math.floor((Date.parse(currentDate) - Date.parse(cultureDate)) / 86400000) *
-    0.7
+  0.7
 
 export const yeastCount = (
   { amount, form, cultureDate }: Yeast,
@@ -158,8 +152,8 @@ const growthRateCurveBraukaiserStir = (ratio: number) =>
   ratio < 1.4
     ? 1.4
     : ratio >= 1.4 && ratio <= 3.5 && yeastGrowth(ratio) > 0
-        ? yeastGrowth(ratio)
-        : 0
+      ? yeastGrowth(ratio)
+      : 0
 
 export const yeastStarterGrow = (
   startingYeastCount: number,
@@ -192,11 +186,11 @@ const kegPressure = (carbVolume: number, t: number) =>
   Math.max(
     0,
     -16.6999 -
-      0.0101059 * t +
-      0.00116512 * t * t +
-      0.173354 * t * carbVolume +
-      4.24267 * carbVolume -
-      0.0684226 * carbVolume * carbVolume
+    0.0101059 * t +
+    0.00116512 * t * t +
+    0.173354 * t * carbVolume +
+    4.24267 * carbVolume -
+    0.0684226 * carbVolume * carbVolume
   )
 
 //http://www.homebrewtalk.com/showthread.php?t=441383

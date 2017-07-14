@@ -1,7 +1,4 @@
 // @flow
-declare var test: any;
-declare var expect: any;
-
 import { importFromBeerXml } from '../importFromBeerXml'
 import * as fs from 'fs'
 
@@ -17,6 +14,9 @@ import {
 import { bitternessIbuTinseth } from '../hops'
 
 import { ouncesToLiters } from '../utils'
+
+declare var test: any;
+declare var expect: any;
 
 const xmlString: string = fs.readFileSync(
   __dirname + '/data/Kolsh.xml',

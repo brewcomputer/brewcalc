@@ -1,15 +1,15 @@
 // @flow
-declare var test: any;
-declare var expect: any;
 import {
   bitternessIbuTinseth,
   bitternessRatio,
   bitternessIbuRager
 } from '../hops'
 import { originalGravity, gravityPoints, finalGravity } from '../brewcalc'
-import { calculateVolumes } from '../volumes'
 import { recipe as AussieAle } from './data/AussieAle.js'
 import { equipment as AussieAleEquipment } from './data/AussieAle.js'
+
+declare var test: any;
+declare var expect: any;
 
 test('bitternessIbuTinseth', () => {
   const ogPts = originalGravity(

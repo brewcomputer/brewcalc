@@ -1,12 +1,12 @@
 // @flow
-declare var test: any;
-declare var expect: any;
-
 import { recipe, equipment, specifications } from './data/Kolsch'
 import { recipeOne } from './data/GenericOneHF'
 import { importFromBeerXml } from '../importFromBeerXml'
-
 import * as fs from 'fs'
+
+declare var test: any;
+declare var expect: any;
+
 test('importFromBeerXml', () => {
   const xmlString: string = fs.readFileSync(
     __dirname + '/data/Kolsh.xml',

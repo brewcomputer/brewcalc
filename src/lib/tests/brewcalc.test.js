@@ -1,6 +1,4 @@
 // @flow
-declare var test: any;
-declare var expect: any;
 
 import {
   originalGravity,
@@ -10,7 +8,6 @@ import {
   estABW,
   estABV,
   colorSRM,
-  srmToRgb,
   yeastNeeded,
   yeastCount,
   yeastStarterGrow,
@@ -27,7 +24,9 @@ import { recipe as MuddyPig } from './data/Muddy Pig.js'
 import { equipment as MuddyPigEquipment } from './data/Muddy Pig.js'
 import type { Yeast } from '../types/yeast'
 import { YeastTypes, YeastForms } from '../types/yeast'
-import type { Equipment } from '../types/equipment'
+
+declare var test: any;
+declare var expect: any;
 
 test('originalGravity', () => {
   const ogPtsAA = gravityPoints(AussieAle, AussieAleEquipment)
