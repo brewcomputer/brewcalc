@@ -1,5 +1,5 @@
-import React from 'react';
-import { Table, Panel } from 'react-bootstrap';
+import React from 'react'
+import { Table, Panel } from 'react-bootstrap'
 
 const Fermentables = () => (
     <Panel header="Fermentables">
@@ -36,4 +36,4 @@ const Fermentables = () => (
     </Panel>
 )
 
-export default Fermentables;
+export default Fermentables

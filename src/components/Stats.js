@@ -1,5 +1,5 @@
-import React from 'react';
-import { ProgressBar, Panel, Tabs, Tab } from 'react-bootstrap';
+import React from 'react'
+import { ProgressBar, Panel, Tabs, Tab } from 'react-bootstrap'
 
 const Stats = () => (
     <Panel header="Stats">
@@ -19,4 +19,4 @@ const Stats = () => (
     </Panel>
 )
 
-export default Stats;
+export default Stats

@@ -1,9 +1,9 @@
-import React from 'react';
-import { Panel } from 'react-bootstrap';
+import React from 'react'
+import { Panel } from 'react-bootstrap'
 
-const RecipeSpecs = () => (
+const RecipeSpecs = ({ type, batchSize, boilSize, boilTime }) => (
     <Panel header="Recipe Specs">
-        Here will be recipe specs like recipe.type, batchSize, boilSize and boilTime
-            </Panel>
+        {type}
+    </Panel>
 )
-export default RecipeSpecs;
+export default RecipeSpecs

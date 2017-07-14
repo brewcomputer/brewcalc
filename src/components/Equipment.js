@@ -1,5 +1,5 @@
-import React from 'react';
-import { Panel } from 'react-bootstrap';
+import React from 'react'
+import { Panel } from 'react-bootstrap'
 
 const Equipment = () => (
     <Panel header="Equipment">
@@ -7,4 +7,4 @@ const Equipment = () => (
     </Panel>
 )
 
-export default Equipment;
+export default Equipment
