@@ -13,7 +13,34 @@ exports[`renders correctly 1`] = `
   <div
     className="panel-body"
   >
-    All Grain
+    <ul
+      className="list-group"
+    >
+      <li
+        className="list-group-item"
+      >
+        Type: 
+        All Grain
+      </li>
+      <li
+        className="list-group-item"
+      >
+        BatchSize: 
+        23.02
+      </li>
+      <li
+        className="list-group-item"
+      >
+        BoilSize: 
+        37.1203164
+      </li>
+      <li
+        className="list-group-item"
+      >
+        BoilTime: 
+        90
+      </li>
+    </ul>
   </div>
 </div>
 `;

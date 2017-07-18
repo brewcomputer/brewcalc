@@ -1,9 +1,16 @@
 import React from 'react'
-import { Panel } from 'react-bootstrap'
+import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
 
-const RecipeSpecs = ({ type, batchSize, boilSize, boilTime }) => (
+const RecipeSpecs = ({ name, brewer, type, batchSize, boilSize, boilTime }) => (
     <Panel header="Recipe Specs">
-        {type}
+        <ListGroup>
+            <ListGroupItem>Name: {name}</ListGroupItem>
+            <ListGroupItem>Brewer: {brewer}</ListGroupItem>
+            <ListGroupItem>Type: {type}</ListGroupItem>
+            <ListGroupItem>BatchSize: {batchSize}</ListGroupItem>
+            <ListGroupItem>BoilSize: {boilSize}</ListGroupItem>
+            <ListGroupItem>BoilTime: {boilTime}</ListGroupItem>
+        </ListGroup>
     </Panel>
 )
 export default RecipeSpecs

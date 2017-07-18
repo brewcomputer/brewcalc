@@ -1,11 +1,10 @@
 // @flow
 import React from 'react'
-import Recipe from './components/Recipe'
-import { recipe } from './lib/tests/data/AussieAle.js'
+import RecipeUploader from './components/RecipeUploader'
 
 const App = () => (
   <div className="App">
-    <Recipe recipe={recipe} />
+    <RecipeUploader />
   </div>
 )
 

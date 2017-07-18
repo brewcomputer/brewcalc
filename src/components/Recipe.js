@@ -5,25 +5,16 @@ import Hops from './Hops'
 import Yeasts from './Yeasts'
 import Equipment from './Equipment'
 import Stats from './Stats'
-import { Grid, PageHeader, FormControl, FormGroup } from 'react-bootstrap'
+import { Grid } from 'react-bootstrap'
 
-const Recipe = ({ recipe }) => (
+const Recipe = ({ recipe, equipment }) => (
     <Grid>
-        <PageHeader> {recipe.name} <small> by {recipe.brewer}</small></PageHeader>
         <RecipeSpecs {...recipe} />
-        <Fermentables />
-        <Hops />
-        <Yeasts />
-        <Equipment />
+        <Fermentables {...recipe} />
+        <Hops {...recipe} />
+        <Yeasts {...recipe} />
+        <Equipment {...equipment} />
         <Stats />
-        <FormGroup>
-            <FormControl
-                id="formControlsFile"
-                type="file"
-                label="File"
-            />
-        </FormGroup>
-        Upload recipe in the BeerXml format
     </Grid >
 )
 export default Recipe

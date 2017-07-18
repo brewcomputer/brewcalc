@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, Panel } from 'react-bootstrap'
 
-const Fermentables = () => (
+const Fermentables = ({ fermentables }) => (
     <Panel header="Fermentables">
         <Table striped bordered condensed hover>
             <thead>
@@ -15,22 +15,16 @@ const Fermentables = () => (
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Pale Malt (2 Row) UK</td>
-                    <td>4.9250000</td>
-                    <td>4.4969891</td>
-                    <td>1.0299920</td>
-                    <td>false</td>
-                    <td>Grain</td>
-                </tr>
-                <tr>
-                    <td>Munich Malt - 20L</td>
-                    <td>39.4000000</td>
-                    <td>0.5188834</td>
-                    <td>1.0345000</td>
-                    <td>false</td>
-                    <td>Grain</td>
-                </tr>
+                {fermentables.map((i, index) => (
+                    <tr key={index}>
+                        <td>{i.name}</td>
+                        <td>{i.color}</td>
+                        <td>{i.amount}</td>
+                        <td>{i.potential}</td>
+                        <td>{i.addAfterBoil.toString()}</td>
+                        <td>{i.type}</td>
+                    </tr>
+                ))}
             </tbody>
         </Table>
     </Panel>
