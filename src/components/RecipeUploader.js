@@ -7,11 +7,8 @@ import { importFromBeerXml } from '../lib/importFromBeerXml'
 let recipe = undefined
 let equipment = undefined
 
-const RecipeUploader = () => {
-
-    const recipeContainer = <Recipe recipe={recipe} equipment={equipment} />
-
-    return (
+const RecipeUploader = () =>
+    (
         <Grid>
             <FormGroup>
                 <FormControl
@@ -27,16 +24,15 @@ const RecipeUploader = () => {
 
                             ReactDOM.render(
                                 <Recipe recipe={recipe} equipment={equipment} />,
-                                document.getElementById('root')
+                                document.getElementById('recipe')
                             )
                         }
                     }}
                 />
             </FormGroup>
             Upload recipe in the BeerXml format
-
-        {recipe !== undefined && recipeContainer}
+        <Recipe recipe={recipe} equipment={equipment} />
         </Grid >
     )
-}
+
 export default RecipeUploader

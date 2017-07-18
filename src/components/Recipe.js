@@ -8,13 +8,17 @@ import Stats from './Stats'
 import { Grid } from 'react-bootstrap'
 
 const Recipe = ({ recipe, equipment }) => (
-    <Grid>
-        <RecipeSpecs {...recipe} />
-        <Fermentables {...recipe} />
-        <Hops {...recipe} />
-        <Yeasts {...recipe} />
-        <Equipment {...equipment} />
-        <Stats />
+    <Grid id="recipe">
+        {recipe !== undefined &&
+            <div>
+                < RecipeSpecs {...recipe} />
+                <Fermentables {...recipe} />
+                <Hops {...recipe} />
+                <Yeasts {...recipe} />
+                <Equipment {...equipment} />
+                <Stats />
+            </div>
+        }
     </Grid >
 )
 export default Recipe
