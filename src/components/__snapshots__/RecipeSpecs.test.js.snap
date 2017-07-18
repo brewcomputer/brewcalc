@@ -19,6 +19,18 @@ exports[`renders correctly 1`] = `
       <li
         className="list-group-item"
       >
+        Name: 
+        Aussie Ale
+      </li>
+      <li
+        className="list-group-item"
+      >
+        Brewer: 
+        Steve Nicholls
+      </li>
+      <li
+        className="list-group-item"
+      >
         Type: 
         All Grain
       </li>
