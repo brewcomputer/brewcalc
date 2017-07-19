@@ -9,6 +9,7 @@
     "react-test-renderer": "^15.6.1"
   },
   "devDependencies": {
+    "eslint": "^4.2.0",
     "camelcase": "^4.1.0",
     "eslint-plugin-prettier": "^2.0.1",
     "flow-bin": "^0.47.0",
