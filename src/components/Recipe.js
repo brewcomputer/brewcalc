@@ -16,7 +16,7 @@ const Recipe = ({ recipe, equipment }) => (
                 <Hops {...recipe} />
                 <Yeasts {...recipe} />
                 <Equipment {...equipment} />
-                <Stats />
+                <Stats recipe={recipe} equipment={equipment} />
             </div>
         }
     </Grid >

@@ -1,22 +1,63 @@
 import React from 'react'
-import { ProgressBar, Panel, Tabs, Tab } from 'react-bootstrap'
+import { ListGroup, Panel, ListGroupItem } from 'react-bootstrap'
 
-const Stats = () => (
-    <Panel header="Stats">
-        <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-            <Tab eventKey={1} title="OG, FG, IBU, SRM, ABV">
-                <ProgressBar>
-                    <ProgressBar bsStyle="info" label="OG 1.03" now={30} key={1} />
-                    <ProgressBar bsStyle="warning" now={9} key={2} />
-                    <ProgressBar bsStyle="danger" now={2} key={3} />
-                    <ProgressBar bsStyle="warning" now={9} key={4} />
-                    <ProgressBar bsStyle="info" now={50} key={5} />
-                </ProgressBar>
-            </Tab>
-            <Tab eventKey={2} title="Water Volumes">Tab with Water Volumes calculations according recipe and equipment</Tab>
-            <Tab eventKey={3} title="Other stats">and etc ...</Tab>
-        </Tabs>
-    </Panel>
-)
+import {
+    originalGravity,
+    finalGravity,
+    gravityPoints,
+    boilGravity,
+    colorSRM,
+    estABVrealExtract,
+    calcCalories
+} from '../lib/brewcalc'
+import { bitternessIbuTinseth } from '../lib/hops'
+
+import { ouncesToLiters } from '../lib/utils'
+
+const Stats = ({ recipe, equipment }) => {
+    const og = originalGravity(
+        equipment.batchSize,
+        gravityPoints(recipe, equipment)
+    )
+
+    const fg = finalGravity(
+        equipment.batchSize,
+        gravityPoints(recipe, equipment, recipe.yeasts[0].attenuation)
+    )
+
+    const avgBoilGravityPts = boilGravity(
+        equipment.batchSize + equipment.trubChillerLoss,
+        equipment.boilSize,
+        og
+    ) - 1
+
+    const ibu = bitternessIbuTinseth(
+        recipe,
+        avgBoilGravityPts,
+        equipment.batchSize + equipment.trubChillerLoss
+    )
+
+    const colorSRMvalue = colorSRM(
+        recipe,
+        equipment.batchSize + equipment.trubChillerLoss
+    )
+
+    const abv = estABVrealExtract(Number(og.toFixed(3)), Number(fg.toFixed(2)))
+    const calories = calcCalories(Number(og.toFixed(3)), Number(fg.toFixed(2)))
+    const caloriesInOneL = calories / (12 * ouncesToLiters(1))
+
+    return (
+        <Panel header="Stats">
+            <ListGroup>
+                <ListGroupItem>og: {og}</ListGroupItem>
+                <ListGroupItem>fg: {fg}</ListGroupItem>
+                <ListGroupItem>ibu: {ibu}</ListGroupItem>
+                <ListGroupItem>ibuMethod: Tinseth</ListGroupItem>
+                <ListGroupItem>color: {colorSRMvalue}</ListGroupItem>
+                <ListGroupItem>abv: {abv}</ListGroupItem>
+                <ListGroupItem>calories: {caloriesInOneL}</ListGroupItem>
+            </ListGroup>
+        </Panel>)
+}
 
 export default Stats
