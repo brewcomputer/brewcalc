@@ -7,10 +7,10 @@ const Hops = ({ hops }) => (
                 <tr>
                     <th>name</th>
                     <th>alpha</th>
-                    <th>amount</th>
+                    <th>amount (kg)</th>
                     <th>use</th>
                     <th>form</th>
-                    <th>time</th>
+                    <th>time (min)</th>
                 </tr>
             </thead>
             <tbody>

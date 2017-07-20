@@ -7,9 +7,9 @@ const RecipeSpecs = ({ name, brewer, type, batchSize, boilSize, boilTime }) => (
             <ListGroupItem>Name: {name}</ListGroupItem>
             <ListGroupItem>Brewer: {brewer}</ListGroupItem>
             <ListGroupItem>Type: {type}</ListGroupItem>
-            <ListGroupItem>BatchSize: {batchSize}</ListGroupItem>
-            <ListGroupItem>BoilSize: {boilSize}</ListGroupItem>
-            <ListGroupItem>BoilTime: {boilTime}</ListGroupItem>
+            <ListGroupItem>BatchSize: {batchSize} L</ListGroupItem>
+            <ListGroupItem>BoilSize: {boilSize} L</ListGroupItem>
+            <ListGroupItem>BoilTime: {boilTime} min</ListGroupItem>
         </ListGroup>
     </Panel>
 )

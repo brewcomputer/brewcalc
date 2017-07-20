@@ -5,14 +5,14 @@ const Equipment = ({ name, batchSize, boilSize, efficiency, evapRate, coolingLos
     <Panel header="Equipment">
         <ListGroup>
             <ListGroupItem>Name: {name}</ListGroupItem>
-            <ListGroupItem>BatchSize: {batchSize}</ListGroupItem>
-            <ListGroupItem>BoilSize: {boilSize}</ListGroupItem>
+            <ListGroupItem>BatchSize: {batchSize} L</ListGroupItem>
+            <ListGroupItem>BoilSize: {boilSize} L</ListGroupItem>
             <ListGroupItem>Efficiency: {efficiency}</ListGroupItem>
             <ListGroupItem>EvapRate: {evapRate}</ListGroupItem>
             <ListGroupItem>CoolingLossPct: {coolingLossPct}</ListGroupItem>
             <ListGroupItem>TrubChillerLoss: {trubChillerLoss}</ListGroupItem>
-            <ListGroupItem>LauterDeadspace: {lauterDeadspace}</ListGroupItem>
-            <ListGroupItem>TopUpKettle: {topUpKettle}</ListGroupItem>
+            <ListGroupItem>LauterDeadspace: {lauterDeadspace} L</ListGroupItem>
+            <ListGroupItem>TopUpKettle: {topUpKettle} L</ListGroupItem>
             <ListGroupItem>BIAB: {BIAB.toString()}</ListGroupItem>
         </ListGroup>
     </Panel>

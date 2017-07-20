@@ -7,9 +7,9 @@ const Fermentables = ({ fermentables }) => (
             <thead>
                 <tr>
                     <th>name</th>
-                    <th>color</th>
-                    <th>amount</th>
-                    <th>potential</th>
+                    <th>color (SRM)</th>
+                    <th>amount (kg)</th>
+                    <th>potential (SG)</th>
                     <th>addAfterBoil</th>
                     <th>type</th>
                 </tr>
