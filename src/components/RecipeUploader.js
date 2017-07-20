@@ -4,8 +4,7 @@ import Recipe from './Recipe'
 import { Grid, FormControl, FormGroup } from 'react-bootstrap'
 import { importFromBeerXml } from '../lib/importFromBeerXml'
 
-let recipe = undefined
-let equipment = undefined
+import { recipe, equipment } from '../lib/tests/data/AussieAle.js'
 
 const RecipeUploader = () =>
     (
@@ -19,11 +18,8 @@ const RecipeUploader = () =>
                         const reader = new FileReader()
                         reader.readAsText(e.target.files[0])
                         reader.onloadend = function () {
-                            recipe = importFromBeerXml(reader.result).recipe
-                            equipment = importFromBeerXml(reader.result).equipment
-
                             ReactDOM.render(
-                                <Recipe recipe={recipe} equipment={equipment} />,
+                                <Recipe recipe={importFromBeerXml(reader.result).recipe} equipment={importFromBeerXml(reader.result).equipment} />,
                                 document.getElementById('recipe')
                             )
                         }
