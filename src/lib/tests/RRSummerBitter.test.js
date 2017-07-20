@@ -25,12 +25,12 @@ const xmlString: string = fs.readFileSync(
 const recipe = importFromBeerXml(xmlString).recipe
 const equipment = importFromBeerXml(xmlString).equipment
 const expectedSpecifications = {
-  og: 1.045,
+  og: 1.047,
   fg: 1.013,
-  ibu: 34.8,
+  ibu: 34.2,
   ibuMethod: 'Tinseth',
   color: 6.8,
-  abv: 0.042
+  abv: 0.044
 }
 
 const og = originalGravity(
@@ -68,14 +68,15 @@ const caloriesInOneL = calories / (12 * ouncesToLiters(1))
 
 const specifications = {
   og: Number(og.toFixed(3)),
-  fg: Number(fg.toFixed(2)),
-  ibu: Number(ibu.toFixed(0)),
+  fg: Number(fg.toFixed(3)),
+  ibu: Number(ibu.toFixed(1)),
   ibuMethod: expectedSpecifications.ibuMethod,
   color: Number(colorSRMvalue.toFixed(1)),
   abv: Number((abv / 100).toFixed(3)),
   calories: Number(caloriesInOneL.toFixed(1))
 }
 
+
 test('specificationsTest', () => {
-  expect(expectedSpecifications).toEqual(specifications)
+  expect(specifications).toEqual(expectedSpecifications)
 })
