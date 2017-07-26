@@ -5,6 +5,7 @@ import Hops from './Hops'
 import Yeasts from './Yeasts'
 import Equipment from './Equipment'
 import Stats from './Stats'
+import StatsWater from './StatsWater'
 import { Grid } from 'react-bootstrap'
 
 const Recipe = ({ recipe, equipment }) => (
@@ -17,6 +18,7 @@ const Recipe = ({ recipe, equipment }) => (
                 <Yeasts {...recipe} />
                 <Equipment {...equipment} />
                 <Stats recipe={recipe} equipment={equipment} />
+                <StatsWater recipe={recipe} equipment={equipment} />
             </div>
         }
     </Grid >
