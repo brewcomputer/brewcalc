@@ -8,12 +8,9 @@ import {
   gravityPoints,
   boilGravity,
   colorSRM,
-  estABVrealExtract,
-  calcCalories
+  estABVrealExtract
 } from '../brewcalc'
 import { bitternessIbuTinseth } from '../hops'
-
-import { ouncesToLiters } from '../utils'
 
 declare var test: any;
 declare var expect: any;
@@ -24,15 +21,22 @@ const xmlString: string = fs.readFileSync(
 )
 const recipe = importFromBeerXml(xmlString).recipe
 const equipment = importFromBeerXml(xmlString).equipment
+//const expectedSpecifications = {
+//  og: 1.047,
+//  fg: 1.013,
+//  ibu: 34.2,
+//  ibuMethod: 'Tinseth',
+//  color: 6.8,
+//  abv: 0.044
+//}
 const expectedSpecifications = {
   og: 1.047,
-  fg: 1.013,
-  ibu: 34.2,
+  fg: 1.012,
+  ibu: 34.3,
   ibuMethod: 'Tinseth',
   color: 6.8,
-  abv: 0.044
+  abv: 0.049
 }
-
 const og = originalGravity(
   equipment.batchSize,
   gravityPoints(recipe, equipment)
@@ -60,11 +64,7 @@ const colorSRMvalue = colorSRM(
   equipment.batchSize + equipment.trubChillerLoss
 )
 
-
 const abv = estABVrealExtract(Number(og.toFixed(3)), Number(fg.toFixed(2)))
-const calories = calcCalories(Number(og.toFixed(3)), Number(fg.toFixed(2)))
-
-const caloriesInOneL = calories / (12 * ouncesToLiters(1))
 
 const specifications = {
   og: Number(og.toFixed(3)),
@@ -72,8 +72,7 @@ const specifications = {
   ibu: Number(ibu.toFixed(1)),
   ibuMethod: expectedSpecifications.ibuMethod,
   color: Number(colorSRMvalue.toFixed(1)),
-  abv: Number((abv / 100).toFixed(3)),
-  calories: Number(caloriesInOneL.toFixed(1))
+  abv: Number((abv / 100).toFixed(3))
 }
 
 
