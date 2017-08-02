@@ -49,13 +49,13 @@ const Stats = ({ recipe, equipment }) => {
   return (
     <Panel header="Stats">
       <ListGroup>
-        <ListGroupItem>og: {og}</ListGroupItem>
-        <ListGroupItem>fg: {fg}</ListGroupItem>
-        <ListGroupItem>ibu: {ibu}</ListGroupItem>
+        <ListGroupItem>og: {og.toFixed(3)} SG</ListGroupItem>
+        <ListGroupItem>fg: {fg.toFixed(3)} SG</ListGroupItem>
+        <ListGroupItem>ibu: {ibu.toFixed(2)} IBUs</ListGroupItem>
         <ListGroupItem>ibuMethod: Tinseth</ListGroupItem>
-        <ListGroupItem>color: {colorSRMvalue}</ListGroupItem>
-        <ListGroupItem>abv: {abv}</ListGroupItem>
-        <ListGroupItem>calories: {caloriesInOneL}</ListGroupItem>
+        <ListGroupItem>color: {colorSRMvalue.toFixed(2)} SRM</ListGroupItem>
+        <ListGroupItem>abv: {abv.toFixed(2)} %</ListGroupItem>
+        <ListGroupItem>calories: {caloriesInOneL.toFixed(0)} per one L</ListGroupItem>
       </ListGroup>
     </Panel>
   )

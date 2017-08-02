@@ -7,18 +7,18 @@ const StatsWater = ({ recipe, equipment }) => {
     return (
         <Panel header="Water Stats">
             <ListGroup>
-                <ListGroupItem>mashGrainWeight: {volumes.mashGrainWeight}</ListGroupItem>
-                <ListGroupItem>grainAbsorbtion: {volumes.grainAbsorbtion}</ListGroupItem>
-                <ListGroupItem>totalMashWaterAdds: {volumes.totalMashWaterAdds}</ListGroupItem>
-                <ListGroupItem>mashVolumeNeeded: {volumes.mashVolumeNeeded}</ListGroupItem>
-                <ListGroupItem>waterAvailFromMash: {volumes.waterAvailFromMash}</ListGroupItem>
-                <ListGroupItem>spargeVol: {volumes.spargeVol}</ListGroupItem>
-                <ListGroupItem>estPreBoilVolume: {volumes.estPreBoilVolume}</ListGroupItem>
-                <ListGroupItem>boilOffVolume: {volumes.boilOffVolume}</ListGroupItem>
-                <ListGroupItem>postBoilVolume: {volumes.postBoilVolume}</ListGroupItem>
-                <ListGroupItem>coolingShrinkage: {volumes.coolingShrinkage}</ListGroupItem>
-                <ListGroupItem>estBottlingVol: {volumes.estBottlingVol}</ListGroupItem>
-                <ListGroupItem>totalWater: {volumes.totalWater}</ListGroupItem>
+                <ListGroupItem>mashGrainWeight: {volumes.mashGrainWeight.toFixed(2)} kg</ListGroupItem>
+                <ListGroupItem>grainAbsorbtion: {volumes.grainAbsorbtion.toFixed(2)} L</ListGroupItem>
+                <ListGroupItem>totalMashWaterAdds: {volumes.totalMashWaterAdds.toFixed(2)} L</ListGroupItem>
+                <ListGroupItem>mashVolumeNeeded: {volumes.mashVolumeNeeded.toFixed(2)} L</ListGroupItem>
+                <ListGroupItem>waterAvailFromMash: {volumes.waterAvailFromMash.toFixed(2)} L</ListGroupItem>
+                <ListGroupItem>spargeVol: {volumes.spargeVol.toFixed(2)} L</ListGroupItem>
+                <ListGroupItem>estPreBoilVolume: {volumes.estPreBoilVolume.toFixed(2)} L</ListGroupItem>
+                <ListGroupItem>boilOffVolume: {volumes.boilOffVolume.toFixed(2)} L</ListGroupItem>
+                <ListGroupItem>postBoilVolume: {volumes.postBoilVolume.toFixed(2)} L</ListGroupItem>
+                <ListGroupItem>coolingShrinkage: {volumes.coolingShrinkage.toFixed(2)} L</ListGroupItem>
+                <ListGroupItem>estBottlingVol: {volumes.estBottlingVol.toFixed(2)} L</ListGroupItem>
+                <ListGroupItem>totalWater: {volumes.totalWater.toFixed(2)} L</ListGroupItem>
             </ListGroup>
         </Panel>)
 }
