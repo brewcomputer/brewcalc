@@ -30,10 +30,17 @@ const reducer = (state = defaultState, { payload, type }) => {
   return state
 }
 
+const persistedState = localStorage.getItem('brewCalcState') ? JSON.parse(localStorage.getItem('brewCalcState')) : defaultState
+
 const store = createStore(
   reducer,
+  persistedState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
+
+store.subscribe(() => {
+  localStorage.setItem('brewCalcState', JSON.stringify(store.getState()))
+})
 
 const JsonEditor = ({ editorState, onSaveEditorState }) => {
   const tryParse = editorState => {
@@ -60,7 +67,6 @@ const JsonEditor = ({ editorState, onSaveEditorState }) => {
   }
   return (
     <Grid>
-
       <Panel header="Upload from BeerXML">
         <FormGroup>
           <FormControl
@@ -79,7 +85,7 @@ const JsonEditor = ({ editorState, onSaveEditorState }) => {
             onChange={onSaveEditorState}
             value={editorState}
             width="100%"
-            maxLines="500"
+            maxLines={100}
             editorProps={{ $blockScrolling: Infinity }}
           />
         </Col>
