@@ -1,5 +1,4 @@
 import React from 'react'
-import { Editor, EditorState, ContentState } from 'draft-js'
 import { FormGroup, FormControl, Grid, Row, Col, Panel } from 'react-bootstrap'
 
 import { recipeOne as recipe } from './lib/tests/data/GenericOneHF.js'
@@ -13,11 +12,14 @@ import StatsWater from './components/StatsWater'
 import { Provider, connect } from 'react-redux'
 import { createStore } from 'redux'
 
+import AceEditor from 'react-ace'
+import 'brace/mode/javascript'
+import 'brace/theme/github'
+
 const defaultState = {
-  editorState: EditorState.createWithContent(
-    ContentState.createFromText(JSON.stringify({ recipe, equipment }, null, 4))
-  )
+  editorState: JSON.stringify({ recipe, equipment }, null, 4)
 }
+
 const reducer = (state = defaultState, { payload, type }) => {
   if (type === 'UPDATE_EDITOR_STATE') {
     return {
@@ -36,35 +38,29 @@ const store = createStore(
 const JsonEditor = ({ editorState, onSaveEditorState }) => {
   const tryParse = editorState => {
     try {
-      return JSON.parse(editorState.getCurrentContent().getPlainText())
+      return JSON.parse(editorState)
     } catch (error) {
-      return {
-        catchError: true,
-        error: error
-      }
+      return null
     }
   }
 
   const onXmlLoaded = e => {
     const reader = new FileReader()
     reader.readAsText(e.target.files[0])
-    reader.onloadend = function() {
+    reader.onloadend = function () {
       const result = importFromBeerXml(reader.result)
       onSaveEditorState(
-        EditorState.createWithContent(
-          ContentState.createFromText(
-            JSON.stringify(
-              { recipe: result.recipe, equipment: result.equipment },
-              null,
-              4
-            )
-          )
+        JSON.stringify(
+          { recipe: result.recipe, equipment: result.equipment },
+          null,
+          4
         )
       )
     }
   }
   return (
     <Grid>
+
       <Panel header="Upload from BeerXML">
         <FormGroup>
           <FormControl
@@ -77,16 +73,24 @@ const JsonEditor = ({ editorState, onSaveEditorState }) => {
       </Panel>
       <Row className="show-grid">
         <Col md={6}>
-          <Editor editorState={editorState} onChange={onSaveEditorState} />
+          <AceEditor
+            mode="javascript"
+            theme="github"
+            onChange={onSaveEditorState}
+            value={editorState}
+            width="100%"
+            maxLines="500"
+            editorProps={{ $blockScrolling: Infinity }}
+          />
         </Col>
-        {tryParse(editorState).catchError !== true
+        {tryParse(editorState) !== null
           ? <Col md={6}>
-              <Stats {...tryParse(editorState)} />
-              <StatsWater {...tryParse(editorState)} />
-            </Col>
+            <Stats {...tryParse(editorState) } />
+            <StatsWater {...tryParse(editorState) } />
+          </Col>
           : <Col md={6}>
-              <Panel header={tryParse(editorState).error.toString()} />
-            </Col>}
+            <Panel header="SyntaxError in JSON" />
+          </Col>}
       </Row>
     </Grid>
   )
