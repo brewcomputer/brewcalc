@@ -13,8 +13,10 @@ import { Provider, connect } from 'react-redux'
 import { createStore } from 'redux'
 
 import AceEditor from 'react-ace'
-import 'brace/mode/javascript'
+
 import 'brace/theme/github'
+import 'brace/mode/json'
+
 
 const defaultState = {
   editorState: JSON.stringify({ recipe, equipment }, null, 4)
@@ -80,7 +82,7 @@ const JsonEditor = ({ editorState, onSaveEditorState }) => {
       <Row className="show-grid">
         <Col md={6}>
           <AceEditor
-            mode="javascript"
+            mode="json"
             theme="github"
             onChange={onSaveEditorState}
             value={editorState}
