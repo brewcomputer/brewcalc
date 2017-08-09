@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListGroup, Panel, ListGroupItem } from 'react-bootstrap'
+import { Panel, li, Row, Col } from 'react-bootstrap'
 
 import {
   originalGravity,
@@ -8,10 +8,10 @@ import {
   boilGravity,
   colorSRM,
   estABVrealExtract,
-  calcCalories
+  calcCalories,
+  srmToCss
 } from '../lib/brewcalc'
 import { bitternessIbuTinseth } from '../lib/hops'
-
 import { ouncesToLiters } from '../lib/utils'
 
 const Stats = ({ recipe, equipment }) => {
@@ -47,16 +47,32 @@ const Stats = ({ recipe, equipment }) => {
   const caloriesInOneL = calories / (12 * ouncesToLiters(1))
 
   return (
-    <Panel header="Stats">
-      <ListGroup>
-        <ListGroupItem>og: {og.toFixed(3)} SG</ListGroupItem>
-        <ListGroupItem>fg: {fg.toFixed(3)} SG</ListGroupItem>
-        <ListGroupItem>ibu: {ibu.toFixed(2)} IBUs</ListGroupItem>
-        <ListGroupItem>ibuMethod: Tinseth</ListGroupItem>
-        <ListGroupItem>color: {colorSRMvalue.toFixed(2)} SRM</ListGroupItem>
-        <ListGroupItem>abv: {abv.toFixed(2)} %</ListGroupItem>
-        <ListGroupItem>calories: {caloriesInOneL.toFixed(0)} per one L</ListGroupItem>
-      </ListGroup>
+    <Panel header="Gravity, Alcohol Content and Color">
+      <Row className="show-grid">
+        <Col md={6}>
+          <ul>
+            <li><b>og: </b>{og.toFixed(3)} SG</li>
+            <li><b>fg: </b>{fg.toFixed(3)} SG</li>
+            <li><b>ibu: </b>{ibu.toFixed(2)} IBUs</li>
+            <li><b>ibuMethod: </b>Tinseth</li>
+            <li>
+              <b>color: </b>{colorSRMvalue.toFixed(2)} SRM
+            </li>
+            <li><b>abv: </b>{abv.toFixed(2)} %</li>
+            <li>
+              <b>calories: </b>{caloriesInOneL.toFixed(0)} per one L
+            </li>
+          </ul>
+        </Col>
+        <Col md={6}>
+          <div
+            style={{
+              backgroundColor: srmToCss(colorSRMvalue),
+              height: 150
+            }}
+          />
+        </Col>
+      </Row>
     </Panel>
   )
 }

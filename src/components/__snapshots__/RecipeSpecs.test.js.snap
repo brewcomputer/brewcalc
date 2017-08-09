@@ -8,54 +8,111 @@ exports[`renders correctly 1`] = `
   <div
     className="panel-heading"
   >
-    Recipe Specs
+    Recipe Specs and Equipment
   </div>
   <div
     className="panel-body"
   >
-    <ul
-      className="list-group"
+    <div
+      className="show-grid row"
     >
-      <li
-        className="list-group-item"
+      <div
+        className="col-md-6"
       >
-        Name: 
-        Aussie Ale
-      </li>
-      <li
-        className="list-group-item"
+        <ul>
+          <li>
+            <b>
+              Name: 
+            </b>
+            Aussie Ale
+          </li>
+          <li>
+            <b>
+              Brewer: 
+            </b>
+            Steve Nicholls
+          </li>
+          <li>
+            <b>
+              Type: 
+            </b>
+            All Grain
+          </li>
+          <li>
+            <b>
+              BatchSize: 
+            </b>
+            23.02
+             L
+          </li>
+          <li>
+            <b>
+              BoilSize: 
+            </b>
+            37.12
+             L
+          </li>
+          <li>
+            <b>
+              BoilTime: 
+            </b>
+            90.00
+             min
+          </li>
+        </ul>
+      </div>
+      <div
+        className="col-md-6"
       >
-        Brewer: 
-        Steve Nicholls
-      </li>
-      <li
-        className="list-group-item"
-      >
-        Type: 
-        All Grain
-      </li>
-      <li
-        className="list-group-item"
-      >
-        BatchSize: 
-        23.02
-         L
-      </li>
-      <li
-        className="list-group-item"
-      >
-        BoilSize: 
-        37.1203164
-         L
-      </li>
-      <li
-        className="list-group-item"
-      >
-        BoilTime: 
-        90
-         min
-      </li>
-    </ul>
+        <ul>
+          <li>
+            <b>
+              Equipment Name: 
+            </b>
+            Pot (13 Gal/50 L) - BIAB
+          </li>
+          <li>
+            <b>
+              BatchSize: 
+            </b>
+            23.02
+             L
+          </li>
+          <li>
+            <b>
+              BoilSize: 
+            </b>
+            36.02
+             L
+          </li>
+          <li>
+            <b>
+              Efficiency: 
+            </b>
+            0.68
+          </li>
+          <li>
+            <b>
+              EvapRate: 
+            </b>
+            0.15
+          </li>
+          <li>
+            <b>
+              CoolingLossPct: 
+            </b>
+            0.04
+          </li>
+          <li>
+            <b>
+              TrubChillerLoss: 
+            </b>
+            3.82
+             L
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 `;

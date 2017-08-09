@@ -91,6 +91,11 @@ export const srmToRgb = (srm: number) => ({
 export const colorSRM = ({ fermentables }: Recipe, postBoilVolime: number) =>
   mcu2srm(sum(fermentables.map(calcMCU)) / litersToGallons(postBoilVolime))
 
+export const srmToCss = (srm: number) => {
+  const color = srmToRgb(srm)
+  return `rgb(${color.r}, ${color.g}, ${color.b})`
+}
+
 //https://www.brewersfriend.com/yeast-pitch-rate-and-starter-calculator/
 
 //million cells / ml / degree Plato
@@ -122,7 +127,7 @@ export const yeastNeeded = (pitchRate: number, batchSize: number, e: number) =>
 const viability = (currentDate: string, cultureDate: string) =>
   100 -
   Math.floor((Date.parse(currentDate) - Date.parse(cultureDate)) / 86400000) *
-  0.7
+    0.7
 
 export const yeastCount = (
   { amount, form, cultureDate }: Yeast,
@@ -152,8 +157,8 @@ const growthRateCurveBraukaiserStir = (ratio: number) =>
   ratio < 1.4
     ? 1.4
     : ratio >= 1.4 && ratio <= 3.5 && yeastGrowth(ratio) > 0
-      ? yeastGrowth(ratio)
-      : 0
+        ? yeastGrowth(ratio)
+        : 0
 
 export const yeastStarterGrow = (
   startingYeastCount: number,
@@ -186,11 +191,11 @@ const kegPressure = (carbVolume: number, t: number) =>
   Math.max(
     0,
     -16.6999 -
-    0.0101059 * t +
-    0.00116512 * t * t +
-    0.173354 * t * carbVolume +
-    4.24267 * carbVolume -
-    0.0684226 * carbVolume * carbVolume
+      0.0101059 * t +
+      0.00116512 * t * t +
+      0.173354 * t * carbVolume +
+      4.24267 * carbVolume -
+      0.0684226 * carbVolume * carbVolume
   )
 
 //http://www.homebrewtalk.com/showthread.php?t=441383
