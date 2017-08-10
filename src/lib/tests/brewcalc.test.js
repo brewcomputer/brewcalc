@@ -179,6 +179,7 @@ test('colorSRMvalue, srmToRgb', () => {
 
 test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
   const yeast: Yeast = {
+    name: 'German Ale',
     amount: 0.011,
     attenuation: 0,
     type: YeastTypes.ale,

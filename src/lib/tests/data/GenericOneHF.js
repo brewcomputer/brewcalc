@@ -57,6 +57,7 @@ export const recipeOne: Recipe = {
   },
   yeasts: [
     {
+      name: 'German Ale',
       amount: 0.1242095,
       attenuation: 0.75,
       cultureDate: '14 Jun 2003',
