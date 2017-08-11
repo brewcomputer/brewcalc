@@ -2,9 +2,6 @@
 import type { Equipment } from '../../types/equipment'
 import type { Recipe } from '../../types/recipe'
 
-import { RecipeTypes } from '../../types/recipe'
-import { FermentableTypes } from '../../types/fermentable'
-
 export const recipe: Recipe = {
   name: 'Aussie Ale',
   version: '1',

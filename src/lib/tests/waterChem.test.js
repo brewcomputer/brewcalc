@@ -1,10 +1,10 @@
 // @flow
-declare var test: any;
-declare var expect: any;
-
 import { calcWaterChemistry } from '../waterChem'
 import type { Water } from '../types/water'
 import type { SaltAdditions } from '../types/saltAdditions'
+
+declare var test: any;
+declare var expect: any;
 
 test('calcWaterChemistry', () => {
   const batchSize = 20

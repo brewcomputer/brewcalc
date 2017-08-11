@@ -31,61 +31,61 @@ export const importFromBeerXml = (xml: string) => {
   const fermentables = Array.isArray(fermentableNode)
     ? Array.from(fermentableNode).map(({
         name,
-        addAfterBoil,
-        amount,
-        color,
-        potential,
-        type
+      addAfterBoil,
+      amount,
+      color,
+      potential,
+      type
       }: Fermentable) => {
-        return {
-          name: name,
-          addAfterBoil: parseBool(addAfterBoil),
-          amount: parseFloat(amount),
-          color: parseFloat(color),
-          potential: parseFloat(potential),
-          type: type
-        }
-      })
+      return {
+        name: name,
+        addAfterBoil: parseBool(addAfterBoil),
+        amount: parseFloat(amount),
+        color: parseFloat(color),
+        potential: parseFloat(potential),
+        type: type
+      }
+    })
     : [
-        {
-          name: fermentableNode.name,
-          addAfterBoil: parseBool(fermentableNode.addAfterBoil),
-          amount: parseFloat(fermentableNode.amount),
-          color: parseFloat(fermentableNode.color),
-          potential: parseFloat(fermentableNode.potential),
-          type: fermentableNode.type
-        }
-      ]
+      {
+        name: fermentableNode.name,
+        addAfterBoil: parseBool(fermentableNode.addAfterBoil),
+        amount: parseFloat(fermentableNode.amount),
+        color: parseFloat(fermentableNode.color),
+        potential: parseFloat(fermentableNode.potential),
+        type: fermentableNode.type
+      }
+    ]
 
   const hopNode = doc.recipe.hops.hop
   const hops = Array.isArray(hopNode)
     ? Array.from(hopNode).map(({
         name,
-        alpha,
-        amount,
-        form,
-        use,
-        time
+      alpha,
+      amount,
+      form,
+      use,
+      time
       }: Hop) => {
-        return {
-          name: name,
-          alpha: parseFloat(alpha) * 0.01,
-          amount: parseFloat(amount),
-          form: form,
-          use: use,
-          time: parseFloat(time)
-        }
-      })
+      return {
+        name: name,
+        alpha: parseFloat(alpha) * 0.01,
+        amount: parseFloat(amount),
+        form: form,
+        use: use,
+        time: parseFloat(time)
+      }
+    })
     : [
-        {
-          name: hopNode.name,
-          alpha: parseFloat(hopNode.alpha) * 0.01,
-          amount: parseFloat(hopNode.amount),
-          form: hopNode.form,
-          use: hopNode.use,
-          time: parseFloat(hopNode.time)
-        }
-      ]
+      {
+        name: hopNode.name,
+        alpha: parseFloat(hopNode.alpha) * 0.01,
+        amount: parseFloat(hopNode.amount),
+        form: hopNode.form,
+        use: hopNode.use,
+        time: parseFloat(hopNode.time)
+      }
+    ]
 
   const mashSteps = Array.from(doc.recipe.mash.mashSteps.mashStep).map(({
     name,
@@ -115,6 +115,7 @@ export const importFromBeerXml = (xml: string) => {
   const yeastNode = doc.recipe.yeasts.yeast
   const yeasts: Array<Yeast> = [
     {
+      name: yeastNode.name,
       amount: parseFloat(yeastNode.amount),
       attenuation: parseFloat(yeastNode.attenuation) * 0.01,
       cultureDate: yeastNode.cultureDate,

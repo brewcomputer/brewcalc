@@ -1,5 +1,6 @@
 // @flow
 export type Yeast = {
+  name: string,
   amount: number,
   attenuation: number,
   form: "Liquid" | "Dry" | "Slant" | "Culture",

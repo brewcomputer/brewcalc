@@ -4,7 +4,12 @@
   "private": true,
   "dependencies": {
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-ace": "^5.1.2",
+    "react-bootstrap": "^0.31.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-test-renderer": "^15.6.1",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "camelcase": "^4.1.0",
@@ -18,6 +23,7 @@
   },
   "scripts": {
     "flow": "flow",
+    "lint": "eslint .",
     "test": "react-scripts test --env=jsdom",
     "coverage": "react-scripts test --env=jsdom --coverage",
     "start": "react-scripts start",

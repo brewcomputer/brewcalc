@@ -1,24 +1,18 @@
 // @flow
 import type { Recipe } from './types/recipe'
-import { RecipeTypes } from './types/recipe'
 import { FermentableTypes } from './types/fermentable'
 import type { Fermentable } from './types/fermentable'
 import {
   litersToGallons,
   kgToPounds,
-  kgToOunces,
-  litersToOunces,
   poundsTokg,
   sgToPlato,
   sum,
   celsiusToFahrenheit
 } from './utils.js'
 import type { Equipment } from './types/equipment'
-import type { Hop } from './types/hop'
-import { HopForms } from './types/hop'
-
 import type { Yeast } from './types/yeast'
-import { YeastTypes, YeastForms } from './types/yeast'
+import { YeastForms } from './types/yeast'
 
 export const originalGravity = (batchSize: number, ogPts: number) =>
   1.0 + ogPts / litersToGallons(batchSize)
@@ -96,6 +90,11 @@ export const srmToRgb = (srm: number) => ({
 })
 export const colorSRM = ({ fermentables }: Recipe, postBoilVolime: number) =>
   mcu2srm(sum(fermentables.map(calcMCU)) / litersToGallons(postBoilVolime))
+
+export const srmToCss = (srm: number) => {
+  const color = srmToRgb(srm)
+  return `rgb(${color.r}, ${color.g}, ${color.b})`
+}
 
 //https://www.brewersfriend.com/yeast-pitch-rate-and-starter-calculator/
 

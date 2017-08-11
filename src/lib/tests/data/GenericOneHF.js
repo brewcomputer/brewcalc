@@ -1,8 +1,5 @@
 // @flow
-import type { Equipment } from '../../types/equipment'
 import type { Recipe } from '../../types/recipe'
-import type { Specifications } from '../../types/specifications'
-
 import { RecipeTypes } from '../../types/recipe'
 import { FermentableTypes } from '../../types/fermentable'
 import { HopForms, HopUse } from '../../types/hop'
@@ -60,6 +57,7 @@ export const recipeOne: Recipe = {
   },
   yeasts: [
     {
+      name: 'German Ale',
       amount: 0.1242095,
       attenuation: 0.75,
       cultureDate: '14 Jun 2003',

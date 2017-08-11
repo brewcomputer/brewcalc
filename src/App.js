@@ -1,21 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import PageRecipe from './containers/PageRecipe'
+import updateEditor from './redux/reducers/updateEditor'
+import { persistedState } from './redux/reducers/updateEditor'
 
-class App extends Component {
+const store = createStore(
+  updateEditor,
+  persistedState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+store.subscribe(() => {
+  localStorage.setItem('brewCalcState', JSON.stringify(store.getState()))
+})
+
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <Provider store={store}>
+        <div className="App">
+          <PageRecipe />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      </Provider>
+    )
   }
 }
 
-export default App;
+export default App
