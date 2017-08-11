@@ -4,11 +4,15 @@ import { connect } from 'react-redux'
 
 import AceEditor from 'react-ace'
 import 'brace/theme/github'
+//TODO:
+//https://github.com/securingsincity/react-ace/issues/240
+import 'brace/mode/json'
 
 const EditorContainer = ({ editorState, onContentUpdate }) => (
   <Accordion>
     <Panel header="Edit recipe and equipment JSON" eventKey="1">
       <AceEditor
+        mode="json"
         theme="github"
         onChange={onContentUpdate}
         value={editorState}
