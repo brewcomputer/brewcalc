@@ -12,7 +12,6 @@
     "redux": "^3.7.2"
   },
   "devDependencies": {
-    "camelcase": "^4.1.0",
     "eslint-plugin-prettier": "^2.0.1",
     "flow-bin": "^0.47.0",
     "gh-pages": "^1.0.0",

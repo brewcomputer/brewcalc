@@ -12,8 +12,14 @@ import type { Specifications } from './types/specifications'
 
 // $FlowFixMe
 import * as XML from 'pixl-xml'
-// $FlowFixMe
-import camelCase from 'camelcase'
+
+const camelCase = (str: string) =>
+  str.length === 0 ? ''
+    : str.length === 1 ? str.toLowerCase()
+      : str
+        .replace(/^[_.\- ]+/, '')
+        .toLowerCase()
+        .replace(/[_.\- ]+(\w|$)/g, (m, p1) => p1.toUpperCase())
 
 const xmlToCamelCase = (xml: string) =>
   xml.replace(/<(?!!)(?!\?)[^>]*>/g, str => camelCase(str.toLowerCase()))
