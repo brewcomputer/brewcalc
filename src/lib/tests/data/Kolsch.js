@@ -97,6 +97,7 @@ export const equipment: Equipment = {
   name: 'Electric Urn (10 Gal/40 L) - BIAB',
   batchSize: 19.0028767,
   boilSize: 30.3767465,
+  tunWeight: 4.4996363,
   coolingLossPct: 0.04,
   efficiency: 0.7,
   evapRate: 0.159771335,

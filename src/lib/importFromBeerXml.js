@@ -148,6 +148,7 @@ export const importFromBeerXml = (xml: string) => {
     name: equipmentNode.name,
     batchSize: parseFloat(equipmentNode.batchSize),
     boilSize: parseFloat(equipmentNode.boilSize),
+    tunWeight: parseFloat(equipmentNode.tunWeight),
     coolingLossPct: parseFloat(equipmentNode.coolingLossPct) * 0.01,
 
     //TODO: is it part of eq or recipe.
