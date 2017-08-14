@@ -61,6 +61,7 @@ export const recipe: Recipe = {
   ],
   mash: {
     grainTemp: 22.2,
+    equipAdjust: true,
     mashSteps: [
       {
         name: 'Saccharification',
