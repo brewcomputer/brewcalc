@@ -247,7 +247,7 @@ export const recipe: Recipe = {
     name: 'My Mash',
     version: '1',
     grainTemp: 22.2222222,
-    tunTemp: '22.2222222',
+    tunTemp: 22.2222222,
     spargeTemp: '75.5555556',
     ph: '5.4000000',
     tunWeight: '80.0000000',

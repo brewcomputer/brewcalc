@@ -34,6 +34,7 @@ export const recipeOne: Recipe = {
   ],
   mash: {
     grainTemp: 22.2,
+    tunTemp: 22.2,
     equipAdjust: true,
     mashSteps: [
       {

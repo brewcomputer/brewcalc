@@ -94,6 +94,7 @@ export const importFromBeerXml = (xml: string) => {
 
   const mash: Mash = {
     grainTemp: parseFloat(doc.recipe.mash.grainTemp),
+    tunTemp: parseFloat(doc.recipe.mash.tunTemp),
     equipAdjust: parseBool(doc.recipe.mash.equipAdjust),
     mashSteps: mashSteps
   }

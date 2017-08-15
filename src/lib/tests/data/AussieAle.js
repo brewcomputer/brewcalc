@@ -270,7 +270,7 @@ export const recipe: Recipe = {
     name: 'Single Infusion, Medium Body',
     version: '1',
     grainTemp: 22.2222222,
-    tunTemp: '22.2222222',
+    tunTemp: 22.2222222,
     spargeTemp: '75.5555556',
     ph: '5.4000000',
     tunWeight: '144.0000000',
