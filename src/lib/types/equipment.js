@@ -4,6 +4,7 @@ export type Equipment = {
   batchSize: number,
   boilSize: number,
   tunWeight: number,
+  tunVolume: number,
   tunSpecificHeat: number,
   efficiency: number,
   evapRate: number,

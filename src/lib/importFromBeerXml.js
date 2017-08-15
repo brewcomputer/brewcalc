@@ -129,6 +129,7 @@ export const importFromBeerXml = (xml: string) => {
     batchSize: parseFloat(equipmentNode.batchSize),
     boilSize: parseFloat(equipmentNode.boilSize),
     tunWeight: parseFloat(equipmentNode.tunWeight),
+    tunVolume: parseFloat(equipmentNode.tunSpecificHeat),
     tunSpecificHeat: parseFloat(equipmentNode.tunSpecificHeat),
     coolingLossPct: parseFloat(equipmentNode.coolingLossPct) * 0.01,
 

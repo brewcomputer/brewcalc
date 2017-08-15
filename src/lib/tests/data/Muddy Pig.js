@@ -307,7 +307,7 @@ export const equipment: Equipment = {
   efficiency: 0.15,
   boilSize: 14.8100000,
   batchSize: 18.9300000,
-  tunVolume: '18.9300000',
+  tunVolume: 18.9300000,
   tunWeight: 2.2679600,
   tunSpecificHeat: 0.1200000,
   topUpWater: '6.6200000',
