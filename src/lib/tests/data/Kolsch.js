@@ -99,6 +99,7 @@ export const equipment: Equipment = {
   batchSize: 19.0028767,
   boilSize: 30.3767465,
   tunWeight: 4.4996363,
+  tunSpecificHeat: 0.3,
   coolingLossPct: 0.04,
   efficiency: 0.7,
   evapRate: 0.159771335,

@@ -365,7 +365,7 @@ export const equipment: Equipment = {
   batchSize: 23.0200000,
   tunVolume: 37.8500000,
   tunWeight: 4.0823280,
-  tunSpecificHeat: '0.3000000',
+  tunSpecificHeat: 0.3000000,
   topUpWater: '0.0000000',
   trubChillerLoss: 2.8400000,
   evapRate: 0.182879483,
