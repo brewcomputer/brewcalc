@@ -9,7 +9,7 @@ const Recipe = ({ recipe, equipment }) =>
   <div>
     <RecipeSpecs equipment={equipment} {...recipe} />
     <Ingredients {...recipe} />
-    <MashSteps {...recipe} />
+    <MashSteps recipe={recipe} equipment={equipment} />
     <Stats recipe={recipe} equipment={equipment} />
   </div>
 export default Recipe

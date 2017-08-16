@@ -248,7 +248,7 @@ export const recipe: Recipe = {
     version: '1',
     grainTemp: 22.2222222,
     tunTemp: 22.2222222,
-    spargeTemp: '75.5555556',
+    spargeTemp: 75.5555556,
     ph: '5.4000000',
     tunWeight: '80.0000000',
     tunSpecificHeat: '0.1200000',

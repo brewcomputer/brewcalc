@@ -12,6 +12,7 @@ declare var expect: any;
 const mashInfusion: Mash = {
     'grainTemp': 22.2222222,
     'tunTemp': 22.2222222,
+    'spargeTemp': 75.6,
     'equipAdjust': false,
     'mashSteps': [
         {
@@ -38,6 +39,7 @@ const mashInfusion: Mash = {
 const mashDecoction: Mash = {
     'grainTemp': 22.2222222,
     'tunTemp': 22.2222222,
+    'spargeTemp': 75.6,
     'equipAdjust': false,
     'mashSteps': [
         {
@@ -73,6 +75,7 @@ const mashDecoction: Mash = {
 const mashTemperature: Mash = {
     'grainTemp': 22.2222222,
     'tunTemp': 22.2222222,
+    'spargeTemp': 75.6,
     'equipAdjust': false,
     'mashSteps': [
         {
