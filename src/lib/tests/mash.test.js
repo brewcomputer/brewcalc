@@ -272,3 +272,57 @@ test('mashRecalculateDecoctionEquipAdjust', () => {
         },
     ])
 })
+
+const mashBIABfullBody = {
+    'grainTemp': 22.2,
+    'tunTemp': 22.2,
+    'equipAdjust': false,
+    'spargeTemp': 75.6,
+    'mashSteps': [
+        {
+            'name': 'Saccharification',
+            'endTemp': 68.9,
+            'infuseAmount': 40.3380929,
+            'rampTime': 10,
+            'stepTemp': 68.9,
+            'stepTime': 60,
+            'type': 'Infusion'
+        },
+        {
+            'name': 'Mash Out',
+            'endTemp': 75.5555556,
+            'infuseAmount': 0,
+            'rampTime': 7,
+            'stepTemp': 75.5555556,
+            'stepTime': 10,
+            'type': 'Temperature'
+        }
+    ]
+}
+
+
+test('mashRecalculateMashBIABfullBody', () => {
+    /*
+        0 min - Saccharification (10 min rise, hold 68.9 C for 60 min)
+    
+        Add 40.34 l of water at 71.2 C 
+        1:10 hours - Mash Out (7 min rise, hold 75.6 C for 10 min)
+    
+        Heat to 75.6 C over 7 min 
+        1:27 hours - Mash Complete
+    */
+    expect(
+        mashRecalculate(mashBIABfullBody, { ...equipment, BIAB: true }, mashGrainWeight)
+    ).toEqual([
+        {
+            'decoctionAmount': 0,
+            'infuseStepAmount': 40.3380929,
+            'infussionTemp': 71.21570446879011,
+        },
+        {
+            'decoctionAmount': undefined,
+            'infuseStepAmount': 0,
+            'infussionTemp': undefined,
+        },
+    ])
+})
