@@ -61,6 +61,9 @@ export const recipe: Recipe = {
   ],
   mash: {
     grainTemp: 22.2,
+    tunTemp: 22.2,
+    equipAdjust: true,
+    spargeTemp: 75.6,
     mashSteps: [
       {
         name: 'Saccharification',
@@ -97,6 +100,9 @@ export const equipment: Equipment = {
   name: 'Electric Urn (10 Gal/40 L) - BIAB',
   batchSize: 19.0028767,
   boilSize: 30.3767465,
+  tunWeight: 4.4996363,
+  tunVolume: 0.3,
+  tunSpecificHeat: 0.3,
   coolingLossPct: 0.04,
   efficiency: 0.7,
   evapRate: 0.159771335,

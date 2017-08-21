@@ -34,6 +34,9 @@ export const recipeOne: Recipe = {
   ],
   mash: {
     grainTemp: 22.2,
+    tunTemp: 22.2,
+    equipAdjust: true,
+    spargeTemp: 75.6,
     mashSteps: [
       {
         name: 'Saccharification',
@@ -43,15 +46,6 @@ export const recipeOne: Recipe = {
         stepTemp: 65.5555556,
         stepTime: 90,
         type: MashType.infusion
-      },
-      {
-        name: 'Mash Out',
-        endTemp: 75.5555556,
-        infuseAmount: 0,
-        rampTime: 7,
-        stepTemp: 75.5555556,
-        stepTime: 10,
-        type: MashType.temperature
       }
     ]
   },
