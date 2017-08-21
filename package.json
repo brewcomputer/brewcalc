@@ -30,5 +30,5 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "http://superroma.github.io/brewcalc"
+  "homepage": "http://brewcomputer.github.io/brewcalc"
 }
