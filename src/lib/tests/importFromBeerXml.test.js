@@ -32,5 +32,4 @@ test('importFromBeerXmlWithRecipeNodeOnly', () => {
   )
   expect(importFromBeerXml(xmlString).recipe).toBeDefined()
   expect(importFromBeerXml(xmlString).equipment).toBeNull()
-  expect(importFromBeerXml(xmlString).specifications).toBeNull()
 })

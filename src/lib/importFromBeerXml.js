@@ -126,7 +126,7 @@ export const importFromBeerXml = (xml: string) => {
   }
 
   const equipmentNode = doc.recipe.equipment
-  const equipment: Equipment = {
+  const equipment: Equipment | null = equipmentNode !== undefined ? {
     name: equipmentNode.name,
     batchSize: parseFloat(equipmentNode.batchSize),
     boilSize: parseFloat(equipmentNode.boilSize),
@@ -144,7 +144,7 @@ export const importFromBeerXml = (xml: string) => {
 
     //TODO:: may be it is part of mashing steps, not eq
     BIAB: isBIAB(doc.recipe.mash.name)
-  }
+  } : null
 
   const specifications: Specifications = {
     og: parseFloat(recipeNode.og),
