@@ -33,3 +33,12 @@ test('importFromBeerXmlWithRecipeNodeOnly', () => {
   expect(importFromBeerXml(xmlString).recipe).toBeDefined()
   expect(importFromBeerXml(xmlString).equipment).toBeNull()
 })
+
+test('importFromBeerXmlNoPotential', () => {
+  const xmlString: string = fs.readFileSync(
+    __dirname + '/data/Londonpride.xml',
+    'utf8'
+  )
+  expect(importFromBeerXml(xmlString).recipe.fermentables[0].potential).toBeCloseTo(1.038, 3)
+  expect(importFromBeerXml(xmlString).recipe.fermentables[1].potential).toBeCloseTo(1.035, 3)
+})
