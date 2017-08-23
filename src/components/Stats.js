@@ -15,31 +15,36 @@ import { bitternessIbuTinseth } from '../lib/hops'
 import { ouncesToLiters } from '../lib/utils'
 
 const Stats = ({ recipe, equipment }) => {
+
+  const { batchSize, boilSize, fermentables, hops, efficiency, yeasts } = recipe
+
+  const trubChillerLoss = equipment !== null ? equipment.trubChillerLoss : 0
+
   const og = originalGravity(
-    equipment.batchSize,
-    gravityPoints(recipe, equipment)
+    batchSize,
+    gravityPoints(fermentables, efficiency)
   )
 
   const fg = finalGravity(
-    equipment.batchSize,
-    gravityPoints(recipe, equipment, recipe.yeasts[0].attenuation)
+    batchSize,
+    gravityPoints(fermentables, efficiency, yeasts[0].attenuation)
   )
 
   const avgBoilGravityPts = boilGravity(
-    equipment.batchSize + equipment.trubChillerLoss,
-    equipment.boilSize,
+    batchSize + trubChillerLoss,
+    boilSize,
     og
   ) - 1
 
   const ibu = bitternessIbuTinseth(
-    recipe,
+    hops,
     avgBoilGravityPts,
-    equipment.batchSize + equipment.trubChillerLoss
+    batchSize + trubChillerLoss
   )
 
   const colorSRMvalue = colorSRM(
-    recipe,
-    equipment.batchSize + equipment.trubChillerLoss
+    fermentables,
+    batchSize + trubChillerLoss
   )
 
   const abv = estABVrealExtract(Number(og.toFixed(3)), Number(fg.toFixed(2)))

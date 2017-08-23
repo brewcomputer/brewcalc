@@ -118,6 +118,7 @@ export const importFromBeerXml = (xml: string) => {
     batchSize: parseFloat(recipeNode.batchSize),
     boilSize: parseFloat(recipeNode.boilSize),
     boilTime: parseFloat(recipeNode.boilTime),
+    efficiency: dirtyRound(parseFloat(recipeNode.efficiency) * 0.01),
     type: recipeNode.type,
     fermentables: fermentables,
     hops: hops,
@@ -134,9 +135,6 @@ export const importFromBeerXml = (xml: string) => {
     tunVolume: parseFloat(equipmentNode.tunSpecificHeat),
     tunSpecificHeat: parseFloat(equipmentNode.tunSpecificHeat),
     coolingLossPct: parseFloat(equipmentNode.coolingLossPct) * 0.01,
-
-    //TODO: is it part of eq or recipe.
-    efficiency: dirtyRound(parseFloat(recipeNode.efficiency) * 0.01),
     evapRate: dirtyRound(parseFloat(equipmentNode.evapRate) * 0.01),
     lauterDeadspace: parseFloat(equipmentNode.lauterDeadspace),
     topUpKettle: parseFloat(equipmentNode.topUpKettle),

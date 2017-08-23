@@ -1,5 +1,4 @@
 // @flow
-import type { Recipe } from './types/recipe'
 import { FermentableTypes } from './types/fermentable'
 import type { Fermentable } from './types/fermentable'
 import {
@@ -10,7 +9,6 @@ import {
   sum,
   celsiusToFahrenheit
 } from './utils.js'
-import type { Equipment } from './types/equipment'
 import type { Yeast } from './types/yeast'
 import { YeastForms } from './types/yeast'
 
@@ -24,12 +22,8 @@ export const boilGravity = (batchSize: number, boilSize: number, og: number) =>
   1 + (og - 1) * litersToGallons(batchSize) / litersToGallons(boilSize)
 
 export const gravityPoints = (
-  {
-    fermentables
-  }: Recipe,
-  {
-    efficiency
-  }: Equipment,
+  fermentables: Array<Fermentable>,
+  efficiency: number,
   attenutation: number = 0
 ) =>
   sum(
@@ -88,7 +82,7 @@ export const srmToRgb = (srm: number) => ({
   g: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.88, srm)))),
   b: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.7, srm))))
 })
-export const colorSRM = ({ fermentables }: Recipe, postBoilVolime: number) =>
+export const colorSRM = (fermentables: Array<Fermentable>, postBoilVolime: number) =>
   mcu2srm(sum(fermentables.map(calcMCU)) / litersToGallons(postBoilVolime))
 
 export const srmToCss = (srm: number) => {
@@ -127,7 +121,7 @@ export const yeastNeeded = (pitchRate: number, batchSize: number, e: number) =>
 const viability = (currentDate: string, cultureDate: string) =>
   100 -
   Math.floor((Date.parse(currentDate) - Date.parse(cultureDate)) / 86400000) *
-    0.7
+  0.7
 
 export const yeastCount = (
   { amount, form, cultureDate }: Yeast,
@@ -157,8 +151,8 @@ const growthRateCurveBraukaiserStir = (ratio: number) =>
   ratio < 1.4
     ? 1.4
     : ratio >= 1.4 && ratio <= 3.5 && yeastGrowth(ratio) > 0
-        ? yeastGrowth(ratio)
-        : 0
+      ? yeastGrowth(ratio)
+      : 0
 
 export const yeastStarterGrow = (
   startingYeastCount: number,
@@ -191,11 +185,11 @@ const kegPressure = (carbVolume: number, t: number) =>
   Math.max(
     0,
     -16.6999 -
-      0.0101059 * t +
-      0.00116512 * t * t +
-      0.173354 * t * carbVolume +
-      4.24267 * carbVolume -
-      0.0684226 * carbVolume * carbVolume
+    0.0101059 * t +
+    0.00116512 * t * t +
+    0.173354 * t * carbVolume +
+    4.24267 * carbVolume -
+    0.0684226 * carbVolume * carbVolume
   )
 
 //http://www.homebrewtalk.com/showthread.php?t=441383

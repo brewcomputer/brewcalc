@@ -27,30 +27,32 @@ const equipment = importFromBeerXml(xmlString).equipment
 const expectedSpecifications = importFromBeerXml(xmlString).specifications
 
 const og = originalGravity(
-  equipment.batchSize,
-  gravityPoints(recipe, equipment)
+  recipe.batchSize,
+  gravityPoints(recipe.fermentables, recipe.efficiency)
 )
 
 const fg = finalGravity(
-  equipment.batchSize,
-  gravityPoints(recipe, equipment, recipe.yeasts[0].attenuation)
+  recipe.batchSize,
+  gravityPoints(recipe.fermentables, recipe.efficiency, recipe.yeasts[0].attenuation)
 )
 
+const trubChillerLoss = equipment !== null ? equipment.trubChillerLoss : 0
+
 const avgBoilGravityPts = boilGravity(
-  equipment.batchSize + equipment.trubChillerLoss,
-  equipment.boilSize,
+  recipe.batchSize + trubChillerLoss,
+  recipe.boilSize,
   og
 ) - 1
 
 const ibu = bitternessIbuTinseth(
-  recipe,
+  recipe.hops,
   avgBoilGravityPts,
-  equipment.batchSize + equipment.trubChillerLoss
+  recipe.batchSize + trubChillerLoss
 )
 
 const colorSRMvalue = colorSRM(
-  recipe,
-  equipment.batchSize + equipment.trubChillerLoss
+  recipe.fermentables,
+  recipe.batchSize + trubChillerLoss
 )
 
 //TODO: I found that BeerSmith use rounded values for the abv and calories calculations

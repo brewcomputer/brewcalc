@@ -1,5 +1,4 @@
 // @flow
-import type { Recipe } from './types/recipe'
 import { sum, kgToOunces, litersToGallons } from './utils.js'
 import type { Hop } from './types/hop'
 import { HopForms } from './types/hop'
@@ -20,7 +19,7 @@ const ibuUtilization = (
 //U = bigness factor * boil time factor
 
 export const bitternessIbuTinseth = (
-  { hops }: Recipe,
+  hops: Array<Hop>,
   avgBoilGravityPts: number,
   postBoilVolume: number
 ) =>
@@ -60,16 +59,16 @@ export const ragerHopIbu = (
   time <= 0.0 || amount <= 0.0 || alpha < 0.0
     ? 0
     : ragerHopIbuFromWeight(
-        ragerUtil(Math.floor(time + 0.5)) * 0.01,
-        alpha,
-        amount,
-        vol,
-        ragerHopGravityAdjustment(sg),
-        100.0 / 1.34
-      )
+      ragerUtil(Math.floor(time + 0.5)) * 0.01,
+      alpha,
+      amount,
+      vol,
+      ragerHopGravityAdjustment(sg),
+      100.0 / 1.34
+    )
 
 export const bitternessIbuRager = (
-  { hops }: Recipe,
+  hops: Array<Hop>,
   avgBoilGravityPts: number,
   postBoilVolume: number
 ) =>

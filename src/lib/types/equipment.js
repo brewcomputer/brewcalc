@@ -6,7 +6,6 @@ export type Equipment = {
   tunWeight: number,
   tunVolume: number,
   tunSpecificHeat: number,
-  efficiency: number,
   evapRate: number,
   coolingLossPct: number,
   trubChillerLoss: number,

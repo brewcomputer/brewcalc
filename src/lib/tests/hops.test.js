@@ -14,14 +14,14 @@ declare var expect: any;
 test('bitternessIbuTinseth', () => {
   const ogPts = originalGravity(
     AussieAle.batchSize,
-    gravityPoints(AussieAle, AussieAleEquipment)
+    gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
   ) - 1
 
   const fgPts = finalGravity(
     AussieAle.batchSize,
     gravityPoints(
-      AussieAle,
-      AussieAleEquipment,
+      AussieAle.fermentables,
+      AussieAle.efficiency,
       AussieAle.yeasts[0].attenuation
     )
   ) - 1
@@ -30,7 +30,7 @@ test('bitternessIbuTinseth', () => {
 
   expect(
     bitternessIbuTinseth(
-      AussieAle,
+      AussieAle.hops,
       avgBoilGravityPts,
       AussieAleEquipment.batchSize + AussieAleEquipment.trubChillerLoss
     )
@@ -40,14 +40,14 @@ test('bitternessIbuTinseth', () => {
 test('bitternessRatio', () => {
   const ogPts = originalGravity(
     AussieAle.batchSize,
-    gravityPoints(AussieAle, AussieAleEquipment)
+    gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
   ) - 1
 
   const fgPts = finalGravity(
     AussieAle.batchSize,
     gravityPoints(
-      AussieAle,
-      AussieAleEquipment,
+      AussieAle.fermentables,
+      AussieAle.efficiency,
       AussieAle.yeasts[0].attenuation
     )
   ) - 1
@@ -55,7 +55,7 @@ test('bitternessRatio', () => {
   const avgBoilGravityPts = (ogPts + fgPts) / 2
 
   const ibu = bitternessIbuTinseth(
-    AussieAle,
+    AussieAle.hops,
     avgBoilGravityPts,
     AussieAleEquipment.batchSize + AussieAleEquipment.trubChillerLoss
   )
@@ -67,14 +67,14 @@ test('bitternessRatio', () => {
 test('bitternessIbuRager', () => {
   const ogPts = originalGravity(
     AussieAle.batchSize,
-    gravityPoints(AussieAle, AussieAleEquipment)
+    gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
   ) - 1
 
   const fgPts = finalGravity(
     AussieAle.batchSize,
     gravityPoints(
-      AussieAle,
-      AussieAleEquipment,
+      AussieAle.fermentables,
+      AussieAle.efficiency,
       AussieAle.yeasts[0].attenuation
     )
   ) - 1
@@ -83,7 +83,7 @@ test('bitternessIbuRager', () => {
 
   expect(
     bitternessIbuRager(
-      AussieAle,
+      AussieAle.hops,
       avgBoilGravityPts,
       AussieAleEquipment.batchSize + AussieAleEquipment.trubChillerLoss
     )

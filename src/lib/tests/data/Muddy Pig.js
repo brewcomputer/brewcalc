@@ -11,7 +11,7 @@ export const recipe: Recipe = {
   batchSize: 18.9300000,
   boilSize: 14.8100000,
   boilTime: 45.0000000,
-  efficiency: 0.75,
+  efficiency: 0.15,
   hops: [
     {
       name: 'Cluster',
@@ -304,7 +304,6 @@ export const recipe: Recipe = {
 export const equipment: Equipment = {
   name: 'Brew Pot  (5 Gallon)',
   version: '1',
-  efficiency: 0.15,
   boilSize: 14.8100000,
   batchSize: 18.9300000,
   tunVolume: 18.9300000,

@@ -11,6 +11,7 @@ export const recipe: Recipe = {
   batchSize: 23.0200000,
   boilSize: 37.1203164,
   boilTime: 90.0000000,
+  efficiency: 0.68,
   hops: [
     {
       name: 'Pride of Ringwood',
@@ -358,7 +359,6 @@ export const recipe: Recipe = {
 }
 
 export const equipment: Equipment = {
-  efficiency: 0.68,
   name: 'Pot (18.5 Gal/70 L) and Cooler (9.5 Gal/40 L)  - All Grain',
   version: '1',
   boilSize: 37.1203164,
