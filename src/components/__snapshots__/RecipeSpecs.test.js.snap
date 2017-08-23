@@ -116,3 +116,76 @@ exports[`renders correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`renders correctly if equipment is null 1`] = `
+<div
+  className="panel panel-default"
+  id={undefined}
+>
+  <div
+    className="panel-heading"
+  >
+    Recipe Specs and Equipment
+  </div>
+  <div
+    className="panel-body"
+  >
+    <div
+      className="show-grid row"
+    >
+      <div
+        className="col-md-6"
+      >
+        <ul>
+          <li>
+            <b>
+              Name: 
+            </b>
+            Aussie Ale
+          </li>
+          <li>
+            <b>
+              Brewer: 
+            </b>
+            Steve Nicholls
+          </li>
+          <li>
+            <b>
+              Type: 
+            </b>
+            All Grain
+          </li>
+          <li>
+            <b>
+              BatchSize: 
+            </b>
+            23.02
+             L
+          </li>
+          <li>
+            <b>
+              BoilSize: 
+            </b>
+            37.12
+             L
+          </li>
+          <li>
+            <b>
+              BoilTime: 
+            </b>
+            90.00
+             min
+          </li>
+        </ul>
+      </div>
+      <div
+        className="col-md-6"
+      >
+        <ul>
+          Equipment is not set
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;

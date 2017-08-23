@@ -24,3 +24,12 @@ test('importFromBeerXmlOne', () => {
   )
   expect(importFromBeerXml(xmlString).recipe).toEqual(recipeOne)
 })
+
+test('importFromBeerXmlWithRecipeNodeOnly', () => {
+  const xmlString: string = fs.readFileSync(
+    __dirname + '/data/Londonpride.xml',
+    'utf8'
+  )
+  expect(importFromBeerXml(xmlString).recipe).toBeDefined()
+  expect(importFromBeerXml(xmlString).equipment).toBeNull()
+})

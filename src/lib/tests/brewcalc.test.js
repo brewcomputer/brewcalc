@@ -21,7 +21,6 @@ import { calculateVolumes } from '../volumes'
 import { recipe as AussieAle } from './data/AussieAle.js'
 import { equipment as AussieAleEquipment } from './data/AussieAle.js'
 import { recipe as MuddyPig } from './data/Muddy Pig.js'
-import { equipment as MuddyPigEquipment } from './data/Muddy Pig.js'
 import type { Yeast } from '../types/yeast'
 import { YeastTypes, YeastForms } from '../types/yeast'
 
@@ -29,8 +28,8 @@ declare var test: any;
 declare var expect: any;
 
 test('originalGravity', () => {
-  const ogPtsAA = gravityPoints(AussieAle, AussieAleEquipment)
-  const ogPtsMP = gravityPoints(MuddyPig, MuddyPigEquipment)
+  const ogPtsAA = gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
+  const ogPtsMP = gravityPoints(MuddyPig.fermentables, MuddyPig.efficiency)
 
   expect(originalGravity(AussieAle.batchSize, ogPtsAA)).toBeCloseTo(1.044, 3)
   expect(originalGravity(MuddyPig.batchSize, ogPtsMP)).toBeCloseTo(1.063, 3)
@@ -38,15 +37,15 @@ test('originalGravity', () => {
 
 test('finalGravity', () => {
   const fgPtsAA = gravityPoints(
-    AussieAle,
-    AussieAleEquipment,
+    AussieAle.fermentables,
+    AussieAle.efficiency,
     AussieAle.yeasts[0].attenuation
   )
   expect(finalGravity(AussieAle.batchSize, fgPtsAA)).toBeCloseTo(1.008, 2)
 
   const fgPtsMP = gravityPoints(
-    MuddyPig,
-    MuddyPigEquipment,
+    MuddyPig.fermentables,
+    MuddyPig.efficiency,
     MuddyPig.yeasts[0].attenuation
   )
   expect(finalGravity(MuddyPig.batchSize, fgPtsMP)).toBeCloseTo(1.015, 2)
@@ -55,7 +54,7 @@ test('finalGravity', () => {
 test('boilGravity', () => {
   const ogAussieAle = originalGravity(
     AussieAle.batchSize,
-    gravityPoints(AussieAle, AussieAleEquipment)
+    gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
   )
   expect(
     boilGravity(AussieAle.batchSize, AussieAle.boilSize, ogAussieAle)
@@ -63,7 +62,7 @@ test('boilGravity', () => {
 
   const ogMiddyPig = originalGravity(
     MuddyPig.batchSize,
-    gravityPoints(MuddyPig, MuddyPigEquipment)
+    gravityPoints(MuddyPig.fermentables, MuddyPig.efficiency)
   )
   expect(
     boilGravity(MuddyPig.batchSize, MuddyPig.boilSize, ogMiddyPig)
@@ -145,14 +144,14 @@ test('totalWater', () => {
 test('estABW, estABV', () => {
   const ogPts = originalGravity(
     AussieAle.batchSize,
-    gravityPoints(AussieAle, AussieAleEquipment)
+    gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
   ) - 1
 
   const fgPts = finalGravity(
     AussieAle.batchSize,
     gravityPoints(
-      AussieAle,
-      AussieAleEquipment,
+      AussieAle.fermentables,
+      AussieAle.efficiency,
       AussieAle.yeasts[0].attenuation
     )
   ) - 1
@@ -167,7 +166,7 @@ test('colorSRMvalue, srmToRgb', () => {
   const volume = AussieAleEquipment.batchSize
 
   //http://beersmith.com/blog/2008/04/29/beer-color-understanding-srm-lovibond-and-ebc/
-  const colorSRMvalue = colorSRM(AussieAle, volume)
+  const colorSRMvalue = colorSRM(AussieAle.fermentables, volume)
   const colorEBCvalue = 1.97 * colorSRMvalue
 
   //8.6

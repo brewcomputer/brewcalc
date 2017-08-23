@@ -15,6 +15,7 @@ export const recipe: Recipe = {
   boilSize: 30.3767465,
   boilTime: 90,
   type: RecipeTypes.allGrain,
+  efficiency: 0.7,
   fermentables: [
     {
       name: 'Pilsner (2 Row) Ger',
@@ -104,7 +105,6 @@ export const equipment: Equipment = {
   tunVolume: 0.3,
   tunSpecificHeat: 0.3,
   coolingLossPct: 0.04,
-  efficiency: 0.7,
   evapRate: 0.159771335,
   lauterDeadspace: 0,
   topUpKettle: 0,

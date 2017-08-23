@@ -7,9 +7,13 @@ import MashSteps from './MashSteps'
 const Recipe = ({ recipe, equipment }) =>
   recipe !== undefined &&
   <div>
-    <RecipeSpecs equipment={equipment} {...recipe} />
-    <Ingredients {...recipe} />
-    <MashSteps recipe={recipe} equipment={equipment} />
+    <RecipeSpecs recipe={recipe} equipment={equipment} />
+    <Ingredients recipe={recipe} />
+
+    {equipment !== null &&
+      <MashSteps recipe={recipe} equipment={equipment} />
+    }
     <Stats recipe={recipe} equipment={equipment} />
+
   </div>
 export default Recipe
