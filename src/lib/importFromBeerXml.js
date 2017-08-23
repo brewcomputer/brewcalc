@@ -41,13 +41,13 @@ export const importFromBeerXml = (xml: string) => {
     color,
     potential,
     type
-      }: Fermentable) => {
+      }: Fermentable, i) => {
     return {
       name: name,
       addAfterBoil: parseBool(addAfterBoil),
       amount: parseFloat(amount),
       color: parseFloat(color),
-      potential: parseFloat(potential),
+      potential: potential !== undefined ? parseFloat(potential) : ((fermentableNode[i].yield * 0.01 * 46 / 1000) + 1),
       type: type
     }
   })
