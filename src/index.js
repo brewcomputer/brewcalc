@@ -1,8 +1,4 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
-import registerServiceWorker from './registerServiceWorker'
+// @flow
+const bitternessIbuTinseth = (x: number, y: number = 0) => 10 * x;
 
-ReactDOM.render(<App />, document.getElementById('root'))
-registerServiceWorker()
+export { bitternessIbuTinseth };
