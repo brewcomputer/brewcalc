@@ -1,6 +1,6 @@
 import React from 'react'
 import { Panel, Table } from 'react-bootstrap'
-import { calculateVolumes, mashRecalculate, MashType } from '../../node_modules/brewcalc/lib/brewcalc.min.js'
+import { calculateVolumes, mashRecalculate, MashType } from '../../../lib/brewcalc.min.js'
 
 //TODO: Add BIAB
 

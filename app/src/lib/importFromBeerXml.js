@@ -1,5 +1,5 @@
 // @flow
-import type { Recipe, Fermentable, Hop, Mash, MashStep, Yeast, Equipment, Specifications } from '../../node_modules/brewcalc/lib/brewcalc.min.js'
+import type { Recipe, Fermentable, Hop, Mash, MashStep, Yeast, Equipment, Specifications } from '../../../lib/brewcalc.min.js'
 
 // $FlowFixMe
 import * as XML from 'pixl-xml'

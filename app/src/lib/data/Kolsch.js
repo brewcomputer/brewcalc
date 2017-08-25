@@ -1,6 +1,6 @@
 // @flow
-import type { Equipment, Recipe, Specifications } from '../../../node_modules/brewcalc/lib/brewcalc.min.js'
-import { RecipeTypes, FermentableTypes, HopForms, HopUse, YeastForms, YeastTypes, MashType } from '../../../node_modules/brewcalc/lib/brewcalc.min.js'
+import type { Equipment, Recipe, Specifications } from '../../../../lib/brewcalc.min.js'
+import { RecipeTypes, FermentableTypes, HopForms, HopUse, YeastForms, YeastTypes, MashType } from '../../../../lib/brewcalc.min.js'
 
 export const recipe: Recipe = {
   name: 'Lloyd&#39;s Krispy Kolsch',

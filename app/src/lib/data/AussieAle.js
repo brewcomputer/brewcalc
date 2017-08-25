@@ -1,5 +1,5 @@
 // @flow
-import type { Equipment, Recipe } from '../../../node_modules/brewcalc/lib/brewcalc.min.js'
+import type { Equipment, Recipe } from '../../../../lib/brewcalc.min.js'
 
 export const recipe: Recipe = {
   name: 'Aussie Ale',

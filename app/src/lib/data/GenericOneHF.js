@@ -1,6 +1,6 @@
 // @flow
-import type { Recipe } from '../../../node_modules/brewcalc/lib/brewcalc.min.js'
-import { RecipeTypes, FermentableTypes, HopForms, HopUse, YeastForms, YeastTypes, MashType } from '../../../node_modules/brewcalc/lib/brewcalc.min.js'
+import type { Recipe } from '../../../../lib/brewcalc.min.js'
+import { RecipeTypes, FermentableTypes, HopForms, HopUse, YeastForms, YeastTypes, MashType } from '../../../../lib/brewcalc.min.js'
 
 export const recipeOne: Recipe = {
   name: 'Generic',
