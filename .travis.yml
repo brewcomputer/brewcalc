@@ -4,6 +4,7 @@ node_js:
 cache:
   directories:
     - node_modules
+    - app/node_modules
 script:
   - npm run flow
   - npm test
