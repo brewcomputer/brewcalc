@@ -1,19 +1,19 @@
 /* global __dirname, require, module*/
 
-const webpack = require('webpack');
-const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-const path = require('path');
-const env = require('yargs').argv.env; // use --env with webpack 2
+const webpack = require('webpack')
+const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
+const path = require('path')
+const env = require('yargs').argv.env // use --env with webpack 2
 
-let libraryName = 'brewcalc';
+let libraryName = 'brewcalc'
 
-let plugins = [], outputFile;
+let plugins = [], outputFile
 
 if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }));
-  outputFile = libraryName + '.min.js';
+  plugins.push(new UglifyJsPlugin({ minimize: true }))
+  outputFile = libraryName + '.min.js'
 } else {
-  outputFile = libraryName + '.js';
+  outputFile = libraryName + '.js'
 }
 
 const config = {
@@ -45,6 +45,6 @@ const config = {
     extensions: ['.json', '.js']
   },
   plugins: plugins
-};
+}
 
-module.exports = config;
+module.exports = config
