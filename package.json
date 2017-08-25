@@ -4,6 +4,7 @@
   "description": "A modern (ES6) functional JavaScript library for brewing calculations.",
   "main": "lib/brewcalc.js",
   "scripts": {
+    "flow": "flow",
     "build": "webpack --env build",
     "dev": "webpack --progress --colors --watch --env dev",
     "test": "jest",
@@ -31,9 +32,9 @@
     "flow-babel-webpack-plugin": "^1.1.0",
     "flow-bin": "^0.53.1",
     "jest": "^20.0.4",
+    "pixl-xml": "^1.0.10",
     "webpack": "3.1.0",
-    "yargs": "7.1.0",
-    "pixl-xml": "^1.0.10"
+    "yargs": "7.1.0"
   },
   "repository": {
     "type": "git",

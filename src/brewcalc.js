@@ -125,11 +125,6 @@ const viability = (currentDate: string, cultureDate: string) =>
   Math.floor((Date.parse(currentDate) - Date.parse(cultureDate)) / 86400000) *
   0.7
 
-const NotImplementedException = () => {
-  this.message = 'I dont know how to calculate Culture yeasts yet'
-  this.name = 'NotImplementedError'
-}
-
 export const yeastCount = (
   { amount, form, cultureDate }: Yeast,
   currentDate: string = new Date().toString(),
@@ -145,7 +140,7 @@ export const yeastCount = (
     case YeastForms.slant:
       return slurryDensity * amount * 1000
     default:
-      throw NotImplementedException()
+      throw new Error('NotImplementedError')
   }
 }
 
