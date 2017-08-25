@@ -14,9 +14,9 @@ import type { Specifications } from './types/specifications'
 import * as XML from 'pixl-xml'
 
 const camelCase = (str: string) =>
-  str.length === 0 ? ''
-    : str.length === 1 ? str.toLowerCase()
-      : str
+  str.length === 0 ? '' :
+    str.length === 1 ? str.toLowerCase() :
+      str
         .replace(/^[_.\- ]+/, '')
         .toLowerCase()
         .replace(/[_.\- ]+(\w|$)/g, (m, p1) => p1.toUpperCase())
@@ -24,10 +24,10 @@ const camelCase = (str: string) =>
 const xmlToCamelCase = (xml: string) =>
   xml.replace(/<(?!!)(?!\?)[^>]*>/g, str => camelCase(str.toLowerCase()))
 
-const parseBool = (s: any) => s === 'TRUE' ? true : false
+const parseBool = (s: any) => s === 'TRUE'
 const isBIAB = (mashName: any) => mashName.includes('BIAB')
 
-//TODO: May be it is not so good idea. But At the moment I can't figure out best practices for rounding operations.
+// TODO: May be it is not so good idea. But At the moment I can't figure out best practices for rounding operations.
 const dirtyRound = (n: number) => Math.round(n * 100000000000) / 100000000000
 
 export const importFromBeerXml = (xml: string) => {
@@ -140,7 +140,7 @@ export const importFromBeerXml = (xml: string) => {
     topUpKettle: parseFloat(equipmentNode.topUpKettle),
     trubChillerLoss: parseFloat(equipmentNode.trubChillerLoss),
 
-    //TODO:: may be it is part of mashing steps, not eq
+    // TODO:: may be it is part of mashing steps, not eq
     BIAB: isBIAB(doc.recipe.mash.name)
   } : null
 
@@ -153,6 +153,7 @@ export const importFromBeerXml = (xml: string) => {
     ibu: parseFloat(recipeNode.ibu),
     calories: parseFloat(recipeNode.calories)
   }
+
   return {
     recipe: recipe,
     equipment: equipment,

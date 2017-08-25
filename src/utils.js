@@ -30,16 +30,6 @@ export const platoTosg = (e: number) => 1 + e / (258.6 - e / 258.2 * 227.1)
 export const sum = (array: Array<number>) =>
   array.reduce((pv, cv) => pv + cv, 0)
 
-export const scaleRecipe = (r: Recipe, { batchSize }: Equipment) => {
-  const scaleFactor: number = batchSize / r.batchSize
-  return {
-    ...r,
-    batchSize: batchSize,
-    fermentables: scaleIngredients(scaleFactor, r.fermentables),
-    hops: scaleIngredients(scaleFactor, r.hops)
-  }
-}
-
 const scaleIngredients = (scaleFactor: number, ingredients: any) =>
   ingredients.map(i => {
     return {
@@ -47,3 +37,14 @@ const scaleIngredients = (scaleFactor: number, ingredients: any) =>
       amount: scaleFactor * i.amount
     }
   })
+
+export const scaleRecipe = (r: Recipe, { batchSize }: Equipment) => {
+  const scaleFactor: number = batchSize / r.batchSize
+
+  return {
+    ...r,
+    batchSize: batchSize,
+    fermentables: scaleIngredients(scaleFactor, r.fermentables),
+    hops: scaleIngredients(scaleFactor, r.hops)
+  }
+}

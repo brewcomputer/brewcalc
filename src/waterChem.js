@@ -27,6 +27,7 @@ const adjustmentsFromSalts = (
   let adjNa = 0
   let adjCl = 0
   let adjHCO3 = 0
+
   CaCO3 = CaCO3 / 2
 
   if (CaCO3 > 0) {
@@ -64,6 +65,7 @@ const adjustmentsFromSalts = (
     alkalinity: alkalinity(Math.round(adjHCO3))
   }
 }
+
 export const calcWaterChemistry = (
   batchSize: number,
   dilution: number,

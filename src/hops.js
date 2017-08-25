@@ -14,9 +14,9 @@ const ibuUtilization = (
   (1 - Math.pow(Math.E, -0.04 * boilTime)) /
   4.15
 
-//Glenn Tinseth developed the following formula to calculate bitterness in IBUs:
-//IBU = (U * ozs hops * 7490)/Volume (in gallons) U represents the utilization of the hops (conversion to iso-alpha-acids) based on boil time and wort gravity.
-//U = bigness factor * boil time factor
+// Glenn Tinseth developed the following formula to calculate bitterness in IBUs:
+// IBU = (U * ozs hops * 7490)/Volume (in gallons) U represents the utilization of the hops (conversion to iso-alpha-acids) based on boil time and wort gravity.
+// U = bigness factor * boil time factor
 
 export const bitternessIbuTinseth = (
   hops: Array<Hop>,
@@ -38,11 +38,11 @@ export const bitternessIbuTinseth = (
     )
   )
 
-//The preceived bitterness expressed in a ratio of IBUs to gravity. This is frequently seen expressed as BU/GU.
-//The Gravity Units are the decimal portion of the original gravity
+// The preceived bitterness expressed in a ratio of IBUs to gravity. This is frequently seen expressed as BU/GU.
+// The Gravity Units are the decimal portion of the original gravity
 export const bitternessRatio = (ibu: number, gu: number) => ibu / gu
 
-//rager
+// rager
 const ragerHopGravityAdjustment = sgb => sgb <= 1.050 ? 0 : (sgb - 1.050) / 0.2
 const ragerUtil = time => 18.11 + 13.86 * Math.tanh((time - 31.32) / 18.27)
 
@@ -56,9 +56,9 @@ export const ragerHopIbu = (
   sg: number,
   vol: number
 ) =>
-  time <= 0.0 || amount <= 0.0 || alpha < 0.0
-    ? 0
-    : ragerHopIbuFromWeight(
+  time <= 0.0 || amount <= 0.0 || alpha < 0.0 ?
+    0 :
+    ragerHopIbuFromWeight(
       ragerUtil(Math.floor(time + 0.5)) * 0.01,
       alpha,
       amount,
