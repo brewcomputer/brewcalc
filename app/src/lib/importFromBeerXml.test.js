@@ -1,7 +1,7 @@
 // @flow
 import { recipe, equipment, specifications } from './data/Kolsch'
 import { recipeOne } from './data/GenericOneHF'
-import { importFromBeerXml } from '../importFromBeerXml'
+import { importFromBeerXml } from './importFromBeerXml'
 import * as fs from 'fs'
 
 declare var test: any;

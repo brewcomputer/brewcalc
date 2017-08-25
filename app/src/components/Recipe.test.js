@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Recipe from './Recipe'
 
-import { recipeOne as recipe } from '../lib/tests/data/GenericOneHF.js'
-import { equipment } from '../lib/tests/data/Pot50L.js'
+import { recipeOne as recipe } from '../lib/data/GenericOneHF.js'
+import { equipment } from '../lib/data/Pot50L.js'
 
 it('renders without crashing', () => {
     const div = document.createElement('div')

@@ -9,10 +9,10 @@ import {
   colorSRM,
   estABVrealExtract,
   calcCalories,
-  srmToCss
-} from '../lib/brewcalc'
-import { bitternessIbuTinseth } from '../lib/hops'
-import { ouncesToLiters } from '../lib/utils'
+  srmToCss,
+  bitternessIbuTinseth,
+  ouncesToLiters
+} from '../../node_modules/brewcalc/lib/brewcalc.min.js'
 
 const Stats = ({ recipe, equipment }) => {
 
