@@ -8,3 +8,6 @@ script:
   - npm run flow
   - npm test
   - npm build
+  - npm install --prefix app
+  - npm run flow --prefix app
+  - npm test --prefix app
