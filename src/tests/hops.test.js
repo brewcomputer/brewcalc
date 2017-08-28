@@ -61,6 +61,7 @@ test('bitternessRatio', () => {
   )
 
   const gu = ogPts * 1000
+
   expect(bitternessRatio(ibu, gu)).toBeCloseTo(0.64, 0)
 })
 
@@ -88,5 +89,5 @@ test('bitternessIbuRager', () => {
       AussieAleEquipment.batchSize + AussieAleEquipment.trubChillerLoss
     )
   ).toBeCloseTo(21, 0)
-  //22.2 by beerSmith, I suppose that there is additional ajustments depends of the Hop form
+  // 22.2 by beerSmith, I suppose that there is additional ajustments depends of the Hop form
 })

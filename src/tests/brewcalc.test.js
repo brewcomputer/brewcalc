@@ -41,6 +41,7 @@ test('finalGravity', () => {
     AussieAle.efficiency,
     AussieAle.yeasts[0].attenuation
   )
+
   expect(finalGravity(AussieAle.batchSize, fgPtsAA)).toBeCloseTo(1.008, 2)
 
   const fgPtsMP = gravityPoints(
@@ -48,6 +49,7 @@ test('finalGravity', () => {
     MuddyPig.efficiency,
     MuddyPig.yeasts[0].attenuation
   )
+
   expect(finalGravity(MuddyPig.batchSize, fgPtsMP)).toBeCloseTo(1.015, 2)
 })
 
@@ -56,6 +58,7 @@ test('boilGravity', () => {
     AussieAle.batchSize,
     gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
   )
+
   expect(
     boilGravity(AussieAle.batchSize, AussieAle.boilSize, ogAussieAle)
   ).toBeCloseTo(1.031, 2)
@@ -64,6 +67,7 @@ test('boilGravity', () => {
     MuddyPig.batchSize,
     gravityPoints(MuddyPig.fermentables, MuddyPig.efficiency)
   )
+
   expect(
     boilGravity(MuddyPig.batchSize, MuddyPig.boilSize, ogMiddyPig)
   ).toBeCloseTo(1.084, 2)
@@ -156,24 +160,24 @@ test('estABW, estABV', () => {
     )
   ) - 1
 
-  //?
+  // ?
   expect(estABW(ogPts * 1000, fgPts * 1000)).toBeCloseTo(3.47, 2)
-  //4.7 according BeerSmith
+  // 4.7 according BeerSmith
   expect(estABV(ogPts * 1000, fgPts * 1000)).toBeCloseTo(4.36, 2)
 })
 
 test('colorSRMvalue, srmToRgb', () => {
   const volume = AussieAleEquipment.batchSize
 
-  //http://beersmith.com/blog/2008/04/29/beer-color-understanding-srm-lovibond-and-ebc/
+  // http://beersmith.com/blog/2008/04/29/beer-color-understanding-srm-lovibond-and-ebc/
   const colorSRMvalue = colorSRM(AussieAle.fermentables, volume)
   const colorEBCvalue = 1.97 * colorSRMvalue
 
-  //8.6
+  // 8.6
   expect(colorSRMvalue).toBeCloseTo(14.7, 1)
-  //16.8
+  // 16.8
   expect(colorEBCvalue).toBeCloseTo(29.04, 1)
-  //expect(srmToRgb(colorSRMvalue)).toBeCloseTo(16.8, 1)
+  // expect(srmToRgb(colorSRMvalue)).toBeCloseTo(16.8, 1)
 })
 
 test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
@@ -190,6 +194,7 @@ test('yeastNeeded, yeastCount, yeastStarterGrow', () => {
   const pitchRate = yeast.type === YeastTypes.ale ? 0.75 : 1.5
   const gravity = 1.04
   const starterSize = 1
+
   expect(yeastNeeded(pitchRate, batchSize, sgToPlato(gravity))).toBeCloseTo(
     155.87,
     1
@@ -250,6 +255,7 @@ test('carbonation', () => {
   const carbVolume = 2.4
   const t = 4.4
   const batchSize = 18.93
+
   expect(carbonation(carbVolume, t, batchSize).kegPressure).toBeCloseTo(
     kpaToPsi(77.15),
     1
