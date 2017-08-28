@@ -1,5 +1,5 @@
 // @flow
-import type { Equipment } from '../../../../lib/brewcalc.min.js'
+import type { Equipment } from 'brewcalc'
 
 export const equipment: Equipment = {
   name: 'Pot (13 Gal/50 L) - BIAB',

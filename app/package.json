@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "brewcalc": "file:../",
+    "brewcalc": "file:../lib/*",
     "react": "^15.6.1",
     "react-ace": "^5.1.2",
     "react-bootstrap": "^0.31.1",
