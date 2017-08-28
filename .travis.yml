@@ -6,7 +6,6 @@ before_install:
   npm install -g npm@latest
 
 script:
-  - npm run flow
   - npm test
   - npm run build
   - npm install --prefix app
