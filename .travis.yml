@@ -11,4 +11,4 @@ script:
   - npm build
   - npm install --prefix app
   - npm test --prefix app
-  - npm build --prefix app
+  - npm run build --prefix app
