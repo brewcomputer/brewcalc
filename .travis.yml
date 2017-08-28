@@ -1,9 +1,21 @@
 language: node_js
 node_js:
   - 6
-cache:
-  directories:
-    - node_modules
+
+before_install:
+  npm install -g npm@latest
+
 script:
   - npm test
-  - npm run flow
+  - npm run build
+  - npm install --prefix app
+  - npm test --prefix app
+  - npm run build --prefix app
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $github_token
+  local_dir: app\build
+  on:
+    branch: master
