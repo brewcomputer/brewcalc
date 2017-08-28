@@ -3,7 +3,7 @@ node_js:
   - 6
 script:
   - npm test
-  - npm build
+  - npm run build
   - npm install --prefix app
   - npm test --prefix app
   - npm run build --prefix app
