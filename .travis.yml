@@ -11,3 +11,11 @@ script:
   - npm install --prefix app
   - npm test --prefix app
   - npm run build --prefix app
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $github_token
+  local_dir: app\build
+  on:
+    branch: master
