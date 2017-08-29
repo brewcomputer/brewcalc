@@ -24,8 +24,8 @@ import { recipe as MuddyPig } from './data/Muddy Pig.js'
 import type { Yeast } from '../types/yeast'
 import { YeastTypes, YeastForms } from '../types/yeast'
 
-declare var test: any;
-declare var expect: any;
+declare var test: any
+declare var expect: any
 
 test('originalGravity', () => {
   const ogPtsAA = gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
@@ -146,19 +146,21 @@ test('totalWater', () => {
 })
 
 test('estABW, estABV', () => {
-  const ogPts = originalGravity(
-    AussieAle.batchSize,
-    gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
-  ) - 1
+  const ogPts =
+    originalGravity(
+      AussieAle.batchSize,
+      gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
+    ) - 1
 
-  const fgPts = finalGravity(
-    AussieAle.batchSize,
-    gravityPoints(
-      AussieAle.fermentables,
-      AussieAle.efficiency,
-      AussieAle.yeasts[0].attenuation
-    )
-  ) - 1
+  const fgPts =
+    finalGravity(
+      AussieAle.batchSize,
+      gravityPoints(
+        AussieAle.fermentables,
+        AussieAle.efficiency,
+        AussieAle.yeasts[0].attenuation
+      )
+    ) - 1
 
   // ?
   expect(estABW(ogPts * 1000, fgPts * 1000)).toBeCloseTo(3.47, 2)
@@ -261,7 +263,7 @@ test('carbonation', () => {
     1
   )
 
-  expect(carbonation(carbVolume, t, batchSize).kegSugar).toBeCloseTo(35.70, 0)
-  expect(carbonation(carbVolume, t, batchSize).cornSugar).toBeCloseTo(71.40, 0)
+  expect(carbonation(carbVolume, t, batchSize).kegSugar).toBeCloseTo(35.7, 0)
+  expect(carbonation(carbVolume, t, batchSize).cornSugar).toBeCloseTo(71.4, 0)
   expect(carbonation(carbVolume, t, batchSize).dme).toBeCloseTo(109.82, 0)
 })

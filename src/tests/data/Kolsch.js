@@ -22,7 +22,7 @@ export const recipe: Recipe = {
       addAfterBoil: false,
       amount: 3.2412931,
       color: 2,
-      potential: 1.0372600,
+      potential: 1.03726,
       type: FermentableTypes.grain
     },
     {
@@ -30,7 +30,7 @@ export const recipe: Recipe = {
       addAfterBoil: false,
       amount: 0.8640194,
       color: 3.4974619,
-      potential: 1.0358800,
+      potential: 1.03588,
       type: FermentableTypes.grain
     },
     {
@@ -38,7 +38,7 @@ export const recipe: Recipe = {
       addAfterBoil: false,
       amount: 0.2164116,
       color: 2,
-      potential: 1.0331200,
+      potential: 1.03312,
       type: FermentableTypes.grain
     }
   ],
@@ -113,8 +113,8 @@ export const equipment: Equipment = {
 }
 
 export const specifications: Specifications = {
-  og: 1.0490000,
-  fg: 1.0100000,
+  og: 1.049,
+  fg: 1.01,
   abv: 0.051,
   color: 3.7,
   ibu: 27.0,

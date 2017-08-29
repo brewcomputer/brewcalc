@@ -5,8 +5,8 @@ export type Fermentable = {
   amount: number,
   potential: number,
   addAfterBoil: boolean,
-  type: "Grain" | "Sugar" | "Extract" | "Dry Extract" | "Adjunct"
-};
+  type: 'Grain' | 'Sugar' | 'Extract' | 'Dry Extract' | 'Adjunct'
+}
 
 export const FermentableTypes = {
   grain: 'Grain',

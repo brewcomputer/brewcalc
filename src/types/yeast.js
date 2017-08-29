@@ -3,10 +3,10 @@ export type Yeast = {
   name: string,
   amount: number,
   attenuation: number,
-  form: "Liquid" | "Dry" | "Slant" | "Culture",
-  type: "Ale" | "Lager" | "Wheat" | "Wine" | "Champagne",
+  form: 'Liquid' | 'Dry' | 'Slant' | 'Culture',
+  type: 'Ale' | 'Lager' | 'Wheat' | 'Wine' | 'Champagne',
   cultureDate: string
-};
+}
 
 export const YeastTypes = {
   ale: 'Ale',

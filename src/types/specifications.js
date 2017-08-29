@@ -4,7 +4,7 @@ export type Specifications = {
   fg: number,
   color: number,
   ibu: number,
-  ibuMethod: "Rager" | "Tinseth" | "Garetz",
+  ibuMethod: 'Rager' | 'Tinseth' | 'Garetz',
   abv: number,
   calories: number
-};
+}

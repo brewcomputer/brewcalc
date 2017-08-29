@@ -29,10 +29,12 @@
     "babel-preset-es2015": "6.24.1",
     "eslint": "3.19.0",
     "eslint-loader": "1.7.1",
+    "eslint-plugin-prettier": "^2.2.0",
     "flow-babel-webpack-plugin": "^1.1.0",
     "flow-bin": "^0.53.1",
     "jest": "^20.0.4",
     "pixl-xml": "^1.0.10",
+    "prettier": "^1.6.0",
     "webpack": "3.1.0",
     "yargs": "7.1.0"
   },

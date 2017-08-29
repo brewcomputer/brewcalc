@@ -8,23 +8,25 @@ import { originalGravity, gravityPoints, finalGravity } from '../brewcalc'
 import { recipe as AussieAle } from './data/AussieAle.js'
 import { equipment as AussieAleEquipment } from './data/AussieAle.js'
 
-declare var test: any;
-declare var expect: any;
+declare var test: any
+declare var expect: any
 
 test('bitternessIbuTinseth', () => {
-  const ogPts = originalGravity(
-    AussieAle.batchSize,
-    gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
-  ) - 1
+  const ogPts =
+    originalGravity(
+      AussieAle.batchSize,
+      gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
+    ) - 1
 
-  const fgPts = finalGravity(
-    AussieAle.batchSize,
-    gravityPoints(
-      AussieAle.fermentables,
-      AussieAle.efficiency,
-      AussieAle.yeasts[0].attenuation
-    )
-  ) - 1
+  const fgPts =
+    finalGravity(
+      AussieAle.batchSize,
+      gravityPoints(
+        AussieAle.fermentables,
+        AussieAle.efficiency,
+        AussieAle.yeasts[0].attenuation
+      )
+    ) - 1
 
   const avgBoilGravityPts = (ogPts + fgPts) / 2
 
@@ -38,19 +40,21 @@ test('bitternessIbuTinseth', () => {
 })
 
 test('bitternessRatio', () => {
-  const ogPts = originalGravity(
-    AussieAle.batchSize,
-    gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
-  ) - 1
+  const ogPts =
+    originalGravity(
+      AussieAle.batchSize,
+      gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
+    ) - 1
 
-  const fgPts = finalGravity(
-    AussieAle.batchSize,
-    gravityPoints(
-      AussieAle.fermentables,
-      AussieAle.efficiency,
-      AussieAle.yeasts[0].attenuation
-    )
-  ) - 1
+  const fgPts =
+    finalGravity(
+      AussieAle.batchSize,
+      gravityPoints(
+        AussieAle.fermentables,
+        AussieAle.efficiency,
+        AussieAle.yeasts[0].attenuation
+      )
+    ) - 1
 
   const avgBoilGravityPts = (ogPts + fgPts) / 2
 
@@ -66,19 +70,21 @@ test('bitternessRatio', () => {
 })
 
 test('bitternessIbuRager', () => {
-  const ogPts = originalGravity(
-    AussieAle.batchSize,
-    gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
-  ) - 1
+  const ogPts =
+    originalGravity(
+      AussieAle.batchSize,
+      gravityPoints(AussieAle.fermentables, AussieAle.efficiency)
+    ) - 1
 
-  const fgPts = finalGravity(
-    AussieAle.batchSize,
-    gravityPoints(
-      AussieAle.fermentables,
-      AussieAle.efficiency,
-      AussieAle.yeasts[0].attenuation
-    )
-  ) - 1
+  const fgPts =
+    finalGravity(
+      AussieAle.batchSize,
+      gravityPoints(
+        AussieAle.fermentables,
+        AussieAle.efficiency,
+        AussieAle.yeasts[0].attenuation
+      )
+    ) - 1
 
   const avgBoilGravityPts = (ogPts + fgPts) / 2
 

@@ -19,7 +19,7 @@ export const recipeOne: Recipe = {
       addAfterBoil: false,
       amount: 3.2412931,
       color: 2,
-      potential: 1.0372600,
+      potential: 1.03726,
       type: FermentableTypes.grain
     }
   ],

@@ -6,4 +6,4 @@ export type SaltAdditions = {
   CaCl2: number,
   MgSO4: number,
   NaCl: number
-};
+}

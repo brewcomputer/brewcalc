@@ -18,20 +18,21 @@ export const calculateVolumes = (
   }: Equipment
 ) => {
   const starterSize = 0
-  const fermentationLoss = 1.70
+  const fermentationLoss = 1.7
 
   const mashGrainWeight = sum(
     fermentables.map(
-      ({ amount, type }) => type === FermentableTypes.grain ? amount : 0
+      ({ amount, type }) => (type === FermentableTypes.grain ? amount : 0)
     )
   )
-  const grainAbsorbtionRatio = BIAB ? 0.5860 : 0.96 // number of ounces of water absorbed per ounce of the grain
+  const grainAbsorbtionRatio = BIAB ? 0.586 : 0.96 // number of ounces of water absorbed per ounce of the grain
 
   const grainAbsorbtion = ouncesToLiters(
     kgToOunces(mashGrainWeight) * grainAbsorbtionRatio
   )
 
-  const totalMashWaterAdds = lauterDeadspace +
+  const totalMashWaterAdds =
+    lauterDeadspace +
     sum(
       mash.mashSteps.map(
         ({ type, infuseAmount }) =>
@@ -47,7 +48,8 @@ export const calculateVolumes = (
 
   const waterAvailFromMash = totalMashWaterAdds - grainAbsorbtion
 
-  const spargeVol = boilSize +
+  const spargeVol =
+    boilSize +
     grainAbsorbtion -
     topUpKettle +
     lauterDeadspace -
@@ -58,7 +60,8 @@ export const calculateVolumes = (
   const postBoilVolume = estPreBoilVolume - boilOffVolume
   const coolingShrinkage = postBoilVolume * coolingLossPct
 
-  const estBottlingVol = postBoilVolume -
+  const estBottlingVol =
+    postBoilVolume -
     coolingShrinkage -
     trubChillerLoss -
     starterSize -

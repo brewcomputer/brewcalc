@@ -6,7 +6,7 @@ import type { Mash } from './mash'
 
 export type Recipe = {
   name: string,
-  type: "Extract" | "All Grain" | "Partial Mash",
+  type: 'Extract' | 'All Grain' | 'Partial Mash',
   batchSize: number,
   boilSize: number,
   boilTime: number,
@@ -15,7 +15,7 @@ export type Recipe = {
   fermentables: Array<Fermentable>,
   yeasts: Array<Yeast>,
   mash: Mash
-};
+}
 
 export const RecipeTypes = {
   extract: 'Extract',

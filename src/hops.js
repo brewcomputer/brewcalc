@@ -43,7 +43,7 @@ export const bitternessIbuTinseth = (
 export const bitternessRatio = (ibu: number, gu: number) => ibu / gu
 
 // rager
-const ragerHopGravityAdjustment = sgb => sgb <= 1.050 ? 0 : (sgb - 1.050) / 0.2
+const ragerHopGravityAdjustment = sgb => (sgb <= 1.05 ? 0 : (sgb - 1.05) / 0.2)
 const ragerUtil = time => 18.11 + 13.86 * Math.tanh((time - 31.32) / 18.27)
 
 const ragerHopIbuFromWeight = (util, alpha, wt, vol, ga, wtFactor) =>
@@ -56,16 +56,16 @@ export const ragerHopIbu = (
   sg: number,
   vol: number
 ) =>
-  time <= 0.0 || amount <= 0.0 || alpha < 0.0 ?
-    0 :
-    ragerHopIbuFromWeight(
-      ragerUtil(Math.floor(time + 0.5)) * 0.01,
-      alpha,
-      amount,
-      vol,
-      ragerHopGravityAdjustment(sg),
-      100.0 / 1.34
-    )
+  time <= 0.0 || amount <= 0.0 || alpha < 0.0
+    ? 0
+    : ragerHopIbuFromWeight(
+        ragerUtil(Math.floor(time + 0.5)) * 0.01,
+        alpha,
+        amount,
+        vol,
+        ragerHopGravityAdjustment(sg),
+        100.0 / 1.34
+      )
 
 export const bitternessIbuRager = (
   hops: Array<Hop>,
@@ -80,5 +80,6 @@ export const bitternessIbuRager = (
         time,
         avgBoilGravityPts,
         litersToGallons(postBoilVolume)
-      ))
+      )
+    )
   )

@@ -6,4 +6,4 @@ export type Mash = {
   spargeTemp: number,
   equipAdjust: boolean,
   mashSteps: Array<MashStep>
-};
+}

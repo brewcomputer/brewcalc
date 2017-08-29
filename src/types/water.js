@@ -7,4 +7,4 @@ export type Water = {
   Mg: number,
   Na: number,
   SO4: number
-};
+}

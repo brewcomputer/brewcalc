@@ -12,4 +12,4 @@ export type Equipment = {
   lauterDeadspace: number,
   topUpKettle: number,
   BIAB: boolean
-};
+}

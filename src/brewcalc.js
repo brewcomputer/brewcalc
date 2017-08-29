@@ -36,10 +36,10 @@ const fermentableEfficiency = (
   sugarEfficiency = 1
 ) =>
   type === FermentableTypes.extract ||
-    type === FermentableTypes.sugar ||
-    type === FermentableTypes.dryExtract ?
-    sugarEfficiency :
-    equipmentEfficiency
+  type === FermentableTypes.sugar ||
+  type === FermentableTypes.dryExtract
+    ? sugarEfficiency
+    : equipmentEfficiency
 
 export const gravityPoints = (
   fermentables: Array<Fermentable>,
@@ -52,7 +52,8 @@ export const gravityPoints = (
         potential,
         amount,
         (1 - attenutation) * fermentableEfficiency(type, efficiency)
-      ))
+      )
+    )
   )
 
 // http://byo.com/bock/item/408-calculating-alcohol-content-attenuation-extract-and-calories-advanced-homebrewing
@@ -83,8 +84,10 @@ export const srmToRgb = (srm: number) => ({
   g: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.88, srm)))),
   b: Math.round(Math.min(255, Math.max(0, 255 * Math.pow(0.7, srm))))
 })
-export const colorSRM = (fermentables: Array<Fermentable>, postBoilVolime: number) =>
-  mcu2srm(sum(fermentables.map(calcMCU)) / litersToGallons(postBoilVolime))
+export const colorSRM = (
+  fermentables: Array<Fermentable>,
+  postBoilVolime: number
+) => mcu2srm(sum(fermentables.map(calcMCU)) / litersToGallons(postBoilVolime))
 
 export const srmToCss = (srm: number) => {
   const color = srmToRgb(srm)
@@ -123,7 +126,7 @@ export const yeastNeeded = (pitchRate: number, batchSize: number, e: number) =>
 const viability = (currentDate: string, cultureDate: string) =>
   100 -
   Math.floor((Date.parse(currentDate) - Date.parse(cultureDate)) / 86400000) *
-  0.7
+    0.7
 
 export const yeastCount = (
   { amount, form, cultureDate }: Yeast,
@@ -147,11 +150,11 @@ export const yeastCount = (
 const yeastGrowth = ratio => 2.33 - 0.67 * ratio
 
 const growthRateCurveBraukaiserStir = (ratio: number) =>
-  ratio < 1.4 ?
-    1.4 :
-    ratio >= 1.4 && ratio <= 3.5 && yeastGrowth(ratio) > 0 ?
-      yeastGrowth(ratio) :
-      0
+  ratio < 1.4
+    ? 1.4
+    : ratio >= 1.4 && ratio <= 3.5 && yeastGrowth(ratio) > 0
+      ? yeastGrowth(ratio)
+      : 0
 
 export const yeastStarterGrow = (
   startingYeastCount: number,
@@ -167,10 +170,7 @@ export const yeastStarterGrow = (
 
   const growthRate = growthRateCurveBraukaiserStir(cellsToGramsRatio)
   const endingCount = gramsDME * growthRate + startingYeastCount
-  const pitchRate = endingCount *
-    1000 /
-    sgToPlato(gravity) /
-    (batchSize / 1000)
+  const pitchRate = endingCount * 1000 / sgToPlato(gravity) / (batchSize / 1000)
 
   return {
     growthRate: growthRate,
@@ -184,18 +184,16 @@ const kegPressure = (carbVolume: number, t: number) =>
   Math.max(
     0,
     -16.6999 -
-    0.0101059 * t +
-    0.00116512 * t * t +
-    0.173354 * t * carbVolume +
-    4.24267 * carbVolume -
-    0.0684226 * carbVolume * carbVolume
+      0.0101059 * t +
+      0.00116512 * t * t +
+      0.173354 * t * carbVolume +
+      4.24267 * carbVolume -
+      0.0684226 * carbVolume * carbVolume
   )
 
 // http://www.homebrewtalk.com/showthread.php?t=441383
 const primingSugar = (carbVolume, t, batchSize) =>
-  15.195 *
-  batchSize *
-  (carbVolume - 3.0378 + 5.0062e-2 * t - 2.6555e-4 * t * t)
+  15.195 * batchSize * (carbVolume - 3.0378 + 5.0062e-2 * t - 2.6555e-4 * t * t)
 
 const normalizeTemp = (t: number) => Math.max(32.0, celsiusToFahrenheit(t))
 

@@ -12,14 +12,7 @@ const alkalinity = (value: number, dilution: number = 0) =>
 
 const adjustmentsFromSalts = (
   batchSize: number,
-  {
-    CaCO3,
-    NaHCO3,
-    CaSO4,
-    CaCl2,
-    MgSO4,
-    NaCl
-  }: SaltAdditions
+  { CaCO3, NaHCO3, CaSO4, CaCl2, MgSO4, NaCl }: SaltAdditions
 ) => {
   let adjCa = 0
   let adjMg = 0
