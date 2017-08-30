@@ -13,9 +13,9 @@ export type Hop = {
 // Aroma hops are added after the boil and do not contribute substantially to beer bitterness.
 export const HopUse = {
   boil: 'Boil',
-  dryHop: 'DryHop',
+  dryHop: 'Dry Hop',
   mash: 'Mash',
-  firstWort: 'FirstWort',
+  firstWort: 'First Wort',
   aroma: 'Aroma'
 }
 
