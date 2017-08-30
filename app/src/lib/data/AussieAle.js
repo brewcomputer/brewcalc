@@ -1,4 +1,5 @@
 // @flow
+// $FlowFixMe
 import type { Equipment, Recipe } from 'brewcalc'
 
 export const recipe: Recipe = {
