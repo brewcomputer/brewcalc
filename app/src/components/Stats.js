@@ -27,7 +27,7 @@ const Stats = ({ recipe, equipment }) => {
 
   const fg = finalGravity(
     batchSize,
-    gravityPoints(fermentables, efficiency, yeasts[0].attenuation)
+    gravityPoints(fermentables, efficiency, yeasts[0].attenuation || recipe.efficiency)
   )
 
   const avgBoilGravityPts = boilGravity(
