@@ -1,5 +1,6 @@
 // @flow
 import type { Recipe } from 'brewcalc'
+// $FlowFixMe
 import { RecipeTypes, FermentableTypes, HopForms, HopUse, YeastForms, YeastTypes, MashType } from 'brewcalc'
 
 export const recipeOne: Recipe = {

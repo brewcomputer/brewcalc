@@ -1,4 +1,5 @@
 // @flow
+// $FlowFixMe
 import type { Recipe, Fermentable, Hop, Mash, MashStep, Yeast, Equipment, Specifications } from 'brewcalc'
 
 // $FlowFixMe
