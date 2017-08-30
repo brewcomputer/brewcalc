@@ -21,11 +21,13 @@ const xmlString: string = fs.readFileSync(
 
 const recipe = importFromBeerXml(xmlString).recipe
 const expectedSpecifications = {
-  og: 1.053,
-  fg: 1.011,
-  ibu: 40,
-  color: 6.8,
-  abv: 0.056
+  og: 1.057,
+  fg: 1.012,
+  //ibu: 40,
+  ibu: 74.4,
+  color: 4.6,
+  //abv: 0.056
+  abv: 0.062
 }
 const og = originalGravity(
   recipe.batchSize,
