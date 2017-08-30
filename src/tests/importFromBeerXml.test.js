@@ -1,11 +1,11 @@
 // @flow
 import { recipe, equipment, specifications } from './data/Kolsch'
 import { recipeOne } from './data/GenericOneHF'
-import { importFromBeerXml } from './importFromBeerXml'
+import { importFromBeerXml } from '../importFromBeerXml'
 import * as fs from 'fs'
 
-declare var test: any;
-declare var expect: any;
+declare var test: any
+declare var expect: any
 
 test('importFromBeerXml', () => {
   const xmlString: string = fs.readFileSync(
@@ -39,6 +39,10 @@ test('importFromBeerXmlNoPotential', () => {
     __dirname + '/data/Londonpride.xml',
     'utf8'
   )
-  expect(importFromBeerXml(xmlString).recipe.fermentables[0].potential).toBeCloseTo(1.038, 3)
-  expect(importFromBeerXml(xmlString).recipe.fermentables[1].potential).toBeCloseTo(1.035, 3)
+  expect(
+    importFromBeerXml(xmlString).recipe.fermentables[0].potential
+  ).toBeCloseTo(1.038, 3)
+  expect(
+    importFromBeerXml(xmlString).recipe.fermentables[1].potential
+  ).toBeCloseTo(1.035, 3)
 })

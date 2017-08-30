@@ -1,13 +1,13 @@
 import React from 'react'
 import { FormGroup, FormControl, Panel, Row, Col } from 'react-bootstrap'
-import { importFromBeerXml } from '../lib/importFromBeerXml'
+import { importFromBeerXml } from 'brewcalc'
 import { connect } from 'react-redux'
 
 const ImportArea = ({ editorState, onReloadEditorState }) => {
   const onXmlLoaded = e => {
     const reader = new FileReader()
     reader.readAsText(e.target.files[0])
-    reader.onloadend = function() {
+    reader.onloadend = function () {
       const result = importFromBeerXml(reader.result)
       onReloadEditorState(
         JSON.stringify(

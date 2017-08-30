@@ -49,6 +49,8 @@ import { MashType } from './types/mashStep'
 import { RecipeTypes } from './types/recipe'
 import { YeastForms, YeastTypes } from './types/yeast'
 
+import { importFromBeerXml } from './importFromBeerXml.js'
+
 export {
   originalGravity,
   finalGravity,
@@ -92,5 +94,6 @@ export {
   HopUse,
   MashType,
   YeastForms,
-  YeastTypes
+  YeastTypes,
+  importFromBeerXml
 }
