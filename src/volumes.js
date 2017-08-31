@@ -8,12 +8,12 @@ import type { Equipment } from './types/equipment'
 export const calculateVolumes = (
   { fermentables, mash, boilTime }: Recipe,
   {
-    lauterDeadspace,
     boilSize,
-    evapRate,
-    coolingLossPct,
-    trubChillerLoss,
-    topUpKettle,
+    lauterDeadspace = 0,
+    evapRate = 0,
+    coolingLossPct = 0,
+    trubChillerLoss = 0,
+    topUpKettle = 0,
     BIAB
   }: Equipment
 ) => {

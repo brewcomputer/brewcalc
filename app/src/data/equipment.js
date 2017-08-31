@@ -1,8 +1,4 @@
-// @flow
-// $FlowFixMe
-import type { Equipment } from 'brewcalc'
-
-export const equipment: Equipment = {
+export const equipment = {
   name: 'Pot (13 Gal/50 L) - BIAB',
   boilSize: 36.0199780,
   batchSize: 23.0154363,

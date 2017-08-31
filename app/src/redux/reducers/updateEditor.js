@@ -1,5 +1,5 @@
-import { recipeOne as recipe } from '../../lib/data/GenericOneHF.js'
-import { equipment } from '../../lib/data/Pot50L.js'
+import { recipe } from '../../data/recipe'
+import { equipment } from '../../data/equipment'
 
 const defaultState = {
   editorState: JSON.stringify({ recipe, equipment }, null, 4)

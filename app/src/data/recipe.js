@@ -1,8 +1,4 @@
-// @flow
-// $FlowFixMe
-import type { Equipment, Recipe } from 'brewcalc'
-
-export const recipe: Recipe = {
+export const recipe = {
   name: 'Aussie Ale',
   version: '1',
   type: 'All Grain',
@@ -356,33 +352,4 @@ export const recipe: Recipe = {
   displaySecondaryTemp: '19.4 C',
   displayTertiaryTemp: '18.3 C',
   displayAgeTemp: '18.3 C'
-}
-
-export const equipment: Equipment = {
-  name: 'Pot (18.5 Gal/70 L) and Cooler (9.5 Gal/40 L)  - All Grain',
-  version: '1',
-  boilSize: 37.1203164,
-  batchSize: 23.0200000,
-  tunVolume: 37.8500000,
-  tunWeight: 4.0823280,
-  tunSpecificHeat: 0.3000000,
-  topUpWater: '0.0000000',
-  trubChillerLoss: 2.8400000,
-  evapRate: 0.182879483,
-  boilTime: 90.0000000,
-  calcBoilVolume: true,
-  lauterDeadspace: 3.0300000,
-  topUpKettle: 0.0000000,
-  hopUtilization: '100.0000000',
-  coolingLossPct: 0.04,
-  notes: 'Based on a 18.5 Gal/70 L pot with a diameter of 18 inches/45 cm and a 9.5 Gal/40 L cooler. The above assumes loose pellet hops and only clear, chilled wort transferred from the kettle using no trub management techniques. Experienced brewers should adjust &#39;Loss to Trub and Chiller&#39; and &#39;Brewhouse Efficiency&#39; accordingly to suit their trub management techniques.',
-  displayBoilSize: '37.12 l',
-  displayBatchSize: '23.02 l',
-  displayTunVolume: '37.85 l',
-  displayTunWeight: '4.08 kg',
-  displayTopUpWater: '0.00 l',
-  displayTrubChillerLoss: '2.84 l',
-  displayLauterDeadspace: '3.03 l',
-  displayTopUpKettle: '0.00 l',
-  BIAB: false
 }

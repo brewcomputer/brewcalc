@@ -7,7 +7,8 @@ const env = require('yargs').argv.env // use --env with webpack 2
 
 let libraryName = 'brewcalc'
 
-let plugins = [], outputFile
+let plugins = [],
+  outputFile
 
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({ minimize: true }))
@@ -44,7 +45,10 @@ const config = {
     modules: [path.resolve('./node_modules'), path.resolve('./src')],
     extensions: ['.json', '.js']
   },
-  plugins: plugins
+  plugins: plugins,
+  node: {
+    fs: 'empty'
+  }
 }
 
 module.exports = config

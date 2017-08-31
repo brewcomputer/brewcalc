@@ -1,7 +1,10 @@
 // @flow
 import { sum, kgToOunces, litersToGallons } from './utils.js'
 import type { Hop } from './types/hop'
-import { HopForms } from './types/hop'
+import { HopForms, HopUse } from './types/hop'
+
+const aromaFactor = use =>
+  use === HopUse.aroma || use === HopUse.dryHop ? 0 : 1
 
 const ibuUtilization = (
   avgBoilGravityPts: number,
@@ -25,7 +28,7 @@ export const bitternessIbuTinseth = (
 ) =>
   sum(
     hops.map(
-      ({ amount, alpha, form, time }) =>
+      ({ amount, alpha, form, time, use }) =>
         ibuUtilization(
           avgBoilGravityPts,
           time,
@@ -34,7 +37,8 @@ export const bitternessIbuTinseth = (
         kgToOunces(amount) *
         alpha *
         7490 /
-        litersToGallons(postBoilVolume)
+        litersToGallons(postBoilVolume) *
+        aromaFactor(use)
     )
   )
 
@@ -73,13 +77,14 @@ export const bitternessIbuRager = (
   postBoilVolume: number
 ) =>
   sum(
-    hops.map(({ amount, alpha, time }: Hop) =>
-      ragerHopIbu(
-        kgToOunces(amount),
-        alpha * 100,
-        time,
-        avgBoilGravityPts,
-        litersToGallons(postBoilVolume)
-      )
+    hops.map(
+      ({ amount, alpha, time, use }: Hop) =>
+        ragerHopIbu(
+          kgToOunces(amount),
+          alpha * 100,
+          time,
+          avgBoilGravityPts,
+          litersToGallons(postBoilVolume)
+        ) * aromaFactor(use)
     )
   )

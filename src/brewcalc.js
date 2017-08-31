@@ -123,7 +123,10 @@ export const srmToCss = (srm: number) => {
 export const yeastNeeded = (pitchRate: number, batchSize: number, e: number) =>
   pitchRate * (batchSize * 1000) * e / 1000
 
-const viability = (currentDate: string, cultureDate: string) =>
+const viability = (
+  currentDate: string,
+  cultureDate: string = new Date().toString()
+) =>
   100 -
   Math.floor((Date.parse(currentDate) - Date.parse(cultureDate)) / 86400000) *
     0.7

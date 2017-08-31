@@ -1,8 +1,8 @@
 import React from 'react'
 import RecipeSpecs from './RecipeSpecs'
 import renderer from 'react-test-renderer'
-import { recipe } from '../lib/data/AussieAle.js'
-import { equipment } from '../lib/data/Pot50L.js'
+import { recipe } from '../data/recipe'
+import { equipment } from '../data/equipment'
 
 it('renders correctly', () => {
   const tree = renderer
