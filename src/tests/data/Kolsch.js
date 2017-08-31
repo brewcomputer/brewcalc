@@ -23,6 +23,7 @@ export const recipe: Recipe = {
       amount: 3.2412931,
       color: 2,
       potential: 1.03726,
+      yield: 81,
       type: FermentableTypes.grain
     },
     {
@@ -31,6 +32,7 @@ export const recipe: Recipe = {
       amount: 0.8640194,
       color: 3.4974619,
       potential: 1.03588,
+      yield: 78,
       type: FermentableTypes.grain
     },
     {
@@ -39,6 +41,7 @@ export const recipe: Recipe = {
       amount: 0.2164116,
       color: 2,
       potential: 1.03312,
+      yield: 72,
       type: FermentableTypes.grain
     }
   ],

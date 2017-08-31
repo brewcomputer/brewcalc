@@ -20,6 +20,7 @@ export const recipeOne: Recipe = {
       amount: 3.2412931,
       color: 2,
       potential: 1.03726,
+      yield: 81,
       type: FermentableTypes.grain
     }
   ],

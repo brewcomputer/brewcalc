@@ -41,7 +41,8 @@ export const importFromBeerXml = (xml: string) => {
   ).map(
     (
       { name, addAfterBoil, amount, color, potential, type }: Fermentable,
-      i
+      i,
+      f
     ) => {
       return {
         name: name,
@@ -51,7 +52,8 @@ export const importFromBeerXml = (xml: string) => {
         potential:
           potential !== undefined
             ? parseFloat(potential)
-            : fermentableNode[i].yield * 0.01 * 46 / 1000 + 1,
+            : parseFloat(f[i].yield) * 0.01 * 46 / 1000 + 1,
+        yield: parseFloat(f[i].yield),
         type: type
       }
     }
