@@ -3,9 +3,9 @@ export type Hop = {
   name: string,
   alpha: number,
   amount: number,
-  use: string,
-  form: 'Pellet' | 'Plug' | 'Leaf',
-  time: number
+  use: 'Boil' | 'Dry Hop' | 'Mash' | 'First Wort' | 'Aroma',
+  time: number,
+  form?: 'Pellet' | 'Plug' | 'Leaf'
 }
 
 // Hop USE May be "Boil", "Dry Hop", "Mash", "First Wort" or "Aroma".

@@ -106,7 +106,7 @@ const mashInTemp = (
 }
 
 export const mashRecalculate = (
-  { mashSteps, equipAdjust, grainTemp, tunTemp }: Mash,
+  { mashSteps, equipAdjust, grainTemp, tunTemp = 0 }: Mash,
   { tunWeight = 0, tunSpecificHeat = 0, tunVolume = 0 }: Equipment,
   mashGrainWeight: number
 ) => {
