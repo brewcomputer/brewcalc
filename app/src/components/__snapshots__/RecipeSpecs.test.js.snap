@@ -40,21 +40,21 @@ exports[`renders correctly 1`] = `
           </li>
           <li>
             <b>
-              BatchSize: 
+              Batch Size: 
             </b>
             23.02
              L
           </li>
           <li>
             <b>
-              BoilSize: 
+              Boil Size: 
             </b>
             37.12
              L
           </li>
           <li>
             <b>
-              BoilTime: 
+              Boil Time: 
             </b>
             90.00
              min
@@ -73,14 +73,14 @@ exports[`renders correctly 1`] = `
           </li>
           <li>
             <b>
-              BatchSize: 
+              Batch Size: 
             </b>
             23.02
              L
           </li>
           <li>
             <b>
-              BoilSize: 
+              Boil Size: 
             </b>
             36.02
              L
@@ -93,19 +93,20 @@ exports[`renders correctly 1`] = `
           </li>
           <li>
             <b>
-              EvapRate: 
+              Evap Rate: 
             </b>
             0.15
           </li>
           <li>
             <b>
-              CoolingLossPct: 
+              Cooling Loss: 
             </b>
-            0.04
+            4
+             %
           </li>
           <li>
             <b>
-              TrubChillerLoss: 
+              Trub Chiller Loss: 
             </b>
             3.82
              L
@@ -157,21 +158,21 @@ exports[`renders correctly if equipment is null 1`] = `
           </li>
           <li>
             <b>
-              BatchSize: 
+              Batch Size: 
             </b>
             23.02
              L
           </li>
           <li>
             <b>
-              BoilSize: 
+              Boil Size: 
             </b>
             37.12
              L
           </li>
           <li>
             <b>
-              BoilTime: 
+              Boil Time: 
             </b>
             90.00
              min
