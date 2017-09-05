@@ -51,7 +51,44 @@ import { YeastForms, YeastTypes } from './types/yeast'
 
 import { importFromBeerXml } from './importFromBeerXml.js'
 
+import type { Recipe } from './types/recipe'
+
+const calculateRecipe = ({
+  batchSize,
+  boilSize,
+  fermentables,
+  efficiency,
+  yeasts,
+  hops
+}: Recipe) => {
+  const og = originalGravity(batchSize, gravityPoints(fermentables, efficiency))
+
+  const fg = finalGravity(
+    batchSize,
+    gravityPoints(fermentables, efficiency, yeasts[0].attenuation)
+  )
+
+  const avgBoilGravityPts = boilGravity(batchSize, boilSize, og) - 1
+
+  const ibu = bitternessIbuTinseth(hops, avgBoilGravityPts, batchSize)
+
+  const colorSRMvalue = colorSRM(fermentables, batchSize)
+
+  const abv = estABVrealExtract(Number(og.toFixed(3)), Number(fg.toFixed(2)))
+  const calories = calcCalories(Number(og.toFixed(3)), Number(fg.toFixed(2)))
+  const caloriesInOneL = calories / (12 * ouncesToLiters(1))
+
+  return {
+    og: Number(og.toFixed(3)),
+    fg: Number(fg.toFixed(3)),
+    ibu: Number(ibu.toFixed(1)),
+    color: Number(colorSRMvalue.toFixed(1)),
+    abv: Number((abv / 100).toFixed(3))
+  }
+}
+
 export {
+  calculateRecipe,
   originalGravity,
   finalGravity,
   boilGravity,
