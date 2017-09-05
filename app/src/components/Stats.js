@@ -56,16 +56,15 @@ const Stats = ({ recipe, equipment }) => {
       <Row className="show-grid">
         <Col md={6}>
           <ul>
-            <li><b>og: </b>{og.toFixed(3)} SG</li>
-            <li><b>fg: </b>{fg.toFixed(3)} SG</li>
-            <li><b>ibu: </b>{ibu.toFixed(2)} IBUs</li>
-            <li><b>ibuMethod: </b>Tinseth</li>
+            <li><b>Original Gravity: </b>{og.toFixed(3)} SG</li>
+            <li><b>Final Gravity : </b>{fg.toFixed(3)} SG</li>
+            <li><b>IBU: </b>{ibu.toFixed(2)} by Tinseth formula</li>
             <li>
-              <b>color: </b>{colorSRMvalue.toFixed(2)} SRM
+              <b>Color: </b>{colorSRMvalue.toFixed(2)} SRM
             </li>
-            <li><b>abv: </b>{abv.toFixed(2)} %</li>
+            <li><b>Alcohol by volume : </b>{abv.toFixed(2)} %</li>
             <li>
-              <b>calories: </b>{caloriesInOneL.toFixed(0)} per one L
+              <b>Calories: </b>{caloriesInOneL.toFixed(0)} per one L
             </li>
           </ul>
         </Col>
