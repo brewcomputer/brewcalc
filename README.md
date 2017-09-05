@@ -3,5 +3,5 @@ A modern (ES6) functional JavaScript library for brewing calculations.
 
 Examples
 --------------------
-[Online recipe calculator from BeerXml](https://brewcomputer.github.io/brewcalc/)
-[Online JSFiddle sample](https://jsfiddle.net/krutilin/nn7sdekg/)
+ * [Online recipe calculator from BeerXml](https://brewcomputer.github.io/brewcalc/)
+ * [Online JSFiddle sample](https://jsfiddle.net/krutilin/nn7sdekg/)
