@@ -11,6 +11,7 @@ import { MashType } from '../../types/mashStep'
 
 export const recipe: Recipe = {
   name: 'Lloyd&#39;s Krispy Kolsch',
+  brewer: 'BIABrewer.info',
   batchSize: 19.0028767,
   boilSize: 30.3767465,
   boilTime: 90,

@@ -8,6 +8,7 @@ import { MashType } from '../../types/mashStep'
 
 export const recipeOne: Recipe = {
   name: 'Generic',
+  brewer: 'BIABrewer.info',
   batchSize: 19.0028767,
   boilSize: 30.3767465,
   boilTime: 90,
