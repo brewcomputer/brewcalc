@@ -20,44 +20,65 @@ exports[`renders correctly 1`] = `
         className="col-md-6"
       >
         <ul>
-          <li>
+          <li
+            title="Name of the recipe"
+          >
             <b>
               Name: 
             </b>
             Aussie Ale
           </li>
-          <li>
+          <li
+            title="Name of the brewer"
+          >
             <b>
               Brewer: 
             </b>
             Steve Nicholls
           </li>
-          <li>
+          <li
+            title="May be one of “Extract”, “Partial Mash” or “All Grain”"
+          >
             <b>
               Type: 
             </b>
             All Grain
           </li>
-          <li>
+          <li
+            title="Target size of the finished batch in liters"
+          >
             <b>
               Batch Size: 
             </b>
             23.02
              L
           </li>
-          <li>
+          <li
+            title="Starting size for the main boil of the wort in liters"
+          >
             <b>
               Boil Size: 
             </b>
             37.12
              L
           </li>
-          <li>
+          <li
+            title="The total time to boil the wort in minutes"
+          >
             <b>
               Boil Time: 
             </b>
             90.00
              min
+          </li>
+          <li
+            title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"
+          >
+            <b>
+              Efficiency: 
+            </b>
+            68
+             %
           </li>
         </ul>
       </div>
@@ -65,46 +86,53 @@ exports[`renders correctly 1`] = `
         className="col-md-6"
       >
         <ul>
-          <li>
+          <li
+            title="Name of the equipment profile – usually a text description of the brewing setup"
+          >
             <b>
               Equipment Name: 
             </b>
             Pot (13 Gal/50 L) - BIAB
           </li>
-          <li>
+          <li
+            title="The target volume of the batch at the start of fermentation"
+          >
             <b>
               Batch Size: 
             </b>
             23.02
              L
           </li>
-          <li>
+          <li
+            title="The pre-boil volume used in this particular instance for this equipment setup.  Note that this may be a calculated"
+          >
             <b>
               Boil Size: 
             </b>
             36.02
              L
           </li>
-          <li>
-            <b>
-              Efficiency: 
-            </b>
-            0.68
-          </li>
-          <li>
+          <li
+            title="The percentage of wort lost to evaporation per hour of the boil"
+          >
             <b>
               Evap Rate: 
             </b>
             0.15
+             % per hour
           </li>
-          <li>
+          <li
+            title=""
+          >
             <b>
               Cooling Loss: 
             </b>
             4
              %
           </li>
-          <li>
+          <li
+            title="The amount of wort normally lost during transition from the boiler to the fermentation vessel"
+          >
             <b>
               Trub Chiller Loss: 
             </b>
@@ -138,44 +166,65 @@ exports[`renders correctly if equipment is null 1`] = `
         className="col-md-6"
       >
         <ul>
-          <li>
+          <li
+            title="Name of the recipe"
+          >
             <b>
               Name: 
             </b>
             Aussie Ale
           </li>
-          <li>
+          <li
+            title="Name of the brewer"
+          >
             <b>
               Brewer: 
             </b>
             Steve Nicholls
           </li>
-          <li>
+          <li
+            title="May be one of “Extract”, “Partial Mash” or “All Grain”"
+          >
             <b>
               Type: 
             </b>
             All Grain
           </li>
-          <li>
+          <li
+            title="Target size of the finished batch in liters"
+          >
             <b>
               Batch Size: 
             </b>
             23.02
              L
           </li>
-          <li>
+          <li
+            title="Starting size for the main boil of the wort in liters"
+          >
             <b>
               Boil Size: 
             </b>
             37.12
              L
           </li>
-          <li>
+          <li
+            title="The total time to boil the wort in minutes"
+          >
             <b>
               Boil Time: 
             </b>
             90.00
              min
+          </li>
+          <li
+            title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"
+          >
+            <b>
+              Efficiency: 
+            </b>
+            68
+             %
           </li>
         </ul>
       </div>

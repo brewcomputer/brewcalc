@@ -2,7 +2,7 @@ import React from 'react'
 import { Panel, Col, Row } from 'react-bootstrap'
 
 const RecipeSpecs = ({ recipe, equipment }) => {
-  const { name, brewer, type, batchSize, boilSize, boilTime } = recipe
+  const { name, brewer, type, batchSize, boilSize, boilTime, efficiency } = recipe
   return (
     <Panel header="Recipe Specs and Equipment">
       <Row className="show-grid">
@@ -14,7 +14,7 @@ const RecipeSpecs = ({ recipe, equipment }) => {
             <li title="Target size of the finished batch in liters"><b>Batch Size: </b>{batchSize.toFixed(2)} L</li>
             <li title="Starting size for the main boil of the wort in liters"><b>Boil Size: </b>{boilSize.toFixed(2)} L</li>
             <li title="The total time to boil the wort in minutes"><b>Boil Time: </b>{boilTime.toFixed(2)} min</li>
-            <li title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"><b>Efficiency: </b>{equipment.efficiency}</li>
+            <li title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"><b>Efficiency: </b>{efficiency * 100} %</li>
           </ul>
         </Col>
         <Col md={6}>
