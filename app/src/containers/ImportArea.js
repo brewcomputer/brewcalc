@@ -22,7 +22,7 @@ const ImportArea = ({ editorState, onReloadEditorState }) => {
   return (
     <Row className="show-grid">
       <Col md={6}>
-        <Panel header="Upload from BeerXML">
+        <Panel header="Upload BeerXML file">
           <FormGroup>
             <FormControl
               id="formControlsFile"
@@ -36,7 +36,7 @@ const ImportArea = ({ editorState, onReloadEditorState }) => {
       </Col>
       <Col md={6}>
         <Panel header="Or grab recipe from GitHub">
-          Here will be handy button to import your recipe from GitHub soon.
+          Coming soon.
         </Panel>
       </Col>
     </Row>
