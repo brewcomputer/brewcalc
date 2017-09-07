@@ -6,6 +6,7 @@ import type { Mash } from './mash'
 
 export type Recipe = {
   name: string,
+  brewer: string,
   type: 'Extract' | 'All Grain' | 'Partial Mash',
   batchSize: number,
   boilSize: number,

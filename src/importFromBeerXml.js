@@ -125,6 +125,7 @@ export const importFromBeerXml = (xml: string) => {
   const recipeNode = doc.recipe
   const recipe: Recipe = {
     name: recipeNode.name,
+    brewer: recipeNode.brewer,
     batchSize: parseFloat(recipeNode.batchSize),
     boilSize: parseFloat(recipeNode.boilSize),
     boilTime: parseFloat(recipeNode.boilTime),
