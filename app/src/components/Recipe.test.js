@@ -7,13 +7,10 @@ import { equipment } from '../data/equipment'
 
 import { createStore } from 'redux'
 import updateEditor from '../redux/reducers/updateEditor'
-import { persistedState } from '../redux/reducers/updateEditor'
 import { Provider } from 'react-redux'
 
 const store = createStore(
-    updateEditor,
-    persistedState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    updateEditor
 )
 
 it('renders without crashing', () => {

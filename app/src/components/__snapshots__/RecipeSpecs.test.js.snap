@@ -28,6 +28,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             Aussie Ale
+             
           </li>
           <li
             title="Name of the brewer"
@@ -37,6 +38,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             Steve Nicholls
+             
           </li>
           <li
             title="May be one of “Extract”, “Partial Mash” or “All Grain”"
@@ -46,6 +48,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             All Grain
+             
           </li>
           <li
             title="Target size of the finished batch in liters"
@@ -55,6 +58,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             23.02
+             
             L
           </li>
           <li
@@ -65,6 +69,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             37.12
+             
             L
           </li>
           <li
@@ -75,6 +80,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             90.00
+             
             min
           </li>
           <li
@@ -85,6 +91,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             68
+             
             %
           </li>
         </ul>
@@ -101,6 +108,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             Pot (13 Gal/50 L) - BIAB
+             
             
           </li>
           <li
@@ -111,6 +119,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             23.02
+             
             L
           </li>
           <li
@@ -121,6 +130,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             36.02
+             
             L
           </li>
           <li
@@ -131,6 +141,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             15
+             
             % per hour
           </li>
           <li
@@ -141,6 +152,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             4
+             
             %
           </li>
           <li
@@ -151,6 +163,7 @@ exports[`renders correctly 1`] = `
               : 
             </b>
             3.82
+             
             L
           </li>
         </ul>
@@ -188,6 +201,7 @@ exports[`renders correctly if equipment is null 1`] = `
               : 
             </b>
             Aussie Ale
+             
           </li>
           <li
             title="Name of the brewer"
@@ -197,6 +211,7 @@ exports[`renders correctly if equipment is null 1`] = `
               : 
             </b>
             Steve Nicholls
+             
           </li>
           <li
             title="May be one of “Extract”, “Partial Mash” or “All Grain”"
@@ -206,6 +221,7 @@ exports[`renders correctly if equipment is null 1`] = `
               : 
             </b>
             All Grain
+             
           </li>
           <li
             title="Target size of the finished batch in liters"
@@ -215,6 +231,7 @@ exports[`renders correctly if equipment is null 1`] = `
               : 
             </b>
             23.02
+             
             L
           </li>
           <li
@@ -225,6 +242,7 @@ exports[`renders correctly if equipment is null 1`] = `
               : 
             </b>
             37.12
+             
             L
           </li>
           <li
@@ -235,6 +253,7 @@ exports[`renders correctly if equipment is null 1`] = `
               : 
             </b>
             90.00
+             
             min
           </li>
           <li
@@ -245,6 +264,7 @@ exports[`renders correctly if equipment is null 1`] = `
               : 
             </b>
             68
+             
             %
           </li>
         </ul>
