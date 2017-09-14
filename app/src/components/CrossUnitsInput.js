@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 import {
   litersToGallons,
-  kgToOunces
+  kgToOunces,
+  celsiusToFahrenheit
 } from 'brewcalc'
 
 
@@ -14,6 +15,8 @@ const convertionMapper = (value, unit, units) => {
       return units !== 'metric' ? { value: (litersToGallons(value).toFixed(2)), unit: 'gal' } : { value: value, unit: unit }
     case 'kg':
       return units !== 'metric' ? { value: (kgToOunces(value).toFixed(2)), unit: 'oz' } : { value: value, unit: unit }
+    case 'C':
+      return units !== 'metric' ? { value: (celsiusToFahrenheit(value).toFixed(2)), unit: '°F' } : { value: value, unit: unit }
     default:
       return { value: value, unit: unit }
   }
