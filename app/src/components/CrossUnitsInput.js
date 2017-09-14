@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 const CrossUnitsInput = ({ name, description, value, unit, units }) => {
   return (
-    <li title={description}><b>{name}: </b>{value} {unit}</li>
+    (value !== '0.00' && value !== 'false') &&
+    <li title={description}><b>{name}: </b>{value}{unit}</li>
   )
 }
 

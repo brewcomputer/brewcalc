@@ -24,7 +24,8 @@ exports[`renders correctly 1`] = `
             title="Name of the recipe"
           >
             <b>
-              Name: 
+              Name
+              : 
             </b>
             Aussie Ale
           </li>
@@ -32,7 +33,8 @@ exports[`renders correctly 1`] = `
             title="Name of the brewer"
           >
             <b>
-              Brewer: 
+              Brewer
+              : 
             </b>
             Steve Nicholls
           </li>
@@ -40,7 +42,8 @@ exports[`renders correctly 1`] = `
             title="May be one of “Extract”, “Partial Mash” or “All Grain”"
           >
             <b>
-              Type: 
+              Type
+              : 
             </b>
             All Grain
           </li>
@@ -48,37 +51,41 @@ exports[`renders correctly 1`] = `
             title="Target size of the finished batch in liters"
           >
             <b>
-              Batch Size: 
+              Batch Size
+              : 
             </b>
             23.02
-             L
+            L
           </li>
           <li
             title="Starting size for the main boil of the wort in liters"
           >
             <b>
-              Boil Size: 
+              Boil Size
+              : 
             </b>
             37.12
-             L
+            L
           </li>
           <li
             title="The total time to boil the wort in minutes"
           >
             <b>
-              Boil Time: 
+              Boil Time
+              : 
             </b>
             90.00
-             min
+            min
           </li>
           <li
             title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"
           >
             <b>
-              Efficiency: 
+              Efficiency
+              : 
             </b>
             68
-             %
+            %
           </li>
         </ul>
       </div>
@@ -90,54 +97,61 @@ exports[`renders correctly 1`] = `
             title="Name of the equipment profile – usually a text description of the brewing setup"
           >
             <b>
-              Equipment Name: 
+              Equipment Name
+              : 
             </b>
             Pot (13 Gal/50 L) - BIAB
+            
           </li>
           <li
             title="The target volume of the batch at the start of fermentation"
           >
             <b>
-              Batch Size: 
+              Batch Size
+              : 
             </b>
             23.02
-             L
+            L
           </li>
           <li
             title="The pre-boil volume used in this particular instance for this equipment setup.  Note that this may be a calculated"
           >
             <b>
-              Boil Size: 
+              Boil Size
+              : 
             </b>
             36.02
-             L
+            L
           </li>
           <li
             title="The percentage of wort lost to evaporation per hour of the boil"
           >
             <b>
-              Evap Rate: 
+              Evap Rate
+              : 
             </b>
-            0.15
-             % per hour
+            15
+            % per hour
           </li>
           <li
             title=""
           >
             <b>
-              Cooling Loss: 
+              Cooling Loss
+              : 
             </b>
             4
-             %
+            %
           </li>
           <li
             title="The amount of wort normally lost during transition from the boiler to the fermentation vessel"
           >
             <b>
-              Trub Chiller Loss: 
+              Trub Chiller Loss
+              : 
             </b>
             3.82
-             L
+            L
           </li>
         </ul>
       </div>
@@ -170,7 +184,8 @@ exports[`renders correctly if equipment is null 1`] = `
             title="Name of the recipe"
           >
             <b>
-              Name: 
+              Name
+              : 
             </b>
             Aussie Ale
           </li>
@@ -178,7 +193,8 @@ exports[`renders correctly if equipment is null 1`] = `
             title="Name of the brewer"
           >
             <b>
-              Brewer: 
+              Brewer
+              : 
             </b>
             Steve Nicholls
           </li>
@@ -186,7 +202,8 @@ exports[`renders correctly if equipment is null 1`] = `
             title="May be one of “Extract”, “Partial Mash” or “All Grain”"
           >
             <b>
-              Type: 
+              Type
+              : 
             </b>
             All Grain
           </li>
@@ -194,37 +211,41 @@ exports[`renders correctly if equipment is null 1`] = `
             title="Target size of the finished batch in liters"
           >
             <b>
-              Batch Size: 
+              Batch Size
+              : 
             </b>
             23.02
-             L
+            L
           </li>
           <li
             title="Starting size for the main boil of the wort in liters"
           >
             <b>
-              Boil Size: 
+              Boil Size
+              : 
             </b>
             37.12
-             L
+            L
           </li>
           <li
             title="The total time to boil the wort in minutes"
           >
             <b>
-              Boil Time: 
+              Boil Time
+              : 
             </b>
             90.00
-             min
+            min
           </li>
           <li
             title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"
           >
             <b>
-              Efficiency: 
+              Efficiency
+              : 
             </b>
             68
-             %
+            %
           </li>
         </ul>
       </div>
