@@ -17,7 +17,7 @@ const PageRecipe = ({ editorState }) => {
   return (
     <Grid>
       <ImportArea />
-      <Recipe {...tryParse(editorState)} />
+      <Recipe {...tryParse(editorState) } />
       <EditorContainer />
     </Grid>
   )

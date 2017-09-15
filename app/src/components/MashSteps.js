@@ -1,6 +1,7 @@
 import React from 'react'
 import { Panel, Table } from 'react-bootstrap'
 import { calculateVolumes, mashRecalculate, MashType } from 'brewcalc'
+import CrossUnitsInput from './CrossUnitsInput'
 
 //TODO: Add BIAB
 
@@ -9,15 +10,15 @@ const MashSteps = ({ recipe, equipment }) => {
     const mashStepDescription = (step) => {
         switch (step.type) {
             case MashType.decoction:
-                return 'Decoct ' + step.decoctionAmount.toFixed(2) + ' L of mash and boil it'
+                return (<td style={{ display: 'flex' }}>Decoct&nbsp;<CrossUnitsInput value={step.decoctionAmount.toFixed(2)} unit="L" />&nbsp;of mash and boil it</td>)
             case MashType.temperature:
                 if (step.infuseAmount > 0)
-                    return 'Add ' + step.infuseStepAmount.toFixed(2) + ' L of water and heat to ' + step.infussionTemp.toFixed(0) + ' C'
+                    return (<td style={{ display: 'flex' }}>Add&nbsp;<CrossUnitsInput value={step.infuseStepAmount.toFixed(2)} unit="L" />&nbsp;of water and heat to&nbsp;<CrossUnitsInput value={step.infussionTemp.toFixed(0)} unit="C" /></td>)
                 else
-                    return 'Heat to ' + step.stepTemp.toFixed(0) + ' C over ' + step.stepTime + ' min'
+                    return (<td style={{ display: 'flex' }}>Heat to&nbsp;<CrossUnitsInput value={step.stepTemp.toFixed(0)} unit="C" />&nbsp;over&nbsp;{step.stepTime}&nbsp;min</td>)
             case MashType.infusion:
             default:
-                return 'Add ' + step.infuseStepAmount.toFixed(2) + ' L of water at ' + step.infussionTemp.toFixed(0) + ' C'
+                return (<td style={{ display: 'flex' }}>Add&nbsp;<CrossUnitsInput value={step.infuseStepAmount.toFixed(2)} unit="L" />&nbsp;of water at&nbsp;<CrossUnitsInput value={step.infussionTemp.toFixed(0)} unit="C" /></td>)
         }
     }
 
@@ -43,14 +44,18 @@ const MashSteps = ({ recipe, equipment }) => {
                     {recipe.mash.mashSteps.map((i, index) => (
                         <tr key={index}>
                             <td>{i.name}</td>
-                            <td>{mashStepDescription(combinedMashSteps[index])}</td>
-                            <td>{i.stepTemp.toFixed(0)} C</td>
+                            {mashStepDescription(combinedMashSteps[index])}
+                            <td>
+                                <CrossUnitsInput value={i.stepTemp.toFixed(0)} unit="C" />
+                            </td>
                             <td>{i.stepTime.toFixed(0)} min</td>
                         </tr>
                     ))}
                 </tbody>
             </Table>
-            <b>Sparge:</b> Fly sparge with {calculatedVolumes.spargeVol.toFixed(2)} L water at {recipe.mash.spargeTemp.toFixed(0)} C
+            <div style={{ display: 'flex' }}>
+                <b>Sparge:&nbsp;</b>Fly sparge with&nbsp;<CrossUnitsInput value={calculatedVolumes.spargeVol.toFixed(2)} unit="L" />&nbsp;water at&nbsp;<CrossUnitsInput value={recipe.mash.spargeTemp.toFixed(0)} unit="C" />
+            </div>
         </Panel>
     )
 }
