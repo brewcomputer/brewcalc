@@ -1,29 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders without crashing 1`] = `
-<li
+<div
   title="description"
 >
   <b>
     Boil Size
-    : 
+     
   </b>
   20
    
   L
-</li>
+</div>
 `;
 
 exports[`renders without crashing on US units 1`] = `
-<li
+<div
   title="description"
 >
   <b>
     Boil Size
-    : 
+     
   </b>
   5.28
    
   gal
-</li>
+</div>
 `;

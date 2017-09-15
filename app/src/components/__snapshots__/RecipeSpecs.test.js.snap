@@ -19,154 +19,154 @@ exports[`renders correctly 1`] = `
       <div
         className="col-md-6"
       >
-        <ul>
-          <li
+        <div>
+          <div
             title="Name of the recipe"
           >
             <b>
               Name
-              : 
+               
             </b>
             Aussie Ale
              
-          </li>
-          <li
+          </div>
+          <div
             title="Name of the brewer"
           >
             <b>
               Brewer
-              : 
+               
             </b>
             Steve Nicholls
              
-          </li>
-          <li
+          </div>
+          <div
             title="May be one of “Extract”, “Partial Mash” or “All Grain”"
           >
             <b>
               Type
-              : 
+               
             </b>
             All Grain
              
-          </li>
-          <li
+          </div>
+          <div
             title="Target size of the finished batch in liters"
           >
             <b>
               Batch Size
-              : 
+               
             </b>
             23.02
              
             L
-          </li>
-          <li
+          </div>
+          <div
             title="Starting size for the main boil of the wort in liters"
           >
             <b>
               Boil Size
-              : 
+               
             </b>
             37.12
              
             L
-          </li>
-          <li
+          </div>
+          <div
             title="The total time to boil the wort in minutes"
           >
             <b>
               Boil Time
-              : 
+               
             </b>
             90.00
              
             min
-          </li>
-          <li
+          </div>
+          <div
             title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"
           >
             <b>
               Efficiency
-              : 
+               
             </b>
             68
              
             %
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
       <div
         className="col-md-6"
       >
-        <ul>
-          <li
+        <div>
+          <div
             title="Name of the equipment profile – usually a text description of the brewing setup"
           >
             <b>
               Equipment Name
-              : 
+               
             </b>
             Pot (13 Gal/50 L) - BIAB
              
             
-          </li>
-          <li
+          </div>
+          <div
             title="The target volume of the batch at the start of fermentation"
           >
             <b>
               Batch Size
-              : 
+               
             </b>
             23.02
              
             L
-          </li>
-          <li
+          </div>
+          <div
             title="The pre-boil volume used in this particular instance for this equipment setup.  Note that this may be a calculated"
           >
             <b>
               Boil Size
-              : 
+               
             </b>
             36.02
              
             L
-          </li>
-          <li
+          </div>
+          <div
             title="The percentage of wort lost to evaporation per hour of the boil"
           >
             <b>
               Evap Rate
-              : 
+               
             </b>
             15
              
             % per hour
-          </li>
-          <li
+          </div>
+          <div
             title=""
           >
             <b>
               Cooling Loss
-              : 
+               
             </b>
             4
              
             %
-          </li>
-          <li
+          </div>
+          <div
             title="The amount of wort normally lost during transition from the boiler to the fermentation vessel"
           >
             <b>
               Trub Chiller Loss
-              : 
+               
             </b>
             3.82
              
             L
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -192,89 +192,89 @@ exports[`renders correctly if equipment is null 1`] = `
       <div
         className="col-md-6"
       >
-        <ul>
-          <li
+        <div>
+          <div
             title="Name of the recipe"
           >
             <b>
               Name
-              : 
+               
             </b>
             Aussie Ale
              
-          </li>
-          <li
+          </div>
+          <div
             title="Name of the brewer"
           >
             <b>
               Brewer
-              : 
+               
             </b>
             Steve Nicholls
              
-          </li>
-          <li
+          </div>
+          <div
             title="May be one of “Extract”, “Partial Mash” or “All Grain”"
           >
             <b>
               Type
-              : 
+               
             </b>
             All Grain
              
-          </li>
-          <li
+          </div>
+          <div
             title="Target size of the finished batch in liters"
           >
             <b>
               Batch Size
-              : 
+               
             </b>
             23.02
              
             L
-          </li>
-          <li
+          </div>
+          <div
             title="Starting size for the main boil of the wort in liters"
           >
             <b>
               Boil Size
-              : 
+               
             </b>
             37.12
              
             L
-          </li>
-          <li
+          </div>
+          <div
             title="The total time to boil the wort in minutes"
           >
             <b>
               Boil Time
-              : 
+               
             </b>
             90.00
              
             min
-          </li>
-          <li
+          </div>
+          <div
             title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"
           >
             <b>
               Efficiency
-              : 
+               
             </b>
             68
              
             %
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
       <div
         className="col-md-6"
       >
-        <ul>
+        <div>
           Equipment is not set
-        </ul>
+        </div>
       </div>
     </div>
   </div>

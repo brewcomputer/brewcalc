@@ -6,7 +6,7 @@ import EditorContainer from './EditorContainer'
 
 import { connect } from 'react-redux'
 
-const PageRecipe = ({ editorState, units }) => {
+const PageRecipe = ({ editorState }) => {
   const tryParse = editorState => {
     try {
       return JSON.parse(editorState)
@@ -17,15 +17,12 @@ const PageRecipe = ({ editorState, units }) => {
   return (
     <Grid>
       <ImportArea />
-      <div>
-        UNITS {units}
-      </div>
       <Recipe {...tryParse(editorState) } />
       <EditorContainer />
     </Grid>
   )
 }
 
-const mapStateToProps = ({ editorState, units }) => ({ editorState, units })
+const mapStateToProps = ({ editorState }) => ({ editorState })
 
 export default connect(mapStateToProps)(PageRecipe)
