@@ -4,7 +4,8 @@ import {
   litersToGallons,
   kgToOunces,
   celsiusToFahrenheit,
-  sgToPlato
+  sgToPlato,
+  srmToEbc
 } from 'brewcalc'
 
 
@@ -19,6 +20,8 @@ const convertionMapper = (value, unit) => {
       return { value: (celsiusToFahrenheit(value).toFixed(2)), unit: '°F' }
     case 'SG':
       return { value: (sgToPlato(value).toFixed(2)), unit: '°P' }
+    case 'SRM':
+      return { value: (srmToEbc(value).toFixed(2)), unit: 'EBC' }
     default:
       return ''
   }

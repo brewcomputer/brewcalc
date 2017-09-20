@@ -60,9 +60,7 @@ const Stats = ({ recipe, equipment }) => {
             <CrossUnitsInput description="The estimated original gravity of this recipe" name="Original Gravity" value={og.toFixed(3)} unit="SG" />
             <CrossUnitsInput description="The estimated final gravity of this recipe" name="Final Gravity" value={fg.toFixed(3)} unit="SG" />
             <div title="The bitterness of the recipe as measured in International Bitterness Units"><b>Bitterness (IBUs): </b>{ibu.toFixed(2)} by Tinseth formula</div>
-            <div title="Estimated color of this beer">
-              <b>Color: </b>{colorSRMvalue.toFixed(2)} SRM
-            </div>
+            <CrossUnitsInput description="Estimated color of this beer" name="Color" value={colorSRMvalue.toFixed(2)} unit="SRM" />
             <div title="The estimated alcohol by volume for this recipe"><b>Alcohol by volume : </b>{abv.toFixed(2)} %</div>
             <div title="Calories in one liter of the beer, based on original and final gravities">
               <b>Calories: </b>{caloriesInOneL.toFixed(0)} per one L
