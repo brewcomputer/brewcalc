@@ -1,35 +1,37 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 import {
   litersToGallons,
   kgToOunces,
-  celsiusToFahrenheit
+  celsiusToFahrenheit,
+  sgToPlato
 } from 'brewcalc'
 
 
-const convertionMapper = (value, unit, units) => {
+const convertionMapper = (value, unit) => {
 
   switch (unit) {
     case 'L':
-      return units !== 'metric' ? { value: (litersToGallons(value).toFixed(2)), unit: 'gal' } : { value: value, unit: unit }
+      return { value: (litersToGallons(value).toFixed(2)), unit: 'gal' }
     case 'kg':
-      return units !== 'metric' ? { value: (kgToOunces(value).toFixed(2)), unit: 'oz' } : { value: value, unit: unit }
+      return { value: (kgToOunces(value).toFixed(2)), unit: 'oz' }
     case 'C':
-      return units !== 'metric' ? { value: (celsiusToFahrenheit(value).toFixed(2)), unit: '°F' } : { value: value, unit: unit }
+      return { value: (celsiusToFahrenheit(value).toFixed(2)), unit: '°F' }
+    case 'SG':
+      return { value: (sgToPlato(value).toFixed(2)), unit: '°P' }
     default:
-      return { value: value, unit: unit }
+      return ''
   }
 }
 
-const CrossUnitsInput = ({ name, description, value, unit, units }) => {
-  const converted = convertionMapper(value, unit, units)
+const CrossUnitsInput = ({ name, description, value, unit }) => {
+  const converted = convertionMapper(value, unit)
   return (
     (value !== '0.00' && value !== 'false') &&
-    <div title={description}><b>{name} </b>{converted.value} {converted.unit}</div>
+    <div title={description}><b>{name} </b>{value} {unit}
+      {converted !== '' ? ' (' + converted.value + ' ' + converted.unit + ')' : ''}
+    </div>
   )
 }
 
-const mapStateToProps = ({ units }) => ({ units })
-
-export default connect(mapStateToProps)(CrossUnitsInput)
+export default CrossUnitsInput

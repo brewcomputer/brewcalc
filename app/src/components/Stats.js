@@ -1,5 +1,6 @@
 import React from 'react'
-import { Panel, li, Row, Col } from 'react-bootstrap'
+import { Panel, Row, Col } from 'react-bootstrap'
+import CrossUnitsInput from './CrossUnitsInput'
 
 import {
   originalGravity,
@@ -55,18 +56,18 @@ const Stats = ({ recipe, equipment }) => {
     <Panel header="Gravity, Alcohol Content and Color">
       <Row className="show-grid">
         <Col md={6}>
-          <ul>
-            <li title="The estimated original gravity of this recipe"><b>Original Gravity: </b>{og.toFixed(3)} SG</li>
-            <li title="The estimated final gravity of this recipe"><b>Final Gravity : </b>{fg.toFixed(3)} SG</li>
-            <li title="The bitterness of the recipe as measured in International Bitterness Units"><b>Bitterness (IBUs): </b>{ibu.toFixed(2)} by Tinseth formula</li>
-            <li title="Estimated color of this beer">
+          <div>
+            <CrossUnitsInput description="The estimated original gravity of this recipe" name="Original Gravity" value={og.toFixed(3)} unit="SG" />
+            <CrossUnitsInput description="The estimated final gravity of this recipe" name="Final Gravity" value={fg.toFixed(3)} unit="SG" />
+            <div title="The bitterness of the recipe as measured in International Bitterness Units"><b>Bitterness (IBUs): </b>{ibu.toFixed(2)} by Tinseth formula</div>
+            <div title="Estimated color of this beer">
               <b>Color: </b>{colorSRMvalue.toFixed(2)} SRM
-            </li>
-            <li title="The estimated alcohol by volume for this recipe"><b>Alcohol by volume : </b>{abv.toFixed(2)} %</li>
-            <li title="Calories in one liter of the beer, based on original and final gravities">
+            </div>
+            <div title="The estimated alcohol by volume for this recipe"><b>Alcohol by volume : </b>{abv.toFixed(2)} %</div>
+            <div title="Calories in one liter of the beer, based on original and final gravities">
               <b>Calories: </b>{caloriesInOneL.toFixed(0)} per one L
-            </li>
-          </ul>
+            </div>
+          </div>
         </Col>
         <Col md={6}>
           <div
