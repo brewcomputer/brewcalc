@@ -35,7 +35,10 @@ const ImportArea = ({ editorState, onReloadEditorState }) => {
         </Panel>
       </Col>
       <Col md={6}>
-
+        <Panel header="brewcalc">
+          <div>A modern (ES6) functional JavaScript library for brewing calculations.</div>
+          <a href="https://github.com/brewcomputer/brewcalc">brewcalc lib on the GitHub (MIT license)</a>
+        </Panel>
       </Col>
     </Row>
   )
