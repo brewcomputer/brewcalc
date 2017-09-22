@@ -23,30 +23,33 @@ exports[`renders correctly 1`] = `
           <div
             title="Name of the recipe"
           >
+             
             <b>
               Name
-               
             </b>
+             
             Aussie Ale
              
           </div>
           <div
             title="Name of the brewer"
           >
+             
             <b>
               Brewer
-               
             </b>
+             
             Steve Nicholls
              
           </div>
           <div
             title="May be one of “Extract”, “Partial Mash” or “All Grain”"
           >
+             
             <b>
               Type
-               
             </b>
+             
             All Grain
              
           </div>
@@ -60,6 +63,7 @@ exports[`renders correctly 1`] = `
             23.02
              
             L
+             (6.08 gal)
           </div>
           <div
             title="Starting size for the main boil of the wort in liters"
@@ -71,6 +75,7 @@ exports[`renders correctly 1`] = `
             37.12
              
             L
+             (9.81 gal)
           </div>
           <div
             title="The total time to boil the wort in minutes"
@@ -82,6 +87,7 @@ exports[`renders correctly 1`] = `
             90.00
              
             min
+            
           </div>
           <div
             title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"
@@ -93,6 +99,7 @@ exports[`renders correctly 1`] = `
             68
              
             %
+            
           </div>
         </div>
       </div>
@@ -103,13 +110,13 @@ exports[`renders correctly 1`] = `
           <div
             title="Name of the equipment profile – usually a text description of the brewing setup"
           >
+             
             <b>
               Equipment Name
-               
             </b>
+             
             Pot (13 Gal/50 L) - BIAB
              
-            
           </div>
           <div
             title="The target volume of the batch at the start of fermentation"
@@ -121,6 +128,7 @@ exports[`renders correctly 1`] = `
             23.02
              
             L
+             (6.08 gal)
           </div>
           <div
             title="The pre-boil volume used in this particular instance for this equipment setup.  Note that this may be a calculated"
@@ -132,6 +140,7 @@ exports[`renders correctly 1`] = `
             36.02
              
             L
+             (9.52 gal)
           </div>
           <div
             title="The percentage of wort lost to evaporation per hour of the boil"
@@ -143,6 +152,7 @@ exports[`renders correctly 1`] = `
             15
              
             % per hour
+            
           </div>
           <div
             title=""
@@ -154,6 +164,7 @@ exports[`renders correctly 1`] = `
             4
              
             %
+            
           </div>
           <div
             title="The amount of wort normally lost during transition from the boiler to the fermentation vessel"
@@ -165,6 +176,7 @@ exports[`renders correctly 1`] = `
             3.82
              
             L
+             (1.01 gal)
           </div>
         </div>
       </div>
@@ -196,30 +208,33 @@ exports[`renders correctly if equipment is null 1`] = `
           <div
             title="Name of the recipe"
           >
+             
             <b>
               Name
-               
             </b>
+             
             Aussie Ale
              
           </div>
           <div
             title="Name of the brewer"
           >
+             
             <b>
               Brewer
-               
             </b>
+             
             Steve Nicholls
              
           </div>
           <div
             title="May be one of “Extract”, “Partial Mash” or “All Grain”"
           >
+             
             <b>
               Type
-               
             </b>
+             
             All Grain
              
           </div>
@@ -233,6 +248,7 @@ exports[`renders correctly if equipment is null 1`] = `
             23.02
              
             L
+             (6.08 gal)
           </div>
           <div
             title="Starting size for the main boil of the wort in liters"
@@ -244,6 +260,7 @@ exports[`renders correctly if equipment is null 1`] = `
             37.12
              
             L
+             (9.81 gal)
           </div>
           <div
             title="The total time to boil the wort in minutes"
@@ -255,6 +272,7 @@ exports[`renders correctly if equipment is null 1`] = `
             90.00
              
             min
+            
           </div>
           <div
             title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"
@@ -266,6 +284,7 @@ exports[`renders correctly if equipment is null 1`] = `
             68
              
             %
+            
           </div>
         </div>
       </div>

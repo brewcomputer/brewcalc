@@ -10,7 +10,7 @@ import 'brace/mode/json'
 
 const EditorContainer = ({ editorState, onContentUpdate }) => (
   <Accordion>
-    <Panel header="Edit recipe and equipment JSON" eventKey="1">
+    <Panel header="&#8680; Expand and edit recipe and equipment JSON" eventKey="1">
       <AceEditor
         mode="json"
         theme="github"

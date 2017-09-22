@@ -27,6 +27,14 @@ export const sgToPlato = (sg: number) =>
 
 export const platoTosg = (e: number) => 1 + e / (258.6 - e / 258.2 * 227.1)
 
+export const srmToEbc = (srm: number) => srm * 1.97
+
+export const ebcToSrm = (ebc: number) => ebc * 0.508
+
+export const srmToLovibond = (srm: number) => (srm + 0.76) / 1.3546
+
+export const lovibondToSrm = (lovibond: number) => 1.3546 * lovibond - 0.76
+
 export const sum = (array: Array<number>) =>
   array.reduce((pv, cv) => pv + cv, 0)
 

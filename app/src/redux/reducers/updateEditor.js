@@ -2,7 +2,6 @@ import { recipe } from '../../data/recipe'
 import { equipment } from '../../data/equipment'
 
 const defaultState = {
-  units: 'metric',
   editorState: JSON.stringify({ recipe, equipment }, null, 4)
 }
 
@@ -11,12 +10,6 @@ const updateEditor = (state = defaultState, { payload, type }) => {
     return {
       ...state,
       editorState: payload
-    }
-  }
-  if (type === 'UPDATE_UNITS') {
-    return {
-      ...state,
-      units: payload
     }
   }
   return state

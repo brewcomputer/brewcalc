@@ -38,7 +38,11 @@ import {
   sgToPlato,
   platoTosg,
   sum,
-  scaleRecipe
+  scaleRecipe,
+  srmToEbc,
+  ebcToSrm,
+  srmToLovibond,
+  lovibondToSrm
 } from './utils'
 import { calculateVolumes } from './volumes'
 import { calcWaterChemistry } from './waterChem'
@@ -121,6 +125,10 @@ export {
   psiTokpa,
   sgToPlato,
   platoTosg,
+  srmToEbc,
+  ebcToSrm,
+  srmToLovibond,
+  lovibondToSrm,
   sum,
   scaleRecipe,
   calculateVolumes,

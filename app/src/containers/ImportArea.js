@@ -3,8 +3,6 @@ import { FormGroup, FormControl, Panel, Row, Col } from 'react-bootstrap'
 import { importFromBeerXml } from 'brewcalc'
 import { connect } from 'react-redux'
 
-import UnitsArea from '../components/UnitsArea'
-
 const ImportArea = ({ editorState, onReloadEditorState }) => {
   const onXmlLoaded = e => {
     const reader = new FileReader()
@@ -37,7 +35,7 @@ const ImportArea = ({ editorState, onReloadEditorState }) => {
         </Panel>
       </Col>
       <Col md={6}>
-        <UnitsArea />
+
       </Col>
     </Row>
   )
