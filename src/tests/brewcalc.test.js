@@ -11,7 +11,8 @@ import {
   yeastNeeded,
   yeastCount,
   yeastStarterGrow,
-  carbonation
+  carbonation,
+  srmToCss
 } from '../brewcalc'
 
 import { sgToPlato, kpaToPsi } from '../utils.js'
@@ -266,4 +267,9 @@ test('carbonation', () => {
   expect(carbonation(carbVolume, t, batchSize).kegSugar).toBeCloseTo(35.7, 0)
   expect(carbonation(carbVolume, t, batchSize).cornSugar).toBeCloseTo(71.4, 0)
   expect(carbonation(carbVolume, t, batchSize).dme).toBeCloseTo(109.82, 0)
+})
+
+test('srm2css', () => {
+  const cssColor = srmToCss(19.5)
+  expect(cssColor).toMatchSnapshot()
 })

@@ -9,6 +9,7 @@
     "build:dev": "webpack --env dev",
     "dev": "webpack --progress --colors --watch --env dev",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "jest": {
