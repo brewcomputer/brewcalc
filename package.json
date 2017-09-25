@@ -6,6 +6,7 @@
   "scripts": {
     "flow": "flow",
     "build": "webpack --env build",
+    "build:dev": "webpack --env dev",
     "dev": "webpack --progress --colors --watch --env dev",
     "test": "jest",
     "test:watch": "jest --watch"
