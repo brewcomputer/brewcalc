@@ -97,3 +97,14 @@ test('bitternessIbuRager', () => {
   ).toBeCloseTo(21, 0)
   // 22.2 by beerSmith, I suppose that there is additional ajustments depends of the Hop form
 })
+
+test('bitternessIbuRager when sgb > 1.05', () => {
+  const avgBoilGravityPts = 1.06
+  expect(
+    bitternessIbuRager(
+      AussieAle.hops,
+      avgBoilGravityPts,
+      AussieAleEquipment.batchSize + AussieAleEquipment.trubChillerLoss
+    )
+  ).toBeCloseTo(20, 0)
+})
