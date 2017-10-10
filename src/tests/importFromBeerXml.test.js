@@ -46,3 +46,13 @@ test('importFromBeerXmlNoPotential', () => {
     importFromBeerXml(xmlString).recipe.fermentables[1].potential
   ).toBeCloseTo(1.035, 3)
 })
+
+test('unparsable xml', () => {
+  const xmlString: string = fs.readFileSync(
+    __dirname + '/data/unparsable.xml',
+    'utf8'
+  )
+  expect(() => {
+    importFromBeerXml(xmlString)
+  }).toThrow()
+})

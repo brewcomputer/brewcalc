@@ -8,14 +8,18 @@ const ImportArea = ({ editorState, onReloadEditorState }) => {
     const reader = new FileReader()
     reader.readAsText(e.target.files[0])
     reader.onloadend = function () {
-      const result = importFromBeerXml(reader.result)
-      onReloadEditorState(
-        JSON.stringify(
-          { recipe: result.recipe, equipment: result.equipment },
-          null,
-          4
+      try {
+        const result = importFromBeerXml(reader.result)
+        onReloadEditorState(
+          JSON.stringify(
+            { recipe: result.recipe, equipment: result.equipment },
+            null,
+            4
+          )
         )
-      )
+      } catch (err) {
+        alert('Can\'t import from BeerXML, see console for the details')
+      }
     }
   }
 
