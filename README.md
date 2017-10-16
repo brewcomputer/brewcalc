@@ -27,4 +27,4 @@ npm install brewcalc
 ```
 
 # Input data types
-For expected input data types please refer to [FlowType definitions].(https://github.com/brewcomputer/brewcalc/tree/master/src/types)
+For expected input data types please refer to [FlowType definitions](https://github.com/brewcomputer/brewcalc/tree/master/src/types).
