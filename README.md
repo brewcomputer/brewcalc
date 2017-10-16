@@ -26,5 +26,5 @@ For Node.js, you can install **brewcalc** using `npm`:
 npm install brewcalc
 ```
 
-# Input data types
+## Input data types
 For expected input data types please refer to [FlowType definitions](https://github.com/brewcomputer/brewcalc/tree/master/src/types).
