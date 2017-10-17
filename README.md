@@ -1,12 +1,12 @@
-# brewcalc [![Build Status](https://travis-ci.org/brewcomputer/brewcalc.svg?branch=master)](https://travis-ci.org/brewcomputer/brewcalc)
+# 🍺 brewcalc [![Build Status](https://travis-ci.org/brewcomputer/brewcalc.svg?branch=master)](https://travis-ci.org/brewcomputer/brewcalc)
 A modern (ES6) functional JavaScript library for brewing calculations.
 
-Online Examples
+⚡︎ Try it online
 --------------------
  * [Online recipe calculator](https://brewcomputer.github.io/brewcalc/) - import any BeerXML file or edit recipe JSON online.
  * [JSFiddle sample](https://jsfiddle.net/krutilin/nn7sdekg/)
 
-Installation
+🚀 Installation
 ------------
 There are two ways to use **brewcalc** - client-side in a web browser or server-side using node.js.
 
