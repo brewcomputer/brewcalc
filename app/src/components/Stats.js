@@ -8,7 +8,7 @@ import {
   gravityPoints,
   boilGravity,
   colorSRM,
-  estABVrealExtract,
+  estABV,
   calcCalories,
   srmToCss,
   bitternessIbuTinseth,
@@ -48,7 +48,7 @@ const Stats = ({ recipe, equipment }) => {
     batchSize + trubChillerLoss
   )
 
-  const abv = estABVrealExtract(Number(og.toFixed(3)), Number(fg.toFixed(2)))
+  const abv = estABV(og, fg) * 1000
   const calories = calcCalories(Number(og.toFixed(3)), Number(fg.toFixed(2)))
   const caloriesInOneL = calories / (12 * ouncesToLiters(1))
 
