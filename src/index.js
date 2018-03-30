@@ -101,6 +101,17 @@ const calculateRecipeBeerJSON = ({
       : null
   }
 
+  let mashSteps = null
+  if (mash) {
+    const { mash_steps } = mash
+    mashSteps = Array.isArray(mash_steps)
+      ? mash_steps.map(item => ({
+          type: item.type,
+          infuseAmount: item.infuse_amount.value
+        }))
+      : null
+  }
+
   return calculateRecipe({
     batchSize,
     boilSize,
@@ -108,23 +119,27 @@ const calculateRecipeBeerJSON = ({
     fermentables,
     hops,
     yeasts,
-    efficiency: brewHouseEff
+    efficiency: brewHouseEff,
+    mash: mashSteps && { mashSteps }
   })
 }
 
 const calculateRecipe = ({
   batchSize,
   boilSize,
+  boilTime,
   fermentables,
   efficiency,
   yeasts,
-  hops
+  hops,
+  mash
 }: Recipe) => {
   let og = null,
     fg = null,
     ibu = null,
     abv = null,
-    colorSRMvalue = null
+    colorSRMvalue = null,
+    volumes = null
 
   if (batchSize && fermentables && efficiency) {
     og = originalGravity(batchSize, gravityPoints(fermentables, efficiency))
@@ -151,12 +166,19 @@ const calculateRecipe = ({
     }
   }
 
+  if (mash && boilTime && fermentables && boilSize) {
+    volumes = calculateVolumes({ fermentables, mash, boilTime }, { boilSize })
+  }
+
   return {
-    og: og && Number(og.toFixed(3)),
-    fg: fg && Number(fg.toFixed(3)),
-    ibu: ibu && Number(ibu.toFixed(1)),
-    color: colorSRMvalue && Number(colorSRMvalue.toFixed(1)),
-    abv: abv && Number((abv / 100).toFixed(3))
+    stats: {
+      og: og && Number(og.toFixed(3)),
+      fg: fg && Number(fg.toFixed(3)),
+      ibu: ibu && Number(ibu.toFixed(1)),
+      color: colorSRMvalue && Number(colorSRMvalue.toFixed(1)),
+      abv: abv && Number((abv / 100).toFixed(3))
+    },
+    volumes
   }
 }
 
