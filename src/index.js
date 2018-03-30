@@ -57,6 +57,61 @@ import { importFromBeerXml } from './importFromBeerXml.js'
 
 import type { Recipe } from './types/recipe'
 
+const calculateRecipeBeerJSON = ({
+  batch_size,
+  boil_size,
+  boil_time,
+  ingredients,
+  efficiency,
+  mash
+}) => {
+  const batchSize = batch_size ? batch_size.value : null
+  const boilSize = boil_size ? boil_size.value : null
+  const boilTime = boil_time ? boil_time.value : null
+  const brewHouseEff = efficiency ? efficiency.brewhouse / 100 : null
+
+  let fermentables, hops, yeasts
+
+  if (ingredients) {
+    const { fermentable_bill, hop_bill, culture_additions } = ingredients
+
+    fermentables = Array.isArray(fermentable_bill)
+      ? fermentable_bill.map(item => ({
+          type: item.type.charAt(0).toLocaleUpperCase() + item.type.slice(1),
+          amount: item.amount.value,
+          potential: item.yield * 0.01 * 46 / 1000 + 1,
+          color: item.color.value
+        }))
+      : null
+
+    hops = Array.isArray(hop_bill)
+      ? hop_bill.map(item => ({
+          amount: item.amount.value,
+          alpha: item.alpha_acid_units / 100,
+          form: item.form,
+          time: item.time.value,
+          use: item.use
+        }))
+      : null
+
+    yeasts = Array.isArray(culture_additions)
+      ? culture_additions.map(item => ({
+          attenuation: item.attenuation / 100
+        }))
+      : null
+  }
+
+  return calculateRecipe({
+    batchSize,
+    boilSize,
+    boilTime,
+    fermentables,
+    hops,
+    yeasts,
+    efficiency: brewHouseEff
+  })
+}
+
 const calculateRecipe = ({
   batchSize,
   boilSize,
@@ -65,34 +120,49 @@ const calculateRecipe = ({
   yeasts,
   hops
 }: Recipe) => {
-  const og = originalGravity(batchSize, gravityPoints(fermentables, efficiency))
+  let og = null,
+    fg = null,
+    ibu = null,
+    abv = null,
+    colorSRMvalue = null
 
-  const fg = finalGravity(
-    batchSize,
-    gravityPoints(fermentables, efficiency, yeasts[0].attenuation)
-  )
+  if (batchSize && fermentables && efficiency) {
+    og = originalGravity(batchSize, gravityPoints(fermentables, efficiency))
 
-  const avgBoilGravityPts = boilGravity(batchSize, boilSize, og) - 1
+    colorSRMvalue = colorSRM(fermentables, batchSize)
 
-  const ibu = bitternessIbuTinseth(hops, avgBoilGravityPts, batchSize)
+    if (yeasts) {
+      fg = finalGravity(
+        batchSize,
+        gravityPoints(fermentables, efficiency, yeasts[0].attenuation)
+      )
 
-  const colorSRMvalue = colorSRM(fermentables, batchSize)
+      abv = estABVrealExtract(Number(og.toFixed(3)), Number(fg.toFixed(2)))
+      const calories = calcCalories(
+        Number(og.toFixed(3)),
+        Number(fg.toFixed(2))
+      )
+      const caloriesInOneL = calories / (12 * ouncesToLiters(1))
+    }
 
-  const abv = estABVrealExtract(Number(og.toFixed(3)), Number(fg.toFixed(2)))
-  const calories = calcCalories(Number(og.toFixed(3)), Number(fg.toFixed(2)))
-  const caloriesInOneL = calories / (12 * ouncesToLiters(1))
+    if (hops && boilSize) {
+      const avgBoilGravityPts = boilGravity(batchSize, boilSize, og) - 1
+      ibu = bitternessIbuTinseth(hops, avgBoilGravityPts, batchSize)
+    }
+  }
 
   return {
-    og: Number(og.toFixed(3)),
-    fg: Number(fg.toFixed(3)),
-    ibu: Number(ibu.toFixed(1)),
-    color: Number(colorSRMvalue.toFixed(1)),
-    abv: Number((abv / 100).toFixed(3))
+    og: og && Number(og.toFixed(3)),
+    fg: fg && Number(fg.toFixed(3)),
+    ibu: ibu && Number(ibu.toFixed(1)),
+    color: colorSRMvalue && Number(colorSRMvalue.toFixed(1)),
+    abv: abv && Number((abv / 100).toFixed(3))
   }
 }
 
 export {
   calculateRecipe,
+  calculateRecipeBeerJSON,
   originalGravity,
   finalGravity,
   boilGravity,
