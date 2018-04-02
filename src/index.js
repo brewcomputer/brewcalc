@@ -113,7 +113,7 @@ const calculateRecipeBeerJSON = ({
     mashSteps = {
       // $FlowFixMe
       mashSteps: mash.mash_steps.map(item => ({
-        type: item.type,
+        type: capitalize(item.type),
         infuseAmount: item.infuse_amount.value
       }))
     }
