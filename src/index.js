@@ -42,7 +42,8 @@ import {
   srmToEbc,
   ebcToSrm,
   srmToLovibond,
-  lovibondToSrm
+  lovibondToSrm,
+  capitalize
 } from './utils'
 import { calculateVolumes } from './volumes'
 import { calcWaterChemistry } from './waterChem'
@@ -56,6 +57,7 @@ import { YeastForms, YeastTypes } from './types/yeast'
 import { importFromBeerXml } from './importFromBeerXml.js'
 
 import type { Recipe } from './types/recipe'
+import type { RecipeBeerJSON } from './types/beerjson'
 
 const calculateRecipeBeerJSON = ({
   batch_size,
@@ -64,20 +66,23 @@ const calculateRecipeBeerJSON = ({
   ingredients,
   efficiency,
   mash
-}) => {
+}: RecipeBeerJSON) => {
   const batchSize = batch_size ? batch_size.value : null
   const boilSize = boil_size ? boil_size.value : null
   const boilTime = boil_time ? boil_time.value : null
   const brewHouseEff = efficiency ? efficiency.brewhouse / 100 : null
 
-  let fermentables, hops, yeasts
+  let fermentables = null,
+    hops = null,
+    yeasts = null
 
   if (ingredients) {
     const { fermentable_bill, hop_bill, culture_additions } = ingredients
 
     fermentables = Array.isArray(fermentable_bill)
-      ? fermentable_bill.map(item => ({
-          type: item.type.charAt(0).toLocaleUpperCase() + item.type.slice(1),
+      ? // $FlowFixMe
+        fermentable_bill.map(item => ({
+          type: capitalize(item.type),
           amount: item.amount.value,
           potential: item.yield * 0.01 * 46 / 1000 + 1,
           color: item.color.value
@@ -85,33 +90,36 @@ const calculateRecipeBeerJSON = ({
       : null
 
     hops = Array.isArray(hop_bill)
-      ? hop_bill.map(item => ({
+      ? // $FlowFixMe
+        hop_bill.map(item => ({
           amount: item.amount.value,
           alpha: item.alpha_acid_units / 100,
-          form: item.form,
+          form: capitalize(item.form),
           time: item.time.value,
-          use: item.use
+          use: capitalize(item.use)
         }))
       : null
 
     yeasts = Array.isArray(culture_additions)
-      ? culture_additions.map(item => ({
+      ? // $FlowFixMe
+        culture_additions.map(item => ({
           attenuation: item.attenuation / 100
         }))
       : null
   }
 
   let mashSteps = null
-  if (mash) {
-    const { mash_steps } = mash
-    mashSteps = Array.isArray(mash_steps)
-      ? mash_steps.map(item => ({
-          type: item.type,
-          infuseAmount: item.infuse_amount.value
-        }))
-      : null
+  if (mash && Array.isArray(mash.mash_steps)) {
+    mashSteps = {
+      // $FlowFixMe
+      mashSteps: mash.mash_steps.map(item => ({
+        type: item.type,
+        infuseAmount: item.infuse_amount.value
+      }))
+    }
   }
 
+  // $FlowFixMe
   return calculateRecipe({
     batchSize,
     boilSize,
@@ -120,7 +128,8 @@ const calculateRecipeBeerJSON = ({
     hops,
     yeasts,
     efficiency: brewHouseEff,
-    mash: mashSteps && { mashSteps }
+    // $FlowFixMe
+    mash: mashSteps
   })
 }
 
@@ -167,6 +176,7 @@ const calculateRecipe = ({
   }
 
   if (mash && boilTime && fermentables && boilSize) {
+    // $FlowFixMe
     volumes = calculateVolumes({ fermentables, mash, boilTime }, { boilSize })
   }
 
