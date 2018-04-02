@@ -56,3 +56,11 @@ export const scaleRecipe = (r: Recipe, { batchSize }: Equipment) => {
     hops: scaleIngredients(scaleFactor, r.hops)
   }
 }
+
+export const capitalize = (str: string): string => {
+  const words: Array<string> = str.split(' ')
+  const capitalizedWords: Array<string> = words.map(
+    word => word.charAt(0).toUpperCase() + word.slice(1)
+  )
+  return capitalizedWords.join(' ')
+}
