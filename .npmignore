@@ -1,0 +1,17 @@
+# IDEs
+.vscode
+.idea
+.editorconfig
+
+# tools
+.eslintrc
+.flowconfig
+
+# build
+.travis*
+.babelrc
+webpack*
+
+# sources
+src
+app
