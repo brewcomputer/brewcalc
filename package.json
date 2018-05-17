@@ -1,6 +1,6 @@
 {
   "name": "brewcalc",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A modern (ES6) functional JavaScript library for brewing calculations.",
   "main": "lib/brewcalc.min.js",
   "scripts": {
