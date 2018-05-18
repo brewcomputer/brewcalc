@@ -64,3 +64,10 @@ export const capitalize = (str: string): string => {
   )
   return capitalizedWords.join(' ')
 }
+
+export const isNotEmptyArray = (arr: ?Array<Object>): boolean => {
+  if (Array.isArray(arr)) {
+    return arr.length > 0
+  }
+  return false
+}

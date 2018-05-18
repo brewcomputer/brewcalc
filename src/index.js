@@ -43,7 +43,8 @@ import {
   ebcToSrm,
   srmToLovibond,
   lovibondToSrm,
-  capitalize
+  capitalize,
+  isNotEmptyArray
 } from './utils'
 import { calculateVolumes } from './volumes'
 import { calcWaterChemistry } from './waterChem'
@@ -79,7 +80,7 @@ const calculateRecipeBeerJSON = ({
   if (ingredients) {
     const { fermentable_bill, hop_bill, culture_additions } = ingredients
 
-    fermentables = Array.isArray(fermentable_bill)
+    fermentables = isNotEmptyArray(fermentable_bill)
       ? // $FlowFixMe
         fermentable_bill.map(item => ({
           type: capitalize(item.type),
@@ -89,7 +90,7 @@ const calculateRecipeBeerJSON = ({
         }))
       : null
 
-    hops = Array.isArray(hop_bill)
+    hops = isNotEmptyArray(hop_bill)
       ? // $FlowFixMe
         hop_bill.map(item => ({
           amount: item.amount.value,
@@ -100,7 +101,7 @@ const calculateRecipeBeerJSON = ({
         }))
       : null
 
-    yeasts = Array.isArray(culture_additions)
+    yeasts = isNotEmptyArray(culture_additions)
       ? // $FlowFixMe
         culture_additions.map(item => ({
           attenuation: item.attenuation / 100
@@ -109,7 +110,7 @@ const calculateRecipeBeerJSON = ({
   }
 
   let mashSteps = null
-  if (mash && Array.isArray(mash.mash_steps)) {
+  if (mash && isNotEmptyArray(mash.mash_steps)) {
     mashSteps = {
       // $FlowFixMe
       mashSteps: mash.mash_steps.map(item => ({

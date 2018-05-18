@@ -114,6 +114,22 @@ test('calculate recipe: no yeast', () => {
   })
 })
 
+test('calculate recipe: empty yeasts array', () => {
+  const emptyYeast = { ...recipe.ingredients, culture_additions: [] }
+  const testRecipe = { ...recipe, ingredients: emptyYeast }
+  const result = calculateRecipeBeerJSON(testRecipe)
+  expect(result).toMatchObject({
+    stats: {
+      og: expect.any(Number),
+      fg: null,
+      ibu: expect.any(Number),
+      abv: null,
+      color: expect.any(Number)
+    },
+    volumes: expect.any(Object)
+  })
+})
+
 test('calculate recipe: no mash', () => {
   const testRecipe = { ...recipe, mash: undefined }
   const result = calculateRecipeBeerJSON(testRecipe)
