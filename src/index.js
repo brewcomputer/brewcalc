@@ -187,7 +187,7 @@ const calculateRecipe = ({
       fg: fg && Number(fg.toFixed(3)),
       ibu: ibu && Number(ibu.toFixed(1)),
       color: colorSRMvalue && Number(colorSRMvalue.toFixed(1)),
-      abv: abv && Number((abv / 100).toFixed(3))
+      abv: abv && Number(abv.toFixed(1))
     },
     volumes
   }
