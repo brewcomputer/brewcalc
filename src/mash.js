@@ -1,4 +1,3 @@
-// @flow
 import type { Equipment } from './types/equipment'
 import type { Mash } from './types/mash'
 import { MashType } from './types/mashStep'
@@ -75,8 +74,8 @@ const infuseTemp = (
     (maltSpecificHeat * mashGrainWeight +
       tunSpecificHeat * adjustedTunMass +
       startVolume) *
-      (targetTemp - startTemp) /
-      infuseAmount
+    (targetTemp - startTemp) /
+    infuseAmount
   )
 }
 
@@ -101,7 +100,7 @@ const mashInTemp = (
     targetTemp +
     (maltSpecificHeat * mashGrainWeight * (targetTemp - grainTemp) +
       tunSpecificHeat * adjustedTunMass * (targetTemp - tunTemp)) /
-      infuseAmount
+    infuseAmount
   )
 }
 
@@ -136,55 +135,55 @@ export const mashRecalculate = (
           result.infussionTemp =
             i === 0
               ? mashInTemp(
-                  infuseStepAmount,
-                  stepTemp,
-                  mashGrainWeight,
-                  grainTemp,
-                  tunMass,
-                  tunSpecificHeat,
-                  tunVolume,
-                  tunTemp
-                )
+                infuseStepAmount,
+                stepTemp,
+                mashGrainWeight,
+                grainTemp,
+                tunMass,
+                tunSpecificHeat,
+                tunVolume,
+                tunTemp
+              )
               : infuseTemp(
-                  infuseStepAmount,
-                  stepTemp,
-                  totalInfusedOnStepAmount,
-                  mashSteps[i - 1].stepTemp,
-                  mashGrainWeight,
-                  tunMass,
-                  tunSpecificHeat,
-                  tunVolume
-                )
+                infuseStepAmount,
+                stepTemp,
+                totalInfusedOnStepAmount,
+                mashSteps[i - 1].stepTemp,
+                mashGrainWeight,
+                tunMass,
+                tunSpecificHeat,
+                tunVolume
+              )
           result.decoctionAmount = 0
           break
         case MashType.decoction:
           result.infussionTemp =
             i === 0
               ? mashInTemp(
-                  infuseStepAmount,
-                  stepTemp,
-                  mashGrainWeight,
-                  grainTemp,
-                  tunMass,
-                  tunSpecificHeat,
-                  tunVolume,
-                  tunTemp
-                )
+                infuseStepAmount,
+                stepTemp,
+                mashGrainWeight,
+                grainTemp,
+                tunMass,
+                tunSpecificHeat,
+                tunVolume,
+                tunTemp
+              )
               : 0
 
           result.decoctionAmount =
             i === 0
               ? 0
               : decoctVolume(
-                  stepTemp,
-                  totalInfusedOnStepAmount,
-                  mashSteps[i - 1].stepTemp,
-                  mashGrainWeight,
-                  tunMass,
-                  tunSpecificHeat,
-                  tunVolume,
-                  boilTemp
-                )
+                stepTemp,
+                totalInfusedOnStepAmount,
+                mashSteps[i - 1].stepTemp,
+                mashGrainWeight,
+                tunMass,
+                tunSpecificHeat,
+                tunVolume,
+                boilTemp
+              )
           break
         default:
           break
