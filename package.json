@@ -29,7 +29,7 @@
     "babel-loader": "^8.0.5",
     "flow-bin": "^0.97.0",
     "jest": "^24.7.1",
-    "lodash": "4.17.10",
+    "lodash": "^4.17.11",
     "prettier": "^1.17.0",
     "prettier-loader": "^2.1.1",
     "webpack": "^4.30.0",
