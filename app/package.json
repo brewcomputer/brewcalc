@@ -4,22 +4,21 @@
   "private": true,
   "dependencies": {
     "brewcalc": "file:../",
-    "react": "^15.6.1",
-    "react-ace": "^5.1.2",
+    "react": "^16.8.6",
+    "react-ace": "^6.4.0",
     "react-bootstrap": "^0.31.1",
-    "react-dom": "^15.6.1",
-    "react-redux": "^5.0.5",
-    "react-test-renderer": "^15.6.1",
-    "redux": "^3.7.2"
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.2",
+    "react-test-renderer": "^16.8.6",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
-    "eslint-plugin-prettier": "^2.0.1",
-    "flow-bin": "^0.47.0",
-    "gh-pages": "^1.0.0",
-    "pixl-xml": "^1.0.10",
-    "prettier": "^0.22.0",
-    "prettier-eslint": "^4.3.2",
-    "react-scripts": "1.0.5"
+    "eslint-plugin-prettier": "^3.0.1",
+    "flow-bin": "^0.97.0",
+    "gh-pages": "^2.0.1",
+    "pixl-xml": "^1.0.13",
+    "prettier": "^1.17.0",
+    "react-scripts": "^2.1.8"
   },
   "scripts": {
     "flow": "flow",
@@ -31,5 +30,11 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "http://brewcomputer.github.io/brewcalc"
+  "homepage": "http://brewcomputer.github.io/brewcalc",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
