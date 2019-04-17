@@ -17,8 +17,8 @@ const camelCase = (str: string) =>
   str.length === 0
     ? ''
     : str.length === 1
-      ? str.toLowerCase()
-      : str
+    ? str.toLowerCase()
+    : str
         .replace(/^[_.\- ]+/, '')
         .toLowerCase()
         .replace(/[_.\- ]+(\w|$)/g, (m, p1) => p1.toUpperCase())
@@ -34,7 +34,9 @@ const dirtyRound = (n: number) => Math.round(n * 100000000000) / 100000000000
 
 export const importFromBeerXml = (xml: string) => {
   try {
-    const recipe = xmlToJson(new DOMParser().parseFromString(xmlToCamelCase(xml), 'text/xml')).recipes.recipe
+    const recipe = xmlToJson(
+      new DOMParser().parseFromString(xmlToCamelCase(xml), 'text/xml')
+    ).recipes.recipe
     const fermentableNode = recipe.fermentables.fermentable
     const fermentables = Array.from(
       Array.isArray(fermentableNode) ? fermentableNode : [fermentableNode]
@@ -141,21 +143,21 @@ export const importFromBeerXml = (xml: string) => {
     const equipment: Equipment | null =
       equipmentNode !== undefined
         ? {
-          name: equipmentNode.name,
-          batchSize: parseFloat(equipmentNode.batchSize),
-          boilSize: parseFloat(equipmentNode.boilSize),
-          tunWeight: parseFloat(equipmentNode.tunWeight),
-          tunVolume: parseFloat(equipmentNode.tunSpecificHeat),
-          tunSpecificHeat: parseFloat(equipmentNode.tunSpecificHeat),
-          coolingLossPct: parseFloat(equipmentNode.coolingLossPct) * 0.01,
-          evapRate: dirtyRound(parseFloat(equipmentNode.evapRate) * 0.01),
-          lauterDeadspace: parseFloat(equipmentNode.lauterDeadspace),
-          topUpKettle: parseFloat(equipmentNode.topUpKettle),
-          trubChillerLoss: parseFloat(equipmentNode.trubChillerLoss),
+            name: equipmentNode.name,
+            batchSize: parseFloat(equipmentNode.batchSize),
+            boilSize: parseFloat(equipmentNode.boilSize),
+            tunWeight: parseFloat(equipmentNode.tunWeight),
+            tunVolume: parseFloat(equipmentNode.tunSpecificHeat),
+            tunSpecificHeat: parseFloat(equipmentNode.tunSpecificHeat),
+            coolingLossPct: parseFloat(equipmentNode.coolingLossPct) * 0.01,
+            evapRate: dirtyRound(parseFloat(equipmentNode.evapRate) * 0.01),
+            lauterDeadspace: parseFloat(equipmentNode.lauterDeadspace),
+            topUpKettle: parseFloat(equipmentNode.topUpKettle),
+            trubChillerLoss: parseFloat(equipmentNode.trubChillerLoss),
 
-          // TODO:: may be it is part of mashing steps, not eq
-          BIAB: isBIAB(recipe.mash.name)
-        }
+            // TODO:: may be it is part of mashing steps, not eq
+            BIAB: isBIAB(recipe.mash.name)
+          }
         : null
 
     const specifications: Specifications = {

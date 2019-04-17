@@ -10,10 +10,16 @@ const config = {
   "module": {
     "rules": [
       {
-        "enforce": "pre",
-        "test": /\.(js|jsx)$/,
-        "exclude": /node_modules/,
-        "use": "eslint-loader"
+        "test": /\.js?$/,
+        "enforce": 'pre',
+        "loader": 'prettier-loader',
+        "options": {
+          "parser": "babel",
+          "singleQuote": true,
+          "semi": false,
+          "jsxBracketSameLine": true,
+          "tabWidth": 2
+        }
       },
       {
         "test": /\.js$/,
