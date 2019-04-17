@@ -17,7 +17,7 @@ const calcTotVolume = (
 const adjustTunMass = (tunVolume, totVolume, tunMass) => {
   tunVolume = tunVolume * 0.8
   return tunVolume > 0 && totVolume < tunVolume
-    ? tunMass * totVolume / tunVolume
+    ? (tunMass * totVolume) / tunVolume
     : tunMass
 }
 
@@ -34,11 +34,11 @@ const decoctVolume = (
   const totVolume = calcTotVolume(grainVolume, mashGrainWeight, startVolume)
   const adjustedTunMass = adjustTunMass(tunVolume, totVolume, tunMass)
   var fraction =
-    (maltSpecificHeat * mashGrainWeight +
+    (((maltSpecificHeat * mashGrainWeight +
       tunSpecificHeat * adjustedTunMass +
       startVolume) /
-    (maltSpecificHeat * mashGrainWeight + startVolume) *
-    (targetTemp - startTemp) /
+      (maltSpecificHeat * mashGrainWeight + startVolume)) *
+      (targetTemp - startTemp)) /
     (boilTemp - startTemp)
 
   if (fraction > 1) {
@@ -71,11 +71,11 @@ const infuseTemp = (
 
   return (
     targetTemp +
-    (maltSpecificHeat * mashGrainWeight +
+    ((maltSpecificHeat * mashGrainWeight +
       tunSpecificHeat * adjustedTunMass +
       startVolume) *
-    (targetTemp - startTemp) /
-    infuseAmount
+      (targetTemp - startTemp)) /
+      infuseAmount
   )
 }
 
@@ -100,7 +100,7 @@ const mashInTemp = (
     targetTemp +
     (maltSpecificHeat * mashGrainWeight * (targetTemp - grainTemp) +
       tunSpecificHeat * adjustedTunMass * (targetTemp - tunTemp)) /
-    infuseAmount
+      infuseAmount
   )
 }
 
@@ -135,55 +135,55 @@ export const mashRecalculate = (
           result.infussionTemp =
             i === 0
               ? mashInTemp(
-                infuseStepAmount,
-                stepTemp,
-                mashGrainWeight,
-                grainTemp,
-                tunMass,
-                tunSpecificHeat,
-                tunVolume,
-                tunTemp
-              )
+                  infuseStepAmount,
+                  stepTemp,
+                  mashGrainWeight,
+                  grainTemp,
+                  tunMass,
+                  tunSpecificHeat,
+                  tunVolume,
+                  tunTemp
+                )
               : infuseTemp(
-                infuseStepAmount,
-                stepTemp,
-                totalInfusedOnStepAmount,
-                mashSteps[i - 1].stepTemp,
-                mashGrainWeight,
-                tunMass,
-                tunSpecificHeat,
-                tunVolume
-              )
+                  infuseStepAmount,
+                  stepTemp,
+                  totalInfusedOnStepAmount,
+                  mashSteps[i - 1].stepTemp,
+                  mashGrainWeight,
+                  tunMass,
+                  tunSpecificHeat,
+                  tunVolume
+                )
           result.decoctionAmount = 0
           break
         case MashType.decoction:
           result.infussionTemp =
             i === 0
               ? mashInTemp(
-                infuseStepAmount,
-                stepTemp,
-                mashGrainWeight,
-                grainTemp,
-                tunMass,
-                tunSpecificHeat,
-                tunVolume,
-                tunTemp
-              )
+                  infuseStepAmount,
+                  stepTemp,
+                  mashGrainWeight,
+                  grainTemp,
+                  tunMass,
+                  tunSpecificHeat,
+                  tunVolume,
+                  tunTemp
+                )
               : 0
 
           result.decoctionAmount =
             i === 0
               ? 0
               : decoctVolume(
-                stepTemp,
-                totalInfusedOnStepAmount,
-                mashSteps[i - 1].stepTemp,
-                mashGrainWeight,
-                tunMass,
-                tunSpecificHeat,
-                tunVolume,
-                boilTemp
-              )
+                  stepTemp,
+                  totalInfusedOnStepAmount,
+                  mashSteps[i - 1].stepTemp,
+                  mashGrainWeight,
+                  tunMass,
+                  tunSpecificHeat,
+                  tunVolume,
+                  boilTemp
+                )
           break
         default:
           break

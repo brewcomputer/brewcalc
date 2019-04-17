@@ -19,7 +19,7 @@ export const finalGravity = (batchSize: number, fgPts: number) =>
   1.0 + fgPts / litersToGallons(batchSize)
 
 export const boilGravity = (batchSize: number, boilSize: number, og: number) =>
-  1 + (og - 1) * litersToGallons(batchSize) / litersToGallons(boilSize)
+  1 + ((og - 1) * litersToGallons(batchSize)) / litersToGallons(boilSize)
 
 // Sugar provides 46 gravity points per pound, per gallon (PPPG).
 // 1 pound = 16 oz (weight/mass)
@@ -121,7 +121,7 @@ export const srmToCss = (srm: number) => {
 // billion 10 ^ 9
 
 export const yeastNeeded = (pitchRate: number, batchSize: number, e: number) =>
-  pitchRate * (batchSize * 1000) * e / 1000
+  (pitchRate * (batchSize * 1000) * e) / 1000
 
 const viability = (
   currentDate: string,
@@ -156,8 +156,8 @@ const growthRateCurveBraukaiserStir = (ratio: number) =>
   ratio < 1.4
     ? 1.4
     : ratio >= 1.4 && ratio <= 3.5 && yeastGrowth(ratio) > 0
-      ? yeastGrowth(ratio)
-      : 0
+    ? yeastGrowth(ratio)
+    : 0
 
 export const yeastStarterGrow = (
   startingYeastCount: number,
@@ -173,7 +173,8 @@ export const yeastStarterGrow = (
 
   const growthRate = growthRateCurveBraukaiserStir(cellsToGramsRatio)
   const endingCount = gramsDME * growthRate + startingYeastCount
-  const pitchRate = endingCount * 1000 / sgToPlato(gravity) / (batchSize / 1000)
+  const pitchRate =
+    (endingCount * 1000) / sgToPlato(gravity) / (batchSize / 1000)
 
   return {
     growthRate: growthRate,

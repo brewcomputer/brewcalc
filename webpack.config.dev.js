@@ -2,10 +2,7 @@ const config = {
   "mode": "development",
   "output": {
     "path": __dirname + '/lib',
-    "filename": "brewcalc.min.js"
-  },
-  "optimization": {
-    "minimize": false
+    "filename": "brewcalc.js"
   },
   "module": {
     "rules": [

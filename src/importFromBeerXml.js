@@ -9,9 +9,8 @@ import type { Yeast } from './types/yeast'
 import type { Equipment } from './types/equipment'
 
 import type { Specifications } from './types/specifications'
-
 // $FlowFixMe
-import * as XML from 'pixl-xml'
+import { DOMParser } from 'xmldom'
 
 const camelCase = (str: string) =>
   str.length === 0
@@ -19,9 +18,9 @@ const camelCase = (str: string) =>
     : str.length === 1
       ? str.toLowerCase()
       : str
-          .replace(/^[_.\- ]+/, '')
-          .toLowerCase()
-          .replace(/[_.\- ]+(\w|$)/g, (m, p1) => p1.toUpperCase())
+        .replace(/^[_.\- ]+/, '')
+        .toLowerCase()
+        .replace(/[_.\- ]+(\w|$)/g, (m, p1) => p1.toUpperCase())
 
 const xmlToCamelCase = (xml: string) =>
   xml.replace(/<(?!!)(?!\?)[^>]*>/g, str => camelCase(str.toLowerCase()))
@@ -34,7 +33,7 @@ const dirtyRound = (n: number) => Math.round(n * 100000000000) / 100000000000
 
 export const importFromBeerXml = (xml: string) => {
   try {
-    const doc = XML.parse(xmlToCamelCase(xml))
+    const doc = new DOMParser().parseFromString(xmlToCamelCase(xml), 'text/xml')
     const fermentableNode = doc.recipe.fermentables.fermentable
     const fermentables = Array.from(
       Array.isArray(fermentableNode) ? fermentableNode : [fermentableNode]
@@ -52,7 +51,7 @@ export const importFromBeerXml = (xml: string) => {
           potential:
             potential !== undefined
               ? parseFloat(potential)
-              : parseFloat(f[i].yield) * 0.01 * 46 / 1000 + 1,
+              : (parseFloat(f[i].yield) * 0.01 * 46) / 1000 + 1,
           yield: parseFloat(f[i].yield),
           type: type
         }
@@ -60,18 +59,18 @@ export const importFromBeerXml = (xml: string) => {
     )
 
     const hopNode = doc.recipe.hops.hop
-    const hops = Array.from(
-      Array.isArray(hopNode) ? hopNode : [hopNode]
-    ).map(({ name, alpha, amount, form, use, time }: Hop) => {
-      return {
-        name: name,
-        alpha: parseFloat(alpha) * 0.01,
-        amount: parseFloat(amount),
-        form: form,
-        use: use,
-        time: parseFloat(time)
+    const hops = Array.from(Array.isArray(hopNode) ? hopNode : [hopNode]).map(
+      ({ name, alpha, amount, form, use, time }: Hop) => {
+        return {
+          name: name,
+          alpha: parseFloat(alpha) * 0.01,
+          amount: parseFloat(amount),
+          form: form,
+          use: use,
+          time: parseFloat(time)
+        }
       }
-    })
+    )
 
     const mashStepsNode = doc.recipe.mash.mashSteps.mashStep
     const mashSteps = Array.from(
@@ -141,21 +140,21 @@ export const importFromBeerXml = (xml: string) => {
     const equipment: Equipment | null =
       equipmentNode !== undefined
         ? {
-            name: equipmentNode.name,
-            batchSize: parseFloat(equipmentNode.batchSize),
-            boilSize: parseFloat(equipmentNode.boilSize),
-            tunWeight: parseFloat(equipmentNode.tunWeight),
-            tunVolume: parseFloat(equipmentNode.tunSpecificHeat),
-            tunSpecificHeat: parseFloat(equipmentNode.tunSpecificHeat),
-            coolingLossPct: parseFloat(equipmentNode.coolingLossPct) * 0.01,
-            evapRate: dirtyRound(parseFloat(equipmentNode.evapRate) * 0.01),
-            lauterDeadspace: parseFloat(equipmentNode.lauterDeadspace),
-            topUpKettle: parseFloat(equipmentNode.topUpKettle),
-            trubChillerLoss: parseFloat(equipmentNode.trubChillerLoss),
+          name: equipmentNode.name,
+          batchSize: parseFloat(equipmentNode.batchSize),
+          boilSize: parseFloat(equipmentNode.boilSize),
+          tunWeight: parseFloat(equipmentNode.tunWeight),
+          tunVolume: parseFloat(equipmentNode.tunSpecificHeat),
+          tunSpecificHeat: parseFloat(equipmentNode.tunSpecificHeat),
+          coolingLossPct: parseFloat(equipmentNode.coolingLossPct) * 0.01,
+          evapRate: dirtyRound(parseFloat(equipmentNode.evapRate) * 0.01),
+          lauterDeadspace: parseFloat(equipmentNode.lauterDeadspace),
+          topUpKettle: parseFloat(equipmentNode.topUpKettle),
+          trubChillerLoss: parseFloat(equipmentNode.trubChillerLoss),
 
-            // TODO:: may be it is part of mashing steps, not eq
-            BIAB: isBIAB(doc.recipe.mash.name)
-          }
+          // TODO:: may be it is part of mashing steps, not eq
+          BIAB: isBIAB(doc.recipe.mash.name)
+        }
         : null
 
     const specifications: Specifications = {
