@@ -11,6 +11,7 @@ import type { Equipment } from './types/equipment'
 import type { Specifications } from './types/specifications'
 // $FlowFixMe
 import { DOMParser } from 'xmldom'
+import xmlToJson from './xmlToJson'
 
 const camelCase = (str: string) =>
   str.length === 0
@@ -33,8 +34,8 @@ const dirtyRound = (n: number) => Math.round(n * 100000000000) / 100000000000
 
 export const importFromBeerXml = (xml: string) => {
   try {
-    const doc = new DOMParser().parseFromString(xmlToCamelCase(xml), 'text/xml')
-    const fermentableNode = doc.recipe.fermentables.fermentable
+    const recipe = xmlToJson(new DOMParser().parseFromString(xmlToCamelCase(xml), 'text/xml')).recipes.recipe
+    const fermentableNode = recipe.fermentables.fermentable
     const fermentables = Array.from(
       Array.isArray(fermentableNode) ? fermentableNode : [fermentableNode]
     ).map(
@@ -58,7 +59,7 @@ export const importFromBeerXml = (xml: string) => {
       }
     )
 
-    const hopNode = doc.recipe.hops.hop
+    const hopNode = recipe.hops.hop
     const hops = Array.from(Array.isArray(hopNode) ? hopNode : [hopNode]).map(
       ({ name, alpha, amount, form, use, time }: Hop) => {
         return {
@@ -72,7 +73,7 @@ export const importFromBeerXml = (xml: string) => {
       }
     )
 
-    const mashStepsNode = doc.recipe.mash.mashSteps.mashStep
+    const mashStepsNode = recipe.mash.mashSteps.mashStep
     const mashSteps = Array.from(
       Array.isArray(mashStepsNode) ? mashStepsNode : [mashStepsNode]
     ).map(
@@ -98,14 +99,14 @@ export const importFromBeerXml = (xml: string) => {
     )
 
     const mash: Mash = {
-      grainTemp: parseFloat(doc.recipe.mash.grainTemp),
-      tunTemp: parseFloat(doc.recipe.mash.tunTemp),
-      equipAdjust: parseBool(doc.recipe.mash.equipAdjust),
-      spargeTemp: parseFloat(doc.recipe.mash.spargeTemp),
+      grainTemp: parseFloat(recipe.mash.grainTemp),
+      tunTemp: parseFloat(recipe.mash.tunTemp),
+      equipAdjust: parseBool(recipe.mash.equipAdjust),
+      spargeTemp: parseFloat(recipe.mash.spargeTemp),
       mashSteps: mashSteps
     }
 
-    const yeastNode = doc.recipe.yeasts.yeast
+    const yeastNode = recipe.yeasts.yeast
     const yeasts: Array<Yeast> = [
       {
         name: yeastNode.name,
@@ -121,8 +122,8 @@ export const importFromBeerXml = (xml: string) => {
       }
     ]
 
-    const recipeNode = doc.recipe
-    const recipe: Recipe = {
+    const recipeNode = recipe
+    const recipeResult: Recipe = {
       name: recipeNode.name,
       brewer: recipeNode.brewer,
       batchSize: parseFloat(recipeNode.batchSize),
@@ -136,7 +137,7 @@ export const importFromBeerXml = (xml: string) => {
       yeasts: yeasts
     }
 
-    const equipmentNode = doc.recipe.equipment
+    const equipmentNode = recipe.equipment
     const equipment: Equipment | null =
       equipmentNode !== undefined
         ? {
@@ -153,7 +154,7 @@ export const importFromBeerXml = (xml: string) => {
           trubChillerLoss: parseFloat(equipmentNode.trubChillerLoss),
 
           // TODO:: may be it is part of mashing steps, not eq
-          BIAB: isBIAB(doc.recipe.mash.name)
+          BIAB: isBIAB(recipe.mash.name)
         }
         : null
 
@@ -168,7 +169,7 @@ export const importFromBeerXml = (xml: string) => {
     }
 
     return {
-      recipe: recipe,
+      recipe: recipeResult,
       equipment: equipment,
       specifications: specifications
     }
