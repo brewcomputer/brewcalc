@@ -14,7 +14,7 @@ import {
   carbonation,
   srmToCss,
   calcCalories
-} from '../brewcalc'
+} from '../lib/brewcalc'
 
 import { sgToPlato, kpaToPsi } from '../utils.js'
 import { recipe as AussieAle } from './data/AussieAle.js'

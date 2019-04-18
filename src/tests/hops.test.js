@@ -4,7 +4,7 @@ import {
   bitternessRatio,
   bitternessIbuRager
 } from '../hops'
-import { originalGravity, gravityPoints, finalGravity } from '../brewcalc'
+import { originalGravity, gravityPoints, finalGravity } from '../lib/brewcalc'
 import { recipe as AussieAle } from './data/AussieAle.js'
 import { equipment as AussieAleEquipment } from './data/AussieAle.js'
 

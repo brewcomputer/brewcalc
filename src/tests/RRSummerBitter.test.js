@@ -6,7 +6,7 @@ import {
   boilGravity,
   colorSRM,
   estABVrealExtract
-} from '../brewcalc'
+} from '../lib/brewcalc'
 import { bitternessIbuTinseth } from '../hops'
 
 import * as fs from 'fs'
