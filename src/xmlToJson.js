@@ -1,8 +1,6 @@
-const _ = require('lodash')
-
 const xmlToJson = xml => {
   var result = {}
-  if (_.isNull(xml.childNodes) || xml.childNodes.length === 0) {
+  if (xml.childNodes == null || xml.childNodes.length === 0) {
     result = ''
   } else if (
     xml.childNodes.length === 1 &&
@@ -10,12 +8,12 @@ const xmlToJson = xml => {
   ) {
     result = xml.childNodes.item(0).textContent
   } else {
-    _.map(xml.childNodes, item => {
+    xml.childNodes.map(item => {
       if (item.nodeType !== 3) {
         if (result[item.nodeName] === undefined) {
           result[item.nodeName] = xmlToJson(item)
         } else {
-          if (!_.isArray(result[item.nodeName])) {
+          if (!Array.isArray(result[item.nodeName])) {
             const value = result[item.nodeName]
             result[item.nodeName] = [value]
           }

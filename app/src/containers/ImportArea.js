@@ -1,6 +1,6 @@
 import React from 'react'
 import { FormGroup, FormControl, Panel, Row, Col } from 'react-bootstrap'
-import { importFromBeerXml } from 'brewcalc'
+import { importFromBeerXml } from '../brewcalc'
 import { connect } from 'react-redux'
 
 const ImportArea = ({ editorState, onReloadEditorState }) => {

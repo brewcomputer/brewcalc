@@ -1,7 +1,10 @@
 const config = {
   "mode": "development",
   "output": {
-    "path": __dirname + '/lib',
+    "library": "brewcalc",
+    "libraryTarget": 'umd',
+    umdNamedDefine: true,
+    "path": __dirname + '/app/src',
     "filename": "brewcalc.js"
   },
   "devtool": "source-map",

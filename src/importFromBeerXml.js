@@ -9,8 +9,6 @@ import type { Yeast } from './types/yeast'
 import type { Equipment } from './types/equipment'
 
 import type { Specifications } from './types/specifications'
-// $FlowFixMe
-import { DOMParser } from 'xmldom'
 import xmlToJson from './xmlToJson'
 
 const camelCase = (str: string) =>

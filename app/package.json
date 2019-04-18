@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "brewcalc": "file:../",
     "react": "^16.8.6",
     "react-ace": "^6.4.0",
     "react-bootstrap": "^0.31.1",
@@ -16,7 +15,6 @@
     "eslint-plugin-prettier": "^3.0.1",
     "flow-bin": "^0.97.0",
     "gh-pages": "^2.0.1",
-    "pixl-xml": "^1.0.13",
     "prettier": "^1.17.0",
     "react-scripts": "^2.1.8"
   },

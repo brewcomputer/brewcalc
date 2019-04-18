@@ -7,6 +7,7 @@
     "flow": "flow",
     "build": "webpack --env build",
     "build:dev": "webpack --config webpack.config.dev.js",
+    "build:app": "webpack --config webpack.config.app.js",
     "dev": "webpack --progress --colors --watch --env dev",
     "test": "jest",
     "test:coverage": "jest --coverage",
@@ -28,13 +29,10 @@
     "babel-loader": "^8.0.5",
     "flow-bin": "^0.97.0",
     "jest": "23.6.0",
-    "lodash": "^4.17.11",
     "prettier": "^1.17.0",
     "prettier-loader": "^2.1.1",
     "webpack": "4.28.3",
-    "webpack-cli": "^3.3.0",
-    "xmldom": "0.1.27",
-    "yargs": "^13.2.2"
+    "webpack-cli": "^3.3.0"
   },
   "repository": {
     "type": "git",

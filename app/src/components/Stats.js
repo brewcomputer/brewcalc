@@ -13,7 +13,7 @@ import {
   srmToCss,
   bitternessIbuTinseth,
   ouncesToLiters
-} from 'brewcalc'
+} from '../brewcalc'
 
 const Stats = ({ recipe, equipment }) => {
 
