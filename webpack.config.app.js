@@ -3,7 +3,7 @@ const config = {
   "output": {
     "library": "brewcalc",
     "libraryTarget": 'umd',
-    umdNamedDefine: true,
+    "umdNamedDefine": true,
     "path": __dirname + '/app/src',
     "filename": "brewcalc.js"
   },

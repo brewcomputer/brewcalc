@@ -1,6 +1,9 @@
 const config = {
   "mode": "development",
   "output": {
+    "library": "brewcalc",
+    "libraryTarget": 'umd',
+    "umdNamedDefine": true,
     "path": __dirname + '/lib',
     "filename": "brewcalc.min.js"
   },
