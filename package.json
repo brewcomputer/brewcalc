@@ -13,12 +13,6 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
   },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/app/"
-    ]
-  },
   "directories": {
     "lib": "./lib"
   },

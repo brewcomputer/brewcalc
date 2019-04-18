@@ -8,7 +8,7 @@ const xmlToJson = xml => {
   ) {
     result = xml.childNodes.item(0).textContent
   } else {
-    xml.childNodes.map(item => {
+    xml.childNodes.forEach(item => {
       if (item.nodeType !== 3) {
         if (result[item.nodeName] === undefined) {
           result[item.nodeName] = xmlToJson(item)
