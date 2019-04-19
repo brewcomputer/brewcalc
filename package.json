@@ -7,12 +7,15 @@
     "flow": "flow",
     "build": "webpack --env build",
     "build:dev": "webpack --config webpack.config.dev.js",
-    "build:app": "webpack --config webpack.config.app.js",
     "dev": "webpack --progress --colors --watch --env dev",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "pack": "npm pack && mv brewcalc-* package/brewcalc.tgz"
   },
+  "files": [
+    "/lib"
+  ],
   "directories": {
     "lib": "./lib"
   },

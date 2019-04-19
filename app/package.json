@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "brewcalc": "file:../package/brewcalc.tgz",
     "react": "^16.8.6",
     "react-ace": "^6.4.0",
     "react-bootstrap": "^0.31.1",

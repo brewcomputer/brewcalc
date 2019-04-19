@@ -9,6 +9,7 @@ script:
   - npm run flow
   - npm test
   - npm run build
+  - npm run pack
   - npm install --prefix app
   - npm test --prefix app
   - npm run build --prefix app
