@@ -3,7 +3,6 @@
 exports[`renders correctly 1`] = `
 <div
   className="panel panel-default"
-  id={undefined}
 >
   <div
     className="panel-heading"
@@ -188,7 +187,6 @@ exports[`renders correctly 1`] = `
 exports[`renders correctly if equipment is null 1`] = `
 <div
   className="panel panel-default"
-  id={undefined}
 >
   <div
     className="panel-heading"

@@ -25,7 +25,7 @@ export const psiTokpa = (psi: number) => psi * 6.894757293168361
 export const sgToPlato = (sg: number) =>
   -668.962 + 1262.45 * sg - 776.43 * Math.pow(sg, 2) + 182.94 * Math.pow(sg, 3)
 
-export const platoTosg = (e: number) => 1 + e / (258.6 - e / 258.2 * 227.1)
+export const platoTosg = (e: number) => 1 + e / (258.6 - (e / 258.2) * 227.1)
 
 export const srmToEbc = (srm: number) => srm * 1.97
 

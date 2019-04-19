@@ -5,11 +5,9 @@ const config = {
     "libraryTarget": 'umd',
     "umdNamedDefine": true,
     "path": __dirname + '/lib',
-    "filename": "brewcalc.min.js"
+    "filename": "brewcalc.js"
   },
-  "optimization": {
-    "minimize": false
-  },
+  "devtool": "source-map",
   "module": {
     "rules": [
       {

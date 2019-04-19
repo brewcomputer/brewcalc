@@ -1,4 +1,3 @@
-// @flow
 import type { Equipment } from './types/equipment'
 import type { Mash } from './types/mash'
 import { MashType } from './types/mashStep'
@@ -18,7 +17,7 @@ const calcTotVolume = (
 const adjustTunMass = (tunVolume, totVolume, tunMass) => {
   tunVolume = tunVolume * 0.8
   return tunVolume > 0 && totVolume < tunVolume
-    ? tunMass * totVolume / tunVolume
+    ? (tunMass * totVolume) / tunVolume
     : tunMass
 }
 
@@ -35,11 +34,11 @@ const decoctVolume = (
   const totVolume = calcTotVolume(grainVolume, mashGrainWeight, startVolume)
   const adjustedTunMass = adjustTunMass(tunVolume, totVolume, tunMass)
   var fraction =
-    (maltSpecificHeat * mashGrainWeight +
+    (((maltSpecificHeat * mashGrainWeight +
       tunSpecificHeat * adjustedTunMass +
       startVolume) /
-    (maltSpecificHeat * mashGrainWeight + startVolume) *
-    (targetTemp - startTemp) /
+      (maltSpecificHeat * mashGrainWeight + startVolume)) *
+      (targetTemp - startTemp)) /
     (boilTemp - startTemp)
 
   if (fraction > 1) {
@@ -72,10 +71,10 @@ const infuseTemp = (
 
   return (
     targetTemp +
-    (maltSpecificHeat * mashGrainWeight +
+    ((maltSpecificHeat * mashGrainWeight +
       tunSpecificHeat * adjustedTunMass +
       startVolume) *
-      (targetTemp - startTemp) /
+      (targetTemp - startTemp)) /
       infuseAmount
   )
 }

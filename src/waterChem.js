@@ -24,28 +24,28 @@ const adjustmentsFromSalts = (
   CaCO3 = CaCO3 / 2
 
   if (CaCO3 > 0) {
-    adjCa = adjCa + 105 * CaCO3 / batchSize
-    adjHCO3 = adjHCO3 + 321 * CaCO3 / batchSize
+    adjCa = adjCa + (105 * CaCO3) / batchSize
+    adjHCO3 = adjHCO3 + (321 * CaCO3) / batchSize
   }
   if (NaHCO3 > 0) {
-    adjNa = adjNa + 75 * NaHCO3 / batchSize
-    adjHCO3 = adjHCO3 + 191 * NaHCO3 / batchSize
+    adjNa = adjNa + (75 * NaHCO3) / batchSize
+    adjHCO3 = adjHCO3 + (191 * NaHCO3) / batchSize
   }
   if (CaSO4 > 0) {
-    adjCa = adjCa + 61.5 * CaSO4 / batchSize
-    adjSO4 = adjSO4 + 147.4 * CaSO4 / batchSize
+    adjCa = adjCa + (61.5 * CaSO4) / batchSize
+    adjSO4 = adjSO4 + (147.4 * CaSO4) / batchSize
   }
   if (CaCl2 > 0) {
-    adjCa = adjCa + 72 * CaCl2 / batchSize
-    adjCl = adjCl + 127 * CaCl2 / batchSize
+    adjCa = adjCa + (72 * CaCl2) / batchSize
+    adjCl = adjCl + (127 * CaCl2) / batchSize
   }
   if (MgSO4 > 0) {
-    adjMg = adjMg + 26 * MgSO4 / batchSize
-    adjSO4 = adjSO4 + 103 * MgSO4 / batchSize
+    adjMg = adjMg + (26 * MgSO4) / batchSize
+    adjSO4 = adjSO4 + (103 * MgSO4) / batchSize
   }
   if (NaCl > 0) {
-    adjNa = adjNa + 104 * NaCl / batchSize
-    adjCl = adjCl + 160 * NaCl / batchSize
+    adjNa = adjNa + (104 * NaCl) / batchSize
+    adjCl = adjCl + (160 * NaCl) / batchSize
   }
   return {
     name: 'adjustmentsFromSalts',

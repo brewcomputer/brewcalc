@@ -11,10 +11,10 @@ const ibuUtilization = (
   boilTime: number,
   pelletFactor: number
 ) =>
-  pelletFactor *
-  1.65 *
-  Math.pow(0.000125, avgBoilGravityPts) *
-  (1 - Math.pow(Math.E, -0.04 * boilTime)) /
+  (pelletFactor *
+    1.65 *
+    Math.pow(0.000125, avgBoilGravityPts) *
+    (1 - Math.pow(Math.E, -0.04 * boilTime))) /
   4.15
 
 // Glenn Tinseth developed the following formula to calculate bitterness in IBUs:
@@ -29,15 +29,15 @@ export const bitternessIbuTinseth = (
   sum(
     hops.map(
       ({ amount, alpha, form, time, use }) =>
-        ibuUtilization(
+        ((ibuUtilization(
           avgBoilGravityPts,
           time,
           form === HopForms.pellet ? 1.1 : 1
         ) *
-        kgToOunces(amount) *
-        alpha *
-        7490 /
-        litersToGallons(postBoilVolume) *
+          kgToOunces(amount) *
+          alpha *
+          7490) /
+          litersToGallons(postBoilVolume)) *
         aromaFactor(use)
     )
   )
@@ -51,7 +51,7 @@ const ragerHopGravityAdjustment = sgb => (sgb <= 1.05 ? 0 : (sgb - 1.05) / 0.2)
 const ragerUtil = time => 18.11 + 13.86 * Math.tanh((time - 31.32) / 18.27)
 
 const ragerHopIbuFromWeight = (util, alpha, wt, vol, ga, wtFactor) =>
-  util * alpha * wt * wtFactor / (vol * (1.0 + ga))
+  (util * alpha * wt * wtFactor) / (vol * (1.0 + ga))
 
 export const ragerHopIbu = (
   amount: number,

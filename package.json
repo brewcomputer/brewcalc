@@ -6,40 +6,28 @@
   "scripts": {
     "flow": "flow",
     "build": "webpack --env build",
-    "build:dev": "webpack --env dev",
+    "build:dev": "webpack --config webpack.config.dev.js",
+    "build:app": "webpack --config webpack.config.app.js",
     "dev": "webpack --progress --colors --watch --env dev",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
   },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/app/"
-    ]
-  },
   "directories": {
     "lib": "./lib"
   },
   "devDependencies": {
-    "babel-cli": "6.24.1",
-    "babel-core": "6.24.1",
-    "babel-eslint": "7.2.3",
-    "babel-loader": "7.0.0",
-    "babel-plugin-add-module-exports": "0.2.1",
-    "babel-plugin-transform-flow-comments": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "1.7.0",
-    "eslint": "3.19.0",
-    "eslint-loader": "1.7.1",
-    "eslint-plugin-prettier": "^2.2.0",
-    "flow-babel-webpack-plugin": "^1.1.0",
-    "flow-bin": "^0.53.1",
-    "jest": "^20.0.4",
-    "pixl-xml": "^1.0.13",
-    "prettier": "^1.6.0",
-    "webpack": "3.1.0",
-    "yargs": "7.1.0"
+    "@babel/core": "^7.4.3",
+    "babel-core": "^7.0.0-0",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "flow-bin": "^0.97.0",
+    "jest": "23.6.0",
+    "prettier": "^1.17.0",
+    "prettier-loader": "^2.1.1",
+    "webpack": "4.28.3",
+    "webpack-cli": "^3.3.0"
   },
   "repository": {
     "type": "git",

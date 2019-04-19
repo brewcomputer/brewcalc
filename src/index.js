@@ -85,7 +85,7 @@ const calculateRecipeBeerJSON = ({
         fermentable_bill.map(item => ({
           type: capitalize(item.type),
           amount: item.amount.value,
-          potential: item.yield * 0.01 * 46 / 1000 + 1,
+          potential: (item.yield * 0.01 * 46) / 1000 + 1,
           color: item.color.value
         }))
       : null

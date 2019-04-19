@@ -1,10 +1,12 @@
 {
   "presets": [
-    "env"
-  ],
-  "plugins": [
-    "transform-flow-comments",
-    "transform-object-rest-spread",
-    "babel-plugin-add-module-exports"
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "loose": true
+      }
+    ],
+    "@babel/preset-flow"
   ]
 }
