@@ -12,7 +12,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
-    "pack": "npm pack && mv brewcalc-* app/brewcalc.tgz"
+    "pack": "npm pack && mv -v ./brewcalc-* app/brewcalc.tgz"
   },
   "files": [
     "/lib"

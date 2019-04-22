@@ -8,7 +8,7 @@ before_install:
 script:
   - npm run flow
   - npm test
-  - npm run build
+  - npm run build:app
   - npm run pack
   - npm install --prefix app
   - npm test --prefix app
