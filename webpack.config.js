@@ -1,5 +1,5 @@
 const config = {
-  mode: "development",
+  mode: "production",
   entry: {
     ['brewcalc.min']: './src/index.js',
     import: './src/importFromBeerXml.js'
@@ -12,7 +12,7 @@ const config = {
     filename: "[name].js"
   },
   optimization: {
-    minimize: false
+    minimize: true
   },
   module: {
     rules: [
