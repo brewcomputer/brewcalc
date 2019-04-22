@@ -11,7 +11,7 @@ script:
   - npm run build:app
   - npm run pack
   - cd app/
-  - npm install
+  - npm install brewcalc.tgz
   - npm test
   - npm run build
 
