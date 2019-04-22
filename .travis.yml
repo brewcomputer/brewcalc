@@ -10,9 +10,10 @@ script:
   - npm test
   - npm run build:app
   - npm run pack
-  - npm install --prefix app
-  - npm test --prefix app
-  - npm run build --prefix app
+  - cd app/
+  - npm install
+  - npm test
+  - npm run build
 
 deploy:
   provider: pages
