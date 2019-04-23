@@ -55,8 +55,6 @@ import { MashType } from './types/mashStep'
 import { RecipeTypes } from './types/recipe'
 import { YeastForms, YeastTypes } from './types/yeast'
 
-import { importFromBeerXml } from './importFromBeerXml.js'
-
 import type { Recipe } from './types/recipe'
 import type { RecipeBeerJSON } from './types/beerjson'
 
@@ -242,6 +240,5 @@ export {
   HopUse,
   MashType,
   YeastForms,
-  YeastTypes,
-  importFromBeerXml
+  YeastTypes
 }

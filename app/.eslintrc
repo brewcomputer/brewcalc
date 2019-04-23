@@ -1,5 +1,8 @@
 {
     "extends": "react-app",
+    "env": {
+      "amd": true
+    },
     "rules": {
         "semi": [
             "error",

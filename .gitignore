@@ -28,3 +28,10 @@ node_modules
 
 # Remove some common IDE working directories
 .idea
+.vscode
+
+# Package tarball for test app
+package
+
+# Bundled lib
+lib

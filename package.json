@@ -2,17 +2,21 @@
   "name": "brewcalc",
   "version": "0.1.6",
   "description": "A modern (ES6) functional JavaScript library for brewing calculations.",
-  "main": "lib/brewcalc.min.js",
+  "main": "lib/brewcalc.js",
+  "browser": "lib/brewcalc.min.js",
   "scripts": {
     "flow": "flow",
     "build": "webpack --env build",
-    "build:dev": "webpack --config webpack.config.dev.js",
     "build:app": "webpack --config webpack.config.app.js",
     "dev": "webpack --progress --colors --watch --env dev",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "pack": "npm pack && mv -v ./brewcalc-* app/brewcalc.tgz"
   },
+  "files": [
+    "/lib"
+  ],
   "directories": {
     "lib": "./lib"
   },

@@ -6,7 +6,7 @@ import {
   celsiusToFahrenheit,
   sgToPlato,
   srmToEbc
-} from '../lib/brewcalc'
+} from 'brewcalc'
 
 
 const convertionMapper = (value, unit) => {
