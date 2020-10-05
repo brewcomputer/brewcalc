@@ -10,6 +10,7 @@ script:
   - npm test
   - npm run build:app
   - npm run pack
+  - rm -rf node_modules 
   - cd app/
   - npm install brewcalc.tgz
   - npm test
