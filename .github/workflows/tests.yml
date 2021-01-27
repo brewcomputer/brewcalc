@@ -1,0 +1,27 @@
+name: brewcalc tests
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm i      
+      - run: npm run flow
+      - run: npm test
+      - run: npm run build:app
+      - run: npm run pack
+      - run: rm -rf node_modules 
+      - run: cd app/
+      - run: npm install brewcalc.tgz
+      - run: npm test        
+      - run: npm run build                
