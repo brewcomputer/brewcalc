@@ -24,3 +24,11 @@ jobs:
       - run: cd app && npm install brewcalc.tgz
       - run: cd app && npm test
       - run: cd app && npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: app/build
+          CLEAN: true
