@@ -21,6 +21,6 @@ jobs:
       - run: npm run build:app
       - run: npm run pack
       - run: rm -rf node_modules 
-      - run: npm install brewcalc.tgz
-      - run: npm test
-      - run: npm run build
+      - run: cd app && npm install brewcalc.tgz
+      - run: cd app && npm test
+      - run: cd app && npm run build
