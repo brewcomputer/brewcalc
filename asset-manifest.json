@@ -1,13 +1,13 @@
 {
-  "main.css": "/brewcalc/static/css/main.867c3115.chunk.css",
-  "main.js": "/brewcalc/static/js/main.d154c784.chunk.js",
-  "main.js.map": "/brewcalc/static/js/main.d154c784.chunk.js.map",
+  "main.css": "/brewcalc/static/css/main.141f1efd.chunk.css",
+  "main.js": "/brewcalc/static/js/main.1761c9a6.chunk.js",
+  "main.js.map": "/brewcalc/static/js/main.1761c9a6.chunk.js.map",
   "runtime~main.js": "/brewcalc/static/js/runtime~main.b94fab0c.js",
   "runtime~main.js.map": "/brewcalc/static/js/runtime~main.b94fab0c.js.map",
   "static/js/2.e192208f.chunk.js": "/brewcalc/static/js/2.e192208f.chunk.js",
   "static/js/2.e192208f.chunk.js.map": "/brewcalc/static/js/2.e192208f.chunk.js.map",
   "index.html": "/brewcalc/index.html",
-  "precache-manifest.9fdaa4048e685d8a2d14096b5dc88dcf.js": "/brewcalc/precache-manifest.9fdaa4048e685d8a2d14096b5dc88dcf.js",
+  "precache-manifest.a9a52c808568eb6f3d34b3798da8fda4.js": "/brewcalc/precache-manifest.a9a52c808568eb6f3d34b3798da8fda4.js",
   "service-worker.js": "/brewcalc/service-worker.js",
-  "static/css/main.867c3115.chunk.css.map": "/brewcalc/static/css/main.867c3115.chunk.css.map"
+  "static/css/main.141f1efd.chunk.css.map": "/brewcalc/static/css/main.141f1efd.chunk.css.map"
 }
