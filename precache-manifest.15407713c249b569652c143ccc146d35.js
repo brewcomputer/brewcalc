@@ -12,11 +12,11 @@ self.__precacheManifest = [
     "url": "/brewcalc/static/js/runtime~main.b94fab0c.js"
   },
   {
-    "revision": "5e33a9bac796501460f3",
-    "url": "/brewcalc/static/js/2.e192208f.chunk.js"
+    "revision": "6f840a92af6db501f64c",
+    "url": "/brewcalc/static/js/2.564bb6f2.chunk.js"
   },
   {
-    "revision": "212c313192b6234d2c83b81e40cc096f",
+    "revision": "588ab182ec1e8d3f70aca9839118e644",
     "url": "/brewcalc/index.html"
   }
 ];
