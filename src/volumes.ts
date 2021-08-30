@@ -5,7 +5,7 @@ import {
   EquipmentItemType,
   BoilProcedureType,
   MashStepType,
-} from '../types/beerjson'
+} from './types/beerjson'
 import { convertMeasurableValue } from './units'
 
 const defaultVolume: VolumeType = {

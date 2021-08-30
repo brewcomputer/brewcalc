@@ -6,7 +6,7 @@ import {
   HopAdditionType,
   BitternessType,
   GravityType,
-} from '../types/beerjson'
+} from './types/beerjson'
 
 const alphaAcidUnits = (amountInOz: number, alphaAcid: number): number =>
   amountInOz * alphaAcid

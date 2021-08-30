@@ -36,7 +36,7 @@ import type {
   CultureAdditionType,
   VolumeType,
   BoilProcedureType,
-} from '../types/beerjson'
+} from './types/beerjson'
 
 import {
   calcOriginalGravity,

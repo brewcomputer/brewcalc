@@ -1,6 +1,6 @@
 import { sgToPlato } from './utils'
 import { convertMeasurableValue } from './units'
-import { GravityType, PercentType } from '../types/beerjson'
+import { GravityType, PercentType } from './types/beerjson'
 
 // http://byo.com/bock/item/408-calculating-alcohol-content-attenuation-extract-and-calories-advanced-homebrewing
 // https://www.brewersfriend.com/2011/06/16/alcohol-by-volume-calculator-updated/

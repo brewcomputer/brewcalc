@@ -4,7 +4,7 @@ import {
   TemperatureType,
   VolumeType,
   MassType,
-} from '../types/beerjson'
+} from './types/beerjson'
 import { getMeasurableValue, sum } from './utils'
 import { convertMeasurableValue } from './units'
 import { use } from './timing'

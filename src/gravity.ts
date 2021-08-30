@@ -7,7 +7,7 @@ import {
   PercentType,
   FermentableAdditionType,
   CultureAdditionType,
-} from '../types/beerjson'
+} from './types/beerjson'
 import { convertMeasurableValue } from './units'
 
 // Sugar provides 46 gravity points per pound, per gallon (PPPG).

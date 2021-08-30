@@ -1,4 +1,4 @@
-import type { RecipeType } from '../../types/beerjson'
+import type { RecipeType } from '../../src/types/beerjson'
 
 export const recipe: RecipeType = {
   name: 'Muddy Pig Oatmeal Stout',

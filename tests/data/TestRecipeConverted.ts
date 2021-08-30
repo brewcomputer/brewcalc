@@ -1,4 +1,4 @@
-import { RecipeType } from '../../types/beerjson'
+import { RecipeType } from '../../src/types/beerjson'
 
 const recipe: RecipeType = {
   name: 'BrewcalcTest',

@@ -9,7 +9,7 @@ import { recipe as MuddyPig } from './data/MuddyPig'
 import TestRecipe from './data/TestRecipeConverted'
 import Equipment from './data/TestEquipment'
 
-import { GravityType, VolumeType } from '../types/beerjson'
+import { GravityType, VolumeType } from '../src/types/beerjson'
 
 const calcRecipeBoilGravity = (recipe) =>
   calcBoilGravity(

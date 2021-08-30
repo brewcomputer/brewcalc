@@ -1,4 +1,4 @@
-import type { TimingType } from '../types/beerjson'
+import type { TimingType } from './types/beerjson'
 
 export const use = (
   timing: TimingType = {}

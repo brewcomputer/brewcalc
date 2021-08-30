@@ -4,7 +4,7 @@ import {
   VolumeType,
   ColorType,
   FermentableAdditionType,
-} from '../types/beerjson'
+} from './types/beerjson'
 
 // MCU = (weight of grain in lbs)*(color of grain in lovibond) / (volume in gal) SRM = 1.4922 * MCU ^ 0.6859
 const mcu2srm = (mcu: number): number => 1.4922 * Math.pow(mcu, 0.6859)

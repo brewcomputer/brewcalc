@@ -1,4 +1,4 @@
-import type { RecipeType, EquipmentType } from '../../types/beerjson'
+import type { RecipeType, EquipmentType } from '../../src/types/beerjson'
 
 export const recipe: RecipeType = {
   name: 'Aussie Ale',
