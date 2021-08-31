@@ -1,9 +1,8 @@
 {
   "name": "brewcalc",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "A modern (ES6) functional JavaScript library for brewing calculations.",
-  "main": "lib/brewcalc.js",
-  "browser": "lib/brewcalc.min.js",
+  "main": "lib/index.js",
   "scripts": {
     "postinstall": "npx tsc",
     "compile": "npx tsc",
