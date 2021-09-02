@@ -11,7 +11,8 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
-    "pack": "yarn compile && npm pack"
+    "pack": "yarn compile && npm pack",
+    "pack:app": "yarn run pack && mv -v ./brewcalc-* app/brewcalc.tgz"
   },
   "directories": {
     "lib": "./lib"
