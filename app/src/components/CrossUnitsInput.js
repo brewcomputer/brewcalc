@@ -1,38 +1,68 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import { convert } from "brewcalc";
 
-const convertionMapper = (value, unit) => {
-  switch (unit) {
-    case "L":
-      return { value: convert(value, "l", "gel", 2), unit: "gal" };
-    case "kg":
-      return { value: convert(value, "kg", "oz", 2), unit: "oz" };
-    case "C":
-      return { value: convert(value, "C", "F", 2), unit: "°F" };
-    case "SG":
-      return { value: convert(value, "sg", "plato", 2), unit: "°P" };
-    case "SRM":
-      return { value: convert(value, "SRM", "EBC"), unit: "EBC" };
-    default:
-      return "";
-  }
+const unitLabelMap = {
+  sg: "SG",
+  plato: "°P",
+  F: "°F",
+  C: "°C"
 };
 
-const CrossUnitsInput = ({ name, description, value, unit }) => {
-  const converted = convertionMapper(value, unit);
-  return (
-    value !== "0.00" &&
-    value !== "false" && (
-      <div title={description}>
-        <b>{name} </b>
-        {value} {unit}
-        {converted !== ""
-          ? " (" + converted.value + " " + converted.unit + ")"
-          : ""}
-      </div>
-    )
+const stringifyMeasurable = (measurable, precision) => {
+  const unit = unitLabelMap[measurable.unit] || measurable.unit;
+  const value =
+    precision != null ? +measurable.value.toFixed(precision) : measurable.value;
+  return `${value} ${unit}`;
+};
+
+const convertMeasurable = (measurable, unit, precision) => {
+  return {
+    value: convert(measurable.value, measurable.unit, unit, precision),
+    unit: unit
+  };
+};
+
+export const printMeasurable = (measurable, convertTo, precision = 0) => {
+  if (convertTo == null) {
+    return stringifyMeasurable(measurable, precision);
+  }
+  return stringifyMeasurable(
+    convertMeasurable(measurable, convertTo, precision)
   );
+};
+
+const CrossUnitsInput = ({
+  name,
+  description,
+  measurable,
+  units = [],
+  precision = 2
+}) => {
+  if (measurable == null || measurable.value == null) {
+    return null;
+  }
+
+  const [primary, secondary] = units;
+
+  return (
+    <div title={description}>
+      <b>{name} </b>
+      {printMeasurable(measurable, primary, precision)}
+      {secondary && ` (${printMeasurable(measurable, secondary, precision)})`}
+    </div>
+  );
+};
+
+CrossUnitsInput.propTypes = {
+  name: PropTypes.string,
+  description: PropTypes.string,
+  measurable: PropTypes.shape({
+    value: PropTypes.number,
+    unit: PropTypes.string
+  }),
+  units: PropTypes.arrayOf(PropTypes.string),
+  precision: PropTypes.arrayOf(PropTypes.number) || PropTypes.number
 };
 
 export default CrossUnitsInput;

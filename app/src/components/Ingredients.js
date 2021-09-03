@@ -1,9 +1,13 @@
-import React from 'react'
-import { Panel, Table } from 'react-bootstrap'
-import CrossUnitsInput from './CrossUnitsInput'
+import React from "react";
+import { Panel, Table } from "react-bootstrap";
+import CrossUnitsInput, { printMeasurable } from "./CrossUnitsInput";
 
 const Ingredients = ({ recipe }) => {
-  const { fermentables, hops, yeasts } = recipe
+  const {
+    fermentable_additions,
+    hop_additions,
+    culture_additions
+  } = recipe.ingredients;
   return (
     <Panel header="Ingredients">
       <Table striped bordered condensed hover>
@@ -15,31 +19,45 @@ const Ingredients = ({ recipe }) => {
           </tr>
         </thead>
         <tbody>
-          {fermentables.map((i, index) => (
+          {fermentable_additions.map((i, index) => (
             <tr key={index}>
-              <td><CrossUnitsInput value={i.amount.toFixed(2)} unit="kg" /></td>
-              <td>{i.name} ({i.color.toFixed(0)} SRM)</td>
+              <td>
+                <CrossUnitsInput measurable={i.amount} units={["kg", "lb"]} />
+              </td>
+              <td>
+                {i.name} ({printMeasurable(i.color, "SRM", 0)})
+              </td>
               <td>{i.type}</td>
             </tr>
           ))}
-          {hops.map((i, index) => (
+          {hop_additions.map((i, index) => (
             <tr key={index}>
-              <td><CrossUnitsInput value={i.amount.toFixed(2)} unit="kg" /></td>
-              <td>{i.name} ({i.alpha} Alpha, Boil time {i.time} min)</td>
+              <td>
+                <CrossUnitsInput measurable={i.amount} units={["g", "oz"]} />
+              </td>
+              <td>
+                {i.name} ({printMeasurable(i.alpha_acid)} Alpha, Boil time{" "}
+                {printMeasurable(i.timing.time)})
+              </td>
               <td>Hop</td>
             </tr>
           ))}
-          {yeasts.map((i, index) => (
+          {culture_additions.map((i, index) => (
             <tr key={index}>
-              <td><CrossUnitsInput value={i.amount.toFixed(2)} unit="kg" /></td>
-              <td>{i.name} (Attenuation {i.attenuation},  Form {i.form})</td>
+              <td>
+                <CrossUnitsInput measurable={i.amount} units={["g", "oz"]} />
+              </td>
+              <td>
+                {i.name} (Attenuation {printMeasurable(i.attenuation, null, 2)},
+                Form {i.form})
+              </td>
               <td>Yeast</td>
             </tr>
           ))}
         </tbody>
       </Table>
     </Panel>
-  )
-}
+  );
+};
 
-export default Ingredients
+export default Ingredients;

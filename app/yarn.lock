@@ -1175,6 +1175,11 @@
     "@babel/helper-validator-identifier" "^7.14.9"
     to-fast-properties "^2.0.0"
 
+"@beerjson/beerjson@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@beerjson/beerjson/-/beerjson-1.0.1.tgz#f43b86188c1305ad86d51eb2e3eb91b0e267d07d"
+  integrity sha512-1L+AdRXzZ1WsvVwtTmBZzjIRqFjl2w1N/l00mieMyyALr7DVv1R4oE5cxDtbNEBBgNBG3kfzmMv3lIggij8+oQ==
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -8452,7 +8457,7 @@ prop-types-extra@^1.0.1:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==

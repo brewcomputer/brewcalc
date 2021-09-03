@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "brewcalc": "file:./brewcalc.tgz",
+    "@beerjson/beerjson": "1.0.1",
+    "prop-types": "15.7.2",
     "react": "^16.8.6",
     "react-ace": "^6.4.0",
     "react-bootstrap": "^0.31.1",
