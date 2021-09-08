@@ -58,14 +58,14 @@ const Stats = ({ recipe, equipment }) => {
                 name="Original Gravity"
                 measurable={og}
                 units={["sg", "plato"]}
-                precision={4}
+                precision={3}
               />
               <CrossUnitsInput
                 description="The estimated final gravity of this recipe"
                 name="Final Gravity"
                 measurable={fg}
                 units={["sg", "plato"]}
-                precision={4}
+                precision={3}
               />
               <div title="The bitterness of the recipe as measured in International Bitterness Units">
                 <b>Bitterness (IBUs): </b>

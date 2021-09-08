@@ -6,7 +6,7 @@ const unitLabelMap = {
   sg: "SG",
   plato: "°P",
   F: "°F",
-  C: "°C"
+  C: "°C",
 };
 
 const stringifyMeasurable = (measurable, precision) => {
@@ -19,11 +19,14 @@ const stringifyMeasurable = (measurable, precision) => {
 const convertMeasurable = (measurable, unit, precision) => {
   return {
     value: convert(measurable.value, measurable.unit, unit, precision),
-    unit: unit
+    unit: unit,
   };
 };
 
 export const printMeasurable = (measurable, convertTo, precision = 0) => {
+  if (measurable == null) {
+    return "";
+  }
   if (convertTo == null) {
     return stringifyMeasurable(measurable, precision);
   }
@@ -37,7 +40,7 @@ const CrossUnitsInput = ({
   description,
   measurable,
   units = [],
-  precision = 2
+  precision = 2,
 }) => {
   if (measurable == null || measurable.value == null) {
     return null;
@@ -59,10 +62,10 @@ CrossUnitsInput.propTypes = {
   description: PropTypes.string,
   measurable: PropTypes.shape({
     value: PropTypes.number,
-    unit: PropTypes.string
+    unit: PropTypes.string,
   }),
   units: PropTypes.arrayOf(PropTypes.string),
-  precision: PropTypes.arrayOf(PropTypes.number) || PropTypes.number
+  precision: PropTypes.arrayOf(PropTypes.number) || PropTypes.number,
 };
 
 export default CrossUnitsInput;

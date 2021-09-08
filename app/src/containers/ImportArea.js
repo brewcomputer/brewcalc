@@ -1,6 +1,7 @@
 import React from "react";
 import { FormGroup, FormControl, Card, Row, Col } from "react-bootstrap";
 import importFromBeerXml from "@beerjson/beerjson/js/beerxml-to-beerjson";
+import { equipment } from "../data/equipment";
 import { connect } from "react-redux";
 
 const ImportArea = ({ editorState, onReloadEditorState }) => {
@@ -10,14 +11,20 @@ const ImportArea = ({ editorState, onReloadEditorState }) => {
     reader.onloadend = function () {
       try {
         const result = importFromBeerXml(reader.result);
+        const { beerjson } = JSON.parse(result);
+        // TODO: equipment
         onReloadEditorState(
           JSON.stringify(
-            { recipe: result.recipe, equipment: result.equipment },
+            {
+              recipe: beerjson.recipes[0],
+              equipment: equipment /*beerjson.equipment*/,
+            },
             null,
             4
           )
         );
       } catch (err) {
+        console.warn(err);
         alert("Can't import from BeerXML, see console for the details");
       }
     };

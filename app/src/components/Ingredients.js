@@ -26,7 +26,7 @@ const Ingredients = ({ recipe }) => {
               <td>
                 {i.name} ({printMeasurable(i.color, "SRM", 0)})
               </td>
-              <td>{i.type}</td>
+              <td style={{ textTransform: "capitalize" }}>{i.type}</td>
             </tr>
           ))}
           {hop_additions.map((i, index) => (
@@ -43,9 +43,7 @@ const Ingredients = ({ recipe }) => {
           ))}
           {culture_additions.map((i, index) => (
             <tr key={index}>
-              <td>
-                <CrossUnitsInput measurable={i.amount} units={["g", "oz"]} />
-              </td>
+              <td>{printMeasurable(i.amount, null, 2)}</td>
               <td>
                 {i.name} (Attenuation {printMeasurable(i.attenuation, null, 2)},
                 Form {i.form})

@@ -6,7 +6,7 @@ import {
   calcMashVolumes,
   calcMashGrainWeight,
 } from "brewcalc";
-import CrossUnitsInput from "./CrossUnitsInput";
+import CrossUnitsInput, { printMeasurable } from "./CrossUnitsInput";
 
 //TODO: Add BIAB
 
@@ -44,7 +44,7 @@ const MashSteps = ({ recipe, equipment }) => {
                 units={["C", "F"]}
                 precision={0}
               />
-              &nbsp;over&nbsp;{step.step_time}&nbsp;min
+              &nbsp;over&nbsp;{printMeasurable(step.step_time)}&nbsp;min
             </td>
           );
       case "infusion":
@@ -101,6 +101,7 @@ const MashSteps = ({ recipe, equipment }) => {
                 <CrossUnitsInput
                   measurable={step.step_temperature}
                   units={["C", "F"]}
+                  precision={0}
                 />
               </td>
               <td>{step.step_time.value} min</td>

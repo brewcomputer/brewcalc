@@ -6,7 +6,7 @@ import CrossUnitsInput from "./CrossUnitsInput";
 const RecipeSpecs = ({ recipe, equipment }) => {
   const {
     name,
-    brewer,
+    author,
     type,
     batch_size,
     boil: { boil_time, pre_boil_size },
@@ -25,7 +25,7 @@ const RecipeSpecs = ({ recipe, equipment }) => {
               </div>
               <div title="Name of the brewer">
                 {" "}
-                <b>Brewer</b> {brewer}{" "}
+                <b>Brewer</b> {author}{" "}
               </div>
               <div title="May be one of “Extract”, “Partial Mash” or “All Grain”">
                 {" "}

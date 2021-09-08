@@ -6,14 +6,14 @@ export const recipe = {
   asstBrewer: "",
   batch_size: {
     value: 23.02,
-    unit: "l"
+    unit: "l",
   },
   boil: {
     pre_boil_size: {
       value: 37.1203164,
-      unit: "l"
+      unit: "l",
     },
-    boil_time: { value: 90, unit: "min" }
+    boil_time: { value: 90, unit: "min" },
   },
   efficiency: { brewhouse: { value: 68, unit: "%" } },
   ingredients: {
@@ -38,7 +38,7 @@ export const recipe = {
         displayAmount: "4.50 kg",
         inventory: "3.90 kg",
         displayColor: "4.9 EBC",
-        extractSubstitute: ""
+        extractSubstitute: "",
       },
       {
         name: "Munich Malt - 20L",
@@ -60,7 +60,7 @@ export const recipe = {
         displayAmount: "0.52 kg",
         inventory: "0.45 kg",
         displayColor: "39.4 EBC",
-        extractSubstitute: "Amber Liquid Extract"
+        extractSubstitute: "Amber Liquid Extract",
       },
       {
         name: "Caramel/Crystal Malt - 20L",
@@ -82,7 +82,7 @@ export const recipe = {
         displayAmount: "0.20 kg",
         inventory: "0.17 kg",
         displayColor: "39.4 EBC",
-        extractSubstitute: ""
+        extractSubstitute: "",
       },
       {
         name: "Roasted Barley",
@@ -105,7 +105,7 @@ export const recipe = {
         displayAmount: "0.05 kg",
         inventory: "0.04 kg",
         displayColor: "591.0 EBC",
-        extractSubstitute: ""
+        extractSubstitute: "",
       },
       {
         name: "Cane (Beet) Sugar",
@@ -127,8 +127,8 @@ export const recipe = {
         displayAmount: "0.26 kg",
         inventory: "0.25 kg",
         displayColor: "0.0 EBC",
-        extractSubstitute: ""
-      }
+        extractSubstitute: "",
+      },
     ],
     hop_additions: [
       {
@@ -136,13 +136,13 @@ export const recipe = {
         origin: "Australia",
         alpha_acid: {
           value: 10,
-          unit: "%"
+          unit: "%",
         },
         amount: { value: 5.2055, unit: "g" },
         timing: {
           // TODO: first wort???
           use: "add_to_boil",
-          time: { value: 60, unit: "min" }
+          time: { value: 60, unit: "min" },
         },
         notes:
           "Use for: General purpose bittering hops for Australian beers\r\nAroma: Moderate citric aroma, clean bittering flavor\r\nSubstitutes: Cluster, Galena",
@@ -152,19 +152,19 @@ export const recipe = {
         hsi: "45.0000000",
         displayAmount: "5.21 g",
         inventory: "5.00 g",
-        displayTime: "60.0 min"
+        displayTime: "60.0 min",
       },
       {
         name: "Pride of Ringwood",
         origin: "Australia",
         alpha_acid: {
           value: 10,
-          unit: "%"
+          unit: "%",
         },
         amount: { value: 5.2055, unit: "g" },
         timing: {
           use: "add_to_boil",
-          time: { value: 45, unit: "min" }
+          time: { value: 45, unit: "min" },
         },
         notes:
           "Use for: General purpose bittering hops for Australian beers\r\nAroma: Moderate citric aroma, clean bittering flavor\r\nSubstitutes: Cluster, Galena",
@@ -174,19 +174,19 @@ export const recipe = {
         hsi: "45.0000000",
         displayAmount: "5.21 g",
         inventory: "5.00 g",
-        displayTime: "45.0 min"
+        displayTime: "45.0 min",
       },
       {
         name: "Pride of Ringwood",
         origin: "Australia",
         alpha_acid: {
           value: 10,
-          unit: "%"
+          unit: "%",
         },
         amount: { value: 31.2328, unit: "g" },
         timing: {
           use: "add_to_boil",
-          time: { value: 15, unit: "min" }
+          time: { value: 15, unit: "min" },
         },
         notes:
           "Use for: General purpose bittering hops for Australian beers\r\nAroma: Moderate citric aroma, clean bittering flavor\r\nSubstitutes: Cluster, Galena",
@@ -196,19 +196,19 @@ export const recipe = {
         hsi: "45.0000000",
         displayAmount: "31.23 g",
         inventory: "30.00 g",
-        displayTime: "15.0 min"
+        displayTime: "15.0 min",
       },
       {
         name: "Pride of Ringwood",
         origin: "Australia",
         alpha_acid: {
           value: 10,
-          unit: "%"
+          unit: "%",
         },
         amount: { value: 15.6818, unit: "g" },
         timing: {
           use: "add_to_boil",
-          time: { value: 0, unit: "min" }
+          time: { value: 0, unit: "min" },
         },
         notes:
           "Use for: General purpose bittering hops for Australian beers\r\nAroma: Moderate citric aroma, clean bittering flavor\r\nSubstitutes: Cluster, Galena",
@@ -218,15 +218,18 @@ export const recipe = {
         hsi: "45.0000000",
         displayAmount: "15.68 g",
         inventory: "15.00 g",
-        displayTime: "0.0 min"
-      }
+        displayTime: "0.0 min",
+      },
     ],
     culture_additions: [
       {
         name: "American Ale",
         type: "ale",
         form: "liquid",
-        amount: 0.125048,
+        amount: {
+          value: 0.125048,
+          unit: "ml",
+        },
         amountIsWeight: false,
         laboratory: "Wyeast Labs",
         productId: "1056",
@@ -245,9 +248,9 @@ export const recipe = {
         dispMinTemp: "15.6 C",
         dispMaxTemp: "22.2 C",
         inventory: "0.0 pkg",
-        cultureDate: "18 Jun 2003"
-      }
-    ]
+        cultureDate: "18 Jun 2003",
+      },
+    ],
   },
   style: {
     name: "Australian Ale",
@@ -283,14 +286,14 @@ export const recipe = {
     ibuRange: "10.0-30.0 IBUs",
     carbRange: "2.20-2.80 Vols",
     colorRange: "3.9-19.7 EBC",
-    abvRange: "2.00-5.00 %"
+    abvRange: "2.00-5.00 %",
   },
 
   mash: {
     name: "Single Infusion, Medium Body",
     grain_temperature: {
       value: 22.22,
-      unit: "C"
+      unit: "C",
     },
     spargeTemp: 75.5555556,
     ph: "5.4000000",
@@ -309,43 +312,43 @@ export const recipe = {
         type: "infusion",
         infuse_temperature: {
           value: 74.1,
-          unit: "C"
+          unit: "C",
         },
         amount: {
           value: 16.76,
           //value: 13.7276426,
-          unit: "l"
+          unit: "l",
         },
         step_time: {
           value: 60,
-          unit: "min"
+          unit: "min",
         },
         step_temperature: {
           value: 66.67,
-          unit: "C"
-        }
+          unit: "C",
+        },
       },
       {
         name: "Mash Out",
         type: "infusion",
         infuse_temperature: {
           value: 98.5,
-          unit: "C"
+          unit: "C",
         },
         amount: {
           value: 7.6874799,
-          unit: "l"
+          unit: "l",
         },
         step_time: {
           value: 10,
-          unit: "min"
+          unit: "min",
         },
         step_temperature: {
           value: 75.55,
-          unit: "C"
-        }
-      }
-    ]
+          unit: "C",
+        },
+      },
+    ],
   },
   notes:
     "FWH the first  hop addition.\r\nAllow last addition to sit for 5 minutes to release aroma.",
@@ -387,5 +390,5 @@ export const recipe = {
   displayPrimaryTemp: "19.4 C",
   displaySecondaryTemp: "19.4 C",
   displayTertiaryTemp: "18.3 C",
-  displayAgeTemp: "18.3 C"
+  displayAgeTemp: "18.3 C",
 };
