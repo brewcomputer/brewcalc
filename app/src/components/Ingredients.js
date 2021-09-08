@@ -1,15 +1,14 @@
 import React from "react";
-import { Panel, Table } from "react-bootstrap";
+import { Card, Table } from "react-bootstrap";
 import CrossUnitsInput, { printMeasurable } from "./CrossUnitsInput";
 
 const Ingredients = ({ recipe }) => {
-  const {
-    fermentable_additions,
-    hop_additions,
-    culture_additions
-  } = recipe.ingredients;
+  const { fermentable_additions, hop_additions, culture_additions } =
+    recipe.ingredients;
   return (
-    <Panel header="Ingredients">
+    <Card>
+      <Card.Header>Ingredients</Card.Header>
+
       <Table striped bordered condensed hover>
         <thead>
           <tr>
@@ -56,7 +55,7 @@ const Ingredients = ({ recipe }) => {
           ))}
         </tbody>
       </Table>
-    </Panel>
+    </Card>
   );
 };
 

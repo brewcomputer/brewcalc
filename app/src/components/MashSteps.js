@@ -1,17 +1,17 @@
 import React from "react";
-import { Panel, Table } from "react-bootstrap";
+import { Card, Table } from "react-bootstrap";
 import {
   recalculateMashSteps,
   calcBoilVolumes,
   calcMashVolumes,
-  calcMashGrainWeight
+  calcMashGrainWeight,
 } from "brewcalc";
 import CrossUnitsInput from "./CrossUnitsInput";
 
 //TODO: Add BIAB
 
 const MashSteps = ({ recipe, equipment }) => {
-  const mashStepDescription = step => {
+  const mashStepDescription = (step) => {
     switch (step.type) {
       case "decoction":
         return (
@@ -81,7 +81,8 @@ const MashSteps = ({ recipe, equipment }) => {
   );
 
   return (
-    <Panel header="Mash Steps">
+    <Card>
+      <Card.Header>Mash Steps</Card.Header>
       <Table striped bordered condensed hover>
         <thead>
           <tr>
@@ -107,17 +108,19 @@ const MashSteps = ({ recipe, equipment }) => {
           ))}
         </tbody>
       </Table>
-      <div style={{ display: "flex" }}>
-        <b>Sparge:&nbsp;</b>Fly sparge with&nbsp;
-        <CrossUnitsInput measurable={sparge_volume} units={["l", "gal"]} />
-        &nbsp;water at&nbsp;
-        <CrossUnitsInput
-          measurable={recipe.mash.step_temperature}
-          units={["C", "F"]}
-          precision={0}
-        />
-      </div>
-    </Panel>
+      <Card.Body>
+        <div style={{ display: "flex" }}>
+          <b>Sparge:&nbsp;</b>Fly sparge with&nbsp;
+          <CrossUnitsInput measurable={sparge_volume} units={["l", "gal"]} />
+          &nbsp;water at&nbsp;
+          <CrossUnitsInput
+            measurable={recipe.mash.step_temperature}
+            units={["C", "F"]}
+            precision={0}
+          />
+        </div>
+      </Card.Body>
+    </Card>
   );
 };
 

@@ -1,16 +1,20 @@
-import React from 'react'
-import { Panel, Accordion } from 'react-bootstrap'
-import { connect } from 'react-redux'
+import React from "react";
+import { Accordion } from "react-bootstrap";
+import { connect } from "react-redux";
 
-import AceEditor from 'react-ace'
-import 'brace/theme/github'
+import AceEditor from "react-ace";
+import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/mode-json";
+
 //TODO:
 //https://github.com/securingsincity/react-ace/issues/240
-import 'brace/mode/json'
 
 const EditorContainer = ({ editorState, onContentUpdate }) => (
   <Accordion>
-    <Panel header="&#8680; Expand and edit recipe and equipment JSON" eventKey="1">
+    <Accordion.Toggle eventKey="1">
+      &#8680; Expand and edit recipe and equipment JSON
+    </Accordion.Toggle>
+    <Accordion.Collapse eventKey="1">
       <AceEditor
         mode="json"
         theme="github"
@@ -20,19 +24,19 @@ const EditorContainer = ({ editorState, onContentUpdate }) => (
         maxLines={100}
         editorProps={{ $blockScrolling: Infinity }}
       />
-    </Panel>
+    </Accordion.Collapse>
   </Accordion>
-)
+);
 
-const mapStateToProps = ({ editorState }) => ({ editorState })
+const mapStateToProps = ({ editorState }) => ({ editorState });
 
-const mapDispatchToProps = dispatch => ({
-  onContentUpdate: editorState => {
+const mapDispatchToProps = (dispatch) => ({
+  onContentUpdate: (editorState) => {
     dispatch({
-      type: 'UPDATE_EDITOR_STATE',
-      payload: editorState
-    })
-  }
-})
+      type: "UPDATE_EDITOR_STATE",
+      payload: editorState,
+    });
+  },
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditorContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(EditorContainer);
