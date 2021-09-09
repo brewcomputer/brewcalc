@@ -7,10 +7,14 @@ import { connect } from "react-redux";
 const ImportArea = ({ editorState, onReloadEditorState }) => {
   const onXmlLoaded = (e) => {
     const reader = new FileReader();
-    reader.readAsText(e.target.files[0]);
+    const file = e.target.files[0];
+    reader.readAsText(file);
     reader.onloadend = function () {
       try {
-        const result = importFromBeerXml(reader.result);
+        const result = file.type.includes("xml")
+          ? importFromBeerXml(reader.result)
+          : reader.result;
+
         const { beerjson } = JSON.parse(result);
         // TODO: equipment
         onReloadEditorState(
@@ -34,14 +38,14 @@ const ImportArea = ({ editorState, onReloadEditorState }) => {
     <Row className="show-grid">
       <Col md={6}>
         <Card>
-          <Card.Header>Upload BeerXML file</Card.Header>
+          <Card.Header>Upload BeerXML / BeerJSON file</Card.Header>
           <Card.Body>
             <FormGroup>
               <FormControl
                 id="formControlsFile"
                 type="file"
                 label="File"
-                accept="application/xml"
+                accept="application/xml,application/json"
                 onChange={onXmlLoaded}
               />
             </FormGroup>
