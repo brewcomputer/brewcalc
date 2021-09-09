@@ -73,8 +73,14 @@ const MashSteps = ({ recipe, equipment }) => {
     mashGrainWeight
   );
 
+  const { pre_boil_size } = calcBoilVolumes(
+    recipe.batch_size,
+    recipe.boil,
+    equipment
+  );
+
   const { sparge_volume } = calcMashVolumes(
-    recipe.boil.pre_boil_size,
+    pre_boil_size,
     recalculatedMashSteps,
     mashGrainWeight,
     equipment
@@ -83,7 +89,7 @@ const MashSteps = ({ recipe, equipment }) => {
   return (
     <Card>
       <Card.Header>Mash Steps</Card.Header>
-      <Table striped bordered condensed hover>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>Name</th>

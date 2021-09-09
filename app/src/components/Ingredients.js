@@ -9,7 +9,7 @@ const Ingredients = ({ recipe }) => {
     <Card>
       <Card.Header>Ingredients</Card.Header>
 
-      <Table striped bordered condensed hover>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>Amount</th>

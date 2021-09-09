@@ -12,15 +12,11 @@ import {
   srmToCss,
   bitternessIbuTinseth,
   convert,
+  calcBoilVolumes,
 } from "brewcalc";
 
 const Stats = ({ recipe, equipment }) => {
-  const {
-    batch_size,
-    boil: { pre_boil_size, boil_time },
-    ingredients,
-    efficiency,
-  } = recipe;
+  const { batch_size, boil, ingredients, efficiency } = recipe;
 
   const trubChillerLoss = equipment !== null ? equipment.trubChillerLoss : 0;
 
@@ -35,6 +31,8 @@ const Stats = ({ recipe, equipment }) => {
     efficiency,
     culture_additions
   );
+
+  const { pre_boil_size } = calcBoilVolumes(batch_size, boil, equipment);
 
   const boilGravity = calcBoilGravity(batch_size, pre_boil_size, og);
 
