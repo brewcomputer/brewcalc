@@ -2,15 +2,15 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="panel panel-default"
+  className="card"
 >
   <div
-    className="panel-heading"
+    className="card-header"
   >
     Recipe Specs and Equipment
   </div>
   <div
-    className="panel-body"
+    className="card-body"
   >
     <div
       className="show-grid row"
@@ -59,9 +59,7 @@ exports[`renders correctly 1`] = `
               Batch Size
                
             </b>
-            23.02
-             
-            L
+            23.02 l
              (6.08 gal)
           </div>
           <div
@@ -71,9 +69,7 @@ exports[`renders correctly 1`] = `
               Boil Size
                
             </b>
-            37.12
-             
-            L
+            37.12 l
              (9.81 gal)
           </div>
           <div
@@ -83,10 +79,7 @@ exports[`renders correctly 1`] = `
               Boil Time
                
             </b>
-            90.00
-             
-            min
-            
+            90 min
           </div>
           <div
             title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"
@@ -95,10 +88,7 @@ exports[`renders correctly 1`] = `
               Efficiency
                
             </b>
-            68
-             
-            %
-            
+            68 %
           </div>
         </div>
       </div>
@@ -124,9 +114,7 @@ exports[`renders correctly 1`] = `
               Batch Size
                
             </b>
-            23.02
-             
-            L
+            23.02 l
              (6.08 gal)
           </div>
           <div
@@ -136,34 +124,17 @@ exports[`renders correctly 1`] = `
               Boil Size
                
             </b>
-            36.02
-             
-            L
-             (9.52 gal)
+            37.12 l
+             (9.81 gal)
           </div>
           <div
-            title="The percentage of wort lost to evaporation per hour of the boil"
+            title="The volume of wort lost to evaporation per hour of the boil"
           >
             <b>
               Evap Rate
                
             </b>
-            15
-             
-            % per hour
-            
-          </div>
-          <div
-            title=""
-          >
-            <b>
-              Cooling Loss
-               
-            </b>
-            4
-             
-            %
-            
+            5.36 l
           </div>
           <div
             title="The amount of wort normally lost during transition from the boiler to the fermentation vessel"
@@ -172,9 +143,7 @@ exports[`renders correctly 1`] = `
               Trub Chiller Loss
                
             </b>
-            3.82
-             
-            L
+            3.82 l
              (1.01 gal)
           </div>
         </div>
@@ -186,15 +155,15 @@ exports[`renders correctly 1`] = `
 
 exports[`renders correctly if equipment is null 1`] = `
 <div
-  className="panel panel-default"
+  className="card"
 >
   <div
-    className="panel-heading"
+    className="card-header"
   >
     Recipe Specs and Equipment
   </div>
   <div
-    className="panel-body"
+    className="card-body"
   >
     <div
       className="show-grid row"
@@ -243,9 +212,7 @@ exports[`renders correctly if equipment is null 1`] = `
               Batch Size
                
             </b>
-            23.02
-             
-            L
+            23.02 l
              (6.08 gal)
           </div>
           <div
@@ -255,9 +222,7 @@ exports[`renders correctly if equipment is null 1`] = `
               Boil Size
                
             </b>
-            37.12
-             
-            L
+            37.12 l
              (9.81 gal)
           </div>
           <div
@@ -267,10 +232,7 @@ exports[`renders correctly if equipment is null 1`] = `
               Boil Time
                
             </b>
-            90.00
-             
-            min
-            
+            90 min
           </div>
           <div
             title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"
@@ -279,10 +241,7 @@ exports[`renders correctly if equipment is null 1`] = `
               Efficiency
                
             </b>
-            68
-             
-            %
-            
+            68 %
           </div>
         </div>
       </div>

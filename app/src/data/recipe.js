@@ -2,7 +2,7 @@ export const recipe = {
   name: "Aussie Ale",
   version: "1",
   type: "All Grain",
-  brewer: "Steve Nicholls",
+  author: "Steve Nicholls",
   asstBrewer: "",
   batch_size: {
     value: 23.02,

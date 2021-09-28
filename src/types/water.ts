@@ -1,10 +1,16 @@
 export type Water = {
-  name: string
-  Ca: number
-  HCO3: number
-  Cl: number
-  Mg: number
-  Na: number
-  SO4: number
-  alkalinity?: number
-}
+  name: string;
+  //calcium
+  Ca: number;
+  //bicarbonate
+  HCO3: number;
+  // chloride
+  Cl: number;
+  // magnesium
+  Mg: number;
+  // sodium
+  Na: number;
+  // sulfate
+  SO4: number;
+  alkalinity?: number;
+};

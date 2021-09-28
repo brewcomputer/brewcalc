@@ -18,8 +18,6 @@ import {
 const Stats = ({ recipe, equipment }) => {
   const { batch_size, boil, ingredients, efficiency } = recipe;
 
-  const trubChillerLoss = equipment !== null ? equipment.trubChillerLoss : 0;
-
   const { fermentable_additions, hop_additions, culture_additions } =
     ingredients;
 
@@ -74,6 +72,7 @@ const Stats = ({ recipe, equipment }) => {
                 name="Color"
                 measurable={color}
                 units={["SRM", "EBC"]}
+                precision={0}
               />
               <div title="The estimated alcohol by volume for this recipe">
                 <b>Alcohol by volume : </b>

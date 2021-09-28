@@ -1,8 +1,16 @@
 export type SaltAdditions = {
-  CaCO3: number
-  NaHCO3: number
-  CaSO4: number
-  CaCl2: number
-  MgSO4: number
-  NaCl: number
-}
+  // Chalk (Calcium Bicarbonate)
+  CaCO3: number;
+  // Baking Soda (Sodium Bicarbonate)
+  NaHCO3: number;
+  // Gypsum (Calcium Sulfate)
+  CaSO4: number;
+  // Calcium Chloride
+  CaCl2: number;
+  // Epsom salt (Magnesium Sulfate)
+  MgSO4: number;
+  // Table salt (Sodium Chloride)
+  NaCl: number;
+};
+
+// Magnesium Chloride MgCl2 | Slaked Lime Ca(OH)2 |

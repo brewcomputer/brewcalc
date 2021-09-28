@@ -67,19 +67,21 @@ const RecipeSpecs = ({ recipe, equipment }) => {
                 <CrossUnitsInput
                   description="The target volume of the batch at the start of fermentation"
                   name="Batch Size"
-                  measurable={equipment.batchSize}
+                  measurable={batch_size}
                   units={["l", "gal"]}
                 />
                 <CrossUnitsInput
                   description="The pre-boil volume used in this particular instance for this equipment setup.  Note that this may be a calculated"
                   name="Boil Size"
-                  measurable={equipment.boilSize}
+                  measurable={pre_boil_size}
                   units={["l", "gal"]}
                 />
                 <CrossUnitsInput
-                  description="The percentage of wort lost to evaporation per hour of the boil"
+                  description="The volume of wort lost to evaporation per hour of the boil"
                   name="Evap Rate"
-                  measurable={equipment.evapRate}
+                  measurable={
+                    equipment.equipment_items.brew_kettle.boil_rate_per_hour
+                  }
                 />
                 <CrossUnitsInput
                   description=""
@@ -89,25 +91,22 @@ const RecipeSpecs = ({ recipe, equipment }) => {
                 <CrossUnitsInput
                   description="The amount of wort normally lost during transition from the boiler to the fermentation vessel"
                   name="Trub Chiller Loss"
-                  measurable={equipment.trubChillerLoss}
+                  measurable={equipment.equipment_items.brew_kettle.loss}
                   units={["l", "gal"]}
                 />
                 <CrossUnitsInput
                   description="Amount lost to the lauter tun and equipment associated with the lautering process"
                   name="Lauter Deadspace"
-                  measurable={equipment.lauterDeadspace.toFixed(2)}
+                  measurable={equipment.lauterDeadspace}
                   units={["l", "gal"]}
+                  precision={2}
                 />
                 <CrossUnitsInput
                   description="Amount normally added to the boil kettle before the boil"
                   name="TopUpKettle"
-                  measurable={equipment.topUpKettle.toFixed(2)}
+                  measurable={equipment.topUpKettle}
                   units={["l", "gal"]}
-                />
-                <CrossUnitsInput
-                  description=""
-                  name="BIAB"
-                  measurable={equipment.BIAB.toString()}
+                  precision={2}
                 />
               </div>
             )}

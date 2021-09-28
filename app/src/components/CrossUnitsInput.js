@@ -65,7 +65,7 @@ CrossUnitsInput.propTypes = {
     unit: PropTypes.string,
   }),
   units: PropTypes.arrayOf(PropTypes.string),
-  precision: PropTypes.arrayOf(PropTypes.number) || PropTypes.number,
+  precision: PropTypes.number,
 };
 
 export default CrossUnitsInput;
