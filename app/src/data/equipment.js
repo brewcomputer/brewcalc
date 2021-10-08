@@ -34,5 +34,13 @@ export const equipment = {
   hopUtilization: "100.0000000",
   coolingLossPct: 0.04,
   efficiency: 0.68,
-  BIAB: false,*/
+  BIAB: false,
+
+
+  tunWeight: "144.0000000",
+  tunSpecificHeat: "0.3000000",
+  displayTunTemp: "22.2 C",
+  displayTunWeight: "4.08 kg",
+
+  */
 };
