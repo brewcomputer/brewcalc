@@ -11,3 +11,11 @@ table.table {
 .App {
   padding-bottom: 16px;
 }
+
+.card {
+  margin-top: 8px;
+}
+
+.accordion {
+  margin: 8px 0;
+}

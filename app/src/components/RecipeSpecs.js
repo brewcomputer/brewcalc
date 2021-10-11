@@ -84,11 +84,6 @@ const RecipeSpecs = ({ recipe, equipment }) => {
                   }
                 />
                 <CrossUnitsInput
-                  description=""
-                  name="Cooling Loss"
-                  measurable={equipment.coolingLossPct * 100}
-                />
-                <CrossUnitsInput
                   description="The amount of wort normally lost during transition from the boiler to the fermentation vessel"
                   name="Trub Chiller Loss"
                   measurable={equipment.equipment_items.brew_kettle.loss}
