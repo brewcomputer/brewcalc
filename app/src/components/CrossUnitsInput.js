@@ -50,7 +50,7 @@ const CrossUnitsInput = ({
 
   return (
     <div title={description}>
-      <b>{name} </b>
+      {name && <b>{name} </b>}
       {printMeasurable(measurable, primary, precision)}
       {secondary && ` (${printMeasurable(measurable, secondary, precision)})`}
     </div>

@@ -180,9 +180,6 @@ exports[`renders without crashing 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               4.5 kg
                (9.91 lb)
             </div>
@@ -206,9 +203,6 @@ exports[`renders without crashing 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               0.52 kg
                (1.14 lb)
             </div>
@@ -232,9 +226,6 @@ exports[`renders without crashing 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               0.2 kg
                (0.44 lb)
             </div>
@@ -258,9 +249,6 @@ exports[`renders without crashing 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               0.05 kg
                (0.1 lb)
             </div>
@@ -284,9 +272,6 @@ exports[`renders without crashing 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               0.26 kg
                (0.58 lb)
             </div>
@@ -310,9 +295,6 @@ exports[`renders without crashing 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               5.21 g
                (0.18 oz)
             </div>
@@ -333,9 +315,6 @@ exports[`renders without crashing 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               5.21 g
                (0.18 oz)
             </div>
@@ -356,9 +335,6 @@ exports[`renders without crashing 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               31.23 g
                (1.1 oz)
             </div>
@@ -379,9 +355,6 @@ exports[`renders without crashing 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               15.68 g
                (0.55 oz)
             </div>
@@ -459,33 +432,25 @@ exports[`renders without crashing 1`] = `
           >
             Add 
             <div>
-              <b>
-                 
-              </b>
               13.16 l
                (3.48 gal)
             </div>
              of water at 
             <div>
-              <b>
-                 
-              </b>
               67 °C
                (152 °F)
             </div>
           </td>
           <td>
             <div>
-              <b>
-                 
-              </b>
               67 °C
                (152 °F)
             </div>
           </td>
           <td>
-            60
-             min
+            <div>
+              60 min
+            </div>
           </td>
         </tr>
         <tr>
@@ -501,33 +466,25 @@ exports[`renders without crashing 1`] = `
           >
             Add 
             <div>
-              <b>
-                 
-              </b>
               5.51 l
                (1.45 gal)
             </div>
              of water at 
             <div>
-              <b>
-                 
-              </b>
               76 °C
                (168 °F)
             </div>
           </td>
           <td>
             <div>
-              <b>
-                 
-              </b>
               76 °C
                (168 °F)
             </div>
           </td>
           <td>
-            10
-             min
+            <div>
+              10 min
+            </div>
           </td>
         </tr>
         <tr>
@@ -543,33 +500,25 @@ exports[`renders without crashing 1`] = `
           >
             Fly sparge with 
             <div>
-              <b>
-                 
-              </b>
               10.55 l
                (2.79 gal)
             </div>
              water at 
             <div>
-              <b>
-                 
-              </b>
               76 °C
                (168 °F)
             </div>
           </td>
           <td>
             <div>
-              <b>
-                 
-              </b>
               76 °C
                (168 °F)
             </div>
           </td>
           <td>
-            10
-             min
+            <div>
+              10 min
+            </div>
           </td>
         </tr>
       </tbody>
@@ -800,9 +749,6 @@ exports[`renders without crashing with null equipment 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               4.5 kg
                (9.91 lb)
             </div>
@@ -826,9 +772,6 @@ exports[`renders without crashing with null equipment 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               0.52 kg
                (1.14 lb)
             </div>
@@ -852,9 +795,6 @@ exports[`renders without crashing with null equipment 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               0.2 kg
                (0.44 lb)
             </div>
@@ -878,9 +818,6 @@ exports[`renders without crashing with null equipment 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               0.05 kg
                (0.1 lb)
             </div>
@@ -904,9 +841,6 @@ exports[`renders without crashing with null equipment 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               0.26 kg
                (0.58 lb)
             </div>
@@ -930,9 +864,6 @@ exports[`renders without crashing with null equipment 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               5.21 g
                (0.18 oz)
             </div>
@@ -953,9 +884,6 @@ exports[`renders without crashing with null equipment 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               5.21 g
                (0.18 oz)
             </div>
@@ -976,9 +904,6 @@ exports[`renders without crashing with null equipment 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               31.23 g
                (1.1 oz)
             </div>
@@ -999,9 +924,6 @@ exports[`renders without crashing with null equipment 1`] = `
         <tr>
           <td>
             <div>
-              <b>
-                 
-              </b>
               15.68 g
                (0.55 oz)
             </div>

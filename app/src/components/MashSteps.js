@@ -9,7 +9,6 @@ import {
 import CrossUnitsInput, { printMeasurable } from "./CrossUnitsInput";
 
 //TODO: Add BIAB
-
 const MashStepDescription = ({ step, spargeVolume }) => {
   switch (step.type) {
     case "decoction":
@@ -123,7 +122,13 @@ const MashSteps = ({ recipe, equipment }) => {
                   precision={0}
                 />
               </td>
-              <td>{step.step_time.value} min</td>
+              <td>
+                <CrossUnitsInput
+                  measurable={step.step_time}
+                  units={["min"]}
+                  precision={0}
+                />
+              </td>
             </tr>
           ))}
         </tbody>
