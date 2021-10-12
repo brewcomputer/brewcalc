@@ -15,10 +15,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm i
-      - run: npm test
+      - run: npm install
+      - run: npm run test
       - run: npm run pack:app
-      - run: cd app && npm install brewcalc.tgz
+      - run: cd app && npm install
+      - run: cd app && npm run test
       - run: cd app && npm run build
 
       - name: Deploy 🚀
