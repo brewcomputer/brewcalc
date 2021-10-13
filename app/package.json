@@ -5,7 +5,7 @@
   "dependencies": {
     "@beerjson/beerjson": "1.0.1",
     "ace-builds": "1.4.12",
-    "brewcalc": "file:./brewcalc.tgz",
+    "brewcalc": "file:brewcalc.tgz",
     "prop-types": "15.7.2",
     "react": "16.14.0",
     "react-ace": "9.4.3",

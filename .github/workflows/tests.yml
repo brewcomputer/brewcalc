@@ -18,7 +18,7 @@ jobs:
       - run: npm install
       - run: npm run test
       - run: npm run pack:app
-      - run: cd app && npm install
+      - run: cd app && npm install ./brewcalc.tgz
       - run: cd app && npm run test
       - run: cd app && npm run build
 
