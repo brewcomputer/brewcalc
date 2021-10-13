@@ -1,83 +1,101 @@
-import React from 'react'
-import { Panel, Row, Col } from 'react-bootstrap'
-import CrossUnitsInput from './CrossUnitsInput'
+import React from "react";
+import { Card, Row, Col } from "react-bootstrap";
+import CrossUnitsInput, { printMeasurable } from "./CrossUnitsInput";
 
 import {
-  originalGravity,
-  finalGravity,
-  gravityPoints,
-  boilGravity,
-  colorSRM,
-  estABV,
+  calcOriginalGravity,
+  calcFinalGravity,
+  calcBoilGravity,
+  calcColor,
+  calcABV,
   calcCalories,
   srmToCss,
   bitternessIbuTinseth,
-  ouncesToLiters
-} from 'brewcalc'
+  convert,
+  calcBoilVolumes,
+} from "brewcalc";
 
 const Stats = ({ recipe, equipment }) => {
+  const { batch_size, boil, ingredients, efficiency } = recipe;
 
-  const { batchSize, boilSize, fermentables, hops, efficiency, yeasts } = recipe
+  const { fermentable_additions, hop_additions, culture_additions } =
+    ingredients;
 
-  const trubChillerLoss = equipment !== null ? equipment.trubChillerLoss : 0
+  const og = calcOriginalGravity(batch_size, fermentable_additions, efficiency);
 
-  const og = originalGravity(
-    batchSize,
-    gravityPoints(fermentables, efficiency)
-  )
+  const fg = calcFinalGravity(
+    batch_size,
+    fermentable_additions,
+    efficiency,
+    culture_additions
+  );
 
-  const fg = finalGravity(
-    batchSize,
-    gravityPoints(fermentables, efficiency, yeasts[0].attenuation || recipe.efficiency)
-  )
+  const { pre_boil_size } = calcBoilVolumes(batch_size, boil, equipment);
 
-  const avgBoilGravityPts = boilGravity(
-    batchSize + trubChillerLoss,
-    boilSize,
-    og
-  ) - 1
+  const boilGravity = calcBoilGravity(batch_size, pre_boil_size, og);
 
-  const ibu = bitternessIbuTinseth(
-    hops,
-    avgBoilGravityPts,
-    batchSize + trubChillerLoss
-  )
+  const ibu = bitternessIbuTinseth(hop_additions, boilGravity, batch_size);
 
-  const colorSRMvalue = colorSRM(
-    fermentables,
-    batchSize + trubChillerLoss
-  )
+  const color = calcColor(fermentable_additions, batch_size);
 
-  const abv = estABV(og, fg) * 1000
-  const calories = calcCalories(Number(og.toFixed(3)), Number(fg.toFixed(2)))
-  const caloriesInOneL = calories / (12 * ouncesToLiters(1))
+  const abv = calcABV(og, fg);
+  const calories = calcCalories(og.value, fg.value);
+  const caloriesInOneL = calories / (12 * convert(1, "floz", "l"));
 
   return (
-    <Panel header="Gravity, Alcohol Content and Color">
-      <Row className="show-grid">
-        <Col md={6}>
-          <div>
-            <CrossUnitsInput description="The estimated original gravity of this recipe" name="Original Gravity" value={og.toFixed(3)} unit="SG" />
-            <CrossUnitsInput description="The estimated final gravity of this recipe" name="Final Gravity" value={fg.toFixed(3)} unit="SG" />
-            <div title="The bitterness of the recipe as measured in International Bitterness Units"><b>Bitterness (IBUs): </b>{ibu.toFixed(2)} by Tinseth formula</div>
-            <CrossUnitsInput description="Estimated color of this beer" name="Color" value={colorSRMvalue.toFixed(2)} unit="SRM" />
-            <div title="The estimated alcohol by volume for this recipe"><b>Alcohol by volume : </b>{abv.toFixed(2)} %</div>
-            <div title="Calories in one liter of the beer, based on original and final gravities">
-              <b>Calories: </b>{caloriesInOneL.toFixed(0)} per one L
+    <Card>
+      <Card.Header>Gravity, Alcohol Content and Color</Card.Header>
+      <Card.Body>
+        <Row className="show-grid">
+          <Col md={6}>
+            <div>
+              <CrossUnitsInput
+                description="The estimated original gravity of this recipe"
+                name="Original Gravity"
+                measurable={og}
+                units={["sg", "plato"]}
+                precision={3}
+              />
+              <CrossUnitsInput
+                description="The estimated final gravity of this recipe"
+                name="Final Gravity"
+                measurable={fg}
+                units={["sg", "plato"]}
+                precision={3}
+              />
+              <div title="The bitterness of the recipe as measured in International Bitterness Units">
+                <b>Bitterness (IBUs): </b>
+                {printMeasurable(ibu, null, 0)} by Tinseth formula
+              </div>
+              <CrossUnitsInput
+                description="Estimated color of this beer"
+                name="Color"
+                measurable={color}
+                units={["SRM", "EBC"]}
+                precision={0}
+              />
+              <div title="The estimated alcohol by volume for this recipe">
+                <b>Alcohol by volume : </b>
+                {printMeasurable(abv)}
+              </div>
+              <div title="Calories in one liter of the beer, based on original and final gravities">
+                <b>Calories: </b>
+                {caloriesInOneL.toFixed(0)} per one L
+              </div>
             </div>
-          </div>
-        </Col>
-        <Col md={6}>
-          <div
-            style={{
-              backgroundColor: srmToCss(colorSRMvalue),
-              height: 150
-            }}
-          />
-        </Col>
-      </Row>
-    </Panel>
-  )
-}
+          </Col>
+          <Col md={6}>
+            <div
+              style={{
+                backgroundColor: srmToCss(color.value),
+                height: 150,
+              }}
+            />
+          </Col>
+        </Row>
+      </Card.Body>
+    </Card>
+  );
+};
 
-export default Stats
+export default Stats;

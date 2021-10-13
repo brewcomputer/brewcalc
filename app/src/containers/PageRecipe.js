@@ -1,28 +1,28 @@
-import React from 'react'
-import { Grid } from 'react-bootstrap'
-import Recipe from '../components/Recipe'
-import ImportArea from './ImportArea'
-import EditorContainer from './EditorContainer'
+import React from "react";
+import { Container } from "react-bootstrap";
+import Recipe from "../components/Recipe";
+import ImportArea from "./ImportArea";
+import EditorContainer from "./EditorContainer";
 
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 
 const PageRecipe = ({ editorState }) => {
-  const tryParse = editorState => {
+  const tryParse = (editorState) => {
     try {
-      return JSON.parse(editorState)
+      return JSON.parse(editorState);
     } catch (error) {
-      return null
+      return null;
     }
-  }
+  };
   return (
-    <Grid>
+    <Container>
       <ImportArea />
-      <Recipe {...tryParse(editorState) } />
+      <Recipe {...tryParse(editorState)} />
       <EditorContainer />
-    </Grid>
-  )
-}
+    </Container>
+  );
+};
 
-const mapStateToProps = ({ editorState }) => ({ editorState })
+const mapStateToProps = ({ editorState }) => ({ editorState });
 
-export default connect(mapStateToProps)(PageRecipe)
+export default connect(mapStateToProps)(PageRecipe);

@@ -3,24 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@beerjson/beerjson": "1.0.1",
+    "ace-builds": "1.4.12",
     "brewcalc": "file:brewcalc.tgz",
-    "react": "^16.8.6",
-    "react-ace": "^6.4.0",
-    "react-bootstrap": "^0.31.1",
-    "react-dom": "^16.8.6",
-    "react-redux": "^7.0.2",
-    "react-test-renderer": "^16.8.6",
-    "redux": "^4.0.1"
+    "prop-types": "15.7.2",
+    "react": "16.14.0",
+    "react-ace": "9.4.3",
+    "react-bootstrap": "1.6.3",
+    "react-dom": "16.14.0",
+    "react-redux": "7.2.5",
+    "react-test-renderer": "16.14.0",
+    "redux": "4.1.1"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^3.0.1",
-    "flow-bin": "^0.97.0",
-    "gh-pages": "^2.0.1",
-    "prettier": "^1.17.0",
-    "react-scripts": "^2.1.8"
+    "gh-pages": "2.2.0",
+    "prettier": "2.3.2",
+    "react-scripts": "3.4.4"
   },
   "scripts": {
-    "flow": "flow",
     "lint": "eslint .",
     "test": "react-scripts test --env=jsdom",
     "coverage": "react-scripts test --env=jsdom --coverage",

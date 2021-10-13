@@ -8,9 +8,7 @@ exports[`renders without crashing 1`] = `
     Boil Size
      
   </b>
-  20
-   
-  L
+  20 l
    (5.28 gal)
 </div>
 `;
@@ -23,9 +21,7 @@ exports[`renders without crashing on US units 1`] = `
     Boil Size
      
   </b>
-  20
-   
-  L
-   (5.28 gal)
+  18.93 l
+   (5 gal)
 </div>
 `;

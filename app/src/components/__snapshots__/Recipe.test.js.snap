@@ -1,0 +1,1055 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-header"
+    >
+      Recipe Specs and Equipment
+    </div>
+    <div
+      className="card-body"
+    >
+      <div
+        className="show-grid row"
+      >
+        <div
+          className="col-md-6"
+        >
+          <div>
+            <div
+              title="Name of the recipe"
+            >
+               
+              <b>
+                Name
+              </b>
+               
+              Aussie Ale
+               
+            </div>
+            <div
+              title="Name of the brewer"
+            >
+               
+              <b>
+                Brewer
+              </b>
+               
+              Steve Nicholls
+               
+            </div>
+            <div
+              title="May be one of “Extract”, “Partial Mash” or “All Grain”"
+            >
+               
+              <b>
+                Type
+              </b>
+               
+              All Grain
+               
+            </div>
+            <div
+              title="Target size of the finished batch in liters"
+            >
+              <b>
+                Batch Size
+                 
+              </b>
+              23.02 l
+               (6.08 gal)
+            </div>
+            <div
+              title="Starting size for the main boil of the wort in liters"
+            >
+              <b>
+                Boil Size
+                 
+              </b>
+              37.12 l
+               (9.81 gal)
+            </div>
+            <div
+              title="The total time to boil the wort in minutes"
+            >
+              <b>
+                Boil Time
+                 
+              </b>
+              90 min
+            </div>
+            <div
+              title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"
+            >
+              <b>
+                Efficiency
+                 
+              </b>
+              68 %
+            </div>
+          </div>
+        </div>
+        <div
+          className="col-md-6"
+        >
+          <div>
+            <div
+              title="Name of the equipment profile – usually a text description of the brewing setup"
+            >
+               
+              <b>
+                Equipment Name
+              </b>
+               
+              Pot (13 Gal/50 L) - BIAB
+               
+            </div>
+            <div
+              title="The target volume of the batch at the start of fermentation"
+            >
+              <b>
+                Batch Size
+                 
+              </b>
+              23.02 l
+               (6.08 gal)
+            </div>
+            <div
+              title="The pre-boil volume used in this particular instance for this equipment setup.  Note that this may be a calculated"
+            >
+              <b>
+                Boil Size
+                 
+              </b>
+              37.12 l
+               (9.81 gal)
+            </div>
+            <div
+              title="The volume of wort lost to evaporation per hour of the boil"
+            >
+              <b>
+                Evap Rate
+                 
+              </b>
+              5.36 l
+            </div>
+            <div
+              title="The amount of wort normally lost during transition from the boiler to the fermentation vessel"
+            >
+              <b>
+                Trub Chiller Loss
+                 
+              </b>
+              3.82 l
+               (1.01 gal)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-header"
+    >
+      Ingredients
+    </div>
+    <table
+      className="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            Amount
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Type
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div>
+              4.5 kg
+               (9.91 lb)
+            </div>
+          </td>
+          <td>
+            Pale Malt (2 Row) UK
+             (
+            3 SRM
+            )
+          </td>
+          <td
+            style={
+              Object {
+                "textTransform": "capitalize",
+              }
+            }
+          >
+            grain
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              0.52 kg
+               (1.14 lb)
+            </div>
+          </td>
+          <td>
+            Munich Malt - 20L
+             (
+            20 SRM
+            )
+          </td>
+          <td
+            style={
+              Object {
+                "textTransform": "capitalize",
+              }
+            }
+          >
+            grain
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              0.2 kg
+               (0.44 lb)
+            </div>
+          </td>
+          <td>
+            Caramel/Crystal Malt - 20L
+             (
+            20 SRM
+            )
+          </td>
+          <td
+            style={
+              Object {
+                "textTransform": "capitalize",
+              }
+            }
+          >
+            grain
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              0.05 kg
+               (0.1 lb)
+            </div>
+          </td>
+          <td>
+            Roasted Barley
+             (
+            300 SRM
+            )
+          </td>
+          <td
+            style={
+              Object {
+                "textTransform": "capitalize",
+              }
+            }
+          >
+            grain
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              0.26 kg
+               (0.58 lb)
+            </div>
+          </td>
+          <td>
+            Cane (Beet) Sugar
+             (
+            0 SRM
+            )
+          </td>
+          <td
+            style={
+              Object {
+                "textTransform": "capitalize",
+              }
+            }
+          >
+            sugar
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              5.21 g
+               (0.18 oz)
+            </div>
+          </td>
+          <td>
+            Pride of Ringwood
+             (
+            10 %
+             Alpha, Boil time
+             
+            60 min
+            )
+          </td>
+          <td>
+            Hop
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              5.21 g
+               (0.18 oz)
+            </div>
+          </td>
+          <td>
+            Pride of Ringwood
+             (
+            10 %
+             Alpha, Boil time
+             
+            45 min
+            )
+          </td>
+          <td>
+            Hop
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              31.23 g
+               (1.1 oz)
+            </div>
+          </td>
+          <td>
+            Pride of Ringwood
+             (
+            10 %
+             Alpha, Boil time
+             
+            15 min
+            )
+          </td>
+          <td>
+            Hop
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              15.68 g
+               (0.55 oz)
+            </div>
+          </td>
+          <td>
+            Pride of Ringwood
+             (
+            10 %
+             Alpha, Boil time
+             
+            0 min
+            )
+          </td>
+          <td>
+            Hop
+          </td>
+        </tr>
+        <tr>
+          <td>
+            0.13 ml
+          </td>
+          <td>
+            American Ale
+             (Attenuation 
+            75 %
+            , Form 
+            liquid
+            )
+          </td>
+          <td>
+            Yeast
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-header"
+    >
+      Mash Steps
+    </div>
+    <table
+      className="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Description
+          </th>
+          <th>
+            Step Temperature
+          </th>
+          <th>
+            Step Time
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Mash In
+          </td>
+          <td
+            style={
+              Object {
+                "display": "flex",
+              }
+            }
+          >
+            Add 
+            <div>
+              13.16 l
+               (3.48 gal)
+            </div>
+             of water at 
+            <div>
+              67 °C
+               (152 °F)
+            </div>
+          </td>
+          <td>
+            <div>
+              67 °C
+               (152 °F)
+            </div>
+          </td>
+          <td>
+            <div>
+              60 min
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Mash Out
+          </td>
+          <td
+            style={
+              Object {
+                "display": "flex",
+              }
+            }
+          >
+            Add 
+            <div>
+              5.51 l
+               (1.45 gal)
+            </div>
+             of water at 
+            <div>
+              76 °C
+               (168 °F)
+            </div>
+          </td>
+          <td>
+            <div>
+              76 °C
+               (168 °F)
+            </div>
+          </td>
+          <td>
+            <div>
+              10 min
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Sparge
+          </td>
+          <td
+            style={
+              Object {
+                "display": "flex",
+              }
+            }
+          >
+            Fly sparge with 
+            <div>
+              10.55 l
+               (2.79 gal)
+            </div>
+             water at 
+            <div>
+              76 °C
+               (168 °F)
+            </div>
+          </td>
+          <td>
+            <div>
+              76 °C
+               (168 °F)
+            </div>
+          </td>
+          <td>
+            <div>
+              10 min
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-header"
+    >
+      Gravity, Alcohol Content and Color
+    </div>
+    <div
+      className="card-body"
+    >
+      <div
+        className="show-grid row"
+      >
+        <div
+          className="col-md-6"
+        >
+          <div>
+            <div
+              title="The estimated original gravity of this recipe"
+            >
+              <b>
+                Original Gravity
+                 
+              </b>
+              1.044 SG
+               (10.964 °P)
+            </div>
+            <div
+              title="The estimated final gravity of this recipe"
+            >
+              <b>
+                Final Gravity
+                 
+              </b>
+              1.011 SG
+               (2.817 °P)
+            </div>
+            <div
+              title="The bitterness of the recipe as measured in International Bitterness Units"
+            >
+              <b>
+                Bitterness (IBUs): 
+              </b>
+              28 IBUs
+               by Tinseth formula
+            </div>
+            <div
+              title="Estimated color of this beer"
+            >
+              <b>
+                Color
+                 
+              </b>
+              8 SRM
+               (16 EBC)
+            </div>
+            <div
+              title="The estimated alcohol by volume for this recipe"
+            >
+              <b>
+                Alcohol by volume : 
+              </b>
+              4 %
+            </div>
+            <div
+              title="Calories in one liter of the beer, based on original and final gravities"
+            >
+              <b>
+                Calories: 
+              </b>
+              404
+               per one L
+            </div>
+          </div>
+        </div>
+        <div
+          className="col-md-6"
+        >
+          <div
+            style={
+              Object {
+                "backgroundColor": "rgb(208, 91, 14)",
+                "height": 150,
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders without crashing with null equipment 1`] = `
+<div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-header"
+    >
+      Recipe Specs and Equipment
+    </div>
+    <div
+      className="card-body"
+    >
+      <div
+        className="show-grid row"
+      >
+        <div
+          className="col-md-6"
+        >
+          <div>
+            <div
+              title="Name of the recipe"
+            >
+               
+              <b>
+                Name
+              </b>
+               
+              Aussie Ale
+               
+            </div>
+            <div
+              title="Name of the brewer"
+            >
+               
+              <b>
+                Brewer
+              </b>
+               
+              Steve Nicholls
+               
+            </div>
+            <div
+              title="May be one of “Extract”, “Partial Mash” or “All Grain”"
+            >
+               
+              <b>
+                Type
+              </b>
+               
+              All Grain
+               
+            </div>
+            <div
+              title="Target size of the finished batch in liters"
+            >
+              <b>
+                Batch Size
+                 
+              </b>
+              23.02 l
+               (6.08 gal)
+            </div>
+            <div
+              title="Starting size for the main boil of the wort in liters"
+            >
+              <b>
+                Boil Size
+                 
+              </b>
+              37.12 l
+               (9.81 gal)
+            </div>
+            <div
+              title="The total time to boil the wort in minutes"
+            >
+              <b>
+                Boil Time
+                 
+              </b>
+              90 min
+            </div>
+            <div
+              title="The percent brewhouse efficiency to be used for estimating the starting gravity of the beer"
+            >
+              <b>
+                Efficiency
+                 
+              </b>
+              68 %
+            </div>
+          </div>
+        </div>
+        <div
+          className="col-md-6"
+        >
+          <div>
+            Equipment is not set
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-header"
+    >
+      Ingredients
+    </div>
+    <table
+      className="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            Amount
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Type
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div>
+              4.5 kg
+               (9.91 lb)
+            </div>
+          </td>
+          <td>
+            Pale Malt (2 Row) UK
+             (
+            3 SRM
+            )
+          </td>
+          <td
+            style={
+              Object {
+                "textTransform": "capitalize",
+              }
+            }
+          >
+            grain
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              0.52 kg
+               (1.14 lb)
+            </div>
+          </td>
+          <td>
+            Munich Malt - 20L
+             (
+            20 SRM
+            )
+          </td>
+          <td
+            style={
+              Object {
+                "textTransform": "capitalize",
+              }
+            }
+          >
+            grain
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              0.2 kg
+               (0.44 lb)
+            </div>
+          </td>
+          <td>
+            Caramel/Crystal Malt - 20L
+             (
+            20 SRM
+            )
+          </td>
+          <td
+            style={
+              Object {
+                "textTransform": "capitalize",
+              }
+            }
+          >
+            grain
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              0.05 kg
+               (0.1 lb)
+            </div>
+          </td>
+          <td>
+            Roasted Barley
+             (
+            300 SRM
+            )
+          </td>
+          <td
+            style={
+              Object {
+                "textTransform": "capitalize",
+              }
+            }
+          >
+            grain
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              0.26 kg
+               (0.58 lb)
+            </div>
+          </td>
+          <td>
+            Cane (Beet) Sugar
+             (
+            0 SRM
+            )
+          </td>
+          <td
+            style={
+              Object {
+                "textTransform": "capitalize",
+              }
+            }
+          >
+            sugar
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              5.21 g
+               (0.18 oz)
+            </div>
+          </td>
+          <td>
+            Pride of Ringwood
+             (
+            10 %
+             Alpha, Boil time
+             
+            60 min
+            )
+          </td>
+          <td>
+            Hop
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              5.21 g
+               (0.18 oz)
+            </div>
+          </td>
+          <td>
+            Pride of Ringwood
+             (
+            10 %
+             Alpha, Boil time
+             
+            45 min
+            )
+          </td>
+          <td>
+            Hop
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              31.23 g
+               (1.1 oz)
+            </div>
+          </td>
+          <td>
+            Pride of Ringwood
+             (
+            10 %
+             Alpha, Boil time
+             
+            15 min
+            )
+          </td>
+          <td>
+            Hop
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              15.68 g
+               (0.55 oz)
+            </div>
+          </td>
+          <td>
+            Pride of Ringwood
+             (
+            10 %
+             Alpha, Boil time
+             
+            0 min
+            )
+          </td>
+          <td>
+            Hop
+          </td>
+        </tr>
+        <tr>
+          <td>
+            0.13 ml
+          </td>
+          <td>
+            American Ale
+             (Attenuation 
+            75 %
+            , Form 
+            liquid
+            )
+          </td>
+          <td>
+            Yeast
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-header"
+    >
+      Gravity, Alcohol Content and Color
+    </div>
+    <div
+      className="card-body"
+    >
+      <div
+        className="show-grid row"
+      >
+        <div
+          className="col-md-6"
+        >
+          <div>
+            <div
+              title="The estimated original gravity of this recipe"
+            >
+              <b>
+                Original Gravity
+                 
+              </b>
+              1.044 SG
+               (10.964 °P)
+            </div>
+            <div
+              title="The estimated final gravity of this recipe"
+            >
+              <b>
+                Final Gravity
+                 
+              </b>
+              1.011 SG
+               (2.817 °P)
+            </div>
+            <div
+              title="The bitterness of the recipe as measured in International Bitterness Units"
+            >
+              <b>
+                Bitterness (IBUs): 
+              </b>
+              28 IBUs
+               by Tinseth formula
+            </div>
+            <div
+              title="Estimated color of this beer"
+            >
+              <b>
+                Color
+                 
+              </b>
+              8 SRM
+               (16 EBC)
+            </div>
+            <div
+              title="The estimated alcohol by volume for this recipe"
+            >
+              <b>
+                Alcohol by volume : 
+              </b>
+              4 %
+            </div>
+            <div
+              title="Calories in one liter of the beer, based on original and final gravities"
+            >
+              <b>
+                Calories: 
+              </b>
+              404
+               per one L
+            </div>
+          </div>
+        </div>
+        <div
+          className="col-md-6"
+        >
+          <div
+            style={
+              Object {
+                "backgroundColor": "rgb(208, 91, 14)",
+                "height": 150,
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,200 @@
+{
+  "beerjson": {
+    "version": 2.06,
+    "recipes": [
+      {
+        "name": "Test Recipe BeerJSON",
+        "author": "Brewcalc",
+        "type": "all grain",
+        "style": {
+          "name": "American Amber Ale",
+          "category": "Amber And Brown American Beer",
+          "category_number": 1,
+          "category_id": "1",
+          "style_id": "19A",
+          "style_letter": "A",
+          "style_guide": "BJCP2015",
+          "type": "beer",
+          "original_gravity": {
+            "minimum": {
+              "unit": "sg",
+              "value": 1.045
+            },
+            "maximum": {
+              "unit": "sg",
+              "value": 1.06
+            }
+          },
+          "final_gravity": {
+            "minimum": {
+              "unit": "sg",
+              "value": 1.01
+            },
+            "maximum": {
+              "unit": "sg",
+              "value": 1.015
+            }
+          },
+          "international_bitterness_units": {
+            "minimum": 25,
+            "maximum": 40
+          },
+          "color": {
+            "minimum": {
+              "unit": "SRM",
+              "value": 10
+            },
+            "maximum": {
+              "unit": "SRM",
+              "value": 17
+            }
+          },
+          "alcohol_by_volume": {
+            "minimum": 4.5,
+            "maximum": 6.2
+          }
+        },
+        "batch_size": {
+          "value": 20,
+          "unit": "l"
+        },
+        "boil": {
+          "pre_boil_size": {
+            "value": 12.5,
+            "unit": "l"
+          },
+          "boil_time": {
+            "value": 60,
+            "unit": "min"
+          }
+        },
+        "efficiency": {
+          "brewhouse": {
+            "value": 75,
+            "unit": "%"
+          }
+        },
+        "ingredients": {
+          "fermentable_additions": [
+            {
+              "amount": {
+                "value": 5,
+                "unit": "kg"
+              },
+              "name": "Default Malt",
+              "type": "grain",
+              "color": {
+                "value": 10,
+                "unit": "Lovi"
+              },
+              "origin": "",
+              "supplier": "",
+              "grain_group": "base",
+              "yield": {
+                "potential": {
+                  "value": 1.036,
+                  "unit": "sg"
+                }
+              }
+            }
+          ],
+          "hop_additions": [
+            {
+              "amount": {
+                "value": 10,
+                "unit": "g"
+              },
+              "name": "Default Hop",
+              "alpha_acid": {
+                "value": 5,
+                "unit": "%"
+              },
+              "beta_acid": {
+                "value": 5,
+                "unit": "%"
+              },
+              "origin": "",
+              "form": "leaf",
+              "timing": {
+                "use": "add_to_boil",
+                "time": {
+                  "value": 60,
+                  "unit": "min"
+                }
+              }
+            }
+          ],
+          "culture_additions": [
+            {
+              "amount": {
+                "value": 50,
+                "unit": "ml"
+              },
+              "name": "Default Culture",
+              "attenuation": {
+                "value": 75,
+                "unit": "%"
+              },
+              "type": "ale",
+              "form": "dry"
+            }
+          ]
+        },
+        "mash": {
+          "name": "Single Infusion",
+          "grain_temperature": {
+            "unit": "C",
+            "value": 22
+          },
+          "sparge_temperature": {
+            "unit": "C",
+            "value": 75.6
+          },
+          "mash_steps": [
+            {
+              "name": "Mash In",
+              "type": "infusion",
+              "step_temperature": {
+                "unit": "C",
+                "value": 68
+              },
+              "step_time": {
+                "unit": "min",
+                "value": 60
+              },
+              "ramp_time": {
+                "unit": "min",
+                "value": 2
+              },
+              "end_temperature": {
+                "unit": "C",
+                "value": 68
+              }
+            },
+            {
+              "name": "Mash Out",
+              "type": "infusion",
+              "step_temperature": {
+                "unit": "C",
+                "value": 75.6
+              },
+              "step_time": {
+                "unit": "min",
+                "value": 10
+              },
+              "ramp_time": {
+                "unit": "min",
+                "value": 20
+              },
+              "end_temperature": {
+                "unit": "C",
+                "value": 75.6
+              }
+            }
+          ]
+        },
+        "created": "2018-11-28T13:39:49.248Z"
+      }
+    ]
+  }
+}

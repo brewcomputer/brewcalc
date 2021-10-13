@@ -1,13 +1,10 @@
-const path = require('path')
+const path = require("path");
 
 module.exports = {
   rootDir: process.cwd(),
-  testEnvironment: 'jsdom',
-  "testPathIgnorePatterns": [
-    "/node_modules/",
-    "/app/"
-  ],
+  roots: ["<rootDir>/tests"],
+  testEnvironment: "node",
   transform: {
-    '^.+\\.js$': path.resolve(__dirname, 'jest.transform.js')
-  }
-}
+    "^.+\\.(t|j)s$": path.resolve(__dirname, "jest.transform.js"),
+  },
+};

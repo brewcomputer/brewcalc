@@ -1,63 +1,140 @@
-import React from 'react'
-import { Panel, Table } from 'react-bootstrap'
-import { calculateVolumes, mashRecalculate, MashType } from 'brewcalc'
-import CrossUnitsInput from './CrossUnitsInput'
+import React from "react";
+import { Card, Table } from "react-bootstrap";
+import {
+  recalculateMashSteps,
+  calcBoilVolumes,
+  calcMashVolumes,
+  calcMashGrainWeight,
+} from "brewcalc";
+import CrossUnitsInput, { printMeasurable } from "./CrossUnitsInput";
 
 //TODO: Add BIAB
+const MashStepDescription = ({ step, spargeVolume }) => {
+  switch (step.type) {
+    case "decoction":
+      return (
+        <td style={{ display: "flex" }}>
+          Decoct&nbsp;
+          <CrossUnitsInput measurable={step.amount} units={["l", "gal"]} />
+          &nbsp;of mash and boil it
+        </td>
+      );
+    case "temperature":
+      if (step.infuseAmount > 0)
+        return (
+          <td style={{ display: "flex" }}>
+            Add&nbsp;
+            <CrossUnitsInput measurable={step.amount} units={["l", "gal"]} />
+            &nbsp;of water and heat to&nbsp;
+            <CrossUnitsInput
+              measurable={step.step_temperature}
+              units={["C", "F"]}
+              precision={0}
+            />
+          </td>
+        );
+      else
+        return (
+          <td style={{ display: "flex" }}>
+            Heat to&nbsp;
+            <CrossUnitsInput
+              measurable={step.step_temperature}
+              units={["C", "F"]}
+              precision={0}
+            />
+            &nbsp;over&nbsp;{printMeasurable(step.step_time)}&nbsp;min
+          </td>
+        );
+    case "sparge":
+      return (
+        <td style={{ display: "flex" }}>
+          Fly sparge with&nbsp;
+          <CrossUnitsInput measurable={spargeVolume} units={["l", "gal"]} />
+          &nbsp;water at&nbsp;
+          <CrossUnitsInput
+            measurable={step.step_temperature}
+            units={["C", "F"]}
+            precision={0}
+          />
+        </td>
+      );
+    case "infusion":
+    default:
+      return (
+        <td style={{ display: "flex" }}>
+          Add&nbsp;
+          <CrossUnitsInput measurable={step.amount} units={["l", "gal"]} />
+          &nbsp;of water at&nbsp;
+          <CrossUnitsInput
+            measurable={step.step_temperature}
+            units={["C", "F"]}
+            precision={0}
+          />
+        </td>
+      );
+  }
+};
 
 const MashSteps = ({ recipe, equipment }) => {
+  const mashGrainWeight = calcMashGrainWeight(
+    recipe.ingredients.fermentable_additions
+  );
+  const recalculatedMashSteps = recalculateMashSteps(
+    recipe.mash.mash_steps,
+    recipe.mash.grain_temperature,
+    mashGrainWeight
+  );
 
-    const mashStepDescription = (step) => {
-        switch (step.type) {
-            case MashType.decoction:
-                return (<td style={{ display: 'flex' }}>Decoct&nbsp;<CrossUnitsInput value={step.decoctionAmount.toFixed(2)} unit="L" />&nbsp;of mash and boil it</td>)
-            case MashType.temperature:
-                if (step.infuseAmount > 0)
-                    return (<td style={{ display: 'flex' }}>Add&nbsp;<CrossUnitsInput value={step.infuseStepAmount.toFixed(2)} unit="L" />&nbsp;of water and heat to&nbsp;<CrossUnitsInput value={step.infussionTemp.toFixed(0)} unit="C" /></td>)
-                else
-                    return (<td style={{ display: 'flex' }}>Heat to&nbsp;<CrossUnitsInput value={step.stepTemp.toFixed(0)} unit="C" />&nbsp;over&nbsp;{step.stepTime}&nbsp;min</td>)
-            case MashType.infusion:
-            default:
-                return (<td style={{ display: 'flex' }}>Add&nbsp;<CrossUnitsInput value={step.infuseStepAmount.toFixed(2)} unit="L" />&nbsp;of water at&nbsp;<CrossUnitsInput value={step.infussionTemp.toFixed(0)} unit="C" /></td>)
-        }
-    }
+  const { pre_boil_size } = calcBoilVolumes(
+    recipe.batch_size,
+    recipe.boil,
+    equipment
+  );
 
+  const { sparge_volume } = calcMashVolumes(
+    pre_boil_size,
+    recalculatedMashSteps,
+    mashGrainWeight,
+    equipment
+  );
 
-    const calculatedVolumes = calculateVolumes(recipe, equipment)
-    const calculatedMashSteps = mashRecalculate(recipe.mash, equipment, calculatedVolumes.mashGrainWeight)
-    const combinedMashSteps = recipe.mash.mashSteps.map((s, i) => {
-        return Object.assign({}, s, calculatedMashSteps[i])
-    })
+  return (
+    <Card>
+      <Card.Header>Mash Steps</Card.Header>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Step Temperature</th>
+            <th>Step Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {recalculatedMashSteps.map((step, index) => (
+            <tr key={index}>
+              <td>{step.name}</td>
+              <MashStepDescription step={step} spargeVolume={sparge_volume} />
+              <td>
+                <CrossUnitsInput
+                  measurable={step.step_temperature}
+                  units={["C", "F"]}
+                  precision={0}
+                />
+              </td>
+              <td>
+                <CrossUnitsInput
+                  measurable={step.step_time}
+                  units={["min"]}
+                  precision={0}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Card>
+  );
+};
 
-    return (
-        <Panel header="Mash Steps">
-            <Table striped bordered condensed hover>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Step Temperature</th>
-                        <th>Step Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {recipe.mash.mashSteps.map((i, index) => (
-                        <tr key={index}>
-                            <td>{i.name}</td>
-                            {mashStepDescription(combinedMashSteps[index])}
-                            <td>
-                                <CrossUnitsInput value={i.stepTemp.toFixed(0)} unit="C" />
-                            </td>
-                            <td>{i.stepTime.toFixed(0)} min</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </Table>
-            <div style={{ display: 'flex' }}>
-                <b>Sparge:&nbsp;</b>Fly sparge with&nbsp;<CrossUnitsInput value={calculatedVolumes.spargeVol.toFixed(2)} unit="L" />&nbsp;water at&nbsp;<CrossUnitsInput value={recipe.mash.spargeTemp.toFixed(0)} unit="C" />
-            </div>
-        </Panel>
-    )
-}
-
-export default MashSteps
+export default MashSteps;
