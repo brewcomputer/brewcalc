@@ -1,34 +1,41 @@
-const config = [
-  {
-    mode: "production",
-    output: {
-      library: "brewcalc",
-      libraryTarget: "umd",
-      umdNamedDefine: true,
-      path: __dirname + "/lib",
-      filename: "brewcalc.min.js"
-    },
-    optimization: {
-      minimize: true
-    },
-    module: {
-      rules: require("./webpack.config.rules")
-    }
+const commonConfig = {
+  entry: "./src/index.ts",
+  devtool: "inline-source-map",
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+    ],
   },
-  {
-    mode: "development",
-    output: {
-      library: "brewcalc",
-      libraryTarget: "umd",
-      umdNamedDefine: true,
-      path: __dirname + "/lib",
-      filename: "brewcalc.js"
-    },
-    devtool: "source-map",
-    module: {
-      rules: require("./webpack.config.rules")
-    }
-  }
-]
+  resolve: {
+    extensions: [".ts", ".js"],
+  },
+  target: "web",
+};
 
-module.exports = config
+const prodConfig = {
+  mode: "production",
+  output: {
+    library: "brewcalc",
+    libraryTarget: "umd",
+    path: __dirname + "/web",
+    filename: "brewcalc.min.js",
+  },
+  ...commonConfig,
+};
+
+const devConfig = {
+  mode: "development",
+  output: {
+    library: "brewcalc",
+    libraryTarget: "umd",
+    path: __dirname + "/web",
+    filename: "brewcalc.js",
+  },
+  ...commonConfig,
+};
+
+module.exports = [prodConfig, devConfig];

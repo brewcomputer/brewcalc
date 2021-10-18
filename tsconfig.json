@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "lib": ["es2015"],
-    "module": "commonjs",
+    "module": "es6",
     "allowJs": true,
     "resolveJsonModule": true,
+    "moduleResolution": "node",
     "declaration": true,
     "target": "es2015",
     "sourceMap": true,
