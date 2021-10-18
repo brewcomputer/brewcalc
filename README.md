@@ -13,7 +13,7 @@ There are two ways to use **brewcalc** - client-side in a web browser or server-
 ### Browser
 To use **brewcalc** in a browser, download compiled lib and include it to your html:
 
- * [The latest brewcalc.min.js](https://raw.githubusercontent.com/brewcomputer/brewcalc/master/lib/brewcalc.min.js)
+ * [The latest brewcalc.min.js](https://raw.githubusercontent.com/brewcomputer/brewcalc/master/web/brewcalc.min.js)
  
 ```html
 <script type="text/javascript" src="/scripts/brewcalc.min.js"></script>
