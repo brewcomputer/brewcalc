@@ -1,41 +1,41 @@
 const commonConfig = {
-  entry: "./src/index.ts",
-  devtool: "inline-source-map",
+  entry: './src/index.ts',
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
         test: /\.ts$/,
-        use: "ts-loader",
+        use: 'ts-loader',
         exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: ['.ts', '.js'],
   },
-  target: "web",
-};
+  target: 'web',
+}
 
 const prodConfig = {
-  mode: "production",
+  mode: 'production',
   output: {
-    library: "brewcalc",
-    libraryTarget: "umd",
-    path: __dirname + "/web",
-    filename: "brewcalc.min.js",
+    library: 'brewcalc',
+    libraryTarget: 'umd',
+    path: __dirname + '/web',
+    filename: 'brewcalc.min.js',
   },
   ...commonConfig,
-};
+}
 
 const devConfig = {
-  mode: "development",
+  mode: 'development',
   output: {
-    library: "brewcalc",
-    libraryTarget: "umd",
-    path: __dirname + "/web",
-    filename: "brewcalc.js",
+    library: 'brewcalc',
+    libraryTarget: 'umd',
+    path: __dirname + '/web',
+    filename: 'brewcalc.js',
   },
   ...commonConfig,
-};
+}
 
-module.exports = [prodConfig, devConfig];
+module.exports = [prodConfig, devConfig]

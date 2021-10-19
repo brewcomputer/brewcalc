@@ -1,6 +1,6 @@
-import { litersToGallons, poundsTokg, sgToPlato } from "./utils";
-import type { Yeast } from "./types/yeast";
-import { YeastForms } from "./types/yeast";
+import { litersToGallons, poundsTokg, sgToPlato } from './utils'
+import type { Yeast } from './types/yeast'
+import { YeastForms } from './types/yeast'
 
 // https://www.brewersfriend.com/yeast-pitch-rate-and-starter-calculator/
 
@@ -28,7 +28,7 @@ import { YeastForms } from "./types/yeast";
 // billion 10 ^ 9
 
 export const yeastNeeded = (pitchRate: number, batchSize: number, e: number) =>
-  (pitchRate * (batchSize * 1000) * e) / 1000;
+  (pitchRate * (batchSize * 1000) * e) / 1000
 
 const viability = (
   currentDate: string,
@@ -36,7 +36,7 @@ const viability = (
 ) =>
   100 -
   Math.floor((Date.parse(currentDate) - Date.parse(cultureDate)) / 86400000) *
-    0.7;
+    0.7
 
 export const yeastCount = (
   { amount, form, cultureDate }: Yeast,
@@ -47,24 +47,24 @@ export const yeastCount = (
 ) => {
   switch (form) {
     case YeastForms.dry:
-      return cellDensity * amount * 1000;
+      return cellDensity * amount * 1000
     case YeastForms.liquid:
-      return 100 * (viability(currentDate, cultureDate) / 100) * amount;
+      return 100 * (viability(currentDate, cultureDate) / 100) * amount
     case YeastForms.slant:
-      return slurryDensity * amount * 1000;
+      return slurryDensity * amount * 1000
     default:
-      throw new Error("NotImplementedError");
+      throw new Error('NotImplementedError')
   }
-};
+}
 
-const yeastGrowth = (ratio) => 2.33 - 0.67 * ratio;
+const yeastGrowth = (ratio) => 2.33 - 0.67 * ratio
 
 const growthRateCurveBraukaiserStir = (ratio: number) =>
   ratio < 1.4
     ? 1.4
     : ratio >= 1.4 && ratio <= 3.5 && yeastGrowth(ratio) > 0
     ? yeastGrowth(ratio)
-    : 0;
+    : 0
 
 export const yeastStarterGrow = (
   startingYeastCount: number,
@@ -72,20 +72,20 @@ export const yeastStarterGrow = (
   gravity: number,
   batchSize: number
 ) => {
-  const volumeLevel = litersToGallons(starterSize);
-  const pointsNeeded = volumeLevel * (gravity - 1) * 1000;
-  const poundsDME = pointsNeeded / 42;
-  const gramsDME = poundsTokg(poundsDME) * 1000;
-  const cellsToGramsRatio = startingYeastCount / gramsDME;
+  const volumeLevel = litersToGallons(starterSize)
+  const pointsNeeded = volumeLevel * (gravity - 1) * 1000
+  const poundsDME = pointsNeeded / 42
+  const gramsDME = poundsTokg(poundsDME) * 1000
+  const cellsToGramsRatio = startingYeastCount / gramsDME
 
-  const growthRate = growthRateCurveBraukaiserStir(cellsToGramsRatio);
-  const endingCount = gramsDME * growthRate + startingYeastCount;
+  const growthRate = growthRateCurveBraukaiserStir(cellsToGramsRatio)
+  const endingCount = gramsDME * growthRate + startingYeastCount
   const pitchRate =
-    (endingCount * 1000) / sgToPlato(gravity) / (batchSize / 1000);
+    (endingCount * 1000) / sgToPlato(gravity) / (batchSize / 1000)
 
   return {
     growthRate: growthRate,
     endingCount: endingCount,
     pitchRate: pitchRate,
-  };
-};
+  }
+}
