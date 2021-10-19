@@ -5,17 +5,17 @@
     "main.js.map": "/brewcalc/static/js/main.f2ccf912.chunk.js.map",
     "runtime-main.js": "/brewcalc/static/js/runtime-main.27e8bc2d.js",
     "runtime-main.js.map": "/brewcalc/static/js/runtime-main.27e8bc2d.js.map",
-    "static/js/2.30b2c440.chunk.js": "/brewcalc/static/js/2.30b2c440.chunk.js",
-    "static/js/2.30b2c440.chunk.js.map": "/brewcalc/static/js/2.30b2c440.chunk.js.map",
+    "static/js/2.eaff7836.chunk.js": "/brewcalc/static/js/2.eaff7836.chunk.js",
+    "static/js/2.eaff7836.chunk.js.map": "/brewcalc/static/js/2.eaff7836.chunk.js.map",
     "index.html": "/brewcalc/index.html",
-    "precache-manifest.0d5321a98c6b69b1ef66115c835ad8b6.js": "/brewcalc/precache-manifest.0d5321a98c6b69b1ef66115c835ad8b6.js",
+    "precache-manifest.9c71371c397d1afca50638985065b9b2.js": "/brewcalc/precache-manifest.9c71371c397d1afca50638985065b9b2.js",
     "service-worker.js": "/brewcalc/service-worker.js",
     "static/css/main.801c87dc.chunk.css.map": "/brewcalc/static/css/main.801c87dc.chunk.css.map",
-    "static/js/2.30b2c440.chunk.js.LICENSE.txt": "/brewcalc/static/js/2.30b2c440.chunk.js.LICENSE.txt"
+    "static/js/2.eaff7836.chunk.js.LICENSE.txt": "/brewcalc/static/js/2.eaff7836.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.27e8bc2d.js",
-    "static/js/2.30b2c440.chunk.js",
+    "static/js/2.eaff7836.chunk.js",
     "static/css/main.801c87dc.chunk.css",
     "static/js/main.f2ccf912.chunk.js"
   ]
