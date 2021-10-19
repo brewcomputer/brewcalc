@@ -1,10 +1,5 @@
-import {
-  yeastNeeded,
-  yeastCount,
-  yeastStarterGrow,
-  carbonation,
-  calcCalories,
-} from '../src/brewcalc'
+import { yeastNeeded, yeastCount, yeastStarterGrow } from '../src/culture'
+import { carbonation, calcCalories } from '../src/carbonation'
 
 import { sgToPlato, kpaToPsi } from '../src/utils'
 

@@ -4,6 +4,7 @@
     "module": "commonjs",
     "allowJs": true,
     "resolveJsonModule": true,
+    "moduleResolution": "node",
     "declaration": true,
     "target": "es2015",
     "sourceMap": true,

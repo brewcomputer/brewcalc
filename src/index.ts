@@ -1,10 +1,5 @@
-import {
-  calcCalories,
-  carbonation,
-  yeastCount,
-  yeastNeeded,
-  yeastStarterGrow,
-} from './brewcalc'
+import { yeastCount, yeastNeeded, yeastStarterGrow } from './culture'
+import { calcCalories, carbonation } from './carbonation'
 
 import {
   bitternessIbuRager,
@@ -218,8 +213,3 @@ export {
   yeastNeeded,
   yeastStarterGrow,
 }
-
-/*export {
-  scaleRecipe,
-  calcWaterChemistry,
-}*/
