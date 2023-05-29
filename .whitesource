@@ -3,13 +3,6 @@
     "configMode": "AUTO",
     "baseBranches": []
   },
-  "scanSettingsSAST": {
-    "enableScan": false,
-    "scanPullRequests": false,
-    "incrementalScan": true,
-    "baseBranches": [],
-    "snippetSize": 10
-  },
   "checkRunSettings": {
     "vulnerableCheckRunConclusionLevel": "failure",
     "displayMode": "diff",
